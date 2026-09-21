@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
+          java-version: 21
 
       - name: Create Capacitor project
         run: |
@@ -36,7 +36,9 @@ jobs:
           npm install --save-dev @capacitor/cli@7
 
           npx cap init "Daily Routine" "com.dailyroutine.app" --web-dir www
+
           npx cap add android
+
           npx cap sync android
 
       - name: Build APK
