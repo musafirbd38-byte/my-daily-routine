@@ -1,0 +1,4094 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no">
+
+<meta name="theme-color" content="#4f46e5">
+
+<title>দৈনিক রুটিন</title>
+
+<style>
+
+/* =====================================================
+   DAILY ROUTINE
+   ALL-IN-ONE CSS
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+
+    --primary:#4f46e5;
+    --primary2:#7c3aed;
+
+    --bg:#f4f6fb;
+    --card:#ffffff;
+
+    --text:#111827;
+    --muted:#6b7280;
+
+    --border:#e5e7eb;
+
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#d97706;
+
+    --nav-height:72px;
+
+    --radius-lg:22px;
+    --radius-md:18px;
+    --radius-sm:12px;
+}
+
+body.dark{
+
+    --bg:#0f172a;
+    --card:#1e293b;
+
+    --text:#f8fafc;
+    --muted:#94a3b8;
+
+    --border:#334155;
+}
+
+html,
+body{
+
+    margin:0;
+    padding:0;
+
+    width:100%;
+    min-height:100%;
+
+    font-family:
+        "Noto Sans Bengali",
+        "Nirmala UI",
+        Arial,
+        sans-serif;
+
+    background:var(--bg);
+    color:var(--text);
+
+    transition:
+        background .25s ease,
+        color .25s ease;
+
+    scroll-behavior:smooth;
+}
+
+button,
+input,
+textarea,
+select{
+
+    font-family:inherit;
+
+    color:inherit;
+}
+
+button{
+
+    cursor:pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+
+    outline:2px solid var(--primary);
+    outline-offset:2px;
+}
+
+#app{
+
+    width:100%;
+    max-width:700px;
+
+    min-height:100vh;
+
+    margin:auto;
+
+    padding-bottom:90px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.top-header{
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 16px 10px;
+
+    background:var(--bg);
+
+    position:sticky;
+    top:0;
+
+    z-index:50;
+
+    backdrop-filter:blur(8px);
+}
+
+.top-header h1{
+
+    margin:3px 0 0;
+
+    font-size:23px;
+
+    letter-spacing:-.3px;
+}
+
+.small-date{
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.icon-btn{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    font-size:19px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
+
+    transition:transform .15s ease;
+}
+
+.icon-btn:active{
+
+    transform:scale(.92);
+}
+
+
+/* =====================================================
+   PAGES
+===================================================== */
+
+.page{
+
+    display:none;
+
+    padding:8px 16px 30px;
+
+    animation:pageIn .25s ease;
+}
+
+.page.active{
+
+    display:block;
+}
+
+@keyframes pageIn{
+
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* =====================================================
+   WELCOME
+===================================================== */
+
+.welcome-card{
+
+    padding:22px;
+
+    border-radius:var(--radius-lg);
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    margin-bottom:14px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(79,70,229,.20);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.welcome-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-40px;
+    right:-40px;
+
+    width:140px;
+    height:140px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+}
+
+.welcome-card h2{
+
+    margin:5px 0;
+
+    font-size:21px;
+}
+
+.welcome-card p{
+
+    margin:5px 0;
+
+    color:rgba(255,255,255,.85);
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    padding:19px;
+
+    margin-bottom:14px;
+}
+
+.progress-top{
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+}
+
+.progress-top h2{
+
+    margin:5px 0 0;
+
+    font-size:28px;
+}
+
+.muted{
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+.progress-circle{
+
+    width:66px;
+    height:66px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:
+        conic-gradient(
+            var(--primary) 0deg,
+            var(--border) 0deg
+        );
+
+    position:relative;
+
+    transition:background .4s ease;
+}
+
+.progress-circle::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:51px;
+    height:51px;
+
+    border-radius:50%;
+
+    background:var(--card);
+}
+
+.progress-circle span{
+
+    position:relative;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:9px;
+
+    background:var(--border);
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-top:18px;
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    border-radius:10px;
+
+    transition:width .4s ease;
+}
+
+
+/* =====================================================
+   STATS
+===================================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:9px;
+
+    margin-bottom:20px;
+}
+
+.stat-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+
+    padding:14px 6px;
+
+    text-align:center;
+
+    transition:transform .15s ease;
+}
+
+.stat-card:active{
+
+    transform:scale(.97);
+}
+
+.stat-icon{
+
+    font-size:20px;
+
+    margin-bottom:4px;
+}
+
+.stat-card strong{
+
+    display:block;
+
+    font-size:20px;
+}
+
+.stat-card span{
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section{
+
+    margin-top:20px;
+}
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:12px;
+}
+
+.section-title h2{
+
+    margin:0;
+
+    font-size:18px;
+}
+
+.text-btn{
+
+    border:none;
+
+    background:none;
+
+    color:var(--primary);
+
+    font-weight:bold;
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   QUOTE
+===================================================== */
+
+.quote-card{
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:var(--radius-md);
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+}
+
+.quote-icon{
+
+    font-size:27px;
+}
+
+.quote-card p{
+
+    margin:0;
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+.page-title{
+
+    margin:10px 0 20px;
+}
+
+.page-title h2{
+
+    margin:0;
+
+    font-size:24px;
+}
+
+.page-title p{
+
+    margin:5px 0;
+
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+.date-filter{
+
+    display:flex;
+
+    gap:7px;
+
+    overflow-x:auto;
+
+    padding-bottom:8px;
+
+    margin-bottom:8px;
+
+    scrollbar-width:none;
+}
+
+.date-filter::-webkit-scrollbar{
+
+    display:none;
+}
+
+.filter-btn{
+
+    flex-shrink:0;
+
+    padding:9px 14px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    color:var(--text);
+
+    transition:.2s;
+
+    font-size:13px;
+}
+
+.filter-btn.active{
+
+    color:white;
+
+    background:var(--primary);
+
+    border-color:var(--primary);
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:0 13px;
+
+    margin-bottom:15px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.search-box input{
+
+    width:100%;
+
+    padding:13px 0;
+
+    border:none;
+
+    outline:none;
+
+    color:var(--text);
+
+    background:transparent;
+}
+
+
+/* =====================================================
+   TASK CARD
+===================================================== */
+
+.task-card{
+
+    display:flex;
+
+    gap:11px;
+
+    align-items:flex-start;
+
+    padding:14px;
+
+    margin-bottom:10px;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    transition:.2s;
+}
+
+.task-card:active{
+
+    transform:scale(.99);
+}
+
+.task-card.completed{
+
+    opacity:.62;
+}
+
+.task-check{
+
+    width:29px;
+    height:29px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    border:2px solid var(--border);
+
+    background:transparent;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:15px;
+
+    transition:.2s;
+}
+
+.task-check.checked{
+
+    background:var(--success);
+
+    border-color:var(--success);
+}
+
+.task-info{
+
+    flex:1;
+
+    min-width:0;
+
+    cursor:pointer;
+}
+
+.task-title{
+
+    margin:0 0 5px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    word-break:break-word;
+}
+
+.completed .task-title{
+
+    text-decoration:line-through;
+}
+
+.task-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.badge{
+
+    padding:4px 7px;
+
+    border-radius:7px;
+
+    background:rgba(99,102,241,.10);
+
+    color:var(--primary);
+}
+
+.priority-high{ color:#dc2626; }
+.priority-medium{ color:#d97706; }
+.priority-low{ color:#16a34a; }
+
+.task-actions{
+
+    display:flex;
+
+    gap:2px;
+}
+
+.small-btn{
+
+    padding:5px;
+
+    border:none;
+
+    background:transparent;
+
+    font-size:16px;
+
+    transition:transform .15s;
+}
+
+.small-btn:active{
+
+    transform:scale(.85);
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty-state{
+
+    padding:35px 15px;
+
+    text-align:center;
+
+    color:var(--muted);
+}
+
+.empty-state div{
+
+    font-size:40px;
+
+    margin-bottom:8px;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-card{
+
+    padding:18px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.form-card label,
+.settings-card label{
+
+    display:block;
+
+    margin:14px 0 7px;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+.form-card input,
+.form-card textarea,
+.form-card select,
+.settings-card input{
+
+    width:100%;
+
+    padding:12px;
+
+    border-radius:var(--radius-sm);
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    color:var(--text);
+
+    background:var(--bg);
+
+    font-size:14px;
+
+    transition:border-color .2s;
+}
+
+.form-card textarea{
+
+    min-height:85px;
+
+    resize:vertical;
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus{
+
+    border-color:var(--primary);
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:10px;
+}
+
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.primary-btn,
+.secondary-btn,
+.danger-btn{
+
+    width:100%;
+
+    padding:13px;
+
+    margin-top:12px;
+
+    border-radius:13px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:transform .15s;
+}
+
+.primary-btn:active,
+.secondary-btn:active,
+.danger-btn:active{
+
+    transform:scale(.98);
+}
+
+.primary-btn{
+
+    border:none;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    box-shadow:
+        0 6px 18px
+        rgba(79,70,229,.25);
+}
+
+.secondary-btn{
+
+    color:var(--text);
+
+    background:var(--bg);
+
+    border:1px solid var(--border);
+}
+
+.danger-btn{
+
+    border:none;
+
+    color:var(--danger);
+
+    background:rgba(220,38,38,.10);
+}
+
+.hidden{
+
+    display:none!important;
+}
+
+
+/* =====================================================
+   REPORT
+===================================================== */
+
+.report-summary{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+}
+
+.report-card{
+
+    padding:18px;
+
+    text-align:center;
+
+    border-radius:17px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.report-card span{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:var(--muted);
+
+    font-size:12px;
+}
+
+.report-card strong{
+
+    font-size:25px;
+}
+
+.week-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px;
+
+    margin-bottom:8px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.week-day{
+
+    width:70px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.week-progress{
+
+    flex:1;
+
+    height:8px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:var(--border);
+}
+
+.week-progress div{
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    transition:width .4s ease;
+}
+
+.week-percent{
+
+    width:40px;
+
+    text-align:right;
+
+    font-size:12px;
+}
+
+.journal{
+
+    width:100%;
+
+    min-height:130px;
+
+    padding:14px;
+
+    border-radius:15px;
+
+    border:1px solid var(--border);
+
+    outline:none;
+
+    resize:vertical;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    font-family:inherit;
+
+    font-size:14px;
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+.settings-card,
+.about-card{
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.setting-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-top:15px;
+
+    margin-top:15px;
+
+    border-top:1px solid var(--border);
+}
+
+.setting-row strong{
+
+    font-size:14px;
+}
+
+.setting-row p{
+
+    margin:3px 0 0;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+
+/* =====================================================
+   SWITCH
+===================================================== */
+
+.switch{
+
+    position:relative;
+
+    width:48px!important;
+    height:27px;
+
+    margin:0!important;
+
+    flex-shrink:0;
+}
+
+.switch input{
+
+    display:none;
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:20px;
+
+    background:#cbd5e1;
+
+    transition:.2s;
+
+    cursor:pointer;
+}
+
+.slider:before{
+
+    content:"";
+
+    position:absolute;
+
+    left:3px;
+    top:3px;
+
+    width:21px;
+    height:21px;
+
+    border-radius:50%;
+
+    background:white;
+
+    transition:.2s;
+}
+
+.switch input:checked + .slider{
+
+    background:var(--primary);
+}
+
+.switch input:checked + .slider:before{
+
+    transform:translateX(21px);
+}
+
+.file-label{
+
+    display:block;
+
+    text-align:center;
+
+    cursor:pointer;
+}
+
+.about-card{
+
+    text-align:center;
+}
+
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+
+    position:fixed;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:100%;
+    max-width:700px;
+
+    height:var(--nav-height);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    align-items:center;
+
+    z-index:100;
+
+    border-top:1px solid var(--border);
+
+    background:var(--card);
+
+    box-shadow:
+        0 -4px 20px
+        rgba(0,0,0,.06);
+}
+
+.nav-item{
+
+    height:100%;
+
+    border:none;
+
+    background:transparent;
+
+    color:var(--muted);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:3px;
+
+    transition:color .2s;
+}
+
+.nav-item span{
+
+    font-size:20px;
+}
+
+.nav-item small{
+
+    font-size:10px;
+}
+
+.nav-item.active{
+
+    color:var(--primary);
+}
+
+.add-nav-btn{
+
+    width:54px;
+    height:54px;
+
+    justify-self:center;
+
+    margin-top:-25px;
+
+    border:none;
+
+    border-radius:50%;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--primary2)
+        );
+
+    font-size:30px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(79,70,229,.35);
+
+    transition:transform .15s;
+}
+
+.add-nav-btn:active{
+
+    transform:scale(.9);
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:500;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:center;
+
+    background:rgba(0,0,0,.55);
+
+    animation:fadeIn .2s ease;
+}
+
+@keyframes fadeIn{
+
+    from{ opacity:0; }
+    to{ opacity:1; }
+}
+
+.modal.hidden{
+
+    display:none;
+}
+
+.modal-content{
+
+    width:100%;
+    max-width:700px;
+
+    max-height:85vh;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    border-radius:
+        24px 24px 0 0;
+
+    color:var(--text);
+
+    background:var(--card);
+
+    animation:modalIn .3s ease;
+}
+
+@keyframes modalIn{
+
+    from{
+        transform:translateY(100%);
+    }
+
+    to{
+        transform:translateY(0);
+    }
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:10px;
+}
+
+.modal-header h3{
+
+    margin:0;
+}
+
+.close-btn{
+
+    width:38px;
+    height:38px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-size:24px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+.calendar-card{
+
+    padding:15px;
+
+    margin-bottom:15px;
+
+    border-radius:var(--radius-md);
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+}
+
+.calendar-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+}
+
+.calendar-header button{
+
+    width:35px;
+    height:35px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-size:18px;
+}
+
+.calendar-title{
+
+    font-weight:bold;
+}
+
+.calendar-week{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:3px;
+
+    margin-bottom:5px;
+}
+
+.calendar-week div{
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    padding:5px 0;
+}
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(7,1fr);
+
+    gap:4px;
+}
+
+.calendar-day{
+
+    min-height:42px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    position:relative;
+
+    transition:.2s;
+
+    font-size:13px;
+}
+
+.calendar-day:active{
+
+    transform:scale(.92);
+}
+
+.calendar-day.today{
+
+    border:2px solid var(--primary);
+}
+
+.calendar-day.selected{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+.calendar-day.has-task:after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:4px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#f59e0b;
+}
+
+.calendar-day.selected.has-task:after{
+
+    background:white;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    left:50%;
+    bottom:90px;
+
+    transform:
+        translate(-50%,20px);
+
+    z-index:1000;
+
+    max-width:90%;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    color:white;
+
+    background:#111827;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    font-size:13px;
+
+    text-align:center;
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,0,0,.25);
+}
+
+.toast.show{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:380px){
+
+    .top-header h1{
+
+        font-size:20px;
+    }
+
+    .stat-card{
+
+        padding:12px 4px;
+    }
+
+    .form-row{
+
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div id="app">
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="top-header">
+
+    <div>
+
+        <div
+            class="small-date"
+            id="headerDate">
+        </div>
+
+        <h1>
+            দৈনিক রুটিন
+        </h1>
+
+    </div>
+
+
+    <button
+        class="icon-btn"
+        id="themeBtn"
+        aria-label="থিম পরিবর্তন"
+        onclick="toggleTheme()">
+
+        🌙
+
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     HOME
+===================================================== -->
+
+<main
+    id="homePage"
+    class="page active">
+
+
+    <section class="welcome-card">
+
+        <div>
+
+            <p>
+                আজকের পরিকল্পনা
+            </p>
+
+            <h2 id="welcomeText">
+                শুভ সকাল 🌅
+            </h2>
+
+            <p id="todayFullDate">
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PROGRESS -->
+
+    <section class="progress-card">
+
+        <div class="progress-top">
+
+            <div>
+
+                <span class="muted">
+                    আজকের অগ্রগতি
+                </span>
+
+                <h2>
+
+                    <span id="completedCount">0</span>
+                    /
+                    <span id="totalCount">0</span>
+
+                </h2>
+
+            </div>
+
+
+            <div
+                class="progress-circle"
+                id="progressCircle">
+
+                <span id="progressPercent">
+                    0%
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                id="progressBar">
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <strong id="pendingCount">
+                0
+            </strong>
+
+            <span>
+                বাকি
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🔥
+            </div>
+
+            <strong id="streakCount">
+                0
+            </strong>
+
+            <span>
+                দিন Streak
+            </span>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🎯
+            </div>
+
+            <strong id="goalCount">
+                0
+            </strong>
+
+            <span>
+                লক্ষ্য
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- TODAY -->
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                আজকের কাজ
+            </h2>
+
+            <button
+                class="text-btn"
+                onclick="showPage('planning')">
+
+                সব দেখুন
+
+            </button>
+
+        </div>
+
+
+        <div id="todayTasks">
+        </div>
+
+    </section>
+
+
+
+    <!-- QUOTE -->
+
+    <section class="quote-card">
+
+        <div class="quote-icon">
+            💡
+        </div>
+
+        <p id="dailyQuote">
+            ছোট ছোট কাজই একদিন
+            বড় পরিবর্তন তৈরি করে।
+        </p>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     PLANNING
+===================================================== -->
+
+<main
+    id="planningPage"
+    class="page">
+
+
+    <div class="page-title">
+
+        <h2>
+            📅 পরিকল্পনা
+        </h2>
+
+        <p>
+            আগে থেকেই নিজের কাজ সাজিয়ে রাখুন
+        </p>
+
+    </div>
+
+
+
+    <!-- CALENDAR -->
+
+    <section class="calendar-card">
+
+        <div class="calendar-header">
+
+            <button
+                aria-label="আগের মাস"
+                onclick="changeMonth(-1)">
+                ‹
+            </button>
+
+
+            <div
+                class="calendar-title"
+                id="calendarTitle">
+            </div>
+
+
+            <button
+                aria-label="পরের মাস"
+                onclick="changeMonth(1)">
+                ›
+            </button>
+
+        </div>
+
+
+        <div class="calendar-week">
+
+            <div>রবি</div>
+            <div>সোম</div>
+            <div>মঙ্গল</div>
+            <div>বুধ</div>
+            <div>বৃহঃ</div>
+            <div>শুক্র</div>
+            <div>শনি</div>
+
+        </div>
+
+
+        <div
+            class="calendar-grid"
+            id="calendarGrid">
+        </div>
+
+    </section>
+
+
+
+    <!-- FILTER -->
+
+    <div class="date-filter">
+
+        <button
+            class="filter-btn active"
+            onclick="setDateFilter('today',this)">
+            আজ
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setDateFilter('tomorrow',this)">
+            আগামীকাল
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setDateFilter('week',this)">
+            সপ্তাহ
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setDateFilter('month',this)">
+            মাস
+        </button>
+
+        <button
+            class="filter-btn"
+            onclick="setDateFilter('all',this)">
+            সব
+        </button>
+
+    </div>
+
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <span>
+            🔍
+        </span>
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="কাজ খুঁজুন..."
+            oninput="renderTasks()">
+
+    </div>
+
+
+    <div id="planningTasks">
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     ADD TASK
+===================================================== -->
+
+<main
+    id="addPage"
+    class="page">
+
+
+    <div class="page-title">
+
+        <h2>
+            ➕ নতুন কাজ
+        </h2>
+
+        <p>
+            আপনার পরিকল্পনা তৈরি করুন
+        </p>
+
+    </div>
+
+
+    <form
+        id="taskForm"
+        class="form-card">
+
+
+        <input
+            type="hidden"
+            id="editTaskId">
+
+
+        <label>
+            কাজের নাম *
+        </label>
+
+        <input
+            id="taskTitle"
+            type="text"
+            placeholder="যেমন: বই পড়া"
+            required>
+
+
+
+        <label>
+            বিস্তারিত
+        </label>
+
+        <textarea
+            id="taskDescription"
+            placeholder="কাজটি সম্পর্কে কিছু লিখুন...">
+        </textarea>
+
+
+
+        <div class="form-row">
+
+            <div>
+
+                <label>
+                    তারিখ *
+                </label>
+
+                <input
+                    id="taskDate"
+                    type="date"
+                    required>
+
+            </div>
+
+
+            <div>
+
+                <label>
+                    সময় *
+                </label>
+
+                <input
+                    id="taskTime"
+                    type="time"
+                    required>
+
+            </div>
+
+        </div>
+
+
+
+        <label>
+            Category
+        </label>
+
+        <select id="taskCategory">
+
+            <option value="ব্যক্তিগত">
+                👤 ব্যক্তিগত
+            </option>
+
+            <option value="কাজ">
+                💼 কাজ
+            </option>
+
+            <option value="পড়াশোনা">
+                📚 পড়াশোনা
+            </option>
+
+            <option value="স্বাস্থ্য">
+                💪 স্বাস্থ্য
+            </option>
+
+            <option value="পরিবার">
+                👨‍👩‍👦 পরিবার
+            </option>
+
+            <option value="ব্যবসা">
+                🏪 ব্যবসা
+            </option>
+
+            <option value="অন্যান্য">
+                📌 অন্যান্য
+            </option>
+
+        </select>
+
+
+
+        <label>
+            Priority
+        </label>
+
+        <select id="taskPriority">
+
+            <option value="low">
+                🟢 Low
+            </option>
+
+            <option
+                value="medium"
+                selected>
+                🟡 Medium
+            </option>
+
+            <option value="high">
+                🔴 High
+            </option>
+
+        </select>
+
+
+
+        <label>
+            Reminder
+        </label>
+
+        <select id="taskReminder">
+
+            <option value="0">সময়মতো</option>
+            <option value="5">৫ মিনিট আগে</option>
+            <option value="10">১০ মিনিট আগে</option>
+            <option value="15">১৫ মিনিট আগে</option>
+            <option value="30">৩০ মিনিট আগে</option>
+            <option value="60">১ ঘণ্টা আগে</option>
+
+        </select>
+
+
+
+        <label>
+            Repeat
+        </label>
+
+        <select id="taskRepeat">
+
+            <option value="none">একবার</option>
+            <option value="daily">প্রতিদিন</option>
+            <option value="weekly">প্রতি সপ্তাহে</option>
+            <option value="weekdays">সোম–শুক্র</option>
+            <option value="monthly">প্রতি মাসে</option>
+
+        </select>
+
+
+
+        <label>
+            নোট
+        </label>
+
+        <textarea
+            id="taskNote"
+            placeholder="প্রয়োজন হলে নোট লিখুন...">
+        </textarea>
+
+
+
+        <button
+            class="primary-btn"
+            type="submit">
+
+            <span id="saveBtnText">
+                💾 কাজ সংরক্ষণ করুন
+            </span>
+
+        </button>
+
+
+        <button
+            class="secondary-btn hidden"
+            id="cancelEditBtn"
+            type="button"
+            onclick="cancelEdit()">
+
+            বাতিল
+
+        </button>
+
+    </form>
+</main>
+
+
+
+<!-- =====================================================
+     REPORT
+===================================================== -->
+
+<main
+    id="reportPage"
+    class="page">
+
+
+    <div class="page-title">
+
+        <h2>
+            📊 রিপোর্ট
+        </h2>
+
+        <p>
+            আপনার কাজের অগ্রগতি
+        </p>
+
+    </div>
+
+
+    <section class="report-summary">
+
+        <div class="report-card">
+
+            <span>মোট কাজ</span>
+            <strong id="reportTotal">0</strong>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <span>সম্পন্ন</span>
+            <strong id="reportCompleted">0</strong>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <span>বাকি</span>
+            <strong id="reportPending">0</strong>
+
+        </div>
+
+
+        <div class="report-card">
+
+            <span>সাফল্য</span>
+            <strong id="reportRate">0%</strong>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                📅 গত ৭ দিন
+            </h2>
+
+        </div>
+
+
+        <div id="weeklyReport">
+        </div>
+
+    </section>
+
+
+
+    <section class="section">
+
+        <div class="section-title">
+
+            <h2>
+                📝 আজকের নোট
+            </h2>
+
+        </div>
+
+
+        <textarea
+            class="journal"
+            id="dailyNote"
+            placeholder="আজকের দিন সম্পর্কে কিছু লিখুন...">
+        </textarea>
+
+
+        <button
+            class="primary-btn"
+            onclick="saveDailyNote()">
+
+            💾 নোট সংরক্ষণ
+
+        </button>
+
+    </section>
+</main>
+
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<main
+    id="settingsPage"
+    class="page">
+
+
+    <div class="page-title">
+
+        <h2>
+            ⚙️ সেটিংস
+        </h2>
+
+        <p>
+            অ্যাপ নিজের মতো করে সাজান
+        </p>
+
+    </div>
+
+
+    <section class="settings-card">
+
+        <label>
+            আপনার নাম
+        </label>
+
+        <input
+            id="userName"
+            type="text"
+            placeholder="আপনার নাম"
+            onchange="saveUserName()">
+
+
+
+        <div class="setting-row">
+
+            <div>
+
+                <strong>
+                    🔔 Notification
+                </strong>
+
+                <p>
+                    Reminder চালু/বন্ধ
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    id="notificationToggle"
+                    type="checkbox"
+                    onchange="toggleNotifications()">
+
+                <span class="slider">
+                </span>
+
+            </label>
+
+        </div>
+
+
+
+        <div class="setting-row">
+
+            <div>
+
+                <strong>
+                    🌙 Dark Mode
+                </strong>
+
+                <p>
+                    ডার্ক থিম
+                </p>
+
+            </div>
+
+
+            <label class="switch">
+
+                <input
+                    id="darkToggle"
+                    type="checkbox"
+                    onchange="toggleTheme()">
+
+                <span class="slider">
+                </span>
+
+            </label>
+
+        </div>
+    </section>
+
+
+
+    <section class="settings-card">
+
+        <h3>
+            💾 Data
+        </h3>
+
+
+        <button
+            class="secondary-btn"
+            onclick="backupData()">
+
+            📥 Backup Data
+
+        </button>
+
+
+        <label class="secondary-btn file-label">
+
+            📤 Restore Data
+
+            <input
+                id="restoreFile"
+                type="file"
+                accept=".json"
+                onchange="restoreData(event)"
+                hidden>
+
+        </label>
+
+
+        <button
+            class="danger-btn"
+            onclick="deleteAllData()">
+
+            🗑️ সব ডেটা মুছে ফেলুন
+
+        </button>
+
+    </section>
+
+
+
+    <section class="about-card">
+
+        <h3>
+            দৈনিক রুটিন
+        </h3>
+
+        <p>
+            আপনার সময়কে পরিকল্পিত ও সুন্দরভাবে
+            ব্যবহার করার জন্য একটি সহজ
+            Personal Routine App.
+        </p>
+
+        <small>
+            Version 1.0.0
+        </small>
+
+    </section>
+</main>
+
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+
+    <button
+        class="nav-item active"
+        data-page="home"
+        onclick="showPage('home')">
+
+        <span>🏠</span>
+        <small>হোম</small>
+
+    </button>
+
+
+
+    <button
+        class="nav-item"
+        data-page="planning"
+        onclick="showPage('planning')">
+
+        <span>📅</span>
+        <small>পরিকল্পনা</small>
+
+    </button>
+
+
+
+    <button
+        class="add-nav-btn"
+        aria-label="নতুন কাজ"
+        onclick="openAddTask()">
+
+        +
+
+    </button>
+
+
+
+    <button
+        class="nav-item"
+        data-page="report"
+        onclick="showPage('report')">
+
+        <span>📊</span>
+        <small>রিপোর্ট</small>
+
+    </button>
+
+
+
+    <button
+        class="nav-item"
+        data-page="settings"
+        onclick="showPage('settings')">
+
+        <span>⚙️</span>
+        <small>সেটিংস</small>
+
+    </button>
+
+</nav>
+
+</div>
+
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    id="taskModal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h3 id="modalTitle">
+                কাজ
+            </h3>
+
+            <button
+                class="close-btn"
+                aria-label="বন্ধ"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+        <div id="modalBody">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast">
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   DAILY ROUTINE
+   ALL-IN-ONE JAVASCRIPT
+===================================================== */
+
+"use strict";
+
+
+/* =====================================================
+   STORAGE KEYS
+===================================================== */
+
+const TASK_KEY     = "dailyRoutine_tasks";
+const SETTINGS_KEY = "dailyRoutine_settings";
+const NOTES_KEY    = "dailyRoutine_notes";
+const GOALS_KEY    = "dailyRoutine_goals";
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let tasks = [];
+
+let settings = {
+    name:"",
+    darkMode:false,
+    notifications:true
+};
+
+let currentDateFilter = "today";
+let calendarDate = new Date();
+let toastTimer = null;
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    loadData();
+
+    setDefaultDate();
+
+    applySettings();
+
+    updateHeader();
+
+    renderAll();
+
+    loadSettingsUI();
+
+    showRandomQuote();
+
+    requestNotificationPermission();
+
+});
+
+
+/* =====================================================
+   LOAD DATA
+===================================================== */
+
+function loadData(){
+
+    try{
+
+        const savedTasks = localStorage.getItem(TASK_KEY);
+        const savedSettings = localStorage.getItem(SETTINGS_KEY);
+
+        if(savedTasks){
+
+            const parsed = JSON.parse(savedTasks);
+
+            tasks = Array.isArray(parsed) ? parsed : [];
+
+        }
+
+        if(savedSettings){
+
+            settings = {
+                ...settings,
+                ...JSON.parse(savedSettings)
+            };
+
+        }
+
+    }
+
+    catch(error){
+
+        console.error("Load data error:", error);
+
+        tasks = [];
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
+
+function saveTasks(){
+
+    localStorage.setItem(
+        TASK_KEY,
+        JSON.stringify(tasks)
+    );
+
+}
+
+
+function saveSettings(){
+
+    localStorage.setItem(
+        SETTINGS_KEY,
+        JSON.stringify(settings)
+    );
+
+}
+
+
+/* =====================================================
+   DATE HELPERS
+===================================================== */
+
+function getDateString(date = new Date()){
+
+    const year  = date.getFullYear();
+    const month = String(date.getMonth()+1).padStart(2,"0");
+    const day   = String(date.getDate()).padStart(2,"0");
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+function addDays(date, amount){
+
+    const result = new Date(date);
+
+    result.setDate(result.getDate() + amount);
+
+    return result;
+
+}
+
+
+function formatDate(dateString){
+
+    const date = new Date(dateString + "T00:00:00");
+
+    return date.toLocaleDateString("bn-BD", {
+        day:"numeric",
+        month:"long",
+        year:"numeric"
+    });
+
+}
+
+
+function formatTime(time){
+
+    if(!time) return "";
+
+    const parts = time.split(":");
+
+    let hour = parseInt(parts[0], 10);
+    const minute = parts[1];
+
+    const ampm = hour >= 12 ? "PM" : "AM";
+
+    hour = hour % 12 || 12;
+
+    return `${hour}:${minute} ${ampm}`;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+function updateHeader(){
+
+    const now = new Date();
+
+    const shortDate = now.toLocaleDateString("bn-BD", {
+        weekday:"long",
+        day:"numeric",
+        month:"long"
+    });
+
+    const fullDate = now.toLocaleDateString("bn-BD", {
+        weekday:"long",
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+    });
+
+    document.getElementById("headerDate").textContent = shortDate;
+    document.getElementById("todayFullDate").textContent = fullDate;
+
+    const hour = now.getHours();
+
+    let greeting = "শুভ সকাল 🌅";
+
+    if(hour >= 12 && hour < 17){
+        greeting = "শুভ দুপুর ☀️";
+    }
+    else if(hour >= 17 && hour < 21){
+        greeting = "শুভ সন্ধ্যা 🌆";
+    }
+    else if(hour >= 21 || hour < 5){
+        greeting = "শুভ রাত্রি 🌙";
+    }
+
+    const name = settings.name ? ", " + settings.name : "";
+
+    document.getElementById("welcomeText").textContent =
+        greeting + name;
+
+}
+
+
+/* =====================================================
+   DEFAULT FORM DATE
+===================================================== */
+
+function setDefaultDate(){
+
+    const dateInput = document.getElementById("taskDate");
+
+    if(dateInput) dateInput.value = getDateString();
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(pageName){
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    const page = document.getElementById(pageName + "Page");
+
+    if(page) page.classList.add("active");
+
+    document.querySelectorAll(".nav-item").forEach(item => {
+        item.classList.remove("active");
+    });
+
+    const nav = document.querySelector(`[data-page="${pageName}"]`);
+
+    if(nav) nav.classList.add("active");
+
+    if(pageName === "home")     renderDashboard();
+    if(pageName === "planning"){ renderCalendar(); renderTasks(); }
+    if(pageName === "report")   renderReports();
+    if(pageName === "settings") loadSettingsUI();
+
+    window.scrollTo({ top:0, behavior:"smooth" });
+
+}
+
+
+/* =====================================================
+   ADD TASK
+===================================================== */
+
+function openAddTask(){
+
+    resetForm();
+
+    showPage("add");
+
+}
+
+
+function resetForm(){
+
+    const form = document.getElementById("taskForm");
+
+    if(form) form.reset();
+
+    document.getElementById("editTaskId").value = "";
+
+    document.getElementById("taskDate").value = getDateString();
+
+    document.getElementById("taskRepeat").value = "none";
+    document.getElementById("taskReminder").value = "0";
+    document.getElementById("taskPriority").value = "medium";
+
+    document.getElementById("saveBtnText").textContent =
+        "💾 কাজ সংরক্ষণ করুন";
+
+    document.getElementById("cancelEditBtn").classList.add("hidden");
+
+}
+
+
+/* =====================================================
+   SAVE TASK
+===================================================== */
+
+document.getElementById("taskForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const title       = document.getElementById("taskTitle").value.trim();
+    const description = document.getElementById("taskDescription").value.trim();
+    const date        = document.getElementById("taskDate").value;
+    const time        = document.getElementById("taskTime").value;
+    const category    = document.getElementById("taskCategory").value;
+    const priority    = document.getElementById("taskPriority").value;
+    const reminder    = parseInt(document.getElementById("taskReminder").value, 10);
+    const repeat      = document.getElementById("taskRepeat").value;
+    const note        = document.getElementById("taskNote").value.trim();
+    const editId      = document.getElementById("editTaskId").value;
+
+    if(!title){ toast("দয়া করে কাজের নাম লিখুন।"); return; }
+    if(!date) { toast("দয়া করে তারিখ নির্বাচন করুন।"); return; }
+    if(!time) { toast("দয়া করে সময় নির্বাচন করুন।"); return; }
+
+    if(editId){
+
+        const index = tasks.findIndex(task => task.id === editId);
+
+        if(index !== -1){
+
+            tasks[index] = {
+                ...tasks[index],
+                title, description, date, time,
+                category, priority, reminder, repeat, note
+            };
+
+        }
+
+        toast("কাজ আপডেট হয়েছে।");
+
+    }
+
+    else{
+
+        const task = {
+            id: Date.now().toString(),
+            title, description, date, time,
+            category, priority, reminder, repeat, note,
+            completed:false,
+            createdAt: new Date().toISOString()
+        };
+
+        tasks.push(task);
+
+        scheduleReminder(task);
+
+        toast("কাজ সংরক্ষণ হয়েছে।");
+
+    }
+
+    saveTasks();
+    renderAll();
+    resetForm();
+    showPage("planning");
+
+});
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function getTodayTasks(){
+
+    const today = getDateString();
+
+    return tasks
+        .filter(task => task.date === today)
+        .sort((a,b) => a.time.localeCompare(b.time));
+
+}
+
+
+function renderDashboard(){
+
+    const todayTasks = getTodayTasks();
+
+    const total     = todayTasks.length;
+    const completed = todayTasks.filter(t => t.completed).length;
+    const pending   = total - completed;
+
+    const percent = total ? Math.round((completed / total) * 100) : 0;
+
+    document.getElementById("completedCount").textContent = completed;
+    document.getElementById("totalCount").textContent     = total;
+    document.getElementById("pendingCount").textContent   = pending;
+    document.getElementById("progressPercent").textContent = percent + "%";
+
+    document.getElementById("progressBar").style.width = percent + "%";
+
+    const degree = percent * 3.6;
+
+    document.getElementById("progressCircle").style.background =
+        `conic-gradient(
+            var(--primary) ${degree}deg,
+            var(--border) ${degree}deg
+        )`;
+
+    document.getElementById("streakCount").textContent = calculateStreak();
+    document.getElementById("goalCount").textContent   = getGoalCount();
+
+    const container = document.getElementById("todayTasks");
+
+    if(!todayTasks.length){
+
+        container.innerHTML = `
+            <div class="empty-state">
+                <div>📝</div>
+                <p>আজকের জন্য কোনো কাজ নেই।</p>
+                <button class="primary-btn" onclick="openAddTask()">
+                    ➕ আজকের কাজ যোগ করুন
+                </button>
+            </div>
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML = todayTasks
+        .slice(0,5)
+        .map(task => taskHTML(task))
+        .join("");
+
+}
+
+
+/* =====================================================
+   TASK HTML
+===================================================== */
+
+function taskHTML(task){
+
+    const completed  = task.completed ? "completed" : "";
+    const checked    = task.completed ? "checked" : "";
+
+    const priorityText =
+        task.priority === "high"   ? "🔴 High"   :
+        task.priority === "medium" ? "🟡 Medium" : "🟢 Low";
+
+    return `
+        <div class="task-card ${completed}">
+
+            <button
+                class="task-check ${checked}"
+                aria-label="সম্পন্ন টগল"
+                onclick="toggleTask('${task.id}')">
+
+                ${task.completed ? "✓" : ""}
+
+            </button>
+
+            <div class="task-info" onclick="openTaskDetails('${task.id}')">
+
+                <div class="task-title">
+                    ${escapeHTML(task.title)}
+                </div>
+
+                <div class="task-meta">
+                    <span>⏰ ${formatTime(task.time)}</span>
+                    <span class="badge">${escapeHTML(task.category)}</span>
+                    <span class="priority-${task.priority}">${priorityText}</span>
+                </div>
+
+            </div>
+
+            <div class="task-actions">
+                <button
+                    class="small-btn"
+                    aria-label="সম্পাদনা"
+                    onclick="editTask('${task.id}')">✏️</button>
+
+                <button
+                    class="small-btn"
+                    aria-label="মুছুন"
+                    onclick="deleteTask('${task.id}')">🗑️</button>
+            </div>
+
+        </div>
+    `;
+
+}
+
+
+/* =====================================================
+   RENDER TASKS
+===================================================== */
+
+function renderTasks(){
+
+    const container = document.getElementById("planningTasks");
+
+    if(!container) return;
+
+    const search = (
+        document.getElementById("searchInput")?.value || ""
+    ).trim().toLowerCase();
+
+    let filtered = [...tasks];
+
+    const now = new Date();
+    const today    = getDateString(now);
+    const tomorrow = getDateString(addDays(now, 1));
+
+    if(currentDateFilter === "today"){
+        filtered = filtered.filter(t => t.date === today);
+    }
+
+    if(currentDateFilter === "tomorrow"){
+        filtered = filtered.filter(t => t.date === tomorrow);
+    }
+
+    if(currentDateFilter === "week"){
+
+        const start = new Date(now);
+        start.setHours(0,0,0,0);
+
+        const end = addDays(start, 7);
+
+        filtered = filtered.filter(t => {
+            const date = new Date(t.date + "T00:00:00");
+            return date >= start && date < end;
+        });
+
+    }
+
+    if(currentDateFilter === "month"){
+
+        const year  = now.getFullYear();
+        const month = now.getMonth();
+
+        filtered = filtered.filter(t => {
+            const date = new Date(t.date + "T00:00:00");
+            return date.getFullYear() === year &&
+                   date.getMonth()    === month;
+        });
+
+    }
+
+    if(search){
+
+        filtered = filtered.filter(t => {
+
+            const text = (
+                t.title + " " +
+                t.description + " " +
+                t.category
+            ).toLowerCase();
+
+            return text.includes(search);
+
+        });
+
+    }
+
+    filtered.sort((a,b) => {
+
+        if(a.date !== b.date) return a.date.localeCompare(b.date);
+
+        return a.time.localeCompare(b.time);
+
+    });
+
+    if(!filtered.length){
+
+        container.innerHTML = `
+            <div class="empty-state">
+                <div>📅</div>
+                <p>এই সময়ের জন্য কোনো কাজ পাওয়া যায়নি।</p>
+            </div>
+        `;
+
+        return;
+
+    }
+
+    container.innerHTML = filtered
+        .map(task => taskHTML(task))
+        .join("");
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function setDateFilter(filter, button){
+
+    currentDateFilter = filter;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    renderTasks();
+
+}
+
+
+/* =====================================================
+   TOGGLE TASK
+===================================================== */
+
+function toggleTask(id){
+
+    const task = tasks.find(item => item.id === id);
+
+    if(!task) return;
+
+    task.completed = !task.completed;
+
+    task.completedAt = task.completed
+        ? new Date().toISOString()
+        : null;
+
+    saveTasks();
+
+    renderAll();
+
+}
+
+
+/* =====================================================
+   EDIT TASK
+===================================================== */
+
+function editTask(id){
+
+    const task = tasks.find(item => item.id === id);
+
+    if(!task) return;
+
+    document.getElementById("editTaskId").value = task.id;
+    document.getElementById("taskTitle").value = task.title;
+    document.getElementById("taskDescription").value = task.description || "";
+    document.getElementById("taskDate").value = task.date;
+    document.getElementById("taskTime").value = task.time;
+    document.getElementById("taskCategory").value = task.category;
+    document.getElementById("taskPriority").value = task.priority;
+    document.getElementById("taskReminder").value = task.reminder || 0;
+    document.getElementById("taskRepeat").value = task.repeat || "none";
+    document.getElementById("taskNote").value = task.note || "";
+
+    document.getElementById("saveBtnText").textContent =
+        "💾 পরিবর্তন সংরক্ষণ করুন";
+
+    document.getElementById("cancelEditBtn").classList.remove("hidden");
+
+    showPage("add");
+
+}
+
+
+/* =====================================================
+   CANCEL EDIT
+===================================================== */
+
+function cancelEdit(){
+
+    resetForm();
+
+    showPage("planning");
+
+}
+
+
+/* =====================================================
+   DELETE TASK
+===================================================== */
+
+function deleteTask(id){
+
+    const task = tasks.find(item => item.id === id);
+
+    if(!task) return;
+
+    if(!confirm(`"${task.title}" মুছে ফেলতে চান?`)) return;
+
+    tasks = tasks.filter(item => item.id !== id);
+
+    saveTasks();
+
+    renderAll();
+
+    toast("কাজ মুছে ফেলা হয়েছে।");
+
+}
+
+
+/* =====================================================
+   TASK DETAILS MODAL
+===================================================== */
+
+function openTaskDetails(id){
+
+    const task = tasks.find(item => item.id === id);
+
+    if(!task) return;
+
+    document.getElementById("modalTitle").textContent = task.title;
+
+    document.getElementById("modalBody").innerHTML = `
+
+        <p><strong>📅 তারিখ:</strong> ${formatDate(task.date)}</p>
+        <p><strong>⏰ সময়:</strong> ${formatTime(task.time)}</p>
+        <p><strong>📌 Category:</strong> ${escapeHTML(task.category)}</p>
+        <p><strong>🔔 Reminder:</strong> ${task.reminder} মিনিট আগে</p>
+        <p><strong>🔁 Repeat:</strong> ${repeatText(task.repeat)}</p>
+
+        ${task.description ? `
+            <p>
+                <strong>📝 বিস্তারিত:</strong><br>
+                ${escapeHTML(task.description)}
+            </p>` : ""}
+
+        ${task.note ? `
+            <p>
+                <strong>📒 নোট:</strong><br>
+                ${escapeHTML(task.note)}
+            </p>` : ""}
+
+        <button class="primary-btn"
+                onclick="toggleTask('${task.id}'); closeModal();">
+
+            ${task.completed ? "↩️ অসম্পন্ন করুন" : "✅ সম্পন্ন করুন"}
+
+        </button>
+
+    `;
+
+    document.getElementById("taskModal").classList.remove("hidden");
+
+}
+
+
+function closeModal(){
+
+    document.getElementById("taskModal").classList.add("hidden");
+
+}
+
+
+function repeatText(repeat){
+
+    const map = {
+        none:"একবার",
+        daily:"প্রতিদিন",
+        weekly:"প্রতি সপ্তাহে",
+        weekdays:"সোম–শুক্র",
+        monthly:"প্রতি মাসে"
+    };
+
+    return map[repeat] || "একবার";
+
+}
+
+
+/* =====================================================
+   STREAK
+===================================================== */
+
+function calculateStreak(){
+
+    let streak = 0;
+    let date = new Date();
+
+    while(true){
+
+        const dateString = getDateString(date);
+
+        const dayTasks = tasks.filter(t => t.date === dateString);
+
+        if(!dayTasks.length) break;
+
+        const allCompleted = dayTasks.every(t => t.completed);
+
+        if(!allCompleted) break;
+
+        streak++;
+
+        date = addDays(date, -1);
+
+    }
+
+    return streak;
+
+}
+
+
+/* =====================================================
+   GOAL
+===================================================== */
+
+function getGoalCount(){
+
+    try{
+
+        const goals = JSON.parse(
+            localStorage.getItem(GOALS_KEY) || "[]"
+        );
+
+        return Array.isArray(goals) ? goals.length : 0;
+
+    }
+
+    catch{
+
+        return 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   REPORTS
+===================================================== */
+
+function renderReports(){
+
+    const today = getDateString();
+
+    const todayTasks = tasks.filter(t => t.date === today);
+
+    const total     = todayTasks.length;
+    const completed = todayTasks.filter(t => t.completed).length;
+    const pending   = total - completed;
+
+    const rate = total
+        ? Math.round((completed / total) * 100)
+        : 0;
+
+    document.getElementById("reportTotal").textContent     = total;
+    document.getElementById("reportCompleted").textContent = completed;
+    document.getElementById("reportPending").textContent   = pending;
+    document.getElementById("reportRate").textContent      = rate + "%";
+
+    renderWeeklyReport();
+
+    loadDailyNote();
+
+}
+
+
+/* =====================================================
+   WEEKLY REPORT
+===================================================== */
+
+function renderWeeklyReport(){
+
+    const container = document.getElementById("weeklyReport");
+
+    let html = "";
+
+    for(let i = 6; i >= 0; i--){
+
+        const date = addDays(new Date(), -i);
+        const dateString = getDateString(date);
+
+        const dayTasks = tasks.filter(t => t.date === dateString);
+
+        const total     = dayTasks.length;
+        const completed = dayTasks.filter(t => t.completed).length;
+
+        const percent = total
+            ? Math.round((completed / total) * 100)
+            : 0;
+
+        const dayName = date.toLocaleDateString("bn-BD", {
+            weekday:"short"
+        });
+
+        html += `
+            <div class="week-row">
+
+                <div class="week-day">${dayName}</div>
+
+                <div class="week-progress">
+                    <div style="width:${percent}%"></div>
+                </div>
+
+                <div class="week-percent">${percent}%</div>
+
+            </div>
+        `;
+
+    }
+
+    container.innerHTML = html;
+
+}
+
+
+/* =====================================================
+   DAILY NOTE
+===================================================== */
+
+function saveDailyNote(){
+
+    const note = document.getElementById("dailyNote").value;
+
+    let notes = {};
+
+    try{
+        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
+    }
+    catch{ notes = {}; }
+
+    notes[getDateString()] = note;
+
+    localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+
+    toast("আজকের নোট সংরক্ষণ হয়েছে।");
+
+}
+
+
+function loadDailyNote(){
+
+    const element = document.getElementById("dailyNote");
+
+    if(!element) return;
+
+    let notes = {};
+
+    try{
+        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
+    }
+    catch{ notes = {}; }
+
+    element.value = notes[getDateString()] || "";
+
+}
+
+
+/* =====================================================
+   SETTINGS UI
+===================================================== */
+
+function loadSettingsUI(){
+
+    document.getElementById("userName").value = settings.name || "";
+
+    document.getElementById("notificationToggle").checked =
+        settings.notifications;
+
+    document.getElementById("darkToggle").checked =
+        settings.darkMode;
+
+}
+
+
+function saveUserName(){
+
+    settings.name = document.getElementById("userName").value.trim();
+
+    saveSettings();
+
+    updateHeader();
+
+    toast("নাম সংরক্ষণ হয়েছে।");
+
+}
+
+
+/* =====================================================
+   THEME
+===================================================== */
+
+function toggleTheme(){
+
+    settings.darkMode = !settings.darkMode;
+
+    saveSettings();
+
+    applySettings();
+
+}
+
+
+function applySettings(){
+
+    document.body.classList.toggle("dark", settings.darkMode);
+
+    const btn = document.getElementById("themeBtn");
+
+    if(btn){
+        btn.textContent = settings.darkMode ? "☀️" : "🌙";
+    }
+
+    const toggle = document.getElementById("darkToggle");
+
+    if(toggle){
+        toggle.checked = settings.darkMode;
+    }
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function toggleNotifications(){
+
+    settings.notifications =
+        document.getElementById("notificationToggle").checked;
+
+    saveSettings();
+
+    if(settings.notifications){
+        requestNotificationPermission();
+    }
+
+}
+
+
+async function requestNotificationPermission(){
+
+    if(typeof Notification === "undefined") return;
+
+    try{
+
+        if(Notification.permission === "default"){
+            await Notification.requestPermission();
+        }
+
+    }
+
+    catch(error){
+
+        console.log("Notification unavailable:", error);
+
+    }
+
+}
+
+
+/* =====================================================
+   REMINDER
+===================================================== */
+
+function scheduleReminder(task){
+
+    if(!settings.notifications) return;
+
+    const taskTime = new Date(`${task.date}T${task.time}`);
+
+    const reminderTime = taskTime.getTime() -
+        (task.reminder * 60 * 1000);
+
+    const delay = reminderTime - Date.now();
+
+    if(delay <= 0 || delay > 2147483647) return;
+
+    setTimeout(function(){
+        showNotification(task);
+    }, delay);
+
+}
+
+
+function showNotification(task){
+
+    if(!settings.notifications) return;
+
+    if(typeof Notification === "undefined"){
+        toast("🔔 " + task.title);
+        return;
+    }
+
+    if(Notification.permission === "granted"){
+
+        new Notification("দৈনিক রুটিন 🔔", {
+            body: task.title + " — " + formatTime(task.time)
+        });
+
+    }
+
+}
+
+
+function scheduleAllReminders(){
+
+    tasks.forEach(task => {
+        if(!task.completed) scheduleReminder(task);
+    });
+
+}
+
+
+/* =====================================================
+   BACKUP
+===================================================== */
+
+function backupData(){
+
+    let notes = {};
+
+    try{
+        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
+    }
+    catch{ notes = {}; }
+
+    const backup = {
+        app: "দৈনিক রুটিন",
+        version: "1.0.0",
+        date: new Date().toISOString(),
+        tasks,
+        settings,
+        notes
+    };
+
+    const blob = new Blob(
+        [JSON.stringify(backup, null, 2)],
+        { type:"application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = "daily-routine-backup-" + getDateString() + ".json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    toast("Backup তৈরি হয়েছে।");
+
+}
+
+
+/* =====================================================
+   RESTORE
+===================================================== */
+
+function restoreData(event){
+
+    const file = event.target.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        try{
+
+            const data = JSON.parse(e.target.result);
+
+            if(!Array.isArray(data.tasks)){
+                toast("সঠিক Backup File নয়।");
+                return;
+            }
+
+            if(!confirm("বর্তমান ডেটার পরিবর্তে Backup Restore করবেন?"))
+                return;
+
+            tasks = data.tasks;
+
+            settings = {
+                ...settings,
+                ...(data.settings || {})
+            };
+
+            localStorage.setItem(
+                NOTES_KEY,
+                JSON.stringify(data.notes || {})
+            );
+
+            saveTasks();
+            saveSettings();
+
+            applySettings();
+            renderAll();
+            loadSettingsUI();
+
+            toast("Backup Restore হয়েছে।");
+
+        }
+
+        catch(error){
+
+            toast("Backup File পড়তে সমস্যা হয়েছে।");
+
+        }
+
+    };
+
+    reader.readAsText(file);
+
+}
+
+
+/* =====================================================
+   DELETE ALL
+===================================================== */
+
+function deleteAllData(){
+
+    if(!confirm(
+        "সব Task, Note এবং Settings মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
+    )) return;
+
+    localStorage.removeItem(TASK_KEY);
+    localStorage.removeItem(SETTINGS_KEY);
+    localStorage.removeItem(NOTES_KEY);
+    localStorage.removeItem(GOALS_KEY);
+
+    tasks = [];
+
+    settings = {
+        name:"",
+        darkMode:false,
+        notifications:true
+    };
+
+    applySettings();
+    renderAll();
+    loadSettingsUI();
+
+    toast("সব ডেটা মুছে দেওয়া হয়েছে।");
+
+}
+
+
+/* =====================================================
+   QUOTES
+===================================================== */
+
+const quotes = [
+    "ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।",
+    "আজকের কাজ কালকের স্বপ্নকে বাস্তবে পরিণত করে।",
+    "সময়কে পরিকল্পনা করতে পারলে জীবনকে পরিকল্পনা করা সহজ হয়।",
+    "প্রতিদিন একটু একটু করে এগিয়ে যাও।",
+    "শুরুটা ছোট হলেও সমস্যা নেই, ধারাবাহিকতাই আসল।",
+    "যে কাজটি আজ করতে পারো, সেটি অকারণে আগামীকালের জন্য রেখো না।",
+    "নিজের সময়ের দায়িত্ব নিজেকেই নিতে হবে।",
+    "একটি ভালো দিন তৈরি হয় অনেকগুলো ছোট ভালো সিদ্ধান্ত থেকে।"
+];
+
+
+function showRandomQuote(){
+
+    const index = Math.floor(Math.random() * quotes.length);
+
+    document.getElementById("dailyQuote").textContent =
+        quotes[index];
+
+}
+
+
+/* =====================================================
+   CALENDAR
+===================================================== */
+
+function renderCalendar(){
+
+    const year  = calendarDate.getFullYear();
+    const month = calendarDate.getMonth();
+
+    const title = calendarDate.toLocaleDateString("bn-BD", {
+        year:"numeric",
+        month:"long"
+    });
+
+    document.getElementById("calendarTitle").textContent = title;
+
+    const grid = document.getElementById("calendarGrid");
+
+    grid.innerHTML = "";
+
+    const firstDay    = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    for(let i = 0; i < firstDay; i++){
+
+        const blank = document.createElement("div");
+
+        grid.appendChild(blank);
+
+    }
+
+    const today = getDateString();
+
+    for(let day = 1; day <= daysInMonth; day++){
+
+        const date = new Date(year, month, day);
+        const dateString = getDateString(date);
+
+        const button = document.createElement("button");
+
+        button.className = "calendar-day";
+        button.textContent = day;
+
+        if(dateString === today){
+            button.classList.add("today");
+        }
+
+        const hasTask = tasks.some(t => t.date === dateString);
+
+        if(hasTask){
+            button.classList.add("has-task");
+        }
+
+        button.onclick = function(){
+
+            document.querySelectorAll(".calendar-day").forEach(b => {
+                b.classList.remove("selected");
+            });
+
+            button.classList.add("selected");
+
+            document.getElementById("taskDate").value = dateString;
+
+            currentDateFilter = "selected";
+
+            const selected = tasks.filter(t => t.date === dateString);
+
+            const container = document.getElementById("planningTasks");
+
+            if(!selected.length){
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div>📅</div>
+                        <p>${formatDate(dateString)} - কোনো কাজ নেই।</p>
+                        <button class="primary-btn" onclick="openAddTask()">
+                            ➕ এই দিনে কাজ যোগ করুন
+                        </button>
+                    </div>
+                `;
+
+            }
+
+            else{
+
+                container.innerHTML = selected
+                    .map(task => taskHTML(task))
+                    .join("");
+
+            }
+
+        };
+
+        grid.appendChild(button);
+
+    }
+
+}
+
+
+function changeMonth(amount){
+
+    calendarDate.setMonth(
+        calendarDate.getMonth() + amount
+    );
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function toast(message){
+
+    const element = document.getElementById("toast");
+
+    element.textContent = message;
+
+    element.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(function(){
+        element.classList.remove("show");
+    }, 2500);
+
+}
+
+
+/* =====================================================
+   RENDER ALL
+===================================================== */
+
+function renderAll(){
+
+    renderDashboard();
+
+    renderTasks();
+
+    renderReports();
+
+    renderCalendar();
+
+}
+
+
+/* =====================================================
+   START REMINDERS
+===================================================== */
+
+setTimeout(function(){
+    scheduleAllReminders();
+}, 1000);
+
+
+/* =====================================================
+   CLOCK UPDATE
+===================================================== */
+
+setInterval(function(){
+    updateHeader();
+}, 30000);
+
+</script>
+
+</body>
+</html>
