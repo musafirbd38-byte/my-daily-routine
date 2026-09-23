@@ -3,22 +3,14 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-               initial-scale=1.0,
-               maximum-scale=1.0,
-               user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#4f46e5">
-
 <title>দৈনিক রুটিন</title>
 
 <style>
 
 /* =====================================================
-   DAILY ROUTINE
-   ALL-IN-ONE CSS
+   DAILY ROUTINE — v3.2
 ===================================================== */
 
 *{
@@ -27,877 +19,765 @@
 }
 
 :root{
-
     --primary:#4f46e5;
     --primary2:#7c3aed;
-
+    --accent:#4f46e5;
     --bg:#f4f6fb;
     --card:#ffffff;
-
     --text:#111827;
     --muted:#6b7280;
-
     --border:#e5e7eb;
-
     --success:#16a34a;
     --danger:#dc2626;
     --warning:#d97706;
-
     --nav-height:72px;
-
     --radius-lg:22px;
     --radius-md:18px;
     --radius-sm:12px;
 }
 
 body.dark{
-
     --bg:#0f172a;
     --card:#1e293b;
-
     --text:#f8fafc;
     --muted:#94a3b8;
-
     --border:#334155;
 }
 
-html,
-body{
-
-    margin:0;
-    padding:0;
-
-    width:100%;
-    min-height:100%;
-
-    font-family:
-        "Noto Sans Bengali",
-        "Nirmala UI",
-        Arial,
-        sans-serif;
-
-    background:var(--bg);
-    color:var(--text);
-
-    transition:
-        background .25s ease,
-        color .25s ease;
-
+html,body{
+    margin:0; padding:0;
+    width:100%; min-height:100%;
+    font-family:"Noto Sans Bengali","Nirmala UI",Arial,sans-serif;
+    background:var(--bg); color:var(--text);
+    transition:background .25s ease, color .25s ease;
     scroll-behavior:smooth;
 }
 
-button,
-input,
-textarea,
-select{
+button,input,textarea,select{ font-family:inherit; color:inherit; }
+button{ cursor:pointer; }
 
-    font-family:inherit;
-
-    color:inherit;
-}
-
-button{
-
-    cursor:pointer;
-}
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible{
-
-    outline:2px solid var(--primary);
-    outline-offset:2px;
+button:focus-visible,input:focus-visible,
+textarea:focus-visible,select:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px;
 }
 
 #app{
-
-    width:100%;
-    max-width:700px;
-
-    min-height:100vh;
-
-    margin:auto;
-
+    width:100%; max-width:700px;
+    min-height:100vh; margin:auto;
     padding-bottom:90px;
 }
-
 
 /* =====================================================
    HEADER
 ===================================================== */
 
 .top-header{
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    padding:18px 16px 10px;
-
-    background:var(--bg);
-
-    position:sticky;
-    top:0;
-
-    z-index:50;
-
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 16px 10px; background:var(--bg);
+    position:sticky; top:0; z-index:50;
     backdrop-filter:blur(8px);
 }
 
-.top-header h1{
-
-    margin:3px 0 0;
-
-    font-size:23px;
-
-    letter-spacing:-.3px;
-}
-
-.small-date{
-
-    color:var(--muted);
-
-    font-size:12px;
-}
+.top-header h1{ margin:3px 0 0; font-size:23px; letter-spacing:-.3px; }
+.small-date{ color:var(--muted); font-size:12px; }
 
 .icon-btn{
-
-    width:42px;
-    height:42px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--card);
-
-    color:var(--text);
-
-    font-size:19px;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,.08);
-
+    width:42px; height:42px; border:none; border-radius:50%;
+    background:var(--card); color:var(--text); font-size:19px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
     transition:transform .15s ease;
 }
 
-.icon-btn:active{
-
-    transform:scale(.92);
-}
-
+.icon-btn:active{ transform:scale(.92); }
 
 /* =====================================================
    PAGES
 ===================================================== */
 
-.page{
-
-    display:none;
-
-    padding:8px 16px 30px;
-
-    animation:pageIn .25s ease;
-}
-
-.page.active{
-
-    display:block;
-}
+.page{ display:none; padding:8px 16px 30px; animation:pageIn .25s ease; }
+.page.active{ display:block; }
 
 @keyframes pageIn{
-
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+    from{ opacity:0; transform:translateY(8px); }
+    to{ opacity:1; transform:translateY(0); }
 }
-
 
 /* =====================================================
    WELCOME
 ===================================================== */
 
 .welcome-card{
-
-    padding:22px;
-
-    border-radius:var(--radius-lg);
-
+    padding:22px; border-radius:var(--radius-lg);
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
+    background:linear-gradient(135deg,var(--accent),var(--primary2));
     margin-bottom:14px;
-
-    box-shadow:
-        0 12px 30px
-        rgba(79,70,229,.20);
-
-    position:relative;
-
-    overflow:hidden;
+    box-shadow:0 12px 30px rgba(79,70,229,.20);
+    position:relative; overflow:hidden;
 }
 
 .welcome-card::after{
-
-    content:"";
-
-    position:absolute;
-
-    top:-40px;
-    right:-40px;
-
-    width:140px;
-    height:140px;
-
-    border-radius:50%;
-
+    content:""; position:absolute;
+    top:-40px; right:-40px;
+    width:140px; height:140px; border-radius:50%;
     background:rgba(255,255,255,.08);
 }
 
-.welcome-card h2{
-
-    margin:5px 0;
-
-    font-size:21px;
-}
-
-.welcome-card p{
-
-    margin:5px 0;
-
-    color:rgba(255,255,255,.85);
-}
-
+.welcome-card h2{ margin:5px 0; font-size:21px; }
+.welcome-card p{ margin:5px 0; color:rgba(255,255,255,.85); }
 
 /* =====================================================
-   PROGRESS
+   BADGE STRIP
 ===================================================== */
 
-.progress-card{
-
-    background:var(--card);
-
-    border:1px solid var(--border);
-
-    border-radius:var(--radius-md);
-
-    padding:19px;
-
-    margin-bottom:14px;
+.badge-strip{
+    display:flex; gap:8px; overflow-x:auto;
+    padding:4px 0 10px; margin-bottom:8px;
+    scrollbar-width:none;
 }
 
-.progress-top{
+.badge-strip::-webkit-scrollbar{ display:none; }
 
-    display:flex;
+.badge-chip{
+    flex-shrink:0; padding:8px 12px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    display:flex; align-items:center; gap:6px;
+    font-size:12px;
+    opacity:.4;
+    transition:.25s;
+}
 
-    justify-content:space-between;
+.badge-chip.earned{
+    opacity:1;
+    border-color:var(--accent);
+    background:linear-gradient(135deg,
+        rgba(79,70,229,.10),
+        rgba(124,58,237,.10));
+}
+
+.badge-chip .badge-icon{ font-size:16px; }
+
+/* =====================================================
+   DUAL PROGRESS — CLICKABLE
+===================================================== */
+
+.dual-progress{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:10px; margin-bottom:14px;
+}
+
+.progress-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:15px;
+    cursor:pointer;
+    transition:transform .15s, box-shadow .2s;
+    position:relative;
+}
+
+.progress-card:hover{
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+}
+
+.progress-card:active{
+    transform:scale(.97);
+}
+
+.progress-card.yesterday{ border-left:4px solid var(--warning); }
+.progress-card.today{ border-left:4px solid var(--accent); }
+
+.progress-card h3{
+    margin:0 0 6px; font-size:13px;
+    color:var(--muted); font-weight:normal;
+    display:flex; justify-content:space-between;
     align-items:center;
 }
 
-.progress-top h2{
-
-    margin:5px 0 0;
-
-    font-size:28px;
+.progress-card h3 .arrow{
+    font-size:14px;
+    color:var(--accent);
 }
 
-.muted{
+.progress-card h2{ margin:4px 0; font-size:22px; }
+.progress-card .progress-bar{ margin-top:10px; }
 
-    color:var(--muted);
-
-    font-size:13px;
+.progress-card .small-percent{
+    font-size:12px; color:var(--muted); margin-top:4px;
 }
+
+/* =====================================================
+   MAIN PROGRESS — CLICKABLE
+===================================================== */
+
+.progress-main{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:19px; margin-bottom:14px;
+    cursor:pointer;
+    transition:transform .15s;
+}
+
+.progress-main:active{ transform:scale(.99); }
+
+.progress-top{ display:flex; justify-content:space-between; align-items:center; }
+.progress-top h2{ margin:5px 0 0; font-size:28px; }
+.muted{ color:var(--muted); font-size:13px; }
 
 .progress-circle{
-
-    width:66px;
-    height:66px;
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:
-        conic-gradient(
-            var(--primary) 0deg,
-            var(--border) 0deg
-        );
-
-    position:relative;
-
-    transition:background .4s ease;
+    width:66px; height:66px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:conic-gradient(var(--accent) 0deg, var(--border) 0deg);
+    position:relative; transition:background .4s ease;
 }
 
 .progress-circle::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:51px;
-    height:51px;
-
-    border-radius:50%;
-
+    content:""; position:absolute;
+    width:51px; height:51px; border-radius:50%;
     background:var(--card);
 }
 
 .progress-circle span{
-
-    position:relative;
-
-    font-size:13px;
-
-    font-weight:bold;
+    position:relative; font-size:13px; font-weight:bold;
 }
 
 .progress-bar{
-
-    width:100%;
-
-    height:9px;
-
-    background:var(--border);
-
-    border-radius:10px;
-
-    overflow:hidden;
-
-    margin-top:18px;
+    width:100%; height:9px; background:var(--border);
+    border-radius:10px; overflow:hidden; margin-top:18px;
 }
 
 .progress-fill{
-
-    width:0%;
-
-    height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    border-radius:10px;
-
-    transition:width .4s ease;
+    width:0%; height:100%;
+    background:linear-gradient(90deg,var(--accent),var(--primary2));
+    border-radius:10px; transition:width .4s ease;
 }
 
+.progress-fill.warning{
+    background:linear-gradient(90deg,var(--warning),#f59e0b);
+}
+
+/* =====================================================
+   SCORE TREND
+===================================================== */
+
+.trend-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:15px; margin-bottom:14px;
+}
+
+.trend-card h3{
+    margin:0 0 12px; font-size:14px;
+    color:var(--muted); font-weight:normal;
+}
+
+.trend-bars{
+    display:flex; gap:6px; align-items:flex-end;
+    height:80px;
+    padding:0 4px;
+}
+
+.trend-bar{
+    flex:1;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:flex-end;
+    gap:4px; height:100%;
+    cursor:pointer;
+}
+
+.trend-bar .bar{
+    width:100%;
+    background:linear-gradient(180deg,var(--accent),var(--primary2));
+    border-radius:6px 6px 0 0;
+    min-height:4px;
+    transition:height .4s ease;
+}
+
+.trend-bar .label{
+    font-size:9px; color:var(--muted);
+}
 
 /* =====================================================
    STATS
 ===================================================== */
 
 .stats-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:9px;
-
-    margin-bottom:20px;
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:8px; margin-bottom:20px;
 }
 
 .stat-card{
-
     background:var(--card);
-
     border:1px solid var(--border);
-
     border-radius:17px;
-
-    padding:14px 6px;
-
-    text-align:center;
-
+    padding:12px 4px; text-align:center;
     transition:transform .15s ease;
 }
 
-.stat-card:active{
-
-    transform:scale(.97);
-}
-
-.stat-icon{
-
-    font-size:20px;
-
-    margin-bottom:4px;
-}
-
-.stat-card strong{
-
-    display:block;
-
-    font-size:20px;
-}
-
-.stat-card span{
-
-    color:var(--muted);
-
-    font-size:11px;
-}
-
+.stat-card:active{ transform:scale(.97); }
+.stat-icon{ font-size:18px; margin-bottom:4px; }
+.stat-card strong{ display:block; font-size:18px; }
+.stat-card span{ color:var(--muted); font-size:10px; }
 
 /* =====================================================
    SECTIONS
 ===================================================== */
 
-.section{
-
-    margin-top:20px;
-}
+.section{ margin-top:20px; }
 
 .section-title{
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
+    display:flex; justify-content:space-between; align-items:center;
     margin-bottom:12px;
 }
 
-.section-title h2{
-
-    margin:0;
-
-    font-size:18px;
-}
+.section-title h2{ margin:0; font-size:18px; }
 
 .text-btn{
-
-    border:none;
-
-    background:none;
-
-    color:var(--primary);
-
-    font-weight:bold;
-
-    font-size:13px;
+    border:none; background:none;
+    color:var(--accent); font-weight:bold; font-size:13px;
 }
-
 
 /* =====================================================
    QUOTE
 ===================================================== */
 
 .quote-card{
-
-    display:flex;
-
-    gap:12px;
-
-    align-items:center;
-
-    margin-top:20px;
-
-    padding:18px;
-
+    display:flex; gap:12px; align-items:center;
+    margin-top:20px; padding:18px;
     border-radius:var(--radius-md);
-
-    background:var(--card);
-
-    border:1px solid var(--border);
+    background:var(--card); border:1px solid var(--border);
 }
 
-.quote-icon{
-
-    font-size:27px;
-}
-
-.quote-card p{
-
-    margin:0;
-
-    line-height:1.6;
-
-    font-size:14px;
-}
-
+.quote-icon{ font-size:27px; }
+.quote-card p{ margin:0; line-height:1.6; font-size:14px; }
 
 /* =====================================================
    PAGE TITLE
 ===================================================== */
 
-.page-title{
+.page-title{ margin:10px 0 20px; }
+.page-title h2{ margin:0; font-size:24px; }
+.page-title p{ margin:5px 0; color:var(--muted); font-size:13px; }
 
-    margin:10px 0 20px;
-}
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
-.page-title h2{
-
-    margin:0;
-
-    font-size:24px;
-}
-
-.page-title p{
-
-    margin:5px 0;
-
-    color:var(--muted);
-
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:8px 14px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:20px;
     font-size:13px;
+    font-weight:bold;
+    margin-bottom:10px;
+    transition:.2s;
 }
 
+.back-btn:active{ transform:scale(.95); }
+
+/* =====================================================
+   TABS
+===================================================== */
+
+.tab-switch{
+    display:flex; gap:6px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px; padding:4px;
+    margin-bottom:16px;
+}
+
+.tab-switch button{
+    flex:1; padding:10px;
+    border:none; background:transparent;
+    color:var(--muted); border-radius:10px;
+    font-size:13px; font-weight:bold;
+    transition:.2s;
+}
+
+.tab-switch button.active{
+    background:var(--accent); color:white;
+}
 
 /* =====================================================
    FILTER
 ===================================================== */
 
 .date-filter{
-
-    display:flex;
-
-    gap:7px;
-
-    overflow-x:auto;
-
-    padding-bottom:8px;
-
-    margin-bottom:8px;
-
+    display:flex; gap:7px; overflow-x:auto;
+    padding-bottom:8px; margin-bottom:8px;
     scrollbar-width:none;
 }
 
-.date-filter::-webkit-scrollbar{
-
-    display:none;
-}
+.date-filter::-webkit-scrollbar{ display:none; }
 
 .filter-btn{
-
-    flex-shrink:0;
-
-    padding:9px 14px;
-
+    flex-shrink:0; padding:9px 14px;
     border-radius:20px;
-
     border:1px solid var(--border);
-
-    background:var(--card);
-
-    color:var(--text);
-
-    transition:.2s;
-
-    font-size:13px;
+    background:var(--card); color:var(--text);
+    transition:.2s; font-size:13px;
 }
 
 .filter-btn.active{
-
-    color:white;
-
-    background:var(--primary);
-
-    border-color:var(--primary);
+    color:white; background:var(--accent);
+    border-color:var(--accent);
 }
 
+/* =====================================================
+   ADVANCED FILTER ROW
+===================================================== */
+
+.adv-filter{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:8px; margin-bottom:10px;
+}
+
+.adv-filter select{
+    padding:10px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    font-size:12px;
+    outline:none;
+}
 
 /* =====================================================
    SEARCH
 ===================================================== */
 
 .search-box{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:0 13px;
-
-    margin-bottom:15px;
-
+    display:flex; align-items:center; gap:8px;
+    padding:0 13px; margin-bottom:15px;
     border-radius:14px;
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
 .search-box input{
-
-    width:100%;
-
-    padding:13px 0;
-
-    border:none;
-
-    outline:none;
-
-    color:var(--text);
-
-    background:transparent;
+    width:100%; padding:13px 0;
+    border:none; outline:none;
+    color:var(--text); background:transparent;
 }
 
+/* =====================================================
+   TEMPLATE CHIPS
+===================================================== */
+
+.template-row{
+    display:flex; gap:6px; overflow-x:auto;
+    padding-bottom:8px; margin-bottom:6px;
+    scrollbar-width:none;
+}
+
+.template-row::-webkit-scrollbar{ display:none; }
+
+.template-chip{
+    flex-shrink:0;
+    padding:7px 12px;
+    background:var(--card);
+    border:1px dashed var(--border);
+    border-radius:20px;
+    font-size:12px;
+    color:var(--muted);
+    transition:.2s;
+}
+
+.template-chip:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
 
 /* =====================================================
    TASK CARD
 ===================================================== */
 
 .task-card{
-
-    display:flex;
-
-    gap:11px;
-
-    align-items:flex-start;
-
-    padding:14px;
-
-    margin-bottom:10px;
-
+    display:flex; gap:11px; align-items:flex-start;
+    padding:14px; margin-bottom:10px;
     border-radius:var(--radius-md);
-
     border:1px solid var(--border);
-
     background:var(--card);
-
     transition:.2s;
 }
 
-.task-card:active{
-
-    transform:scale(.99);
-}
-
-.task-card.completed{
-
-    opacity:.62;
-}
+.task-card.completed{ opacity:.62; }
+.task-card.avoid-card{ border-left:4px solid var(--danger); }
 
 .task-check{
-
-    width:29px;
-    height:29px;
-
-    flex-shrink:0;
-
+    width:29px; height:29px; flex-shrink:0;
     border-radius:50%;
-
     border:2px solid var(--border);
-
-    background:transparent;
-
-    color:white;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:15px;
-
-    transition:.2s;
+    background:transparent; color:white;
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; transition:.2s;
 }
 
 .task-check.checked{
-
-    background:var(--success);
-
-    border-color:var(--success);
+    background:var(--success); border-color:var(--success);
 }
 
-.task-info{
-
-    flex:1;
-
-    min-width:0;
-
-    cursor:pointer;
-}
+.task-info{ flex:1; min-width:0; cursor:pointer; }
 
 .task-title{
-
-    margin:0 0 5px;
-
-    font-size:15px;
-
-    font-weight:bold;
-
-    word-break:break-word;
+    margin:0 0 5px; font-size:15px;
+    font-weight:bold; word-break:break-word;
 }
 
-.completed .task-title{
-
-    text-decoration:line-through;
-}
+.completed .task-title{ text-decoration:line-through; }
 
 .task-meta{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    color:var(--muted);
-
-    font-size:11px;
+    display:flex; flex-wrap:wrap; gap:6px;
+    color:var(--muted); font-size:11px;
 }
 
 .badge{
-
-    padding:4px 7px;
-
-    border-radius:7px;
-
+    padding:4px 7px; border-radius:7px;
     background:rgba(99,102,241,.10);
+    color:var(--accent);
+}
 
-    color:var(--primary);
+.badge-danger{
+    background:rgba(220,38,38,.10);
+    color:var(--danger);
+}
+
+.badge-success{
+    background:rgba(22,163,74,.10);
+    color:var(--success);
 }
 
 .priority-high{ color:#dc2626; }
 .priority-medium{ color:#d97706; }
 .priority-low{ color:#16a34a; }
 
-.task-actions{
-
-    display:flex;
-
-    gap:2px;
-}
+.task-actions{ display:flex; gap:2px; }
 
 .small-btn{
-
-    padding:5px;
-
-    border:none;
-
-    background:transparent;
-
-    font-size:16px;
-
-    transition:transform .15s;
+    padding:5px; border:none; background:transparent;
+    font-size:16px; transition:transform .15s;
 }
 
-.small-btn:active{
+.small-btn:active{ transform:scale(.85); }
 
-    transform:scale(.85);
+/* =====================================================
+   DETAIL PAGE — SUMMARY
+===================================================== */
+
+.detail-summary{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:18px;
+    margin-bottom:14px;
 }
 
+.detail-summary h2{
+    margin:0 0 6px;
+    font-size:18px;
+}
+
+.detail-summary p{
+    margin:4px 0;
+    font-size:13px;
+    color:var(--muted);
+}
+
+.detail-progress-row{
+    display:flex;
+    justify-content:space-between;
+    margin-top:12px;
+    gap:12px;
+}
+
+.detail-chip{
+    flex:1;
+    padding:12px;
+    border-radius:14px;
+    background:var(--bg);
+    text-align:center;
+}
+
+.detail-chip strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:2px;
+}
+
+.detail-chip span{
+    font-size:11px;
+    color:var(--muted);
+}
+
+.detail-chip.success strong{ color:var(--success); }
+.detail-chip.danger strong{ color:var(--danger); }
+.detail-chip.warning strong{ color:var(--warning); }
+
+/* =====================================================
+   MULTI-DATE PICKER
+===================================================== */
+
+.multi-date-wrap{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:10px; margin-top:6px;
+}
+
+.multi-date-header{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:8px; font-size:12px; color:var(--muted);
+}
+
+.multi-date-header button{
+    padding:4px 10px; border:none;
+    background:var(--accent); color:white;
+    border-radius:8px; font-size:11px;
+    margin-left:4px;
+}
+
+.multi-date-header button.clear{ background:var(--danger); }
+
+.multi-date-grid{
+    display:grid; grid-template-columns:repeat(7,1fr);
+    gap:4px;
+}
+
+.multi-date-grid .day-chip{
+    padding:6px 2px;
+    border:1px solid var(--border);
+    background:var(--card); color:var(--text);
+    border-radius:8px; font-size:11px;
+    text-align:center; transition:.15s;
+}
+
+.multi-date-grid .day-chip.selected{
+    background:var(--accent); color:white;
+    border-color:var(--accent);
+}
+
+.multi-date-grid .day-chip:active{ transform:scale(.9); }
+
+.selected-dates-list{
+    display:flex; flex-wrap:wrap; gap:5px;
+    margin-top:8px;
+}
+
+.date-tag{
+    display:inline-flex; align-items:center; gap:4px;
+    padding:4px 8px;
+    background:rgba(79,70,229,.12);
+    color:var(--accent);
+    border-radius:8px; font-size:11px;
+}
+
+.date-tag button{
+    border:none; background:transparent;
+    color:inherit; font-size:13px;
+    padding:0; line-height:1;
+}
+
+/* =====================================================
+   STEPS BUILDER
+===================================================== */
+
+.step-list{ margin-top:8px; }
+
+.step-item{
+    display:flex; gap:6px; align-items:center;
+    padding:8px 10px; margin-bottom:6px;
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:10px;
+    font-size:13px;
+}
+
+.step-item span.num{
+    width:22px; height:22px; border-radius:50%;
+    background:var(--danger); color:white;
+    font-size:11px;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+}
+
+.step-item span.text{ flex:1; word-break:break-word; }
+
+.step-item button{
+    border:none; background:transparent;
+    color:var(--danger); font-size:15px; padding:2px;
+}
+
+.step-adder{ display:flex; gap:6px; margin-top:6px; }
+
+.step-adder input{
+    flex:1; padding:10px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--bg); color:var(--text);
+    font-size:13px;
+}
+
+.step-adder button{
+    padding:0 14px; border:none;
+    background:var(--accent); color:white;
+    border-radius:10px; font-size:16px; font-weight:bold;
+}
 
 /* =====================================================
    EMPTY
 ===================================================== */
 
 .empty-state{
-
-    padding:35px 15px;
-
-    text-align:center;
-
+    padding:35px 15px; text-align:center;
     color:var(--muted);
 }
 
-.empty-state div{
-
-    font-size:40px;
-
-    margin-bottom:8px;
-}
-
+.empty-state div{ font-size:40px; margin-bottom:8px; }
 
 /* =====================================================
    FORM
 ===================================================== */
 
 .form-card{
-
-    padding:18px;
-
-    border-radius:20px;
-
+    padding:18px; border-radius:20px;
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
 .form-card label,
 .settings-card label{
-
-    display:block;
-
-    margin:14px 0 7px;
-
-    font-size:13px;
-
-    font-weight:bold;
+    display:block; margin:14px 0 7px;
+    font-size:13px; font-weight:bold;
 }
 
 .form-card input,
 .form-card textarea,
 .form-card select,
 .settings-card input{
-
-    width:100%;
-
-    padding:12px;
-
+    width:100%; padding:12px;
     border-radius:var(--radius-sm);
-
     border:1px solid var(--border);
-
-    outline:none;
-
-    color:var(--text);
-
-    background:var(--bg);
-
-    font-size:14px;
-
+    outline:none; color:var(--text);
+    background:var(--bg); font-size:14px;
     transition:border-color .2s;
 }
 
-.form-card textarea{
-
-    min-height:85px;
-
-    resize:vertical;
-}
+.form-card textarea{ min-height:85px; resize:vertical; }
 
 .form-card input:focus,
 .form-card textarea:focus,
-.form-card select:focus{
+.form-card select:focus{ border-color:var(--accent); }
 
-    border-color:var(--primary);
-}
-
-.form-row{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:10px;
-}
-
+.form-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
 /* =====================================================
    BUTTONS
@@ -906,203 +786,330 @@ select:focus-visible{
 .primary-btn,
 .secondary-btn,
 .danger-btn{
-
-    width:100%;
-
-    padding:13px;
-
-    margin-top:12px;
-
-    border-radius:13px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
+    width:100%; padding:13px; margin-top:12px;
+    border-radius:13px; font-size:14px; font-weight:bold;
     transition:transform .15s;
 }
 
 .primary-btn:active,
 .secondary-btn:active,
-.danger-btn:active{
-
-    transform:scale(.98);
-}
+.danger-btn:active{ transform:scale(.98); }
 
 .primary-btn{
-
-    border:none;
-
-    color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
-    box-shadow:
-        0 6px 18px
-        rgba(79,70,229,.25);
+    border:none; color:white;
+    background:linear-gradient(135deg,var(--accent),var(--primary2));
+    box-shadow:0 6px 18px rgba(79,70,229,.25);
 }
 
 .secondary-btn{
-
-    color:var(--text);
-
-    background:var(--bg);
-
+    color:var(--text); background:var(--bg);
     border:1px solid var(--border);
 }
 
 .danger-btn{
-
-    border:none;
-
-    color:var(--danger);
-
+    border:none; color:var(--danger);
     background:rgba(220,38,38,.10);
 }
 
-.hidden{
-
-    display:none!important;
-}
-
+.hidden{ display:none!important; }
 
 /* =====================================================
    REPORT
 ===================================================== */
 
 .report-summary{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    display:grid; grid-template-columns:repeat(2,1fr);
     gap:10px;
 }
 
 .report-card{
-
-    padding:18px;
-
-    text-align:center;
-
+    padding:18px; text-align:center;
     border-radius:17px;
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
 .report-card span{
-
-    display:block;
-
-    margin-bottom:7px;
-
-    color:var(--muted);
-
-    font-size:12px;
+    display:block; margin-bottom:7px;
+    color:var(--muted); font-size:12px;
 }
 
-.report-card strong{
-
-    font-size:25px;
-}
+.report-card strong{ font-size:25px; }
+.report-card.danger strong{ color:var(--danger); }
+.report-card.success strong{ color:var(--success); }
 
 .week-row{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    padding:12px;
-
-    margin-bottom:8px;
-
+    display:flex; align-items:center; gap:10px;
+    padding:12px; margin-bottom:8px;
     border-radius:14px;
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
-.week-day{
-
-    width:70px;
-
-    font-size:12px;
-
-    font-weight:bold;
-}
+.week-day{ width:70px; font-size:12px; font-weight:bold; }
 
 .week-progress{
-
-    flex:1;
-
-    height:8px;
-
-    border-radius:10px;
-
-    overflow:hidden;
-
-    background:var(--border);
+    flex:1; height:8px; border-radius:10px;
+    overflow:hidden; background:var(--border);
 }
 
 .week-progress div{
-
     height:100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--primary),
-            var(--primary2)
-        );
-
+    background:linear-gradient(90deg,var(--accent),var(--primary2));
     transition:width .4s ease;
 }
 
-.week-percent{
+.week-percent{ width:40px; text-align:right; font-size:12px; }
 
-    width:40px;
+/* =====================================================
+   ANALYTICS
+===================================================== */
 
-    text-align:right;
-
-    font-size:12px;
+.analytics-list{
+    display:flex; flex-direction:column; gap:8px;
 }
 
-.journal{
-
-    width:100%;
-
-    min-height:130px;
-
-    padding:14px;
-
-    border-radius:15px;
-
+.analytics-row{
+    padding:12px;
+    border-radius:14px;
     border:1px solid var(--border);
-
-    outline:none;
-
-    resize:vertical;
-
     background:var(--card);
+}
 
+.analytics-row .name{
+    font-size:13px; font-weight:bold;
+    margin-bottom:6px;
+}
+
+.analytics-row .bar-wrap{
+    height:8px; border-radius:10px;
+    background:var(--border); overflow:hidden;
+}
+
+.analytics-row .bar-fill{
+    height:100%;
+    background:linear-gradient(90deg,var(--danger),#f97316);
+    transition:width .4s ease;
+}
+
+.analytics-row .count{
+    font-size:11px; color:var(--muted);
+    margin-top:5px;
+}
+
+/* =====================================================
+   VIOLATION HISTORY
+===================================================== */
+
+.violation-item{
+    padding:12px;
+    margin-bottom:8px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-left:4px solid var(--danger);
+}
+
+.violation-item .head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.violation-item .reason{
+    font-size:12px;
+    color:var(--muted);
+    padding:8px;
+    background:var(--bg);
+    border-radius:8px;
+    margin-top:6px;
+    font-style:italic;
+}
+
+.violation-item .time{
+    font-size:11px;
+    color:var(--muted);
+}
+
+/* =====================================================
+   JOURNAL / REFLECTION
+===================================================== */
+
+.journal{
+    width:100%; min-height:130px;
+    padding:14px; border-radius:15px;
+    border:1px solid var(--border);
+    outline:none; resize:vertical;
+    background:var(--card);
     color:var(--text);
-
     font-family:inherit;
-
     font-size:14px;
 }
 
+.reflection-grid{
+    display:grid; gap:10px;
+}
+
+.reflection-grid label{
+    font-size:12px; color:var(--muted);
+    margin:6px 0 4px; display:block;
+}
+
+.reflection-grid textarea{
+    width:100%; min-height:70px;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    font-family:inherit;
+    font-size:13px;
+    outline:none;
+    resize:vertical;
+}
+
+/* =====================================================
+   POMODORO
+===================================================== */
+
+.pomodoro-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:20px;
+    text-align:center;
+    margin-bottom:14px;
+}
+
+.pomodoro-time{
+    font-size:56px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin:8px 0;
+    font-variant-numeric:tabular-nums;
+    transition:color .3s;
+}
+
+.pomodoro-time.pulse{
+    animation:pulseAnim 1s infinite;
+}
+
+@keyframes pulseAnim{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.05); }
+}
+
+.pomodoro-label{
+    color:var(--muted);
+    font-size:12px;
+    margin-bottom:12px;
+}
+
+.pomodoro-actions{
+    display:flex; gap:8px;
+    justify-content:center;
+}
+
+.pomodoro-actions button{
+    padding:10px 20px;
+    border:none; border-radius:12px;
+    font-size:14px; font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,var(--accent),var(--primary2));
+    transition:transform .15s;
+}
+
+.pomodoro-actions button.secondary{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+.pomodoro-actions button:active{ transform:scale(.95); }
+
+.pomodoro-mode{
+    display:flex; gap:6px; justify-content:center;
+    margin-bottom:12px;
+    flex-wrap:wrap;
+}
+
+.pomodoro-mode button{
+    padding:6px 12px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:20px;
+    font-size:12px;
+}
+
+.pomodoro-mode button.active{
+    background:var(--accent);
+    color:white; border-color:var(--accent);
+}
+
+.pomodoro-settings{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius-md);
+    padding:18px;
+    margin-bottom:14px;
+}
+
+.pomodoro-settings h3{
+    margin:0 0 14px;
+    font-size:15px;
+}
+
+.pomo-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+}
+
+.pomo-row:last-child{ border-bottom:none; }
+
+.pomo-row label{
+    font-size:13px;
+    margin:0;
+    flex:1;
+    display:block;
+}
+
+.pomo-row .pomo-input{
+    width:70px;
+    padding:8px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--bg);
+    color:var(--text);
+    font-size:14px;
+    text-align:center;
+    outline:none;
+}
+
+.pomo-row .unit{
+    font-size:12px;
+    color:var(--muted);
+    margin-left:6px;
+}
+
+.test-alarm-btn{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:12px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.test-alarm-btn:active{ transform:scale(.95); }
 
 /* =====================================================
    SETTINGS
@@ -1110,1562 +1117,1176 @@ select:focus-visible{
 
 .settings-card,
 .about-card{
-
-    padding:18px;
-
-    margin-bottom:15px;
-
+    padding:18px; margin-bottom:15px;
     border-radius:var(--radius-md);
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
 .setting-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding-top:15px;
-
-    margin-top:15px;
-
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:15px; margin-top:15px;
     border-top:1px solid var(--border);
 }
 
-.setting-row strong{
-
-    font-size:14px;
-}
-
+.setting-row strong{ font-size:14px; }
 .setting-row p{
-
-    margin:3px 0 0;
-
-    color:var(--muted);
-
-    font-size:11px;
+    margin:3px 0 0; color:var(--muted); font-size:11px;
 }
-
 
 /* =====================================================
    SWITCH
 ===================================================== */
 
 .switch{
-
     position:relative;
-
-    width:48px!important;
-    height:27px;
-
-    margin:0!important;
-
-    flex-shrink:0;
+    width:48px!important; height:27px;
+    margin:0!important; flex-shrink:0;
 }
 
-.switch input{
-
-    display:none;
-}
+.switch input{ display:none; }
 
 .slider{
-
-    position:absolute;
-
-    inset:0;
-
-    border-radius:20px;
-
-    background:#cbd5e1;
-
-    transition:.2s;
-
-    cursor:pointer;
+    position:absolute; inset:0;
+    border-radius:20px; background:#cbd5e1;
+    transition:.2s; cursor:pointer;
 }
 
 .slider:before{
-
-    content:"";
-
-    position:absolute;
-
-    left:3px;
-    top:3px;
-
-    width:21px;
-    height:21px;
-
-    border-radius:50%;
-
-    background:white;
-
+    content:""; position:absolute;
+    left:3px; top:3px;
+    width:21px; height:21px;
+    border-radius:50%; background:white;
     transition:.2s;
 }
 
-.switch input:checked + .slider{
-
-    background:var(--primary);
-}
-
-.switch input:checked + .slider:before{
-
-    transform:translateX(21px);
-}
+.switch input:checked + .slider{ background:var(--accent); }
+.switch input:checked + .slider:before{ transform:translateX(21px); }
 
 .file-label{
+    display:block; text-align:center; cursor:pointer;
+}
 
-    display:block;
+.about-card{ text-align:center; }
 
-    text-align:center;
+/* =====================================================
+   COLOR PICKER
+===================================================== */
 
+.color-row{
+    display:flex; gap:8px; flex-wrap:wrap;
+    margin-top:8px;
+}
+
+.color-dot{
+    width:32px; height:32px;
+    border-radius:50%;
+    border:2px solid transparent;
     cursor:pointer;
+    transition:.2s;
 }
 
-.about-card{
-
-    text-align:center;
+.color-dot.active{
+    border-color:var(--text);
+    transform:scale(1.1);
 }
-
 
 /* =====================================================
    BOTTOM NAV
 ===================================================== */
 
 .bottom-nav{
-
-    position:fixed;
-
-    left:50%;
-    bottom:0;
-
+    position:fixed; left:50%; bottom:0;
     transform:translateX(-50%);
-
-    width:100%;
-    max-width:700px;
-
+    width:100%; max-width:700px;
     height:var(--nav-height);
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    align-items:center;
-
-    z-index:100;
-
+    display:grid; grid-template-columns:repeat(5,1fr);
+    align-items:center; z-index:100;
     border-top:1px solid var(--border);
-
     background:var(--card);
-
-    box-shadow:
-        0 -4px 20px
-        rgba(0,0,0,.06);
+    box-shadow:0 -4px 20px rgba(0,0,0,.06);
 }
 
 .nav-item{
-
-    height:100%;
-
-    border:none;
-
-    background:transparent;
-
+    height:100%; border:none; background:transparent;
     color:var(--muted);
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:3px;
-
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:3px;
     transition:color .2s;
 }
 
-.nav-item span{
-
-    font-size:20px;
-}
-
-.nav-item small{
-
-    font-size:10px;
-}
-
-.nav-item.active{
-
-    color:var(--primary);
-}
+.nav-item span{ font-size:20px; }
+.nav-item small{ font-size:10px; }
+.nav-item.active{ color:var(--accent); }
 
 .add-nav-btn{
-
-    width:54px;
-    height:54px;
-
-    justify-self:center;
-
-    margin-top:-25px;
-
-    border:none;
-
-    border-radius:50%;
-
+    width:54px; height:54px;
+    justify-self:center; margin-top:-25px;
+    border:none; border-radius:50%;
     color:white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--primary),
-            var(--primary2)
-        );
-
+    background:linear-gradient(135deg,var(--accent),var(--primary2));
     font-size:30px;
-
-    box-shadow:
-        0 8px 20px
-        rgba(79,70,229,.35);
-
+    box-shadow:0 8px 20px rgba(79,70,229,.35);
     transition:transform .15s;
 }
 
-.add-nav-btn:active{
-
-    transform:scale(.9);
-}
-
+.add-nav-btn:active{ transform:scale(.9); }
 
 /* =====================================================
    MODAL
 ===================================================== */
 
 .modal{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:500;
-
-    display:flex;
-
-    align-items:flex-end;
-
+    position:fixed; inset:0; z-index:500;
+    display:flex; align-items:flex-end;
     justify-content:center;
-
     background:rgba(0,0,0,.55);
-
     animation:fadeIn .2s ease;
 }
 
-@keyframes fadeIn{
-
-    from{ opacity:0; }
-    to{ opacity:1; }
-}
-
-.modal.hidden{
-
-    display:none;
-}
+@keyframes fadeIn{ from{ opacity:0; } to{ opacity:1; } }
+.modal.hidden{ display:none; }
 
 .modal-content{
-
-    width:100%;
-    max-width:700px;
-
-    max-height:85vh;
-
-    overflow-y:auto;
-
+    width:100%; max-width:700px;
+    max-height:85vh; overflow-y:auto;
     padding:20px;
-
-    border-radius:
-        24px 24px 0 0;
-
+    border-radius:24px 24px 0 0;
     color:var(--text);
-
     background:var(--card);
-
     animation:modalIn .3s ease;
 }
 
 @keyframes modalIn{
-
-    from{
-        transform:translateY(100%);
-    }
-
-    to{
-        transform:translateY(0);
-    }
+    from{ transform:translateY(100%); }
+    to{ transform:translateY(0); }
 }
 
 .modal-header{
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    margin-bottom:10px;
+    display:flex; justify-content:space-between;
+    align-items:center; margin-bottom:10px;
 }
 
-.modal-header h3{
-
-    margin:0;
-}
+.modal-header h3{ margin:0; }
 
 .close-btn{
-
-    width:38px;
-    height:38px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--bg);
-
-    color:var(--text);
-
+    width:38px; height:38px;
+    border:none; border-radius:50%;
+    background:var(--bg); color:var(--text);
     font-size:24px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
+    display:flex; align-items:center; justify-content:center;
 }
 
+.modal-actions{
+    display:flex; gap:8px; margin-top:12px;
+}
+
+.modal-actions button{
+    flex:1;
+    padding:12px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:bold;
+    border:none;
+    transition:transform .15s;
+}
+
+.modal-actions button:active{ transform:scale(.97); }
+
+.modal-actions .primary{
+    color:white;
+    background:linear-gradient(135deg,var(--accent),var(--primary2));
+}
+
+.modal-actions .success{
+    color:white;
+    background:var(--success);
+}
+
+.modal-actions .danger{
+    color:white;
+    background:var(--danger);
+}
+
+.modal-actions .secondary{
+    color:var(--text);
+    background:var(--bg);
+    border:1px solid var(--border);
+}
+
+/* =====================================================
+   REASON INPUT
+===================================================== */
+
+.reason-input{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:inherit;
+    font-size:13px;
+    resize:vertical;
+    min-height:70px;
+    margin-top:10px;
+    outline:none;
+}
 
 /* =====================================================
    CALENDAR
 ===================================================== */
 
 .calendar-card{
-
-    padding:15px;
-
-    margin-bottom:15px;
-
+    padding:15px; margin-bottom:15px;
     border-radius:var(--radius-md);
-
     border:1px solid var(--border);
-
     background:var(--card);
 }
 
 .calendar-header{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-bottom:12px;
+    display:flex; justify-content:space-between;
+    align-items:center; margin-bottom:12px;
 }
 
 .calendar-header button{
-
-    width:35px;
-    height:35px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:var(--bg);
-
-    color:var(--text);
-
+    width:35px; height:35px;
+    border:none; border-radius:10px;
+    background:var(--bg); color:var(--text);
     font-size:18px;
 }
 
-.calendar-title{
-
-    font-weight:bold;
-}
+.calendar-title{ font-weight:bold; }
 
 .calendar-week{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
-    gap:3px;
-
-    margin-bottom:5px;
+    display:grid; grid-template-columns:repeat(7,1fr);
+    gap:3px; margin-bottom:5px;
 }
 
 .calendar-week div{
-
-    text-align:center;
-
-    color:var(--muted);
-
-    font-size:10px;
-
-    padding:5px 0;
+    text-align:center; color:var(--muted);
+    font-size:10px; padding:5px 0;
 }
 
 .calendar-grid{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(7,1fr);
-
+    display:grid; grid-template-columns:repeat(7,1fr);
     gap:4px;
 }
 
 .calendar-day{
-
-    min-height:42px;
-
-    border:none;
-
+    min-height:42px; border:none;
     border-radius:10px;
-
-    background:var(--bg);
-
-    color:var(--text);
-
-    position:relative;
-
-    transition:.2s;
-
+    background:var(--bg); color:var(--text);
+    position:relative; transition:.2s;
     font-size:13px;
 }
 
-.calendar-day:active{
-
-    transform:scale(.92);
-}
-
-.calendar-day.today{
-
-    border:2px solid var(--primary);
-}
-
-.calendar-day.selected{
-
-    background:var(--primary);
-
-    color:white;
-}
+.calendar-day:active{ transform:scale(.92); }
+.calendar-day.today{ border:2px solid var(--accent); }
+.calendar-day.selected{ background:var(--accent); color:white; }
 
 .calendar-day.has-task:after{
-
-    content:"";
-
-    position:absolute;
-
-    bottom:4px;
-    left:50%;
-
+    content:""; position:absolute;
+    bottom:4px; left:50%;
     transform:translateX(-50%);
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
+    width:5px; height:5px; border-radius:50%;
     background:#f59e0b;
 }
 
-.calendar-day.selected.has-task:after{
-
-    background:white;
-}
-
+.calendar-day.selected.has-task:after{ background:white; }
 
 /* =====================================================
    TOAST
 ===================================================== */
 
 .toast{
-
-    position:fixed;
-
-    left:50%;
-    bottom:90px;
-
-    transform:
-        translate(-50%,20px);
-
-    z-index:1000;
-
-    max-width:90%;
-
+    position:fixed; left:50%; bottom:90px;
+    transform:translate(-50%,20px);
+    z-index:1000; max-width:90%;
     padding:12px 18px;
-
-    border-radius:12px;
-
-    color:white;
-
+    border-radius:12px; color:white;
     background:#111827;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    font-size:13px;
-
+    opacity:0; pointer-events:none;
+    transition:.3s; font-size:13px;
     text-align:center;
-
-    box-shadow:
-        0 8px 24px
-        rgba(0,0,0,.25);
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
 }
 
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translate(-50%,0);
-}
-
+.toast.show{ opacity:1; transform:translate(-50%,0); }
 
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
 @media(max-width:380px){
-
-    .top-header h1{
-
-        font-size:20px;
-    }
-
-    .stat-card{
-
-        padding:12px 4px;
-    }
-
-    .form-row{
-
-        grid-template-columns:1fr;
-    }
+    .top-header h1{ font-size:20px; }
+    .stat-card{ padding:10px 3px; }
+    .stat-card strong{ font-size:16px; }
+    .stat-card span{ font-size:9px; }
+    .form-row{ grid-template-columns:1fr; }
+    .dual-progress{ grid-template-columns:1fr; }
+    .pomodoro-time{ font-size:44px; }
 }
 
 </style>
 
 </head>
 
-
 <body>
-
 
 <div id="app">
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="top-header">
-
     <div>
-
-        <div
-            class="small-date"
-            id="headerDate">
-        </div>
-
-        <h1>
-            দৈনিক রুটিন
-        </h1>
-
+        <div class="small-date" id="headerDate"></div>
+        <h1>দৈনিক রুটিন</h1>
     </div>
-
-
-    <button
-        class="icon-btn"
-        id="themeBtn"
-        aria-label="থিম পরিবর্তন"
-        onclick="toggleTheme()">
-
-        🌙
-
-    </button>
-
+    <button class="icon-btn" id="themeBtn"
+            aria-label="থিম পরিবর্তন"
+            onclick="toggleTheme()">🌙</button>
 </header>
-
-
 
 <!-- =====================================================
      HOME
 ===================================================== -->
 
-<main
-    id="homePage"
-    class="page active">
-
+<main id="homePage" class="page active">
 
     <section class="welcome-card">
-
         <div>
+            <p>আজকের পরিকল্পনা</p>
+            <h2 id="welcomeText">শুভ সকাল 🌅</h2>
+            <p id="todayFullDate"></p>
+        </div>
+    </section>
 
-            <p>
-                আজকের পরিকল্পনা
-            </p>
+    <section class="badge-strip" id="badgeStrip"></section>
 
-            <h2 id="welcomeText">
-                শুভ সকাল 🌅
+    <section class="dual-progress">
+        <div class="progress-card yesterday"
+             onclick="openDayDetail('yesterday')">
+            <h3>
+                গতকালের অগ্রগতি
+                <span class="arrow">›</span>
+            </h3>
+            <h2>
+                <span id="yCompletedCount">0</span> /
+                <span id="yTotalCount">0</span>
             </h2>
-
-            <p id="todayFullDate">
-            </p>
-
+            <div class="progress-bar">
+                <div class="progress-fill warning"
+                     id="yProgressBar"
+                     style="width:0%"></div>
+            </div>
+            <div class="small-percent" id="yPercentText">0% সম্পন্ন</div>
         </div>
 
+        <div class="progress-card today"
+             onclick="openDayDetail('today')">
+            <h3>
+                আজকের অগ্রগতি
+                <span class="arrow">›</span>
+            </h3>
+            <h2>
+                <span id="tCompletedCount">0</span> /
+                <span id="tTotalCount">0</span>
+            </h2>
+            <div class="progress-bar">
+                <div class="progress-fill"
+                     id="tProgressBar"
+                     style="width:0%"></div>
+            </div>
+            <div class="small-percent" id="tPercentText">0% সম্পন্ন</div>
+        </div>
     </section>
 
-
-
-    <!-- PROGRESS -->
-
-    <section class="progress-card">
-
+    <section class="progress-main"
+             onclick="openDayDetail('today')">
         <div class="progress-top">
-
             <div>
-
-                <span class="muted">
-                    আজকের অগ্রগতি
-                </span>
-
+                <span class="muted">আজকের মোট স্কোর (বিস্তারিত দেখতে ক্লিক করুন)</span>
                 <h2>
-
-                    <span id="completedCount">0</span>
-                    /
+                    <span id="completedCount">0</span> /
                     <span id="totalCount">0</span>
-
                 </h2>
-
             </div>
-
-
-            <div
-                class="progress-circle"
-                id="progressCircle">
-
-                <span id="progressPercent">
-                    0%
-                </span>
-
+            <div class="progress-circle" id="progressCircle">
+                <span id="progressPercent">0%</span>
             </div>
-
         </div>
-
-
         <div class="progress-bar">
-
-            <div
-                class="progress-fill"
-                id="progressBar">
-            </div>
-
+            <div class="progress-fill" id="progressBar"></div>
         </div>
-
     </section>
 
-
-
-    <!-- STATS -->
+    <section class="trend-card">
+        <h3>📈 গত ৭ দিনের স্কোর (দিনে ক্লিক করুন)</h3>
+        <div class="trend-bars" id="trendBars"></div>
+    </section>
 
     <section class="stats-grid">
-
         <div class="stat-card">
-
-            <div class="stat-icon">
-                ⏳
-            </div>
-
-            <strong id="pendingCount">
-                0
-            </strong>
-
-            <span>
-                বাকি
-            </span>
-
+            <div class="stat-icon">⏳</div>
+            <strong id="pendingCount">0</strong>
+            <span>বাকি</span>
         </div>
-
-
         <div class="stat-card">
-
-            <div class="stat-icon">
-                🔥
-            </div>
-
-            <strong id="streakCount">
-                0
-            </strong>
-
-            <span>
-                দিন Streak
-            </span>
-
+            <div class="stat-icon">🚫</div>
+            <strong id="avoidCount">0</strong>
+            <span>না করার</span>
         </div>
-
-
         <div class="stat-card">
-
-            <div class="stat-icon">
-                🎯
-            </div>
-
-            <strong id="goalCount">
-                0
-            </strong>
-
-            <span>
-                লক্ষ্য
-            </span>
-
+            <div class="stat-icon">🔥</div>
+            <strong id="streakCount">0</strong>
+            <span>Streak</span>
         </div>
-
+        <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <strong id="goalCount">0</strong>
+            <span>লক্ষ্য</span>
+        </div>
     </section>
-
-
-
-    <!-- TODAY -->
 
     <section class="section">
-
         <div class="section-title">
-
-            <h2>
-                আজকের কাজ
-            </h2>
-
-            <button
-                class="text-btn"
-                onclick="showPage('planning')">
-
+            <h2>আজকের কাজ</h2>
+            <button class="text-btn" onclick="showPage('planning')">
                 সব দেখুন
-
             </button>
-
         </div>
-
-
-        <div id="todayTasks">
-        </div>
-
+        <div id="todayTasks"></div>
     </section>
 
-
-
-    <!-- QUOTE -->
-
     <section class="quote-card">
-
-        <div class="quote-icon">
-            💡
-        </div>
-
+        <div class="quote-icon">💡</div>
         <p id="dailyQuote">
-            ছোট ছোট কাজই একদিন
-            বড় পরিবর্তন তৈরি করে।
+            ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।
         </p>
-
     </section>
 
 </main>
 
+<!-- =====================================================
+     DAY DETAIL PAGE
+===================================================== -->
 
+<main id="dayDetailPage" class="page">
+
+    <button class="back-btn" onclick="showPage('home')">
+        ← হোমে ফিরুন
+    </button>
+
+    <div class="page-title">
+        <h2 id="dayDetailTitle">📅 দিনের বিস্তারিত</h2>
+        <p id="dayDetailDate">তারিখ লোড হচ্ছে...</p>
+    </div>
+
+    <section class="detail-summary">
+        <h2 id="detailScoreText">স্কোর: 0%</h2>
+        <p id="detailSubText">0 / 0 কাজ সম্পন্ন</p>
+
+        <div class="detail-progress-row">
+            <div class="detail-chip success">
+                <strong id="detailDone">0</strong>
+                <span>✅ সম্পন্ন</span>
+            </div>
+            <div class="detail-chip warning">
+                <strong id="detailPending">0</strong>
+                <span>⏳ বাকি</span>
+            </div>
+            <div class="detail-chip danger">
+                <strong id="detailPenalty">0%</strong>
+                <span>📉 পেনাল্টি</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPLETED TASKS -->
+    <section class="section">
+        <div class="section-title">
+            <h2>✅ সম্পন্ন কাজ</h2>
+            <span class="badge badge-success" id="doneCountBadge">0</span>
+        </div>
+        <div id="detailDoneList"></div>
+    </section>
+
+    <!-- PENDING TASKS -->
+    <section class="section">
+        <div class="section-title">
+            <h2>⏳ বাকি কাজ</h2>
+            <span class="badge" id="pendingCountBadge">0</span>
+        </div>
+        <div id="detailPendingList"></div>
+    </section>
+
+    <!-- AVOID VIOLATIONS -->
+    <section class="section">
+        <div class="section-title">
+            <h2>🚫 না করার কাজের লঙ্ঘন</h2>
+        </div>
+        <div id="detailAvoidList"></div>
+    </section>
+
+</main>
 
 <!-- =====================================================
      PLANNING
 ===================================================== -->
 
-<main
-    id="planningPage"
-    class="page">
-
+<main id="planningPage" class="page">
 
     <div class="page-title">
-
-        <h2>
-            📅 পরিকল্পনা
-        </h2>
-
-        <p>
-            আগে থেকেই নিজের কাজ সাজিয়ে রাখুন
-        </p>
-
+        <h2>📅 পরিকল্পনা</h2>
+        <p>আগে থেকেই নিজের কাজ সাজিয়ে রাখুন</p>
     </div>
 
-
-
-    <!-- CALENDAR -->
+    <div class="tab-switch">
+        <button id="tabTasks" class="active"
+                onclick="switchTab('tasks')">
+            ✅ করার কাজ
+        </button>
+        <button id="tabAvoids"
+                onclick="switchTab('avoids')">
+            🚫 না করার কাজ
+        </button>
+    </div>
 
     <section class="calendar-card">
-
         <div class="calendar-header">
-
-            <button
-                aria-label="আগের মাস"
-                onclick="changeMonth(-1)">
-                ‹
-            </button>
-
-
-            <div
-                class="calendar-title"
-                id="calendarTitle">
-            </div>
-
-
-            <button
-                aria-label="পরের মাস"
-                onclick="changeMonth(1)">
-                ›
-            </button>
-
+            <button aria-label="আগের মাস"
+                    onclick="changeMonth(-1)">‹</button>
+            <div class="calendar-title" id="calendarTitle"></div>
+            <button aria-label="পরের মাস"
+                    onclick="changeMonth(1)">›</button>
         </div>
-
-
         <div class="calendar-week">
-
-            <div>রবি</div>
-            <div>সোম</div>
-            <div>মঙ্গল</div>
-            <div>বুধ</div>
-            <div>বৃহঃ</div>
-            <div>শুক্র</div>
-            <div>শনি</div>
-
+            <div>রবি</div><div>সোম</div><div>মঙ্গল</div>
+            <div>বুধ</div><div>বৃহঃ</div><div>শুক্র</div><div>শনি</div>
         </div>
-
-
-        <div
-            class="calendar-grid"
-            id="calendarGrid">
-        </div>
-
+        <div class="calendar-grid" id="calendarGrid"></div>
     </section>
 
-
-
-    <!-- FILTER -->
-
     <div class="date-filter">
-
-        <button
-            class="filter-btn active"
-            onclick="setDateFilter('today',this)">
-            আজ
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setDateFilter('tomorrow',this)">
-            আগামীকাল
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setDateFilter('week',this)">
-            সপ্তাহ
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setDateFilter('month',this)">
-            মাস
-        </button>
-
-        <button
-            class="filter-btn"
-            onclick="setDateFilter('all',this)">
-            সব
-        </button>
-
+        <button class="filter-btn active"
+                onclick="setDateFilter('today',this)">আজ</button>
+        <button class="filter-btn"
+                onclick="setDateFilter('tomorrow',this)">আগামীকাল</button>
+        <button class="filter-btn"
+                onclick="setDateFilter('week',this)">সপ্তাহ</button>
+        <button class="filter-btn"
+                onclick="setDateFilter('month',this)">মাস</button>
+        <button class="filter-btn"
+                onclick="setDateFilter('all',this)">সব</button>
     </div>
 
+    <div class="adv-filter">
+        <select id="filterCategory" onchange="renderTasks()">
+            <option value="">সব Category</option>
+            <option value="ব্যক্তিগত">👤 ব্যক্তিগত</option>
+            <option value="কাজ">💼 কাজ</option>
+            <option value="পড়াশোনা">📚 পড়াশোনা</option>
+            <option value="স্বাস্থ্য">💪 স্বাস্থ্য</option>
+            <option value="পরিবার">👨‍👩‍👦 পরিবার</option>
+            <option value="ব্যবসা">🏪 ব্যবসা</option>
+            <option value="অন্যান্য">📌 অন্যান্য</option>
+        </select>
 
-
-    <!-- SEARCH -->
+        <select id="filterPriority" onchange="renderTasks()">
+            <option value="">সব Priority</option>
+            <option value="high">🔴 High</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+        </select>
+    </div>
 
     <div class="search-box">
-
-        <span>
-            🔍
-        </span>
-
-        <input
-            id="searchInput"
-            type="text"
-            placeholder="কাজ খুঁজুন..."
-            oninput="renderTasks()">
-
+        <span>🔍</span>
+        <input id="searchInput" type="text"
+               placeholder="কাজ খুঁজুন..."
+               oninput="renderTasks()">
     </div>
 
-
-    <div id="planningTasks">
-    </div>
+    <div id="planningTasks"></div>
 
 </main>
-
-
 
 <!-- =====================================================
      ADD TASK
 ===================================================== -->
 
-<main
-    id="addPage"
-    class="page">
-
+<main id="addPage" class="page">
 
     <div class="page-title">
-
-        <h2>
-            ➕ নতুন কাজ
-        </h2>
-
-        <p>
-            আপনার পরিকল্পনা তৈরি করুন
-        </p>
-
+        <h2 id="addPageTitle">➕ নতুন কাজ</h2>
+        <p id="addPageSubtitle">আপনার পরিকল্পনা তৈরি করুন</p>
     </div>
 
+    <label style="font-size:13px;font-weight:bold;
+                  display:block;margin-bottom:6px">
+        ⚡ দ্রুত টেমপ্লেট
+    </label>
+    <div class="template-row" id="templateRow"></div>
 
-    <form
-        id="taskForm"
-        class="form-card">
+    <form id="taskForm" class="form-card">
 
+        <input type="hidden" id="editTaskId">
+        <input type="hidden" id="taskKind" value="task">
 
-        <input
-            type="hidden"
-            id="editTaskId">
+        <label>কাজের নাম *</label>
+        <input id="taskTitle" type="text"
+               placeholder="যেমন: বই পড়া" required>
 
+        <label>বিস্তারিত</label>
+        <textarea id="taskDescription"
+                  placeholder="কাজটি সম্পর্কে কিছু লিখুন..."></textarea>
 
-        <label>
-            কাজের নাম *
-        </label>
+        <label>তারিখ নির্বাচন *</label>
 
-        <input
-            id="taskTitle"
-            type="text"
-            placeholder="যেমন: বই পড়া"
-            required>
-
-
-
-        <label>
-            বিস্তারিত
-        </label>
-
-        <textarea
-            id="taskDescription"
-            placeholder="কাজটি সম্পর্কে কিছু লিখুন...">
-        </textarea>
-
-
-
-        <div class="form-row">
-
-            <div>
-
-                <label>
-                    তারিখ *
-                </label>
-
-                <input
-                    id="taskDate"
-                    type="date"
-                    required>
-
-            </div>
-
-
-            <div>
-
-                <label>
-                    সময় *
-                </label>
-
-                <input
-                    id="taskTime"
-                    type="time"
-                    required>
-
-            </div>
-
+        <div class="tab-switch" style="margin-top:0">
+            <button type="button" id="dateModeSingle"
+                    class="active"
+                    onclick="setDateMode('single')">
+                📅 একটি তারিখ
+            </button>
+            <button type="button" id="dateModeMulti"
+                    onclick="setDateMode('multi')">
+                📆 একাধিক তারিখ
+            </button>
         </div>
 
+        <div id="singleDateWrap">
+            <input id="taskDate" type="date" required>
+        </div>
 
+        <div id="multiDateWrap" class="multi-date-wrap hidden">
+            <div class="multi-date-header">
+                <span>তারিখগুলোতে ট্যাপ করুন</span>
+                <div>
+                    <button type="button"
+                            onclick="selectAllDatesInMonth()">
+                        সব সিলেক্ট
+                    </button>
+                    <button type="button" class="clear"
+                            onclick="clearSelectedDates()">
+                        ক্লিয়ার
+                    </button>
+                </div>
+            </div>
+            <input id="multiMonthPicker" type="month"
+                   onchange="renderMultiDateGrid()"
+                   style="margin-bottom:8px">
+            <div class="multi-date-grid" id="multiDateGrid"></div>
+            <div class="selected-dates-list"
+                 id="selectedDatesList"></div>
+        </div>
 
-        <label>
-            Category
-        </label>
+        <div class="form-row">
+            <div>
+                <label>সময় *</label>
+                <input id="taskTime" type="time" required>
+            </div>
+            <div>
+                <label>Category</label>
+                <select id="taskCategory">
+                    <option value="ব্যক্তিগত">👤 ব্যক্তিগত</option>
+                    <option value="কাজ">💼 কাজ</option>
+                    <option value="পড়াশোনা">📚 পড়াশোনা</option>
+                    <option value="স্বাস্থ্য">💪 স্বাস্থ্য</option>
+                    <option value="পরিবার">👨‍👩‍👦 পরিবার</option>
+                    <option value="ব্যবসা">🏪 ব্যবসা</option>
+                    <option value="অন্যান্য">📌 অন্যান্য</option>
+                </select>
+            </div>
+        </div>
 
-        <select id="taskCategory">
-
-            <option value="ব্যক্তিগত">
-                👤 ব্যক্তিগত
-            </option>
-
-            <option value="কাজ">
-                💼 কাজ
-            </option>
-
-            <option value="পড়াশোনা">
-                📚 পড়াশোনা
-            </option>
-
-            <option value="স্বাস্থ্য">
-                💪 স্বাস্থ্য
-            </option>
-
-            <option value="পরিবার">
-                👨‍👩‍👦 পরিবার
-            </option>
-
-            <option value="ব্যবসা">
-                🏪 ব্যবসা
-            </option>
-
-            <option value="অন্যান্য">
-                📌 অন্যান্য
-            </option>
-
-        </select>
-
-
-
-        <label>
-            Priority
-        </label>
-
+        <label>Priority</label>
         <select id="taskPriority">
-
-            <option value="low">
-                🟢 Low
-            </option>
-
-            <option
-                value="medium"
-                selected>
-                🟡 Medium
-            </option>
-
-            <option value="high">
-                🔴 High
-            </option>
-
+            <option value="low">🟢 Low</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="high">🔴 High</option>
         </select>
 
-
-
-        <label>
-            Reminder
-        </label>
-
+        <label>Reminder</label>
         <select id="taskReminder">
-
-            <option value="0">সময়মতো</option>
+            <option value="0">সময়মতো</option>
             <option value="5">৫ মিনিট আগে</option>
             <option value="10">১০ মিনিট আগে</option>
             <option value="15">১৫ মিনিট আগে</option>
             <option value="30">৩০ মিনিট আগে</option>
             <option value="60">১ ঘণ্টা আগে</option>
-
         </select>
 
-
-
-        <label>
-            Repeat
-        </label>
-
+        <label>Repeat</label>
         <select id="taskRepeat">
-
             <option value="none">একবার</option>
             <option value="daily">প্রতিদিন</option>
             <option value="weekly">প্রতি সপ্তাহে</option>
             <option value="weekdays">সোম–শুক্র</option>
             <option value="monthly">প্রতি মাসে</option>
-
         </select>
 
+        <div id="avoidFields" class="hidden">
+            <label>কতবার করলে পেনাল্টি?</label>
+            <input id="avoidLimit" type="number"
+                   min="1" value="1">
 
+            <label>পেনাল্টি (% অগ্রগতি কমবে)</label>
+            <input id="avoidPenalty" type="number"
+                   min="1" max="100" value="10">
 
-        <label>
-            নোট
-        </label>
+            <label>প্রতিটি ধাপ (Step by Step)</label>
+            <div class="step-adder">
+                <input id="stepInput" type="text"
+                       placeholder="যেমন: ফাস্ট ফুড খাওয়া">
+                <button type="button"
+                        onclick="addStep()">+</button>
+            </div>
 
-        <textarea
-            id="taskNote"
-            placeholder="প্রয়োজন হলে নোট লিখুন...">
-        </textarea>
+            <div class="step-list" id="stepList"></div>
+        </div>
 
+        <label>নোট</label>
+        <textarea id="taskNote"
+                  placeholder="প্রয়োজন হলে নোট লিখুন..."></textarea>
 
-
-        <button
-            class="primary-btn"
-            type="submit">
-
-            <span id="saveBtnText">
-                💾 কাজ সংরক্ষণ করুন
-            </span>
-
+        <button class="primary-btn" type="submit">
+            <span id="saveBtnText">💾 কাজ সংরক্ষণ করুন</span>
         </button>
 
-
-        <button
-            class="secondary-btn hidden"
-            id="cancelEditBtn"
-            type="button"
-            onclick="cancelEdit()">
-
+        <button class="secondary-btn hidden"
+                id="cancelEditBtn"
+                type="button"
+                onclick="cancelEdit()">
             বাতিল
-
         </button>
 
     </form>
+
 </main>
-
-
 
 <!-- =====================================================
      REPORT
 ===================================================== -->
 
-<main
-    id="reportPage"
-    class="page">
-
+<main id="reportPage" class="page">
 
     <div class="page-title">
-
-        <h2>
-            📊 রিপোর্ট
-        </h2>
-
-        <p>
-            আপনার কাজের অগ্রগতি
-        </p>
-
+        <h2>📊 রিপোর্ট</h2>
+        <p>আপনার কাজের অগ্রগতি</p>
     </div>
 
-
     <section class="report-summary">
-
         <div class="report-card">
-
             <span>মোট কাজ</span>
             <strong id="reportTotal">0</strong>
-
         </div>
-
-
-        <div class="report-card">
-
+        <div class="report-card success">
             <span>সম্পন্ন</span>
             <strong id="reportCompleted">0</strong>
-
         </div>
-
-
         <div class="report-card">
-
             <span>বাকি</span>
             <strong id="reportPending">0</strong>
-
         </div>
-
-
+        <div class="report-card danger">
+            <span>🚫 লঙ্ঘন</span>
+            <strong id="reportViolations">0</strong>
+        </div>
         <div class="report-card">
-
             <span>সাফল্য</span>
             <strong id="reportRate">0%</strong>
-
         </div>
-
+        <div class="report-card">
+            <span>গড় স্কোর</span>
+            <strong id="reportScore">0%</strong>
+        </div>
     </section>
 
-
-
     <section class="section">
-
         <div class="section-title">
-
-            <h2>
-                📅 গত ৭ দিন
-            </h2>
-
+            <h2>📅 গত ৭ দিন</h2>
         </div>
-
-
-        <div id="weeklyReport">
-        </div>
-
+        <div id="weeklyReport"></div>
     </section>
 
+    <section class="section">
+        <div class="section-title">
+            <h2>🚫 Avoid Task বিশ্লেষণ</h2>
+        </div>
+        <div class="analytics-list" id="avoidAnalytics"></div>
+    </section>
 
+    <!-- VIOLATION HISTORY -->
+    <section class="section">
+        <div class="section-title">
+            <h2>📜 লঙ্ঘনের ইতিহাস</h2>
+        </div>
+        <div id="violationHistory"></div>
+    </section>
 
     <section class="section">
-
         <div class="section-title">
-
-            <h2>
-                📝 আজকের নোট
-            </h2>
-
+            <h2>📖 সাপ্তাহিক রিভিউ</h2>
         </div>
+        <div class="reflection-grid">
+            <label>এই সপ্তাহে কী ভালো হয়েছে?</label>
+            <textarea id="reflectGood"
+                      placeholder="ইতিবাচক দিকগুলো লিখুন..."></textarea>
 
+            <label>কী উন্নতি করা যায়?</label>
+            <textarea id="reflectImprove"
+                      placeholder="উন্নতির সুযোগ..."></textarea>
 
-        <textarea
-            class="journal"
-            id="dailyNote"
-            placeholder="আজকের দিন সম্পর্কে কিছু লিখুন...">
-        </textarea>
+            <label>পরের সপ্তাহের লক্ষ্য</label>
+            <textarea id="reflectGoal"
+                      placeholder="পরবর্তী লক্ষ্য..."></textarea>
 
+            <button class="primary-btn"
+                    onclick="saveWeeklyReflection()">
+                💾 রিভিউ সংরক্ষণ
+            </button>
+        </div>
+    </section>
 
-        <button
-            class="primary-btn"
-            onclick="saveDailyNote()">
-
+    <section class="section">
+        <div class="section-title">
+            <h2>📝 আজকের নোট</h2>
+        </div>
+        <textarea class="journal" id="dailyNote"
+                  placeholder="আজকের দিন সম্পর্কে কিছু লিখুন..."></textarea>
+        <button class="primary-btn" onclick="saveDailyNote()">
             💾 নোট সংরক্ষণ
-
         </button>
-
     </section>
+
+    <section class="section">
+        <div class="section-title">
+            <h2>📤 রিপোর্ট শেয়ার</h2>
+        </div>
+        <button class="secondary-btn"
+                onclick="shareReport()">
+            📋 টেক্সট কপি করুন
+        </button>
+        <button class="secondary-btn"
+                onclick="downloadReportText()">
+            📥 .txt হিসেবে ডাউনলোড
+        </button>
+    </section>
+
 </main>
 
+<!-- =====================================================
+     FOCUS PAGE
+===================================================== -->
 
+<main id="focusPage" class="page">
+
+    <div class="page-title">
+        <h2>⏱️ ফোকাস টাইমার</h2>
+        <p>পোমোডোরো পদ্ধতিতে কাজ করুন</p>
+    </div>
+
+    <section class="pomodoro-card">
+
+        <div class="pomodoro-mode">
+            <button class="active" data-mode="focus"
+                    onclick="setPomodoroMode('focus',this)">
+                🎯 ফোকাস <span id="modeFocusLabel">25মি</span>
+            </button>
+            <button data-mode="short"
+                    onclick="setPomodoroMode('short',this)">
+                ☕ ছোট বিরতি <span id="modeShortLabel">5মি</span>
+            </button>
+            <button data-mode="long"
+                    onclick="setPomodoroMode('long',this)">
+                🌿 বড় বিরতি <span id="modeLongLabel">15মি</span>
+            </button>
+        </div>
+
+        <div class="pomodoro-label" id="pomodoroLabel">
+            ফোকাস সেশনে মনোযোগ দিন
+        </div>
+
+        <div class="pomodoro-time" id="pomodoroTime">
+            25:00
+        </div>
+
+        <div class="pomodoro-actions">
+            <button id="pomodoroStartBtn"
+                    onclick="startPomodoro()">
+                ▶️ শুরু
+            </button>
+            <button class="secondary"
+                    onclick="resetPomodoro()">
+                🔄 রিসেট
+            </button>
+        </div>
+
+    </section>
+
+    <section class="pomodoro-settings">
+        <h3>⚙️ টাইমার কাস্টমাইজ করুন</h3>
+
+        <div class="pomo-row">
+            <label>🎯 ফোকাস সময়</label>
+            <input id="focusMinutes" class="pomo-input"
+                   type="number" min="1" max="180" value="25"
+                   onchange="savePomodoroSettings()">
+            <span class="unit">মিনিট</span>
+        </div>
+
+        <div class="pomo-row">
+            <label>☕ ছোট বিরতি</label>
+            <input id="shortMinutes" class="pomo-input"
+                   type="number" min="1" max="60" value="5"
+                   onchange="savePomodoroSettings()">
+            <span class="unit">মিনিট</span>
+        </div>
+
+        <div class="pomo-row">
+            <label>🌿 বড় বিরতি</label>
+            <input id="longMinutes" class="pomo-input"
+                   type="number" min="1" max="60" value="15"
+                   onchange="savePomodoroSettings()">
+            <span class="unit">মিনিট</span>
+        </div>
+
+        <div class="pomo-row">
+            <label>🔔 অ্যালার্ম ভলিউম</label>
+            <input id="alarmVolume" class="pomo-input"
+                   type="number" min="0" max="100" value="80"
+                   onchange="savePomodoroSettings()">
+            <span class="unit">%</span>
+        </div>
+
+        <div class="pomo-row">
+            <label>🔊 অ্যালার্ম টেস্ট</label>
+            <button class="test-alarm-btn"
+                    type="button"
+                    onclick="testAlarm()">
+                ▶️ বাজান
+            </button>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <div class="section-title">
+            <h2>📊 আজকের ফোকাস সেশন</h2>
+        </div>
+        <div class="report-summary">
+            <div class="report-card">
+                <span>সম্পন্ন সেশন</span>
+                <strong id="pomodoroCount">0</strong>
+            </div>
+            <div class="report-card">
+                <span>মোট মিনিট</span>
+                <strong id="pomodoroMinutes">0</strong>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <!-- =====================================================
      SETTINGS
 ===================================================== -->
 
-<main
-    id="settingsPage"
-    class="page">
-
+<main id="settingsPage" class="page">
 
     <div class="page-title">
-
-        <h2>
-            ⚙️ সেটিংস
-        </h2>
-
-        <p>
-            অ্যাপ নিজের মতো করে সাজান
-        </p>
-
+        <h2>⚙️ সেটিংস</h2>
+        <p>অ্যাপ নিজের মতো করে সাজান</p>
     </div>
 
-
     <section class="settings-card">
-
-        <label>
-            আপনার নাম
-        </label>
-
-        <input
-            id="userName"
-            type="text"
-            placeholder="আপনার নাম"
-            onchange="saveUserName()">
-
-
+        <label>আপনার নাম</label>
+        <input id="userName" type="text"
+               placeholder="আপনার নাম"
+               onchange="saveUserName()">
 
         <div class="setting-row">
-
             <div>
-
-                <strong>
-                    🔔 Notification
-                </strong>
-
-                <p>
-                    Reminder চালু/বন্ধ
-                </p>
-
+                <strong>🔔 Notification</strong>
+                <p>Reminder চালু/বন্ধ</p>
             </div>
-
-
             <label class="switch">
-
-                <input
-                    id="notificationToggle"
-                    type="checkbox"
-                    onchange="toggleNotifications()">
-
-                <span class="slider">
-                </span>
-
+                <input id="notificationToggle"
+                       type="checkbox"
+                       onchange="toggleNotifications()">
+                <span class="slider"></span>
             </label>
-
         </div>
 
-
+        <div class="setting-row">
+            <div>
+                <strong>🌙 Dark Mode</strong>
+                <p>ডার্ক থিম</p>
+            </div>
+            <label class="switch">
+                <input id="darkToggle" type="checkbox"
+                       onchange="toggleTheme()">
+                <span class="slider"></span>
+            </label>
+        </div>
 
         <div class="setting-row">
-
             <div>
-
-                <strong>
-                    🌙 Dark Mode
-                </strong>
-
-                <p>
-                    ডার্ক থিম
-                </p>
-
+                <strong>💾 Auto Backup Reminder</strong>
+                <p>৭ দিন পরপর রিমাইন্ড</p>
             </div>
-
-
             <label class="switch">
-
-                <input
-                    id="darkToggle"
-                    type="checkbox"
-                    onchange="toggleTheme()">
-
-                <span class="slider">
-                </span>
-
+                <input id="autoBackupToggle" type="checkbox"
+                       onchange="toggleAutoBackup()">
+                <span class="slider"></span>
             </label>
-
         </div>
     </section>
 
-
+    <section class="settings-card">
+        <h3>🎨 Accent Color</h3>
+        <div class="color-row" id="colorRow"></div>
+    </section>
 
     <section class="settings-card">
-
-        <h3>
-            💾 Data
-        </h3>
-
-
-        <button
-            class="secondary-btn"
-            onclick="backupData()">
-
+        <h3>💾 Data</h3>
+        <button class="secondary-btn" onclick="backupData()">
             📥 Backup Data
-
         </button>
-
-
         <label class="secondary-btn file-label">
-
             📤 Restore Data
-
-            <input
-                id="restoreFile"
-                type="file"
-                accept=".json"
-                onchange="restoreData(event)"
-                hidden>
-
+            <input id="restoreFile" type="file"
+                   accept=".json"
+                   onchange="restoreData(event)"
+                   hidden>
         </label>
-
-
-        <button
-            class="danger-btn"
-            onclick="deleteAllData()">
-
+        <button class="danger-btn" onclick="deleteAllData()">
             🗑️ সব ডেটা মুছে ফেলুন
-
         </button>
-
     </section>
-
-
 
     <section class="about-card">
-
-        <h3>
-            দৈনিক রুটিন
-        </h3>
-
-        <p>
-            আপনার সময়কে পরিকল্পিত ও সুন্দরভাবে
-            ব্যবহার করার জন্য একটি সহজ
-            Personal Routine App.
-        </p>
-
-        <small>
-            Version 1.0.0
-        </small>
-
+        <h3>দৈনিক রুটিন</h3>
+        <p>Personal Routine App</p>
+        <small>Version 3.2.0</small>
     </section>
+
 </main>
-
-
 
 <!-- =====================================================
      BOTTOM NAV
 ===================================================== -->
 
 <nav class="bottom-nav">
-
-
-    <button
-        class="nav-item active"
-        data-page="home"
-        onclick="showPage('home')">
-
-        <span>🏠</span>
-        <small>হোম</small>
-
+    <button class="nav-item active" data-page="home"
+            onclick="showPage('home')">
+        <span>🏠</span><small>হোম</small>
     </button>
-
-
-
-    <button
-        class="nav-item"
-        data-page="planning"
-        onclick="showPage('planning')">
-
-        <span>📅</span>
-        <small>পরিকল্পনা</small>
-
+    <button class="nav-item" data-page="planning"
+            onclick="showPage('planning')">
+        <span>📅</span><small>পরিকল্পনা</small>
     </button>
-
-
-
-    <button
-        class="add-nav-btn"
-        aria-label="নতুন কাজ"
-        onclick="openAddTask()">
-
-        +
-
+    <button class="add-nav-btn"
+            aria-label="নতুন কাজ"
+            onclick="openAddTask('task')">+</button>
+    <button class="nav-item" data-page="focus"
+            onclick="showPage('focus')">
+        <span>⏱️</span><small>ফোকাস</small>
     </button>
-
-
-
-    <button
-        class="nav-item"
-        data-page="report"
-        onclick="showPage('report')">
-
-        <span>📊</span>
-        <small>রিপোর্ট</small>
-
+    <button class="nav-item" data-page="report"
+            onclick="showPage('report')">
+        <span>📊</span><small>রিপোর্ট</small>
     </button>
-
-
-
-    <button
-        class="nav-item"
-        data-page="settings"
-        onclick="showPage('settings')">
-
-        <span>⚙️</span>
-        <small>সেটিংস</small>
-
+    <button class="nav-item" data-page="settings"
+            onclick="showPage('settings')">
+        <span>⚙️</span><small>সেটিংস</small>
     </button>
-
 </nav>
 
 </div>
 
-
-
-<!-- =====================================================
-     MODAL
-===================================================== -->
-
-<div
-    id="taskModal"
-    class="modal hidden">
-
+<!-- MODAL -->
+<div id="taskModal" class="modal hidden">
     <div class="modal-content">
-
         <div class="modal-header">
-
-            <h3 id="modalTitle">
-                কাজ
-            </h3>
-
-            <button
-                class="close-btn"
-                aria-label="বন্ধ"
-                onclick="closeModal()">
-
-                ×
-
-            </button>
-
+            <h3 id="modalTitle">কাজ</h3>
+            <button class="close-btn" aria-label="বন্ধ"
+                    onclick="closeModal()">×</button>
         </div>
-
-
-        <div id="modalBody">
-        </div>
-
+        <div id="modalBody"></div>
     </div>
-
 </div>
 
-
-
-<!-- TOAST -->
-
-<div
-    id="toast"
-    class="toast">
-</div>
-
-
+<div id="toast" class="toast"></div>
 
 <script>
 
 /* =====================================================
-   DAILY ROUTINE
-   ALL-IN-ONE JAVASCRIPT
+   DAILY ROUTINE — v3.2
 ===================================================== */
 
 "use strict";
 
+const TASK_KEY        = "dailyRoutine_tasks";
+const AVOID_TASK_KEY  = "dailyRoutine_avoidTasks";
+const SETTINGS_KEY    = "dailyRoutine_settings";
+const NOTES_KEY       = "dailyRoutine_notes";
+const GOALS_KEY       = "dailyRoutine_goals";
+const AVOID_LOG_KEY   = "dailyRoutine_avoidLog";
+const VIOLATION_KEY   = "dailyRoutine_violations";
+const REASON_KEY      = "dailyRoutine_violationReasons";
+const REFLECTION_KEY  = "dailyRoutine_reflections";
+const POMODORO_KEY    = "dailyRoutine_pomodoro";
+const POMO_CONFIG_KEY = "dailyRoutine_pomoConfig";
+const BADGE_KEY       = "dailyRoutine_badges";
+const LAST_BACKUP_KEY = "dailyRoutine_lastBackup";
+const TEMPLATES_KEY   = "dailyRoutine_templates";
 
-/* =====================================================
-   STORAGE KEYS
-===================================================== */
-
-const TASK_KEY     = "dailyRoutine_tasks";
-const SETTINGS_KEY = "dailyRoutine_settings";
-const NOTES_KEY    = "dailyRoutine_notes";
-const GOALS_KEY    = "dailyRoutine_goals";
-
-
-/* =====================================================
-   DATA
-===================================================== */
-
-let tasks = [];
+let tasks       = [];
+let avoidTasks  = [];
+let avoidLog    = {};   /* { date: { avoidId: count } } */
+let violations  = {};   /* { date: totalPenalty } */
+let violationReasons = {}; /* { date: { avoidId: [ {reason, at} ] } } */
+let badgesEarned = {};
 
 let settings = {
     name:"",
     darkMode:false,
-    notifications:true
+    notifications:true,
+    autoBackup:true,
+    accent:"#4f46e5"
+};
+
+let pomoConfig = {
+    focus: 25,
+    short: 5,
+    long: 15,
+    volume: 80
 };
 
 let currentDateFilter = "today";
-let calendarDate = new Date();
-let toastTimer = null;
+let calendarDate      = new Date();
+let activeTab         = "tasks";
+let dateMode          = "single";
+let selectedDates     = [];
+let draftSteps        = [];
+let toastTimer        = null;
+let currentDayDetail  = null; /* currently viewed date in detail page */
 
+const defaultTemplates = [
+    { name:"📚 পড়াশোনা", title:"১ ঘণ্টা পড়াশোনা",
+      category:"পড়াশোনা", time:"20:00" },
+    { name:"💪 ব্যায়াম", title:"৩০ মিনিট ব্যায়াম",
+      category:"স্বাস্থ্য", time:"06:30" },
+    { name:"💧 পানি", title:"৮ গ্লাস পানি পান",
+      category:"স্বাস্থ্য", time:"08:00" },
+    { name:"🧘 মেডিটেশন", title:"১৫ মিনিট মেডিটেশন",
+      category:"স্বাস্থ্য", time:"06:00" },
+    { name:"📖 বই পড়া", title:"৩০ মিনিট বই পড়া",
+      category:"পড়াশোনা", time:"21:30" },
+    { name:"📝 ডায়েরি", title:"আজকের ডায়েরি লেখা",
+      category:"ব্যক্তিগত", time:"22:00" }
+];
 
 /* =====================================================
    INIT
@@ -2674,145 +2295,117 @@ let toastTimer = null;
 document.addEventListener("DOMContentLoaded", function(){
 
     loadData();
-
     setDefaultDate();
-
     applySettings();
-
     updateHeader();
-
     renderAll();
-
     loadSettingsUI();
-
+    loadPomodoroSettingsUI();
     showRandomQuote();
-
     requestNotificationPermission();
+    renderTemplates();
+    renderColorPicker();
+    checkAutoBackupReminder();
+    updatePomodoroLabels();
+
+    const picker = document.getElementById("multiMonthPicker");
+    if(picker){
+        const now = new Date();
+        picker.value =
+            `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+    }
 
 });
 
-
 /* =====================================================
-   LOAD DATA
+   LOAD / SAVE
 ===================================================== */
 
 function loadData(){
-
     try{
+        tasks       = safeParse(localStorage.getItem(TASK_KEY), []);
+        avoidTasks  = safeParse(localStorage.getItem(AVOID_TASK_KEY), []);
+        avoidLog    = safeParse(localStorage.getItem(AVOID_LOG_KEY), {});
+        violations  = safeParse(localStorage.getItem(VIOLATION_KEY), {});
+        violationReasons = safeParse(localStorage.getItem(REASON_KEY), {});
+        badgesEarned= safeParse(localStorage.getItem(BADGE_KEY), {});
 
-        const savedTasks = localStorage.getItem(TASK_KEY);
-        const savedSettings = localStorage.getItem(SETTINGS_KEY);
+        const savedSettings = safeParse(localStorage.getItem(SETTINGS_KEY), {});
+        settings = { ...settings, ...savedSettings };
 
-        if(savedTasks){
-
-            const parsed = JSON.parse(savedTasks);
-
-            tasks = Array.isArray(parsed) ? parsed : [];
-
-        }
-
-        if(savedSettings){
-
-            settings = {
-                ...settings,
-                ...JSON.parse(savedSettings)
-            };
-
-        }
-
+        const savedPomo = safeParse(localStorage.getItem(POMO_CONFIG_KEY), {});
+        pomoConfig = { ...pomoConfig, ...savedPomo };
     }
-
     catch(error){
-
-        console.error("Load data error:", error);
-
+        console.error("Load error:", error);
         tasks = [];
-
+        avoidTasks = [];
     }
-
 }
 
-
-/* =====================================================
-   SAVE DATA
-===================================================== */
-
-function saveTasks(){
-
-    localStorage.setItem(
-        TASK_KEY,
-        JSON.stringify(tasks)
-    );
-
+function safeParse(str, fallback){
+    if(!str) return fallback;
+    try{ return JSON.parse(str); }
+    catch{ return fallback; }
 }
 
-
-function saveSettings(){
-
-    localStorage.setItem(
-        SETTINGS_KEY,
-        JSON.stringify(settings)
-    );
-
-}
-
+function saveTasks(){ localStorage.setItem(TASK_KEY, JSON.stringify(tasks)); }
+function saveAvoidTasks(){ localStorage.setItem(AVOID_TASK_KEY, JSON.stringify(avoidTasks)); }
+function saveAvoidLog(){ localStorage.setItem(AVOID_LOG_KEY, JSON.stringify(avoidLog)); }
+function saveViolations(){ localStorage.setItem(VIOLATION_KEY, JSON.stringify(violations)); }
+function saveViolationReasons(){ localStorage.setItem(REASON_KEY, JSON.stringify(violationReasons)); }
+function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
+function saveBadges(){ localStorage.setItem(BADGE_KEY, JSON.stringify(badgesEarned)); }
+function savePomoConfig(){ localStorage.setItem(POMO_CONFIG_KEY, JSON.stringify(pomoConfig)); }
 
 /* =====================================================
    DATE HELPERS
 ===================================================== */
 
 function getDateString(date = new Date()){
-
     const year  = date.getFullYear();
     const month = String(date.getMonth()+1).padStart(2,"0");
     const day   = String(date.getDate()).padStart(2,"0");
-
     return `${year}-${month}-${day}`;
-
 }
-
 
 function addDays(date, amount){
-
     const result = new Date(date);
-
     result.setDate(result.getDate() + amount);
-
     return result;
-
 }
-
 
 function formatDate(dateString){
-
     const date = new Date(dateString + "T00:00:00");
-
     return date.toLocaleDateString("bn-BD", {
-        day:"numeric",
-        month:"long",
-        year:"numeric"
+        day:"numeric", month:"long", year:"numeric"
     });
-
 }
 
+function formatShortDate(dateString){
+    const date = new Date(dateString + "T00:00:00");
+    return date.toLocaleDateString("bn-BD", {
+        day:"numeric", month:"short"
+    });
+}
 
 function formatTime(time){
-
     if(!time) return "";
-
     const parts = time.split(":");
-
     let hour = parseInt(parts[0], 10);
     const minute = parts[1];
-
     const ampm = hour >= 12 ? "PM" : "AM";
-
     hour = hour % 12 || 12;
-
     return `${hour}:${minute} ${ampm}`;
-
 }
 
+function formatDateTime(isoString){
+    const date = new Date(isoString);
+    return date.toLocaleString("bn-BD", {
+        day:"numeric", month:"short",
+        hour:"numeric", minute:"numeric"
+    });
+}
 
 /* =====================================================
    HEADER
@@ -2822,56 +2415,31 @@ function updateHeader(){
 
     const now = new Date();
 
-    const shortDate = now.toLocaleDateString("bn-BD", {
-        weekday:"long",
-        day:"numeric",
-        month:"long"
-    });
+    document.getElementById("headerDate").textContent =
+        now.toLocaleDateString("bn-BD", {
+            weekday:"long", day:"numeric", month:"long"
+        });
 
-    const fullDate = now.toLocaleDateString("bn-BD", {
-        weekday:"long",
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-    });
-
-    document.getElementById("headerDate").textContent = shortDate;
-    document.getElementById("todayFullDate").textContent = fullDate;
+    document.getElementById("todayFullDate").textContent =
+        now.toLocaleDateString("bn-BD", {
+            weekday:"long", year:"numeric",
+            month:"long", day:"numeric"
+        });
 
     const hour = now.getHours();
-
     let greeting = "শুভ সকাল 🌅";
-
-    if(hour >= 12 && hour < 17){
-        greeting = "শুভ দুপুর ☀️";
-    }
-    else if(hour >= 17 && hour < 21){
-        greeting = "শুভ সন্ধ্যা 🌆";
-    }
-    else if(hour >= 21 || hour < 5){
-        greeting = "শুভ রাত্রি 🌙";
-    }
+    if(hour >= 12 && hour < 17)      greeting = "শুভ দুপুর ☀️";
+    else if(hour >= 17 && hour < 21) greeting = "শুভ সন্ধ্যা 🌆";
+    else if(hour >= 21 || hour < 5)  greeting = "শুভ রাত্রি 🌙";
 
     const name = settings.name ? ", " + settings.name : "";
-
-    document.getElementById("welcomeText").textContent =
-        greeting + name;
-
+    document.getElementById("welcomeText").textContent = greeting + name;
 }
-
-
-/* =====================================================
-   DEFAULT FORM DATE
-===================================================== */
 
 function setDefaultDate(){
-
     const dateInput = document.getElementById("taskDate");
-
     if(dateInput) dateInput.value = getDateString();
-
 }
-
 
 /* =====================================================
    NAVIGATION
@@ -2879,66 +2447,466 @@ function setDefaultDate(){
 
 function showPage(pageName){
 
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
+    document.querySelectorAll(".page").forEach(p =>
+        p.classList.remove("active"));
 
     const page = document.getElementById(pageName + "Page");
-
     if(page) page.classList.add("active");
 
-    document.querySelectorAll(".nav-item").forEach(item => {
-        item.classList.remove("active");
-    });
+    document.querySelectorAll(".nav-item").forEach(item =>
+        item.classList.remove("active"));
 
     const nav = document.querySelector(`[data-page="${pageName}"]`);
-
     if(nav) nav.classList.add("active");
 
     if(pageName === "home")     renderDashboard();
     if(pageName === "planning"){ renderCalendar(); renderTasks(); }
     if(pageName === "report")   renderReports();
     if(pageName === "settings") loadSettingsUI();
+    if(pageName === "focus")    updatePomodoroUI();
 
     window.scrollTo({ top:0, behavior:"smooth" });
-
 }
-
 
 /* =====================================================
-   ADD TASK
+   DAY DETAIL PAGE
 ===================================================== */
 
-function openAddTask(){
+function openDayDetail(when){
 
-    resetForm();
+    let dateString;
 
-    showPage("add");
+    if(when === "today")      dateString = getDateString();
+    else if(when === "yesterday") dateString = getDateString(addDays(new Date(), -1));
+    else if(typeof when === "string" && /^\d{4}-\d{2}-\d{2}$/.test(when))
+        dateString = when;
+    else
+        dateString = getDateString();
+
+    currentDayDetail = dateString;
+
+    renderDayDetail(dateString);
+    showPage("dayDetail");
+}
+
+function renderDayDetail(dateString){
+
+    const today = getDateString();
+    const yesterday = getDateString(addDays(new Date(), -1));
+
+    let titleLabel = formatDate(dateString);
+    if(dateString === today) titleLabel = "আজ — " + titleLabel;
+    else if(dateString === yesterday) titleLabel = "গতকাল — " + titleLabel;
+
+    document.getElementById("dayDetailTitle").textContent = "📅 " + titleLabel;
+    document.getElementById("dayDetailDate").textContent = formatDate(dateString);
+
+    const data = calculateScore(dateString);
+
+    document.getElementById("detailScoreText").textContent =
+        `স্কোর: ${data.finalScore}%`;
+
+    document.getElementById("detailSubText").textContent =
+        `${data.done} / ${data.total} কাজ সম্পন্ন` +
+        (data.penalty ? ` · পেনাল্টি −${data.penalty}%` : "");
+
+    document.getElementById("detailDone").textContent    = data.done;
+    document.getElementById("detailPending").textContent = data.total - data.done;
+    document.getElementById("detailPenalty").textContent = data.penalty + "%";
+
+    document.getElementById("doneCountBadge").textContent =
+        data.done + " / " + data.total;
+    document.getElementById("pendingCountBadge").textContent =
+        (data.total - data.done);
+
+    /* Task lists */
+    const dayTasks = getTasksForDate(dateString);
+
+    const doneTasks = dayTasks.filter(t => t.completed);
+    const pendingTasks = dayTasks.filter(t => !t.completed);
+
+    renderDetailTaskList("detailDoneList", doneTasks, true);
+    renderDetailTaskList("detailPendingList", pendingTasks, false);
+
+    /* Avoid violations */
+    renderDetailAvoidList(dateString);
 
 }
 
+function renderDetailTaskList(containerId, list, showUndo){
+
+    const container = document.getElementById(containerId);
+    if(!container) return;
+
+    if(!list.length){
+        container.innerHTML = `
+            <div class="empty-state" style="padding:20px">
+                <div>${showUndo ? "🎯" : "✨"}</div>
+                <p>${showUndo
+                    ? "এখনো কোনো কাজ সম্পন্ন করা হয়নি।"
+                    : "সব কাজ সম্পন্ন! দুর্দান্ত 🎉"}</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = list
+        .sort((a,b) => a.time.localeCompare(b.time))
+        .map(t => {
+
+            const priorityText =
+                t.priority === "high"   ? "🔴 High"   :
+                t.priority === "medium" ? "🟡 Medium" : "🟢 Low";
+
+            const checkClass = t.completed ? "checked" : "";
+
+            return `
+                <div class="task-card ${t.completed ? "completed" : ""}">
+                    <button class="task-check ${checkClass}"
+                            onclick="toggleTaskFromDetail('${t.id}')">
+                        ${t.completed ? "✓" : ""}
+                    </button>
+                    <div class="task-info" onclick="openTaskDetails('${t.id}')">
+                        <div class="task-title">${escapeHTML(t.title)}</div>
+                        <div class="task-meta">
+                            <span>⏰ ${formatTime(t.time)}</span>
+                            <span class="badge">${escapeHTML(t.category)}</span>
+                            <span class="priority-${t.priority}">${priorityText}</span>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        ${
+                            showUndo
+                                ? `<button class="small-btn"
+                                          title="অসম্পন্ন করুন"
+                                          onclick="toggleTaskFromDetail('${t.id}')">↩️</button>`
+                                : `<button class="small-btn"
+                                          title="সম্পন্ন করুন"
+                                          onclick="toggleTaskFromDetail('${t.id}')">✓</button>`
+                        }
+                    </div>
+                </div>`;
+        })
+        .join("");
+}
+
+function renderDetailAvoidList(dateString){
+
+    const container = document.getElementById("detailAvoidList");
+    if(!container) return;
+
+    const dayAvoids = getAvoidsForDate(dateString);
+
+    if(!dayAvoids.length){
+        container.innerHTML = `
+            <div class="empty-state" style="padding:20px">
+                <div>🚫</div>
+                <p>এই দিনে কোনো না করার কাজ নেই।</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = dayAvoids.map(avoid => {
+
+        const log = avoidLog[dateString] || {};
+        const count = log[avoid.id] || 0;
+        const limit = avoid.limit || 1;
+        const penalty = avoid.penalty || 10;
+        const isViolated = count >= limit;
+
+        const reasons = (violationReasons[dateString] || {})[avoid.id] || [];
+        const reasonsHTML = reasons.length
+            ? `<div style="margin-top:8px">
+                ${reasons.map(r => `
+                    <div class="reason">
+                        💬 ${escapeHTML(r.reason || "(কারণ উল্লেখ করা হয়নি)")}
+                        <div class="time">${formatDateTime(r.at)}</div>
+                    </div>
+                `).join("")}
+               </div>`
+            : "";
+
+        return `
+            <div class="task-card avoid-card">
+                <div style="
+                    width:29px;height:29px;flex-shrink:0;
+                    border-radius:50%;
+                    background:${isViolated ? "var(--danger)" : "rgba(220,38,38,.15)"};
+                    color:${isViolated ? "white" : "var(--danger)"};
+                    display:flex;align-items:center;justify-content:center;
+                    font-size:15px">🚫</div>
+                <div class="task-info">
+                    <div class="task-title">${escapeHTML(avoid.title)}</div>
+                    <div class="task-meta">
+                        <span>${count} / ${limit} বার</span>
+                        <span class="badge badge-danger">−${penalty}% / লঙ্ঘন</span>
+                    </div>
+                    ${reasonsHTML}
+                </div>
+                <div class="task-actions" style="flex-direction:column;gap:4px">
+                    <button class="small-btn"
+                            title="একবার লঙ্ঘন যোগ করুন"
+                            style="background:rgba(220,38,38,.12);border-radius:8px;padding:6px 8px"
+                            onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">
+                        ➕
+                    </button>
+                    ${
+                        count > 0
+                            ? `<button class="small-btn"
+                                      title="একটি লঙ্ঘন কমান"
+                                      style="background:rgba(22,163,74,.12);border-radius:8px;padding:6px 8px"
+                                      onclick="removeAvoidViolation('${avoid.id}','${dateString}')">
+                                   ➖
+                               </button>`
+                            : ""
+                    }
+                </div>
+            </div>`;
+    }).join("");
+
+}
+
+function toggleTaskFromDetail(id){
+
+    toggleTask(id);
+
+    /* Refresh detail page */
+    if(currentDayDetail){
+        renderDayDetail(currentDayDetail);
+    }
+}
+
+/* =====================================================
+   TAB SWITCH
+===================================================== */
+
+function switchTab(tab){
+    activeTab = tab;
+    document.getElementById("tabTasks").classList
+        .toggle("active", tab === "tasks");
+    document.getElementById("tabAvoids").classList
+        .toggle("active", tab === "avoids");
+    renderTasks();
+}
+
+/* =====================================================
+   OPEN ADD TASK
+===================================================== */
+
+function openAddTask(kind = "task"){
+
+    resetForm();
+    document.getElementById("taskKind").value = kind;
+
+    if(kind === "avoid"){
+        document.getElementById("addPageTitle").textContent = "🚫 না করার কাজ";
+        document.getElementById("addPageSubtitle").textContent =
+            "যে কাজগুলো করা থেকে বিরত থাকতে চান";
+        document.getElementById("avoidFields").classList.remove("hidden");
+        document.getElementById("taskCategory").value = "স্বাস্থ্য";
+    }
+    else{
+        document.getElementById("addPageTitle").textContent = "➕ নতুন কাজ";
+        document.getElementById("addPageSubtitle").textContent =
+            "আপনার পরিকল্পনা তৈরি করুন";
+        document.getElementById("avoidFields").classList.add("hidden");
+    }
+
+    showPage("add");
+}
+
+/* =====================================================
+   RESET FORM
+===================================================== */
 
 function resetForm(){
 
     const form = document.getElementById("taskForm");
-
     if(form) form.reset();
 
     document.getElementById("editTaskId").value = "";
-
+    document.getElementById("taskKind").value = "task";
     document.getElementById("taskDate").value = getDateString();
-
     document.getElementById("taskRepeat").value = "none";
     document.getElementById("taskReminder").value = "0";
     document.getElementById("taskPriority").value = "medium";
-
-    document.getElementById("saveBtnText").textContent =
-        "💾 কাজ সংরক্ষণ করুন";
-
+    document.getElementById("saveBtnText").textContent = "💾 কাজ সংরক্ষণ করুন";
     document.getElementById("cancelEditBtn").classList.add("hidden");
 
+    dateMode = "single";
+    selectedDates = [];
+    setDateMode("single");
+    renderSelectedDates();
+
+    draftSteps = [];
+    renderSteps();
+
+    document.getElementById("avoidLimit").value = 1;
+    document.getElementById("avoidPenalty").value = 10;
+
+    const picker = document.getElementById("multiMonthPicker");
+    if(picker){
+        const now = new Date();
+        picker.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+    }
+
+    renderMultiDateGrid();
 }
 
+/* =====================================================
+   DATE MODE
+===================================================== */
+
+function setDateMode(mode){
+
+    dateMode = mode;
+    document.getElementById("dateModeSingle").classList
+        .toggle("active", mode === "single");
+    document.getElementById("dateModeMulti").classList
+        .toggle("active", mode === "multi");
+
+    document.getElementById("singleDateWrap").classList
+        .toggle("hidden", mode !== "single");
+    document.getElementById("multiDateWrap").classList
+        .toggle("hidden", mode !== "multi");
+
+    if(mode === "multi"){
+        renderMultiDateGrid();
+        renderSelectedDates();
+    }
+}
+
+function renderMultiDateGrid(){
+
+    const grid = document.getElementById("multiDateGrid");
+    if(!grid) return;
+
+    const picker = document.getElementById("multiMonthPicker");
+    if(!picker || !picker.value){ grid.innerHTML = ""; return; }
+
+    const [year, month] = picker.value.split("-").map(Number);
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    grid.innerHTML = "";
+
+    for(let day = 1; day <= daysInMonth; day++){
+        const date = new Date(year, month - 1, day);
+        const dateString = getDateString(date);
+
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "day-chip";
+        chip.textContent = day;
+
+        if(selectedDates.includes(dateString))
+            chip.classList.add("selected");
+
+        chip.onclick = function(){
+            const idx = selectedDates.indexOf(dateString);
+            if(idx === -1) selectedDates.push(dateString);
+            else selectedDates.splice(idx, 1);
+
+            renderMultiDateGrid();
+            renderSelectedDates();
+        };
+
+        grid.appendChild(chip);
+    }
+}
+
+function renderSelectedDates(){
+
+    const list = document.getElementById("selectedDatesList");
+    if(!list) return;
+
+    if(!selectedDates.length){
+        list.innerHTML = `
+            <span style="color:var(--muted);font-size:11px">
+                এখনো কোনো তারিখ সিলেক্ট করা হয়নি
+            </span>`;
+        return;
+    }
+
+    selectedDates.sort();
+
+    list.innerHTML = selectedDates.map(date => `
+        <span class="date-tag">
+            📅 ${formatShortDate(date)}
+            <button type="button"
+                    onclick="removeSelectedDate('${date}')">×</button>
+        </span>
+    `).join("");
+}
+
+function removeSelectedDate(date){
+    selectedDates = selectedDates.filter(d => d !== date);
+    renderMultiDateGrid();
+    renderSelectedDates();
+}
+
+function selectAllDatesInMonth(){
+    const picker = document.getElementById("multiMonthPicker");
+    if(!picker || !picker.value) return;
+
+    const [year, month] = picker.value.split("-").map(Number);
+    const daysInMonth = new Date(year, month, 0).getDate();
+
+    selectedDates = [];
+
+    for(let day = 1; day <= daysInMonth; day++){
+        const date = new Date(year, month - 1, day);
+        selectedDates.push(getDateString(date));
+    }
+
+    renderMultiDateGrid();
+    renderSelectedDates();
+}
+
+function clearSelectedDates(){
+    selectedDates = [];
+    renderMultiDateGrid();
+    renderSelectedDates();
+}
+
+/* =====================================================
+   STEPS
+===================================================== */
+
+function addStep(){
+    const input = document.getElementById("stepInput");
+    const value = input.value.trim();
+
+    if(!value){ toast("ধাপটি লিখুন।"); return; }
+
+    draftSteps.push(value);
+    input.value = "";
+    renderSteps();
+}
+
+function renderSteps(){
+    const container = document.getElementById("stepList");
+    if(!container) return;
+
+    if(!draftSteps.length){
+        container.innerHTML = `
+            <div style="font-size:12px;color:var(--muted);padding:6px 0">
+                এখনো কোনো ধাপ যোগ করা হয়নি
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = draftSteps.map((step, index) => `
+        <div class="step-item">
+            <span class="num">${index + 1}</span>
+            <span class="text">${escapeHTML(step)}</span>
+            <button type="button" onclick="removeStep(${index})">×</button>
+        </div>
+    `).join("");
+}
+
+function removeStep(index){
+    draftSteps.splice(index, 1);
+    renderSteps();
+}
 
 /* =====================================================
    SAVE TASK
@@ -2948,9 +2916,9 @@ document.getElementById("taskForm").addEventListener("submit", function(e){
 
     e.preventDefault();
 
+    const kind        = document.getElementById("taskKind").value;
     const title       = document.getElementById("taskTitle").value.trim();
     const description = document.getElementById("taskDescription").value.trim();
-    const date        = document.getElementById("taskDate").value;
     const time        = document.getElementById("taskTime").value;
     const category    = document.getElementById("taskCategory").value;
     const priority    = document.getElementById("taskPriority").value;
@@ -2959,179 +2927,365 @@ document.getElementById("taskForm").addEventListener("submit", function(e){
     const note        = document.getElementById("taskNote").value.trim();
     const editId      = document.getElementById("editTaskId").value;
 
-    if(!title){ toast("দয়া করে কাজের নাম লিখুন।"); return; }
-    if(!date) { toast("দয়া করে তারিখ নির্বাচন করুন।"); return; }
-    if(!time) { toast("দয়া করে সময় নির্বাচন করুন।"); return; }
+    if(!title){ toast("দয়া করে কাজের নাম লিখুন।"); return; }
+    if(!time) { toast("দয়া করে সময় নির্বাচন করুন।"); return; }
 
-    if(editId){
+    let dates = [];
 
-        const index = tasks.findIndex(task => task.id === editId);
+    if(dateMode === "single"){
+        const single = document.getElementById("taskDate").value;
+        if(!single){ toast("দয়া করে তারিখ নির্বাচন করুন।"); return; }
+        dates = [single];
+    }
+    else{
+        if(!selectedDates.length){
+            toast("অন্তত একটি তারিখ সিলেক্ট করুন।");
+            return;
+        }
+        dates = [...selectedDates];
+    }
 
-        if(index !== -1){
+    if(kind === "avoid"){
+        const limit   = parseInt(document.getElementById("avoidLimit").value, 10) || 1;
+        const penalty = parseInt(document.getElementById("avoidPenalty").value, 10) || 10;
 
-            tasks[index] = {
-                ...tasks[index],
-                title, description, date, time,
-                category, priority, reminder, repeat, note
+        if(editId){
+            const idx = avoidTasks.findIndex(a => a.id === editId);
+            if(idx !== -1){
+                avoidTasks[idx] = {
+                    ...avoidTasks[idx],
+                    title, description, time, category,
+                    priority, reminder, repeat, note,
+                    dates, limit, penalty,
+                    steps: [...draftSteps]
+                };
+            }
+            toast("না করার কাজ আপডেট হয়েছে।");
+        }
+        else{
+            const avoid = {
+                id: Date.now().toString(),
+                title, description, time, category,
+                priority, reminder, repeat, note,
+                dates, limit, penalty,
+                steps: [...draftSteps],
+                createdAt: new Date().toISOString()
             };
-
+            avoidTasks.push(avoid);
+            toast("না করার কাজ সংরক্ষণ হয়েছে।");
         }
 
-        toast("কাজ আপডেট হয়েছে।");
-
+        saveAvoidTasks();
     }
-
     else{
+        if(editId){
+            const idx = tasks.findIndex(t => t.id === editId);
+            if(idx !== -1){
+                tasks[idx] = {
+                    ...tasks[idx],
+                    title, description, time, category,
+                    priority, reminder, repeat, note,
+                    dates, date: dates[0]
+                };
+            }
+            toast("কাজ আপডেট হয়েছে।");
+        }
+        else{
+            dates.forEach((d, i) => {
+                const task = {
+                    id: Date.now().toString() + "_" + i,
+                    title, description,
+                    date: d, dates, time, category, priority,
+                    reminder, repeat, note,
+                    completed:false,
+                    createdAt: new Date().toISOString()
+                };
+                tasks.push(task);
+                scheduleReminder(task);
+            });
 
-        const task = {
-            id: Date.now().toString(),
-            title, description, date, time,
-            category, priority, reminder, repeat, note,
-            completed:false,
-            createdAt: new Date().toISOString()
-        };
+            toast(dates.length > 1
+                ? `${dates.length}টি তারিখে কাজ যোগ হয়েছে।`
+                : "কাজ সংরক্ষণ হয়েছে।");
+        }
 
-        tasks.push(task);
-
-        scheduleReminder(task);
-
-        toast("কাজ সংরক্ষণ হয়েছে।");
-
+        saveTasks();
     }
 
-    saveTasks();
     renderAll();
     resetForm();
     showPage("planning");
-
 });
 
+/* =====================================================
+   GETTERS
+===================================================== */
+
+function getTasksForDate(dateString){
+    return tasks.filter(t => t.date === dateString);
+}
+
+function getAvoidsForDate(dateString){
+    return avoidTasks.filter(a =>
+        (a.dates && a.dates.includes(dateString)) ||
+        a.date === dateString
+    );
+}
+
+function getTodayTasks(){
+    return getTasksForDate(getDateString())
+        .sort((a,b) => a.time.localeCompare(b.time));
+}
+
+/* =====================================================
+   SCORE
+===================================================== */
+
+function calculateScore(dateString){
+
+    const dayTasks = getTasksForDate(dateString);
+    const total    = dayTasks.length;
+    const done     = dayTasks.filter(t => t.completed).length;
+
+    const baseScore = total ? Math.round((done / total) * 100) : 0;
+    const penalty   = violations[dateString] || 0;
+    const finalScore = Math.max(0, baseScore - penalty);
+
+    return { baseScore, penalty, finalScore, total, done };
+}
+
+/* =====================================================
+   BADGES
+===================================================== */
+
+const BADGES = [
+    { id:"first",    icon:"⭐", name:"প্রথম কাজ",     check: () => tasks.some(t => t.completed) },
+    { id:"streak3",  icon:"🔥", name:"৩ দিন Streak",  check: () => calculateStreak() >= 3 },
+    { id:"streak7",  icon:"🏆", name:"৭ দিন Streak",  check: () => calculateStreak() >= 7 },
+    { id:"perfect",  icon:"💯", name:"পারফেক্ট দিন",  check: () => {
+        const t = getTodayTasks();
+        return t.length > 0 && t.every(x => x.completed);
+    }},
+    { id:"score90",  icon:"🎯", name:"৯০% স্কোর",     check: () => {
+        const s = calculateScore(getDateString());
+        return s.finalScore >= 90;
+    }},
+    { id:"fifty",    icon:"📚", name:"৫০টি কাজ",      check: () => tasks.filter(t => t.completed).length >= 50 },
+    { id:"focus5",   icon:"⏱️", name:"৫ ফোকাস",       check: () => {
+        const p = safeParse(localStorage.getItem(POMODORO_KEY), {});
+        return (p.count || 0) >= 5;
+    }}
+];
+
+function checkBadges(){
+
+    let changed = false;
+
+    BADGES.forEach(badge => {
+        if(!badgesEarned[badge.id] && badge.check()){
+            badgesEarned[badge.id] = new Date().toISOString();
+            changed = true;
+            setTimeout(() => toast(`🏅 ব্যাজ আনলক: ${badge.name}`), 500);
+        }
+    });
+
+    if(changed) saveBadges();
+}
+
+function renderBadges(){
+    const container = document.getElementById("badgeStrip");
+    if(!container) return;
+
+    container.innerHTML = BADGES.map(b => `
+        <div class="badge-chip ${badgesEarned[b.id] ? "earned" : ""}">
+            <span class="badge-icon">${b.icon}</span>
+            <span>${b.name}</span>
+        </div>
+    `).join("");
+}
 
 /* =====================================================
    DASHBOARD
 ===================================================== */
 
-function getTodayTasks(){
-
-    const today = getDateString();
-
-    return tasks
-        .filter(task => task.date === today)
-        .sort((a,b) => a.time.localeCompare(b.time));
-
-}
-
-
 function renderDashboard(){
 
-    const todayTasks = getTodayTasks();
+    checkBadges();
+    renderBadges();
 
-    const total     = todayTasks.length;
-    const completed = todayTasks.filter(t => t.completed).length;
-    const pending   = total - completed;
+    const today     = getDateString();
+    const yesterday = getDateString(addDays(new Date(), -1));
 
-    const percent = total ? Math.round((completed / total) * 100) : 0;
+    const tData = calculateScore(today);
+    const yData = calculateScore(yesterday);
 
-    document.getElementById("completedCount").textContent = completed;
-    document.getElementById("totalCount").textContent     = total;
-    document.getElementById("pendingCount").textContent   = pending;
-    document.getElementById("progressPercent").textContent = percent + "%";
+    document.getElementById("tCompletedCount").textContent = tData.done;
+    document.getElementById("tTotalCount").textContent     = tData.total;
+    document.getElementById("tProgressBar").style.width    = tData.baseScore + "%";
+    document.getElementById("tPercentText").textContent =
+        tData.baseScore + "% সম্পন্ন" +
+        (tData.penalty ? ` (−${tData.penalty}%)` : "");
 
-    document.getElementById("progressBar").style.width = percent + "%";
+    document.getElementById("yCompletedCount").textContent = yData.done;
+    document.getElementById("yTotalCount").textContent     = yData.total;
+    document.getElementById("yProgressBar").style.width    = yData.baseScore + "%";
+    document.getElementById("yPercentText").textContent =
+        yData.baseScore + "% সম্পন্ন";
 
-    const degree = percent * 3.6;
+    const finalScore = tData.finalScore;
 
+    document.getElementById("completedCount").textContent = tData.done;
+    document.getElementById("totalCount").textContent     = tData.total;
+    document.getElementById("progressPercent").textContent = finalScore + "%";
+    document.getElementById("progressBar").style.width    = finalScore + "%";
+
+    const degree = finalScore * 3.6;
     document.getElementById("progressCircle").style.background =
-        `conic-gradient(
-            var(--primary) ${degree}deg,
-            var(--border) ${degree}deg
-        )`;
+        `conic-gradient(var(--accent) ${degree}deg, var(--border) ${degree}deg)`;
 
-    document.getElementById("streakCount").textContent = calculateStreak();
-    document.getElementById("goalCount").textContent   = getGoalCount();
+    document.getElementById("pendingCount").textContent = tData.total - tData.done;
+    document.getElementById("avoidCount").textContent   = getAvoidsForDate(today).length;
+    document.getElementById("streakCount").textContent  = calculateStreak();
+    document.getElementById("goalCount").textContent    = getGoalCount();
+
+    renderTrend();
 
     const container = document.getElementById("todayTasks");
+    const todayTasks = getTodayTasks();
 
     if(!todayTasks.length){
-
         container.innerHTML = `
             <div class="empty-state">
                 <div>📝</div>
                 <p>আজকের জন্য কোনো কাজ নেই।</p>
-                <button class="primary-btn" onclick="openAddTask()">
+                <button class="primary-btn"
+                        onclick="openAddTask('task')">
                     ➕ আজকের কাজ যোগ করুন
                 </button>
-            </div>
-        `;
-
+            </div>`;
         return;
-
     }
 
     container.innerHTML = todayTasks
         .slice(0,5)
-        .map(task => taskHTML(task))
+        .map(t => taskHTML(t))
         .join("");
-
 }
 
+/* =====================================================
+   TREND CHART — CLICKABLE
+===================================================== */
+
+function renderTrend(){
+
+    const container = document.getElementById("trendBars");
+    if(!container) return;
+
+    let html = "";
+
+    for(let i = 6; i >= 0; i--){
+
+        const date = addDays(new Date(), -i);
+        const dateString = getDateString(date);
+        const data = calculateScore(dateString);
+
+        const dayName = date.toLocaleDateString("bn-BD", { weekday:"narrow" });
+
+        html += `
+            <div class="trend-bar"
+                 title="${formatShortDate(dateString)} · ${data.finalScore}%"
+                 onclick="openDayDetail('${dateString}')">
+                <div class="bar" style="height:${Math.max(4, data.finalScore)}%"></div>
+                <div class="label">${dayName}</div>
+            </div>`;
+    }
+
+    container.innerHTML = html;
+}
 
 /* =====================================================
-   TASK HTML
+   TASK / AVOID HTML
 ===================================================== */
 
 function taskHTML(task){
 
-    const completed  = task.completed ? "completed" : "";
-    const checked    = task.completed ? "checked" : "";
+    const completed = task.completed ? "completed" : "";
+    const checked   = task.completed ? "checked" : "";
 
     const priorityText =
         task.priority === "high"   ? "🔴 High"   :
         task.priority === "medium" ? "🟡 Medium" : "🟢 Low";
 
+    const dateCount = (task.dates && task.dates.length > 1)
+        ? `<span class="badge">📆 ${task.dates.length} দিন</span>`
+        : "";
+
     return `
         <div class="task-card ${completed}">
-
-            <button
-                class="task-check ${checked}"
-                aria-label="সম্পন্ন টগল"
-                onclick="toggleTask('${task.id}')">
-
+            <button class="task-check ${checked}"
+                    aria-label="সম্পন্ন টগল"
+                    onclick="toggleTask('${task.id}')">
                 ${task.completed ? "✓" : ""}
-
             </button>
-
             <div class="task-info" onclick="openTaskDetails('${task.id}')">
-
-                <div class="task-title">
-                    ${escapeHTML(task.title)}
-                </div>
-
+                <div class="task-title">${escapeHTML(task.title)}</div>
                 <div class="task-meta">
                     <span>⏰ ${formatTime(task.time)}</span>
                     <span class="badge">${escapeHTML(task.category)}</span>
                     <span class="priority-${task.priority}">${priorityText}</span>
+                    ${dateCount}
                 </div>
-
             </div>
-
             <div class="task-actions">
-                <button
-                    class="small-btn"
-                    aria-label="সম্পাদনা"
-                    onclick="editTask('${task.id}')">✏️</button>
-
-                <button
-                    class="small-btn"
-                    aria-label="মুছুন"
-                    onclick="deleteTask('${task.id}')">🗑️</button>
+                <button class="small-btn" aria-label="সম্পাদনা"
+                        onclick="editTask('${task.id}')">✏️</button>
+                <button class="small-btn" aria-label="মুছুন"
+                        onclick="deleteTask('${task.id}')">🗑️</button>
             </div>
-
-        </div>
-    `;
-
+        </div>`;
 }
 
+function avoidHTML(avoid, dateString){
+
+    const log = avoidLog[dateString] || {};
+    const count = log[avoid.id] || 0;
+    const limit = avoid.limit || 1;
+    const isViolated = count >= limit;
+
+    return `
+        <div class="task-card avoid-card">
+            <div style="
+                width:29px;height:29px;flex-shrink:0;
+                border-radius:50%;
+                background:${isViolated ? "var(--danger)" : "rgba(220,38,38,.15)"};
+                color:${isViolated ? "white" : "var(--danger)"};
+                display:flex;align-items:center;justify-content:center;
+                font-size:15px">🚫</div>
+            <div class="task-info"
+                 onclick="openAvoidDetails('${avoid.id}','${dateString}')">
+                <div class="task-title">${escapeHTML(avoid.title)}</div>
+                <div class="task-meta">
+                    <span>⏰ ${formatTime(avoid.time)}</span>
+                    <span class="badge badge-danger">${escapeHTML(avoid.category)}</span>
+                    <span>${count} / ${limit} বার</span>
+                </div>
+            </div>
+            <div class="task-actions">
+                <button class="small-btn" title="লঙ্ঘন যোগ করুন"
+                        onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">➕</button>
+                ${
+                    count > 0
+                        ? `<button class="small-btn" title="লঙ্ঘন কমান"
+                                  onclick="removeAvoidViolation('${avoid.id}','${dateString}')">➖</button>`
+                        : ""
+                }
+                <button class="small-btn" aria-label="সম্পাদনা"
+                        onclick="editAvoid('${avoid.id}')">✏️</button>
+                <button class="small-btn" aria-label="মুছুন"
+                        onclick="deleteAvoid('${avoid.id}')">🗑️</button>
+            </div>
+        </div>`;
+}
 
 /* =====================================================
    RENDER TASKS
@@ -3140,154 +3294,146 @@ function taskHTML(task){
 function renderTasks(){
 
     const container = document.getElementById("planningTasks");
-
     if(!container) return;
 
     const search = (
         document.getElementById("searchInput")?.value || ""
     ).trim().toLowerCase();
 
-    let filtered = [...tasks];
+    const filterCat = document.getElementById("filterCategory")?.value || "";
+    const filterPri = document.getElementById("filterPriority")?.value || "";
 
     const now = new Date();
     const today    = getDateString(now);
     const tomorrow = getDateString(addDays(now, 1));
 
-    if(currentDateFilter === "today"){
-        filtered = filtered.filter(t => t.date === today);
-    }
+    const isAvoid = activeTab === "avoids";
+    let source = isAvoid ? [...avoidTasks] : [...tasks];
 
-    if(currentDateFilter === "tomorrow"){
-        filtered = filtered.filter(t => t.date === tomorrow);
-    }
+    if(!isAvoid){
 
-    if(currentDateFilter === "week"){
+        if(currentDateFilter === "today")
+            source = source.filter(t => t.date === today);
+        else if(currentDateFilter === "tomorrow")
+            source = source.filter(t => t.date === tomorrow);
+        else if(currentDateFilter === "week"){
+            const start = new Date(now);
+            start.setHours(0,0,0,0);
+            const end = addDays(start, 7);
+            source = source.filter(t => {
+                const date = new Date(t.date + "T00:00:00");
+                return date >= start && date < end;
+            });
+        }
+        else if(currentDateFilter === "month"){
+            const year  = now.getFullYear();
+            const month = now.getMonth();
+            source = source.filter(t => {
+                const date = new Date(t.date + "T00:00:00");
+                return date.getFullYear() === year &&
+                       date.getMonth()    === month;
+            });
+        }
 
-        const start = new Date(now);
-        start.setHours(0,0,0,0);
+        if(filterCat) source = source.filter(t => t.category === filterCat);
+        if(filterPri) source = source.filter(t => t.priority === filterPri);
 
-        const end = addDays(start, 7);
+        if(search){
+            source = source.filter(t => {
+                const text = (t.title + " " + t.description + " " + t.category).toLowerCase();
+                return text.includes(search);
+            });
+        }
 
-        filtered = filtered.filter(t => {
-            const date = new Date(t.date + "T00:00:00");
-            return date >= start && date < end;
+        source.sort((a,b) => {
+            if(a.date !== b.date) return a.date.localeCompare(b.date);
+            return a.time.localeCompare(b.time);
         });
-
     }
+    else{
 
-    if(currentDateFilter === "month"){
+        if(filterCat) source = source.filter(a => a.category === filterCat);
+        if(filterPri) source = source.filter(a => a.priority === filterPri);
 
-        const year  = now.getFullYear();
-        const month = now.getMonth();
+        if(search){
+            source = source.filter(a => {
+                const text = (a.title + " " + a.description + " " + a.category).toLowerCase();
+                return text.includes(search);
+            });
+        }
 
-        filtered = filtered.filter(t => {
-            const date = new Date(t.date + "T00:00:00");
-            return date.getFullYear() === year &&
-                   date.getMonth()    === month;
+        source.sort((a,b) => {
+            const da = (a.dates && a.dates[0]) || a.date || "";
+            const db = (b.dates && b.dates[0]) || b.date || "";
+            if(da !== db) return da.localeCompare(db);
+            return a.time.localeCompare(b.time);
         });
-
     }
 
-    if(search){
-
-        filtered = filtered.filter(t => {
-
-            const text = (
-                t.title + " " +
-                t.description + " " +
-                t.category
-            ).toLowerCase();
-
-            return text.includes(search);
-
-        });
-
-    }
-
-    filtered.sort((a,b) => {
-
-        if(a.date !== b.date) return a.date.localeCompare(b.date);
-
-        return a.time.localeCompare(b.time);
-
-    });
-
-    if(!filtered.length){
-
+    if(!source.length){
         container.innerHTML = `
             <div class="empty-state">
-                <div>📅</div>
-                <p>এই সময়ের জন্য কোনো কাজ পাওয়া যায়নি।</p>
-            </div>
-        `;
-
+                <div>${isAvoid ? "🚫" : "📅"}</div>
+                <p>${isAvoid
+                    ? "কোনো না করার কাজ নেই।"
+                    : "এই সময়ের জন্য কোনো কাজ পাওয়া যায়নি।"}</p>
+                <button class="primary-btn"
+                        onclick="openAddTask('${isAvoid ? "avoid" : "task"}')">
+                    ➕ নতুন ${isAvoid ? "না করার" : ""} কাজ যোগ করুন
+                </button>
+            </div>`;
         return;
-
     }
 
-    container.innerHTML = filtered
-        .map(task => taskHTML(task))
-        .join("");
-
+    if(isAvoid){
+        container.innerHTML = source
+            .map(a => avoidHTML(a, today))
+            .join("");
+    }
+    else{
+        container.innerHTML = source
+            .map(t => taskHTML(t))
+            .join("");
+    }
 }
-
 
 /* =====================================================
    FILTER
 ===================================================== */
 
 function setDateFilter(filter, button){
-
     currentDateFilter = filter;
-
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.remove("active");
-    });
-
+    document.querySelectorAll(".filter-btn").forEach(btn =>
+        btn.classList.remove("active"));
     button.classList.add("active");
-
     renderTasks();
-
 }
 
-
 /* =====================================================
-   TOGGLE TASK
+   TOGGLE / EDIT / DELETE
 ===================================================== */
 
 function toggleTask(id){
-
-    const task = tasks.find(item => item.id === id);
-
+    const task = tasks.find(t => t.id === id);
     if(!task) return;
 
     task.completed = !task.completed;
-
-    task.completedAt = task.completed
-        ? new Date().toISOString()
-        : null;
+    task.completedAt = task.completed ? new Date().toISOString() : null;
 
     saveTasks();
-
     renderAll();
-
 }
 
-
-/* =====================================================
-   EDIT TASK
-===================================================== */
-
 function editTask(id){
-
-    const task = tasks.find(item => item.id === id);
-
+    const task = tasks.find(t => t.id === id);
     if(!task) return;
 
+    resetForm();
+
+    document.getElementById("taskKind").value = "task";
     document.getElementById("editTaskId").value = task.id;
     document.getElementById("taskTitle").value = task.title;
     document.getElementById("taskDescription").value = task.description || "";
-    document.getElementById("taskDate").value = task.date;
     document.getElementById("taskTime").value = task.time;
     document.getElementById("taskCategory").value = task.category;
     document.getElementById("taskPriority").value = task.priority;
@@ -3295,176 +3441,403 @@ function editTask(id){
     document.getElementById("taskRepeat").value = task.repeat || "none";
     document.getElementById("taskNote").value = task.note || "";
 
-    document.getElementById("saveBtnText").textContent =
-        "💾 পরিবর্তন সংরক্ষণ করুন";
+    if(task.dates && task.dates.length > 1){
+        dateMode = "multi";
+        selectedDates = [...task.dates];
+        setDateMode("multi");
+        renderMultiDateGrid();
+        renderSelectedDates();
+    }
+    else{
+        dateMode = "single";
+        setDateMode("single");
+        document.getElementById("taskDate").value = task.date;
+    }
 
+    document.getElementById("addPageTitle").textContent = "✏️ কাজ সম্পাদনা";
+    document.getElementById("saveBtnText").textContent = "💾 পরিবর্তন সংরক্ষণ করুন";
     document.getElementById("cancelEditBtn").classList.remove("hidden");
 
     showPage("add");
-
 }
 
-
-/* =====================================================
-   CANCEL EDIT
-===================================================== */
-
-function cancelEdit(){
+function editAvoid(id){
+    const avoid = avoidTasks.find(a => a.id === id);
+    if(!avoid) return;
 
     resetForm();
 
-    showPage("planning");
+    document.getElementById("taskKind").value = "avoid";
+    document.getElementById("editTaskId").value = avoid.id;
+    document.getElementById("taskTitle").value = avoid.title;
+    document.getElementById("taskDescription").value = avoid.description || "";
+    document.getElementById("taskTime").value = avoid.time;
+    document.getElementById("taskCategory").value = avoid.category;
+    document.getElementById("taskPriority").value = avoid.priority;
+    document.getElementById("taskReminder").value = avoid.reminder || 0;
+    document.getElementById("taskRepeat").value = avoid.repeat || "none";
+    document.getElementById("taskNote").value = avoid.note || "";
 
+    document.getElementById("avoidFields").classList.remove("hidden");
+    document.getElementById("avoidLimit").value = avoid.limit || 1;
+    document.getElementById("avoidPenalty").value = avoid.penalty || 10;
+
+    draftSteps = [...(avoid.steps || [])];
+    renderSteps();
+
+    if(avoid.dates && avoid.dates.length > 1){
+        dateMode = "multi";
+        selectedDates = [...avoid.dates];
+        setDateMode("multi");
+        renderMultiDateGrid();
+        renderSelectedDates();
+    }
+    else{
+        dateMode = "single";
+        setDateMode("single");
+        document.getElementById("taskDate").value =
+            (avoid.dates && avoid.dates[0]) || avoid.date;
+    }
+
+    document.getElementById("addPageTitle").textContent = "✏️ না করার কাজ সম্পাদনা";
+    document.getElementById("saveBtnText").textContent = "💾 পরিবর্তন সংরক্ষণ করুন";
+    document.getElementById("cancelEditBtn").classList.remove("hidden");
+
+    showPage("add");
 }
 
-
-/* =====================================================
-   DELETE TASK
-===================================================== */
+function cancelEdit(){
+    resetForm();
+    showPage("planning");
+}
 
 function deleteTask(id){
-
-    const task = tasks.find(item => item.id === id);
-
+    const task = tasks.find(t => t.id === id);
     if(!task) return;
-
     if(!confirm(`"${task.title}" মুছে ফেলতে চান?`)) return;
 
-    tasks = tasks.filter(item => item.id !== id);
-
+    tasks = tasks.filter(t => t.id !== id);
     saveTasks();
-
     renderAll();
-
-    toast("কাজ মুছে ফেলা হয়েছে।");
-
+    toast("কাজ মুছে ফেলা হয়েছে।");
 }
 
+function deleteAvoid(id){
+    const avoid = avoidTasks.find(a => a.id === id);
+    if(!avoid) return;
+    if(!confirm(`"${avoid.title}" মুছে ফেলতে চান?`)) return;
+
+    avoidTasks = avoidTasks.filter(a => a.id !== id);
+    saveAvoidTasks();
+    renderAll();
+    toast("না করার কাজ মুছে ফেলা হয়েছে।");
+}
 
 /* =====================================================
-   TASK DETAILS MODAL
+   AVOID VIOLATION — ADD / REMOVE (WITH REASON)
 ===================================================== */
+
+function addAvoidViolationWithReason(avoidId, dateString){
+
+    const avoid = avoidTasks.find(a => a.id === avoidId);
+    if(!avoid) return;
+
+    /* Show modal with reason input */
+    document.getElementById("modalTitle").textContent =
+        "🚫 " + avoid.title + " — লঙ্ঘন";
+
+    document.getElementById("modalBody").innerHTML = `
+        <p style="font-size:13px;color:var(--muted);margin:0 0 10px">
+            কেন এই কাজটি করলেন? (ঐচ্ছিক)
+        </p>
+
+        <textarea id="violationReasonInput"
+                  class="reason-input"
+                  placeholder="যেমন: বন্ধুদের সাথে আড্ডায়..."></textarea>
+
+        <div class="modal-actions">
+            <button class="secondary" onclick="closeModal()">
+                বাতিল
+            </button>
+            <button class="danger"
+                    onclick="confirmAddViolation('${avoidId}','${dateString}')">
+                ⚠️ লঙ্ঘন যোগ করুন
+            </button>
+        </div>`;
+
+    document.getElementById("taskModal").classList.remove("hidden");
+}
+
+function confirmAddViolation(avoidId, dateString){
+
+    const avoid = avoidTasks.find(a => a.id === avoidId);
+    if(!avoid){ closeModal(); return; }
+
+    const reasonInput = document.getElementById("violationReasonInput");
+    const reason = reasonInput ? reasonInput.value.trim() : "";
+
+    /* Update log */
+    if(!avoidLog[dateString]) avoidLog[dateString] = {};
+    if(!avoidLog[dateString][avoidId]) avoidLog[dateString][avoidId] = 0;
+
+    avoidLog[dateString][avoidId]++;
+
+    const count = avoidLog[dateString][avoidId];
+    const limit = avoid.limit || 1;
+    const penalty = avoid.penalty || 10;
+
+    /* Store reason */
+    if(reason){
+        if(!violationReasons[dateString]) violationReasons[dateString] = {};
+        if(!violationReasons[dateString][avoidId])
+            violationReasons[dateString][avoidId] = [];
+
+        violationReasons[dateString][avoidId].push({
+            reason,
+            at: new Date().toISOString()
+        });
+    }
+
+    /* Apply penalty on first hit */
+    if(count >= limit){
+        if(count === limit){
+            if(!violations[dateString]) violations[dateString] = 0;
+            violations[dateString] += penalty;
+            toast(`⚠️ "${avoid.title}" লঙ্ঘন! −${penalty}% স্কোর কমেছে।`);
+        }
+        else{
+            toast(`⚠️ আবার লঙ্ঘন! (${count} বার)`);
+        }
+    }
+    else{
+        toast(`⚠️ লঙ্ঘন রেকর্ড হয়েছে (${count}/${limit})`);
+    }
+
+    saveAvoidLog();
+    saveViolationReasons();
+    saveViolations();
+
+    closeModal();
+    renderAll();
+
+    if(currentDayDetail) renderDayDetail(currentDayDetail);
+}
+
+function removeAvoidViolation(avoidId, dateString){
+
+    const avoid = avoidTasks.find(a => a.id === avoidId);
+    if(!avoid) return;
+
+    const log = avoidLog[dateString] || {};
+    const currentCount = log[avoidId] || 0;
+
+    if(currentCount <= 0){
+        toast("লঙ্ঘন নেই, কমানো যাবে না।");
+        return;
+    }
+
+    if(!confirm(`"${avoid.title}" এর একটি লঙ্ঘন মুছে ফেলতে চান?`)) return;
+
+    avoidLog[dateString][avoidId] = currentCount - 1;
+
+    /* Remove last reason if exists */
+    const reasonList = (violationReasons[dateString] || {})[avoidId];
+    if(reasonList && reasonList.length){
+        reasonList.pop();
+    }
+
+    /* Refund penalty if new count is below limit */
+    const limit = avoid.limit || 1;
+    const penalty = avoid.penalty || 10;
+
+    const newCount = avoidLog[dateString][avoidId];
+
+    /* Was at or above limit → now below → refund */
+    if(currentCount >= limit && newCount < limit){
+        if(violations[dateString]){
+            violations[dateString] = Math.max(0, violations[dateString] - penalty);
+            if(violations[dateString] === 0){
+                delete violations[dateString];
+            }
+        }
+    }
+    /* Both still above limit → no change to penalty (already applied) */
+    /* Both below limit → no change */
+
+    saveAvoidLog();
+    saveViolationReasons();
+    saveViolations();
+
+    toast("➖ লঙ্ঘন কমানো হয়েছে।");
+    renderAll();
+
+    if(currentDayDetail) renderDayDetail(currentDayDetail);
+}
+
+/* =====================================================
+   LEGACY LOG (kept for existing onclick in avoidHTML)
+   — actually redirects to reason modal
+===================================================== */
+
+function logAvoidViolation(avoidId, dateString){
+    addAvoidViolationWithReason(avoidId, dateString);
+}
+
+/* =====================================================
+   MODALS — AVOID DETAILS
+===================================================== */
+
+function openAvoidDetails(id, dateString){
+
+    const avoid = avoidTasks.find(a => a.id === id);
+    if(!avoid) return;
+
+    const count = (avoidLog[dateString] || {})[id] || 0;
+    const limit = avoid.limit || 1;
+    const penalty = avoid.penalty || 10;
+
+    const reasons = (violationReasons[dateString] || {})[id] || [];
+
+    const stepsHTML = (avoid.steps && avoid.steps.length)
+        ? `<ol style="padding-left:18px">
+            ${avoid.steps.map(s => `<li>${escapeHTML(s)}</li>`).join("")}
+           </ol>`
+        : `<p style="color:var(--muted)">কোনো ধাপ যোগ করা হয়নি</p>`;
+
+    const reasonsHTML = reasons.length
+        ? reasons.map(r => `
+            <div class="reason">
+                💬 ${escapeHTML(r.reason || "(কারণ উল্লেখ করা হয়নি)")}
+                <div class="time">${formatDateTime(r.at)}</div>
+            </div>
+        `).join("")
+        : `<p style="color:var(--muted);font-size:12px">
+            এখনো কোনো কারণ লেখা হয়নি
+           </p>`;
+
+    document.getElementById("modalTitle").textContent = "🚫 " + avoid.title;
+
+    document.getElementById("modalBody").innerHTML = `
+        <p><strong>⏰ সময়:</strong> ${formatTime(avoid.time)}</p>
+        <p><strong>📌 Category:</strong> ${escapeHTML(avoid.category)}</p>
+        <p><strong>📅 তারিখ:</strong>
+            ${(avoid.dates || []).map(d => formatShortDate(d)).join(", ")}
+        </p>
+        <p><strong>🚫 বার Limit:</strong> ${limit}</p>
+        <p><strong>📉 পেনাল্টি:</strong> ${penalty}%</p>
+        <p><strong>📊 আজকের লঙ্ঘন:</strong> ${count} বার</p>
+
+        <h4 style="margin-top:14px">📋 স্টেপ বাই স্টেপ</h4>
+        ${stepsHTML}
+
+        <h4 style="margin-top:14px">💬 লঙ্ঘনের কারণ</h4>
+        ${reasonsHTML}
+
+        <div class="modal-actions">
+            <button class="secondary" onclick="closeModal()">
+                বন্ধ
+            </button>
+            ${
+                count > 0
+                    ? `<button class="success"
+                              onclick="removeAvoidViolation('${avoid.id}','${dateString}'); closeModal();">
+                        ➖ কমান
+                       </button>`
+                    : ""
+            }
+            <button class="danger"
+                    onclick="closeModal(); addAvoidViolationWithReason('${avoid.id}','${dateString}');">
+                ⚠️ লঙ্ঘন
+            </button>
+        </div>`;
+
+    document.getElementById("taskModal").classList.remove("hidden");
+}
 
 function openTaskDetails(id){
 
-    const task = tasks.find(item => item.id === id);
-
+    const task = tasks.find(t => t.id === id);
     if(!task) return;
 
     document.getElementById("modalTitle").textContent = task.title;
 
     document.getElementById("modalBody").innerHTML = `
-
         <p><strong>📅 তারিখ:</strong> ${formatDate(task.date)}</p>
-        <p><strong>⏰ সময়:</strong> ${formatTime(task.time)}</p>
+        ${task.dates && task.dates.length > 1 ? `
+            <p><strong>📆 সব তারিখ:</strong>
+                ${task.dates.map(d => formatShortDate(d)).join(", ")}
+            </p>` : ""}
+        <p><strong>⏰ সময়:</strong> ${formatTime(task.time)}</p>
         <p><strong>📌 Category:</strong> ${escapeHTML(task.category)}</p>
         <p><strong>🔔 Reminder:</strong> ${task.reminder} মিনিট আগে</p>
         <p><strong>🔁 Repeat:</strong> ${repeatText(task.repeat)}</p>
-
+        <p><strong>✅ স্ট্যাটাস:</strong>
+            ${task.completed ? "সম্পন্ন" : "বাকি"}
+        </p>
         ${task.description ? `
-            <p>
-                <strong>📝 বিস্তারিত:</strong><br>
-                ${escapeHTML(task.description)}
-            </p>` : ""}
-
+            <p><strong>📝 বিস্তারিত:</strong><br>
+               ${escapeHTML(task.description)}</p>` : ""}
         ${task.note ? `
-            <p>
-                <strong>📒 নোট:</strong><br>
-                ${escapeHTML(task.note)}
-            </p>` : ""}
+            <p><strong>📒 নোট:</strong><br>
+               ${escapeHTML(task.note)}</p>` : ""}
 
-        <button class="primary-btn"
-                onclick="toggleTask('${task.id}'); closeModal();">
-
-            ${task.completed ? "↩️ অসম্পন্ন করুন" : "✅ সম্পন্ন করুন"}
-
-        </button>
-
-    `;
+        <div class="modal-actions">
+            <button class="secondary" onclick="closeModal()">
+                বন্ধ
+            </button>
+            <button class="${task.completed ? "danger" : "success"}"
+                    onclick="toggleTaskFromModal('${task.id}')">
+                ${task.completed ? "↩️ অসম্পন্ন করুন" : "✅ সম্পন্ন করুন"}
+            </button>
+        </div>`;
 
     document.getElementById("taskModal").classList.remove("hidden");
-
 }
 
+function toggleTaskFromModal(id){
+    toggleTask(id);
+    closeModal();
+
+    if(currentDayDetail) renderDayDetail(currentDayDetail);
+}
 
 function closeModal(){
-
     document.getElementById("taskModal").classList.add("hidden");
-
 }
-
 
 function repeatText(repeat){
-
     const map = {
-        none:"একবার",
-        daily:"প্রতিদিন",
-        weekly:"প্রতি সপ্তাহে",
-        weekdays:"সোম–শুক্র",
+        none:"একবার", daily:"প্রতিদিন",
+        weekly:"প্রতি সপ্তাহে", weekdays:"সোম–শুক্র",
         monthly:"প্রতি মাসে"
     };
-
     return map[repeat] || "একবার";
-
 }
 
-
 /* =====================================================
-   STREAK
+   STREAK & GOALS
 ===================================================== */
 
 function calculateStreak(){
-
     let streak = 0;
     let date = new Date();
 
     while(true){
-
         const dateString = getDateString(date);
-
-        const dayTasks = tasks.filter(t => t.date === dateString);
-
+        const dayTasks = getTasksForDate(dateString);
         if(!dayTasks.length) break;
-
-        const allCompleted = dayTasks.every(t => t.completed);
-
-        if(!allCompleted) break;
-
+        if(!dayTasks.every(t => t.completed)) break;
         streak++;
-
         date = addDays(date, -1);
-
     }
 
     return streak;
-
 }
-
-
-/* =====================================================
-   GOAL
-===================================================== */
 
 function getGoalCount(){
-
-    try{
-
-        const goals = JSON.parse(
-            localStorage.getItem(GOALS_KEY) || "[]"
-        );
-
-        return Array.isArray(goals) ? goals.length : 0;
-
-    }
-
-    catch{
-
-        return 0;
-
-    }
-
+    const goals = safeParse(localStorage.getItem(GOALS_KEY), []);
+    return Array.isArray(goals) ? goals.length : 0;
 }
-
 
 /* =====================================================
    REPORTS
@@ -3473,249 +3846,721 @@ function getGoalCount(){
 function renderReports(){
 
     const today = getDateString();
-
-    const todayTasks = tasks.filter(t => t.date === today);
+    const todayTasks = getTasksForDate(today);
 
     const total     = todayTasks.length;
     const completed = todayTasks.filter(t => t.completed).length;
     const pending   = total - completed;
 
-    const rate = total
-        ? Math.round((completed / total) * 100)
-        : 0;
+    const rate = total ? Math.round((completed / total) * 100) : 0;
+    const penalty = violations[today] || 0;
+    const score   = Math.max(0, rate - penalty);
 
-    document.getElementById("reportTotal").textContent     = total;
-    document.getElementById("reportCompleted").textContent = completed;
-    document.getElementById("reportPending").textContent   = pending;
-    document.getElementById("reportRate").textContent      = rate + "%";
+    const avoidViolations = avoidTasks.reduce((sum, a) => {
+        return sum + ((avoidLog[today] || {})[a.id] || 0);
+    }, 0);
+
+    document.getElementById("reportTotal").textContent      = total;
+    document.getElementById("reportCompleted").textContent  = completed;
+    document.getElementById("reportPending").textContent    = pending;
+    document.getElementById("reportViolations").textContent = avoidViolations;
+    document.getElementById("reportRate").textContent       = rate + "%";
+    document.getElementById("reportScore").textContent      = score + "%";
 
     renderWeeklyReport();
-
+    renderAvoidAnalytics();
+    renderViolationHistory();
     loadDailyNote();
-
+    loadWeeklyReflection();
 }
 
-
-/* =====================================================
-   WEEKLY REPORT
-===================================================== */
-
 function renderWeeklyReport(){
-
     const container = document.getElementById("weeklyReport");
-
     let html = "";
 
     for(let i = 6; i >= 0; i--){
-
         const date = addDays(new Date(), -i);
         const dateString = getDateString(date);
-
-        const dayTasks = tasks.filter(t => t.date === dateString);
-
-        const total     = dayTasks.length;
-        const completed = dayTasks.filter(t => t.completed).length;
-
-        const percent = total
-            ? Math.round((completed / total) * 100)
-            : 0;
-
-        const dayName = date.toLocaleDateString("bn-BD", {
-            weekday:"short"
-        });
+        const data = calculateScore(dateString);
+        const dayName = date.toLocaleDateString("bn-BD", { weekday:"short" });
 
         html += `
-            <div class="week-row">
-
+            <div class="week-row"
+                 onclick="openDayDetail('${dateString}')"
+                 style="cursor:pointer">
                 <div class="week-day">${dayName}</div>
-
                 <div class="week-progress">
-                    <div style="width:${percent}%"></div>
+                    <div style="width:${data.finalScore}%"></div>
                 </div>
-
-                <div class="week-percent">${percent}%</div>
-
-            </div>
-        `;
-
+                <div class="week-percent">${data.finalScore}%</div>
+            </div>`;
     }
 
     container.innerHTML = html;
-
 }
 
+function renderAvoidAnalytics(){
+
+    const container = document.getElementById("avoidAnalytics");
+    if(!container) return;
+
+    if(!avoidTasks.length){
+        container.innerHTML = `
+            <div class="empty-state">
+                <div>🚫</div>
+                <p>কোনো না করার কাজ যোগ করা হয়নি।</p>
+            </div>`;
+        return;
+    }
+
+    const totals = {};
+
+    Object.values(avoidLog).forEach(dayLog => {
+        Object.entries(dayLog).forEach(([avoidId, count]) => {
+            totals[avoidId] = (totals[avoidId] || 0) + count;
+        });
+    });
+
+    const max = Math.max(1, ...Object.values(totals));
+
+    container.innerHTML = avoidTasks
+        .map(a => {
+            const count = totals[a.id] || 0;
+            const percent = Math.round((count / max) * 100);
+
+            return `
+                <div class="analytics-row">
+                    <div class="name">🚫 ${escapeHTML(a.title)}</div>
+                    <div class="bar-wrap">
+                        <div class="bar-fill" style="width:${percent}%"></div>
+                    </div>
+                    <div class="count">${count} বার লঙ্ঘন</div>
+                </div>`;
+        })
+        .join("");
+}
+
+function renderViolationHistory(){
+
+    const container = document.getElementById("violationHistory");
+    if(!container) return;
+
+    /* Collect all violations with reasons (newest first) */
+    const entries = [];
+
+    Object.entries(violationReasons).forEach(([dateString, dayMap]) => {
+        Object.entries(dayMap).forEach(([avoidId, reasons]) => {
+            const avoid = avoidTasks.find(a => a.id === avoidId);
+
+            reasons.forEach(r => {
+                entries.push({
+                    dateString,
+                    avoidTitle: avoid ? avoid.title : "(মুছে ফেলা কাজ)",
+                    reason: r.reason,
+                    at: r.at
+                });
+            });
+        });
+    });
+
+    entries.sort((a,b) => new Date(b.at) - new Date(a.at));
+
+    if(!entries.length){
+        container.innerHTML = `
+            <div class="empty-state">
+                <div>📜</div>
+                <p>এখনো কোনো লঙ্ঘনের কারণ লেখা হয়নি।</p>
+            </div>`;
+        return;
+    }
+
+    /* Only show last 20 */
+    const shown = entries.slice(0, 20);
+
+    container.innerHTML = shown.map(e => `
+        <div class="violation-item">
+            <div class="head">
+                <span>🚫 ${escapeHTML(e.avoidTitle)}</span>
+                <span class="time">${formatDateTime(e.at)}</span>
+            </div>
+            <div class="reason">
+                💬 ${escapeHTML(e.reason || "(কারণ উল্লেখ করা হয়নি)")}
+            </div>
+            <div class="time" style="margin-top:4px">
+                📅 ${formatDate(e.dateString)}
+            </div>
+        </div>
+    `).join("");
+
+}
 
 /* =====================================================
    DAILY NOTE
 ===================================================== */
 
 function saveDailyNote(){
-
     const note = document.getElementById("dailyNote").value;
-
-    let notes = {};
-
-    try{
-        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
-    }
-    catch{ notes = {}; }
-
+    const notes = safeParse(localStorage.getItem(NOTES_KEY), {});
     notes[getDateString()] = note;
-
     localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
-
-    toast("আজকের নোট সংরক্ষণ হয়েছে।");
-
+    toast("আজকের নোট সংরক্ষণ হয়েছে।");
 }
-
 
 function loadDailyNote(){
-
     const element = document.getElementById("dailyNote");
-
     if(!element) return;
 
-    let notes = {};
-
-    try{
-        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
-    }
-    catch{ notes = {}; }
-
+    const notes = safeParse(localStorage.getItem(NOTES_KEY), {});
     element.value = notes[getDateString()] || "";
-
 }
 
+/* =====================================================
+   WEEKLY REFLECTION
+===================================================== */
+
+function getWeekKey(){
+    const now = new Date();
+    const day = now.getDay();
+    const weekStart = addDays(now, -day);
+    return getDateString(weekStart);
+}
+
+function saveWeeklyReflection(){
+    const data = {
+        good:    document.getElementById("reflectGood").value.trim(),
+        improve: document.getElementById("reflectImprove").value.trim(),
+        goal:    document.getElementById("reflectGoal").value.trim(),
+        savedAt: new Date().toISOString()
+    };
+
+    const reflections = safeParse(localStorage.getItem(REFLECTION_KEY), {});
+    reflections[getWeekKey()] = data;
+    localStorage.setItem(REFLECTION_KEY, JSON.stringify(reflections));
+
+    toast("সাপ্তাহিক রিভিউ সংরক্ষণ হয়েছে।");
+}
+
+function loadWeeklyReflection(){
+    const reflections = safeParse(localStorage.getItem(REFLECTION_KEY), {});
+    const current = reflections[getWeekKey()] || {};
+
+    const g = document.getElementById("reflectGood");
+    const i = document.getElementById("reflectImprove");
+    const g2 = document.getElementById("reflectGoal");
+
+    if(g) g.value = current.good || "";
+    if(i) i.value = current.improve || "";
+    if(g2) g2.value = current.goal || "";
+}
 
 /* =====================================================
-   SETTINGS UI
+   SHARE REPORT
+===================================================== */
+
+function buildReportText(){
+    const today = getDateString();
+    const data = calculateScore(today);
+
+    return [
+        "📊 আমার দৈনিক রুটিন রিপোর্ট",
+        "📅 " + formatDate(today),
+        "",
+        `✅ সম্পন্ন: ${data.done} / ${data.total}`,
+        `📉 পেনাল্টি: ${data.penalty}%`,
+        `🎯 চূড়ান্ত স্কোর: ${data.finalScore}%`,
+        `🔥 Streak: ${calculateStreak()} দিন`,
+        "",
+        "— দৈনিক রুটিন অ্যাপ"
+    ].join("\n");
+}
+
+function shareReport(){
+    const text = buildReportText();
+
+    if(navigator.share){
+        navigator.share({ title:"দৈনিক রুটিন রিপোর্ট", text })
+            .catch(() => {});
+        return;
+    }
+
+    navigator.clipboard.writeText(text).then(() => {
+        toast("📋 রিপোর্ট কপি হয়েছে!");
+    }).catch(() => {
+        toast("রিপোর্ট কপি করা যায়নি।");
+    });
+}
+
+function downloadReportText(){
+    const text = buildReportText();
+    const blob = new Blob([text], { type:"text/plain" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "routine-report-" + getDateString() + ".txt";
+    a.click();
+
+    URL.revokeObjectURL(url);
+    toast("রিপোর্ট ডাউনলোড হয়েছে।");
+}
+
+/* =====================================================
+   TEMPLATES
+===================================================== */
+
+function renderTemplates(){
+    const container = document.getElementById("templateRow");
+    if(!container) return;
+
+    const custom = safeParse(localStorage.getItem(TEMPLATES_KEY), []);
+    const allTemplates = [...defaultTemplates, ...custom];
+
+    container.innerHTML = allTemplates.map((t, idx) => `
+        <button type="button" class="template-chip"
+                onclick="applyTemplate(${idx})">
+            ${t.name}
+        </button>
+    `).join("");
+
+    window._allTemplates = allTemplates;
+}
+
+function applyTemplate(index){
+    const t = window._allTemplates[index];
+    if(!t) return;
+
+    document.getElementById("taskTitle").value = t.title || "";
+    document.getElementById("taskTime").value = t.time || "09:00";
+
+    const catSel = document.getElementById("taskCategory");
+    if(t.category){
+        [...catSel.options].forEach(opt => {
+            if(opt.value === t.category) catSel.value = t.category;
+        });
+    }
+
+    toast(`⚡ "${t.name}" টেমপ্লেট লোড হয়েছে।`);
+}
+
+/* =====================================================
+   POMODORO — STATE
+===================================================== */
+
+let pomodoroState = {
+    mode: "focus",
+    totalSeconds: 25 * 60,
+    remaining: 25 * 60,
+    running: false,
+    interval: null
+};
+
+function loadPomodoroSettingsUI(){
+    document.getElementById("focusMinutes").value = pomoConfig.focus;
+    document.getElementById("shortMinutes").value = pomoConfig.short;
+    document.getElementById("longMinutes").value  = pomoConfig.long;
+    document.getElementById("alarmVolume").value  = pomoConfig.volume;
+
+    pomodoroState.totalSeconds = pomoConfig.focus * 60;
+    pomodoroState.remaining    = pomodoroState.totalSeconds;
+
+    updatePomodoroLabels();
+    updatePomodoroUI();
+}
+
+function savePomodoroSettings(){
+
+    const focus = parseInt(document.getElementById("focusMinutes").value, 10);
+    const short = parseInt(document.getElementById("shortMinutes").value, 10);
+    const long  = parseInt(document.getElementById("longMinutes").value, 10);
+    const vol   = parseInt(document.getElementById("alarmVolume").value, 10);
+
+    if(focus > 0) pomoConfig.focus = focus;
+    if(short > 0) pomoConfig.short = short;
+    if(long  > 0) pomoConfig.long  = long;
+    if(vol >= 0 && vol <= 100) pomoConfig.volume = vol;
+
+    savePomoConfig();
+    updatePomodoroLabels();
+
+    if(!pomodoroState.running){
+        resetPomodoroForCurrentMode();
+    }
+
+    toast("⚙️ টাইমার সেটিংস সংরক্ষণ হয়েছে।");
+}
+
+function updatePomodoroLabels(){
+    const fl = document.getElementById("modeFocusLabel");
+    const sl = document.getElementById("modeShortLabel");
+    const ll = document.getElementById("modeLongLabel");
+
+    if(fl) fl.textContent = pomoConfig.focus + "মি";
+    if(sl) sl.textContent = pomoConfig.short + "মি";
+    if(ll) ll.textContent = pomoConfig.long  + "মি";
+}
+
+function setPomodoroMode(mode, button){
+
+    document.querySelectorAll(".pomodoro-mode button")
+        .forEach(b => b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    pomodoroState.mode = mode;
+
+    clearInterval(pomodoroState.interval);
+    pomodoroState.running = false;
+
+    resetPomodoroForCurrentMode();
+    updatePomodoroStartButton();
+}
+
+function resetPomodoroForCurrentMode(){
+
+    let seconds = pomoConfig.focus * 60;
+    let label = "ফোকাস সেশনে মনোযোগ দিন";
+
+    if(pomodoroState.mode === "short"){
+        seconds = pomoConfig.short * 60;
+        label = "ছোট বিরতি নিন";
+    }
+    if(pomodoroState.mode === "long"){
+        seconds = pomoConfig.long * 60;
+        label = "বড় বিরতি নিন";
+    }
+
+    pomodoroState.totalSeconds = seconds;
+    pomodoroState.remaining    = seconds;
+
+    const labelEl = document.getElementById("pomodoroLabel");
+    if(labelEl) labelEl.textContent = label;
+
+    updatePomodoroStartButton();
+    updatePomodoroUI();
+}
+
+function updatePomodoroStartButton(){
+    const btn = document.getElementById("pomodoroStartBtn");
+    if(btn){
+        btn.textContent = pomodoroState.running
+            ? "⏸️ থামান"
+            : "▶️ শুরু";
+    }
+}
+
+function updatePomodoroUI(){
+
+    const m = Math.floor(pomodoroState.remaining / 60);
+    const s = pomodoroState.remaining % 60;
+
+    const el = document.getElementById("pomodoroTime");
+    if(el){
+        el.textContent =
+            `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+    }
+
+    const data = safeParse(localStorage.getItem(POMODORO_KEY),
+        { count:0, minutes:0 });
+
+    const cEl = document.getElementById("pomodoroCount");
+    const mEl = document.getElementById("pomodoroMinutes");
+    if(cEl) cEl.textContent = data.count || 0;
+    if(mEl) mEl.textContent = data.minutes || 0;
+}
+
+function startPomodoro(){
+
+    if(pomodoroState.running){
+        clearInterval(pomodoroState.interval);
+        pomodoroState.running = false;
+        updatePomodoroStartButton();
+        return;
+    }
+
+    pomodoroState.running = true;
+    updatePomodoroStartButton();
+
+    pomodoroState.interval = setInterval(() => {
+        pomodoroState.remaining--;
+
+        if(pomodoroState.remaining <= 0){
+            finishPomodoroSession();
+            return;
+        }
+
+        updatePomodoroUI();
+    }, 1000);
+}
+
+function finishPomodoroSession(){
+
+    clearInterval(pomodoroState.interval);
+    pomodoroState.running = false;
+    updatePomodoroStartButton();
+
+    const mode = pomodoroState.mode;
+
+    if(mode === "focus"){
+        const data = safeParse(localStorage.getItem(POMODORO_KEY),
+            { count:0, minutes:0 });
+        data.count   = (data.count   || 0) + 1;
+        data.minutes = (data.minutes || 0) + pomoConfig.focus;
+        localStorage.setItem(POMODORO_KEY, JSON.stringify(data));
+
+        toast("🎉 ফোকাস সেশন সম্পন্ন! বিরতি নিন।");
+
+        if(settings.notifications && typeof Notification !== "undefined"
+           && Notification.permission === "granted"){
+            new Notification("🎉 ফোকাস সেশন সম্পন্ন!",
+                { body: "এখন বিরতি নিন।" });
+        }
+    }
+    else{
+        toast("☕ বিরতি শেষ! আবার কাজ শুরু করুন।");
+
+        if(settings.notifications && typeof Notification !== "undefined"
+           && Notification.permission === "granted"){
+            new Notification("☕ বিরতি শেষ!",
+                { body: "আবার কাজ শুরু করুন।" });
+        }
+    }
+
+    playAlarm();
+
+    const timeEl = document.getElementById("pomodoroTime");
+    if(timeEl){
+        timeEl.classList.add("pulse");
+        setTimeout(() => timeEl.classList.remove("pulse"), 3000);
+    }
+
+    pomodoroState.remaining = pomodoroState.totalSeconds;
+    updatePomodoroUI();
+}
+
+function resetPomodoro(){
+    clearInterval(pomodoroState.interval);
+    pomodoroState.running = false;
+    pomodoroState.remaining = pomodoroState.totalSeconds;
+    updatePomodoroStartButton();
+    updatePomodoroUI();
+}
+
+/* =====================================================
+   ALARM SOUND
+===================================================== */
+
+let alarmAudioCtx = null;
+
+function getAudioContext(){
+    if(!alarmAudioCtx){
+        try{
+            alarmAudioCtx = new (window.AudioContext ||
+                                window.webkitAudioContext)();
+        }
+        catch{ alarmAudioCtx = null; }
+    }
+    return alarmAudioCtx;
+}
+
+function playAlarm(){
+
+    const ctx = getAudioContext();
+    if(!ctx) return;
+
+    if(ctx.state === "suspended"){
+        ctx.resume();
+    }
+
+    const volume = Math.max(0, Math.min(1, (pomoConfig.volume || 80) / 100));
+
+    const notes = [
+        { freq: 880,  start: 0.00, dur: 0.18 },
+        { freq: 1108, start: 0.22, dur: 0.18 },
+        { freq: 1318, start: 0.44, dur: 0.28 }
+    ];
+
+    for(let round = 0; round < 3; round++){
+        const base = round * 1.6;
+
+        notes.forEach(note => {
+            const osc  = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = "sine";
+            osc.frequency.value = note.freq;
+
+            const startTime = ctx.currentTime + base + note.start;
+            const endTime   = startTime + note.dur;
+
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(volume, startTime + 0.02);
+            gain.gain.setValueAtTime(volume, endTime - 0.05);
+            gain.gain.linearRampToValueAtTime(0, endTime);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(startTime);
+            osc.stop(endTime + 0.02);
+        });
+    }
+}
+
+function testAlarm(){
+    const vol = parseInt(document.getElementById("alarmVolume").value, 10);
+    if(vol >= 0 && vol <= 100) pomoConfig.volume = vol;
+    savePomoConfig();
+
+    getAudioContext();
+    playAlarm();
+    toast("🔊 অ্যালার্ম বাজছে...");
+}
+
+/* =====================================================
+   SETTINGS
 ===================================================== */
 
 function loadSettingsUI(){
-
     document.getElementById("userName").value = settings.name || "";
-
-    document.getElementById("notificationToggle").checked =
-        settings.notifications;
-
-    document.getElementById("darkToggle").checked =
-        settings.darkMode;
-
+    document.getElementById("notificationToggle").checked = settings.notifications;
+    document.getElementById("darkToggle").checked = settings.darkMode;
+    document.getElementById("autoBackupToggle").checked = settings.autoBackup;
+    updateColorPickerActive();
 }
-
 
 function saveUserName(){
-
     settings.name = document.getElementById("userName").value.trim();
-
     saveSettings();
-
     updateHeader();
-
-    toast("নাম সংরক্ষণ হয়েছে।");
-
+    toast("নাম সংরক্ষণ হয়েছে।");
 }
-
-
-/* =====================================================
-   THEME
-===================================================== */
 
 function toggleTheme(){
-
     settings.darkMode = !settings.darkMode;
-
     saveSettings();
-
     applySettings();
-
 }
-
 
 function applySettings(){
-
     document.body.classList.toggle("dark", settings.darkMode);
 
-    const btn = document.getElementById("themeBtn");
+    const accent = settings.accent || "#4f46e5";
+    document.documentElement.style.setProperty("--accent", accent);
 
-    if(btn){
-        btn.textContent = settings.darkMode ? "☀️" : "🌙";
-    }
+    const btn = document.getElementById("themeBtn");
+    if(btn) btn.textContent = settings.darkMode ? "☀️" : "🌙";
 
     const toggle = document.getElementById("darkToggle");
-
-    if(toggle){
-        toggle.checked = settings.darkMode;
-    }
-
+    if(toggle) toggle.checked = settings.darkMode;
 }
 
+/* =====================================================
+   COLOR PICKER
+===================================================== */
+
+const COLORS = [
+    "#4f46e5", "#7c3aed", "#dc2626",
+    "#16a34a", "#d97706", "#0891b2",
+    "#db2777", "#0f766e"
+];
+
+function renderColorPicker(){
+    const container = document.getElementById("colorRow");
+    if(!container) return;
+
+    container.innerHTML = COLORS.map(c => `
+        <div class="color-dot"
+             data-color="${c}"
+             style="background:${c}"
+             onclick="setAccentColor('${c}')"></div>
+    `).join("");
+
+    updateColorPickerActive();
+}
+
+function setAccentColor(color){
+    settings.accent = color;
+    saveSettings();
+    applySettings();
+    updateColorPickerActive();
+    toast("🎨 রঙ পরিবর্তন হয়েছে।");
+}
+
+function updateColorPickerActive(){
+    document.querySelectorAll(".color-dot").forEach(dot => {
+        dot.classList.toggle("active",
+            dot.dataset.color === settings.accent);
+    });
+}
 
 /* =====================================================
    NOTIFICATIONS
 ===================================================== */
 
 function toggleNotifications(){
-
-    settings.notifications =
-        document.getElementById("notificationToggle").checked;
-
+    settings.notifications = document.getElementById("notificationToggle").checked;
     saveSettings();
-
-    if(settings.notifications){
-        requestNotificationPermission();
-    }
-
+    if(settings.notifications) requestNotificationPermission();
 }
 
-
 async function requestNotificationPermission(){
-
     if(typeof Notification === "undefined") return;
-
     try{
-
         if(Notification.permission === "default"){
             await Notification.requestPermission();
         }
-
     }
-
-    catch(error){
-
-        console.log("Notification unavailable:", error);
-
-    }
-
+    catch(error){ console.log("Notification:", error); }
 }
 
+/* =====================================================
+   AUTO BACKUP
+===================================================== */
+
+function toggleAutoBackup(){
+    settings.autoBackup = document.getElementById("autoBackupToggle").checked;
+    saveSettings();
+}
+
+function checkAutoBackupReminder(){
+    if(!settings.autoBackup) return;
+
+    const last = localStorage.getItem(LAST_BACKUP_KEY);
+
+    if(!last){
+        localStorage.setItem(LAST_BACKUP_KEY, getDateString());
+        return;
+    }
+
+    const lastDate = new Date(last + "T00:00:00");
+    const diffDays = Math.floor(
+        (Date.now() - lastDate.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    if(diffDays >= 7){
+        setTimeout(() => {
+            toast("💾 ৭ দিন পেরিয়ে গেছে — Backup নিন!");
+        }, 2000);
+    }
+}
 
 /* =====================================================
-   REMINDER
+   REMINDERS
 ===================================================== */
 
 function scheduleReminder(task){
-
     if(!settings.notifications) return;
 
     const taskTime = new Date(`${task.date}T${task.time}`);
-
-    const reminderTime = taskTime.getTime() -
-        (task.reminder * 60 * 1000);
-
+    const reminderTime = taskTime.getTime() - (task.reminder * 60 * 1000);
     const delay = reminderTime - Date.now();
 
     if(delay <= 0 || delay > 2147483647) return;
 
-    setTimeout(function(){
-        showNotification(task);
-    }, delay);
-
+    setTimeout(() => showNotification(task), delay);
 }
 
-
 function showNotification(task){
-
     if(!settings.notifications) return;
 
     if(typeof Notification === "undefined"){
@@ -3724,45 +4569,40 @@ function showNotification(task){
     }
 
     if(Notification.permission === "granted"){
-
         new Notification("দৈনিক রুটিন 🔔", {
             body: task.title + " — " + formatTime(task.time)
         });
-
     }
-
 }
 
-
 function scheduleAllReminders(){
-
     tasks.forEach(task => {
         if(!task.completed) scheduleReminder(task);
     });
-
 }
 
-
 /* =====================================================
-   BACKUP
+   BACKUP / RESTORE
 ===================================================== */
 
 function backupData(){
 
-    let notes = {};
-
-    try{
-        notes = JSON.parse(localStorage.getItem(NOTES_KEY) || "{}");
-    }
-    catch{ notes = {}; }
-
     const backup = {
         app: "দৈনিক রুটিন",
-        version: "1.0.0",
+        version: "3.2.0",
         date: new Date().toISOString(),
         tasks,
+        avoidTasks,
+        avoidLog,
+        violations,
+        violationReasons,
         settings,
-        notes
+        pomoConfig,
+        notes:       safeParse(localStorage.getItem(NOTES_KEY), {}),
+        reflections: safeParse(localStorage.getItem(REFLECTION_KEY), {}),
+        pomodoro:    safeParse(localStorage.getItem(POMODORO_KEY), {}),
+        badges:      badgesEarned,
+        templates:   safeParse(localStorage.getItem(TEMPLATES_KEY), [])
     };
 
     const blob = new Blob(
@@ -3771,82 +4611,68 @@ function backupData(){
     );
 
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
-
     a.href = url;
     a.download = "daily-routine-backup-" + getDateString() + ".json";
-
     a.click();
-
     URL.revokeObjectURL(url);
 
-    toast("Backup তৈরি হয়েছে।");
+    localStorage.setItem(LAST_BACKUP_KEY, getDateString());
 
+    toast("Backup তৈরি হয়েছে।");
 }
-
-
-/* =====================================================
-   RESTORE
-===================================================== */
 
 function restoreData(event){
 
     const file = event.target.files[0];
-
     if(!file) return;
 
     const reader = new FileReader();
 
     reader.onload = function(e){
-
         try{
-
             const data = JSON.parse(e.target.result);
 
             if(!Array.isArray(data.tasks)){
-                toast("সঠিক Backup File নয়।");
+                toast("সঠিক Backup File নয়।");
                 return;
             }
 
-            if(!confirm("বর্তমান ডেটার পরিবর্তে Backup Restore করবেন?"))
-                return;
+            if(!confirm("বর্তমান ডেটার পরিবর্তে Backup Restore করবেন?")) return;
 
-            tasks = data.tasks;
+            tasks       = data.tasks || [];
+            avoidTasks  = data.avoidTasks || [];
+            avoidLog    = data.avoidLog || {};
+            violations  = data.violations || {};
+            violationReasons = data.violationReasons || {};
+            badgesEarned= data.badges || {};
 
-            settings = {
-                ...settings,
-                ...(data.settings || {})
-            };
+            settings   = { ...settings,   ...(data.settings   || {}) };
+            pomoConfig = { ...pomoConfig, ...(data.pomoConfig || {}) };
 
-            localStorage.setItem(
-                NOTES_KEY,
-                JSON.stringify(data.notes || {})
-            );
+            localStorage.setItem(NOTES_KEY, JSON.stringify(data.notes || {}));
+            localStorage.setItem(REFLECTION_KEY, JSON.stringify(data.reflections || {}));
+            localStorage.setItem(POMODORO_KEY, JSON.stringify(data.pomodoro || {}));
+            localStorage.setItem(TEMPLATES_KEY, JSON.stringify(data.templates || []));
 
-            saveTasks();
-            saveSettings();
+            saveTasks(); saveAvoidTasks(); saveAvoidLog();
+            saveViolations(); saveViolationReasons();
+            saveSettings(); saveBadges(); savePomoConfig();
 
             applySettings();
             renderAll();
             loadSettingsUI();
+            loadPomodoroSettingsUI();
 
-            toast("Backup Restore হয়েছে।");
-
+            toast("Backup Restore হয়েছে।");
         }
-
-        catch(error){
-
-            toast("Backup File পড়তে সমস্যা হয়েছে।");
-
+        catch{
+            toast("Backup File পড়তে সমস্যা হয়েছে।");
         }
-
     };
 
     reader.readAsText(file);
-
 }
-
 
 /* =====================================================
    DELETE ALL
@@ -3855,56 +4681,62 @@ function restoreData(event){
 function deleteAllData(){
 
     if(!confirm(
-        "সব Task, Note এবং Settings মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
+        "সব Task, Note, Avoid, Pomodoro এবং Settings মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
     )) return;
 
-    localStorage.removeItem(TASK_KEY);
-    localStorage.removeItem(SETTINGS_KEY);
-    localStorage.removeItem(NOTES_KEY);
-    localStorage.removeItem(GOALS_KEY);
+    [
+        TASK_KEY, AVOID_TASK_KEY, AVOID_LOG_KEY, VIOLATION_KEY,
+        REASON_KEY, SETTINGS_KEY, NOTES_KEY, GOALS_KEY, REFLECTION_KEY,
+        POMODORO_KEY, POMO_CONFIG_KEY, BADGE_KEY,
+        TEMPLATES_KEY, LAST_BACKUP_KEY
+    ].forEach(k => localStorage.removeItem(k));
 
     tasks = [];
+    avoidTasks = [];
+    avoidLog = {};
+    violations = {};
+    violationReasons = {};
+    badgesEarned = {};
 
     settings = {
-        name:"",
-        darkMode:false,
-        notifications:true
+        name:"", darkMode:false,
+        notifications:true, autoBackup:true,
+        accent:"#4f46e5"
+    };
+
+    pomoConfig = {
+        focus: 25, short: 5, long: 15, volume: 80
     };
 
     applySettings();
     renderAll();
     loadSettingsUI();
+    loadPomodoroSettingsUI();
 
-    toast("সব ডেটা মুছে দেওয়া হয়েছে।");
-
+    toast("সব ডেটা মুছে দেওয়া হয়েছে।");
 }
-
 
 /* =====================================================
    QUOTES
 ===================================================== */
 
 const quotes = [
-    "ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।",
+    "ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।",
     "আজকের কাজ কালকের স্বপ্নকে বাস্তবে পরিণত করে।",
-    "সময়কে পরিকল্পনা করতে পারলে জীবনকে পরিকল্পনা করা সহজ হয়।",
-    "প্রতিদিন একটু একটু করে এগিয়ে যাও।",
+    "সময়কে পরিকল্পনা করতে পারলে জীবনকে পরিকল্পনা করা সহজ হয়।",
+    "প্রতিদিন একটু একটু করে এগিয়ে যাও।",
     "শুরুটা ছোট হলেও সমস্যা নেই, ধারাবাহিকতাই আসল।",
     "যে কাজটি আজ করতে পারো, সেটি অকারণে আগামীকালের জন্য রেখো না।",
-    "নিজের সময়ের দায়িত্ব নিজেকেই নিতে হবে।",
-    "একটি ভালো দিন তৈরি হয় অনেকগুলো ছোট ভালো সিদ্ধান্ত থেকে।"
+    "নিজের সময়ের দায়িত্ব নিজেকেই নিতে হবে।",
+    "একটি ভালো দিন তৈরি হয় অনেকগুলো ছোট ভালো সিদ্ধান্ত থেকে।",
+    "না করা কাজের হিসাব রাখাও অগ্রগতির অংশ।",
+    "ছোট বিরতিতে মন সতেজ হয়, ফোকাস বাড়ে।"
 ];
 
-
 function showRandomQuote(){
-
-    const index = Math.floor(Math.random() * quotes.length);
-
     document.getElementById("dailyQuote").textContent =
-        quotes[index];
-
+        quotes[Math.floor(Math.random() * quotes.length)];
 }
-
 
 /* =====================================================
    CALENDAR
@@ -3915,26 +4747,20 @@ function renderCalendar(){
     const year  = calendarDate.getFullYear();
     const month = calendarDate.getMonth();
 
-    const title = calendarDate.toLocaleDateString("bn-BD", {
-        year:"numeric",
-        month:"long"
-    });
-
-    document.getElementById("calendarTitle").textContent = title;
+    document.getElementById("calendarTitle").textContent =
+        calendarDate.toLocaleDateString("bn-BD", {
+            year:"numeric", month:"long"
+        });
 
     const grid = document.getElementById("calendarGrid");
-
     grid.innerHTML = "";
 
     const firstDay    = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     for(let i = 0; i < firstDay; i++){
-
         const blank = document.createElement("div");
-
         grid.appendChild(blank);
-
     }
 
     const today = getDateString();
@@ -3945,148 +4771,65 @@ function renderCalendar(){
         const dateString = getDateString(date);
 
         const button = document.createElement("button");
-
         button.className = "calendar-day";
         button.textContent = day;
 
-        if(dateString === today){
-            button.classList.add("today");
-        }
+        if(dateString === today) button.classList.add("today");
 
-        const hasTask = tasks.some(t => t.date === dateString);
+        const hasTask = tasks.some(t => t.date === dateString) ||
+                        avoidTasks.some(a =>
+                            (a.dates || []).includes(dateString));
 
-        if(hasTask){
-            button.classList.add("has-task");
-        }
+        if(hasTask) button.classList.add("has-task");
 
         button.onclick = function(){
-
-            document.querySelectorAll(".calendar-day").forEach(b => {
-                b.classList.remove("selected");
-            });
-
-            button.classList.add("selected");
-
-            document.getElementById("taskDate").value = dateString;
-
-            currentDateFilter = "selected";
-
-            const selected = tasks.filter(t => t.date === dateString);
-
-            const container = document.getElementById("planningTasks");
-
-            if(!selected.length){
-
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <div>📅</div>
-                        <p>${formatDate(dateString)} - কোনো কাজ নেই।</p>
-                        <button class="primary-btn" onclick="openAddTask()">
-                            ➕ এই দিনে কাজ যোগ করুন
-                        </button>
-                    </div>
-                `;
-
-            }
-
-            else{
-
-                container.innerHTML = selected
-                    .map(task => taskHTML(task))
-                    .join("");
-
-            }
-
+            openDayDetail(dateString);
         };
 
         grid.appendChild(button);
-
     }
-
 }
-
 
 function changeMonth(amount){
-
-    calendarDate.setMonth(
-        calendarDate.getMonth() + amount
-    );
-
+    calendarDate.setMonth(calendarDate.getMonth() + amount);
     renderCalendar();
-
 }
 
-
 /* =====================================================
-   ESCAPE HTML
+   UTILITIES
 ===================================================== */
 
 function escapeHTML(value){
-
     return String(value || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
-
-
-/* =====================================================
-   TOAST
-===================================================== */
 
 function toast(message){
-
     const element = document.getElementById("toast");
-
     element.textContent = message;
-
     element.classList.add("show");
-
     clearTimeout(toastTimer);
-
-    toastTimer = setTimeout(function(){
-        element.classList.remove("show");
-    }, 2500);
-
+    toastTimer = setTimeout(() => element.classList.remove("show"), 2500);
 }
-
-
-/* =====================================================
-   RENDER ALL
-===================================================== */
 
 function renderAll(){
-
     renderDashboard();
-
     renderTasks();
-
     renderReports();
-
     renderCalendar();
-
+    updatePomodoroUI();
 }
 
-
 /* =====================================================
-   START REMINDERS
+   START
 ===================================================== */
 
-setTimeout(function(){
-    scheduleAllReminders();
-}, 1000);
-
-
-/* =====================================================
-   CLOCK UPDATE
-===================================================== */
-
-setInterval(function(){
-    updateHeader();
-}, 30000);
+setTimeout(() => scheduleAllReminders(), 1000);
+setInterval(() => updateHeader(), 30000);
 
 </script>
 
