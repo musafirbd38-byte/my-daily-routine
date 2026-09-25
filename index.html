@@ -5,12 +5,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#4f46e5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
 <title>দৈনিক রুটিন</title>
 
 <style>
 
 /* =====================================================
-   DAILY ROUTINE — v3.2
+   DAILY ROUTINE — v4.0
 ===================================================== */
 
 *{
@@ -159,7 +162,7 @@ textarea:focus-visible,select:focus-visible{
 .badge-chip .badge-icon{ font-size:16px; }
 
 /* =====================================================
-   DUAL PROGRESS — CLICKABLE
+   DUAL PROGRESS
 ===================================================== */
 
 .dual-progress{
@@ -177,13 +180,8 @@ textarea:focus-visible,select:focus-visible{
     position:relative;
 }
 
-.progress-card:hover{
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-}
-
-.progress-card:active{
-    transform:scale(.97);
-}
+.progress-card:hover{ box-shadow:0 6px 20px rgba(0,0,0,.08); }
+.progress-card:active{ transform:scale(.97); }
 
 .progress-card.yesterday{ border-left:4px solid var(--warning); }
 .progress-card.today{ border-left:4px solid var(--accent); }
@@ -195,11 +193,7 @@ textarea:focus-visible,select:focus-visible{
     align-items:center;
 }
 
-.progress-card h3 .arrow{
-    font-size:14px;
-    color:var(--accent);
-}
-
+.progress-card h3 .arrow{ font-size:14px; color:var(--accent); }
 .progress-card h2{ margin:4px 0; font-size:22px; }
 .progress-card .progress-bar{ margin-top:10px; }
 
@@ -208,7 +202,7 @@ textarea:focus-visible,select:focus-visible{
 }
 
 /* =====================================================
-   MAIN PROGRESS — CLICKABLE
+   MAIN PROGRESS
 ===================================================== */
 
 .progress-main{
@@ -433,7 +427,7 @@ textarea:focus-visible,select:focus-visible{
 }
 
 /* =====================================================
-   ADVANCED FILTER ROW
+   ADVANCED FILTER
 ===================================================== */
 
 .adv-filter{
@@ -570,7 +564,7 @@ textarea:focus-visible,select:focus-visible{
 .small-btn:active{ transform:scale(.85); }
 
 /* =====================================================
-   DETAIL PAGE — SUMMARY
+   DETAIL SUMMARY
 ===================================================== */
 
 .detail-summary{
@@ -581,16 +575,8 @@ textarea:focus-visible,select:focus-visible{
     margin-bottom:14px;
 }
 
-.detail-summary h2{
-    margin:0 0 6px;
-    font-size:18px;
-}
-
-.detail-summary p{
-    margin:4px 0;
-    font-size:13px;
-    color:var(--muted);
-}
+.detail-summary h2{ margin:0 0 6px; font-size:18px; }
+.detail-summary p{ margin:4px 0; font-size:13px; color:var(--muted); }
 
 .detail-progress-row{
     display:flex;
@@ -607,17 +593,8 @@ textarea:focus-visible,select:focus-visible{
     text-align:center;
 }
 
-.detail-chip strong{
-    display:block;
-    font-size:20px;
-    margin-bottom:2px;
-}
-
-.detail-chip span{
-    font-size:11px;
-    color:var(--muted);
-}
-
+.detail-chip strong{ display:block; font-size:20px; margin-bottom:2px; }
+.detail-chip span{ font-size:11px; color:var(--muted); }
 .detail-chip.success strong{ color:var(--success); }
 .detail-chip.danger strong{ color:var(--danger); }
 .detail-chip.warning strong{ color:var(--warning); }
@@ -949,9 +926,7 @@ textarea:focus-visible,select:focus-visible{
     font-size:14px;
 }
 
-.reflection-grid{
-    display:grid; gap:10px;
-}
+.reflection-grid{ display:grid; gap:10px; }
 
 .reflection-grid label{
     font-size:12px; color:var(--muted);
@@ -993,9 +968,7 @@ textarea:focus-visible,select:focus-visible{
     transition:color .3s;
 }
 
-.pomodoro-time.pulse{
-    animation:pulseAnim 1s infinite;
-}
+.pomodoro-time.pulse{ animation:pulseAnim 1s infinite; }
 
 @keyframes pulseAnim{
     0%,100%{ transform:scale(1); }
@@ -1058,10 +1031,7 @@ textarea:focus-visible,select:focus-visible{
     margin-bottom:14px;
 }
 
-.pomodoro-settings h3{
-    margin:0 0 14px;
-    font-size:15px;
-}
+.pomodoro-settings h3{ margin:0 0 14px; font-size:15px; }
 
 .pomo-row{
     display:flex;
@@ -1314,10 +1284,6 @@ textarea:focus-visible,select:focus-visible{
     border:1px solid var(--border);
 }
 
-/* =====================================================
-   REASON INPUT
-===================================================== */
-
 .reason-input{
     width:100%;
     padding:12px;
@@ -1415,6 +1381,164 @@ textarea:focus-visible,select:focus-visible{
 .toast.show{ opacity:1; transform:translate(-50%,0); }
 
 /* =====================================================
+   ALARM MODAL
+===================================================== */
+
+.alarm-modal{
+    position:fixed; inset:0; z-index:2000;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg,
+        rgba(79,70,229,.95),
+        rgba(124,58,237,.95));
+    backdrop-filter:blur(6px);
+    animation:fadeIn .3s ease;
+}
+
+.alarm-modal.hidden{ display:none; }
+
+.alarm-box{
+    width:88%;
+    max-width:400px;
+    background:var(--card);
+    border-radius:24px;
+    padding:30px 24px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    animation:alarmPop .4s ease;
+}
+
+@keyframes alarmPop{
+    0%{ transform:scale(.8); opacity:0; }
+    60%{ transform:scale(1.05); }
+    100%{ transform:scale(1); opacity:1; }
+}
+
+.alarm-icon{
+    font-size:64px;
+    animation:alarmShake .6s infinite;
+    display:inline-block;
+}
+
+@keyframes alarmShake{
+    0%,100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-15deg); }
+    75%{ transform:rotate(15deg); }
+}
+
+.alarm-box h2{ margin:14px 0 8px; font-size:20px; }
+
+.alarm-box .alarm-title{
+    font-size:16px; font-weight:bold;
+    color:var(--accent); margin:8px 0;
+}
+
+.alarm-box .alarm-time{
+    font-size:13px; color:var(--muted);
+    margin:6px 0 18px;
+}
+
+.alarm-box .alarm-actions{
+    display:flex; flex-direction:column; gap:8px;
+}
+
+.alarm-box .alarm-actions button{
+    padding:14px;
+    border:none; border-radius:14px;
+    font-size:14px; font-weight:bold;
+    transition:transform .15s;
+}
+
+.alarm-box .alarm-actions button:active{ transform:scale(.97); }
+
+.alarm-box .stop-alarm{
+    color:white; background:var(--danger);
+    font-size:15px;
+    box-shadow:0 6px 20px rgba(220,38,38,.4);
+}
+
+.alarm-box .snooze-alarm{
+    color:var(--text); background:var(--bg);
+    border:1px solid var(--border)!important;
+}
+
+.alarm-box .done-alarm{
+    color:white; background:var(--success);
+}
+
+/* =====================================================
+   CUSTOM MUSIC UI
+===================================================== */
+
+.music-info{
+    padding:12px;
+    background:var(--bg);
+    border:1px dashed var(--border);
+    border-radius:12px;
+    margin-top:8px;
+    font-size:12px;
+    color:var(--muted);
+    text-align:center;
+}
+
+.music-info.has-file{
+    border-style:solid;
+    border-color:var(--success);
+    color:var(--success);
+    font-weight:bold;
+}
+
+.music-actions{
+    display:flex; gap:6px; margin-top:8px;
+}
+
+.music-actions button{
+    flex:1;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    font-size:12px;
+    font-weight:bold;
+}
+
+.music-actions button.danger{
+    color:var(--danger);
+    border-color:rgba(220,38,38,.3);
+}
+
+/* =====================================================
+   BACKGROUND MODE BANNER
+===================================================== */
+
+.bg-banner{
+    padding:12px 14px;
+    border-radius:14px;
+    margin-bottom:14px;
+    font-size:12px;
+    line-height:1.6;
+    border:1px solid;
+}
+
+.bg-banner.info{
+    background:rgba(79,70,229,.08);
+    border-color:rgba(79,70,229,.3);
+    color:var(--accent);
+}
+
+.bg-banner.success{
+    background:rgba(22,163,74,.08);
+    border-color:rgba(22,163,74,.3);
+    color:var(--success);
+}
+
+.bg-banner.warning{
+    background:rgba(217,119,6,.08);
+    border-color:rgba(217,119,6,.3);
+    color:var(--warning);
+}
+
+/* =====================================================
    RESPONSIVE
 ===================================================== */
 
@@ -1426,6 +1550,7 @@ textarea:focus-visible,select:focus-visible{
     .form-row{ grid-template-columns:1fr; }
     .dual-progress{ grid-template-columns:1fr; }
     .pomodoro-time{ font-size:44px; }
+    .alarm-icon{ font-size:52px; }
 }
 
 </style>
@@ -1446,10 +1571,7 @@ textarea:focus-visible,select:focus-visible{
             onclick="toggleTheme()">🌙</button>
 </header>
 
-<!-- =====================================================
-     HOME
-===================================================== -->
-
+<!-- HOME -->
 <main id="homePage" class="page active">
 
     <section class="welcome-card">
@@ -1460,55 +1582,39 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
+    <!-- BACKGROUND MODE BANNER -->
+    <div class="bg-banner info" id="bgBanner">
+        🌙 <strong>ব্যাকগ্রাউন্ড মোড:</strong>
+        ট্যাব pin করে রাখলে বা PWA ইনস্টল করলে Sleep মোডেও অ্যালার্ম কাজ করবে।
+    </div>
+
     <section class="badge-strip" id="badgeStrip"></section>
 
     <section class="dual-progress">
-        <div class="progress-card yesterday"
-             onclick="openDayDetail('yesterday')">
-            <h3>
-                গতকালের অগ্রগতি
-                <span class="arrow">›</span>
-            </h3>
-            <h2>
-                <span id="yCompletedCount">0</span> /
-                <span id="yTotalCount">0</span>
-            </h2>
+        <div class="progress-card yesterday" onclick="openDayDetail('yesterday')">
+            <h3>গতকালের অগ্রগতি <span class="arrow">›</span></h3>
+            <h2><span id="yCompletedCount">0</span> / <span id="yTotalCount">0</span></h2>
             <div class="progress-bar">
-                <div class="progress-fill warning"
-                     id="yProgressBar"
-                     style="width:0%"></div>
+                <div class="progress-fill warning" id="yProgressBar" style="width:0%"></div>
             </div>
             <div class="small-percent" id="yPercentText">0% সম্পন্ন</div>
         </div>
 
-        <div class="progress-card today"
-             onclick="openDayDetail('today')">
-            <h3>
-                আজকের অগ্রগতি
-                <span class="arrow">›</span>
-            </h3>
-            <h2>
-                <span id="tCompletedCount">0</span> /
-                <span id="tTotalCount">0</span>
-            </h2>
+        <div class="progress-card today" onclick="openDayDetail('today')">
+            <h3>আজকের অগ্রগতি <span class="arrow">›</span></h3>
+            <h2><span id="tCompletedCount">0</span> / <span id="tTotalCount">0</span></h2>
             <div class="progress-bar">
-                <div class="progress-fill"
-                     id="tProgressBar"
-                     style="width:0%"></div>
+                <div class="progress-fill" id="tProgressBar" style="width:0%"></div>
             </div>
             <div class="small-percent" id="tPercentText">0% সম্পন্ন</div>
         </div>
     </section>
 
-    <section class="progress-main"
-             onclick="openDayDetail('today')">
+    <section class="progress-main" onclick="openDayDetail('today')">
         <div class="progress-top">
             <div>
-                <span class="muted">আজকের মোট স্কোর (বিস্তারিত দেখতে ক্লিক করুন)</span>
-                <h2>
-                    <span id="completedCount">0</span> /
-                    <span id="totalCount">0</span>
-                </h2>
+                <span class="muted">আজকের মোট স্কোর (ক্লিক করুন)</span>
+                <h2><span id="completedCount">0</span> / <span id="totalCount">0</span></h2>
             </div>
             <div class="progress-circle" id="progressCircle">
                 <span id="progressPercent">0%</span>
@@ -1525,57 +1631,30 @@ textarea:focus-visible,select:focus-visible{
     </section>
 
     <section class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">⏳</div>
-            <strong id="pendingCount">0</strong>
-            <span>বাকি</span>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">🚫</div>
-            <strong id="avoidCount">0</strong>
-            <span>না করার</span>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">🔥</div>
-            <strong id="streakCount">0</strong>
-            <span>Streak</span>
-        </div>
-        <div class="stat-card">
-            <div class="stat-icon">🎯</div>
-            <strong id="goalCount">0</strong>
-            <span>লক্ষ্য</span>
-        </div>
+        <div class="stat-card"><div class="stat-icon">⏳</div><strong id="pendingCount">0</strong><span>বাকি</span></div>
+        <div class="stat-card"><div class="stat-icon">🚫</div><strong id="avoidCount">0</strong><span>না করার</span></div>
+        <div class="stat-card"><div class="stat-icon">🔥</div><strong id="streakCount">0</strong><span>Streak</span></div>
+        <div class="stat-card"><div class="stat-icon">🎯</div><strong id="goalCount">0</strong><span>লক্ষ্য</span></div>
     </section>
 
     <section class="section">
         <div class="section-title">
             <h2>আজকের কাজ</h2>
-            <button class="text-btn" onclick="showPage('planning')">
-                সব দেখুন
-            </button>
+            <button class="text-btn" onclick="showPage('planning')">সব দেখুন</button>
         </div>
         <div id="todayTasks"></div>
     </section>
 
     <section class="quote-card">
         <div class="quote-icon">💡</div>
-        <p id="dailyQuote">
-            ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।
-        </p>
+        <p id="dailyQuote">ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।</p>
     </section>
 
 </main>
 
-<!-- =====================================================
-     DAY DETAIL PAGE
-===================================================== -->
-
+<!-- DAY DETAIL -->
 <main id="dayDetailPage" class="page">
-
-    <button class="back-btn" onclick="showPage('home')">
-        ← হোমে ফিরুন
-    </button>
-
+    <button class="back-btn" onclick="showPage('home')">← হোমে ফিরুন</button>
     <div class="page-title">
         <h2 id="dayDetailTitle">📅 দিনের বিস্তারিত</h2>
         <p id="dayDetailDate">তারিখ লোড হচ্ছে...</p>
@@ -1584,24 +1663,13 @@ textarea:focus-visible,select:focus-visible{
     <section class="detail-summary">
         <h2 id="detailScoreText">স্কোর: 0%</h2>
         <p id="detailSubText">0 / 0 কাজ সম্পন্ন</p>
-
         <div class="detail-progress-row">
-            <div class="detail-chip success">
-                <strong id="detailDone">0</strong>
-                <span>✅ সম্পন্ন</span>
-            </div>
-            <div class="detail-chip warning">
-                <strong id="detailPending">0</strong>
-                <span>⏳ বাকি</span>
-            </div>
-            <div class="detail-chip danger">
-                <strong id="detailPenalty">0%</strong>
-                <span>📉 পেনাল্টি</span>
-            </div>
+            <div class="detail-chip success"><strong id="detailDone">0</strong><span>✅ সম্পন্ন</span></div>
+            <div class="detail-chip warning"><strong id="detailPending">0</strong><span>⏳ বাকি</span></div>
+            <div class="detail-chip danger"><strong id="detailPenalty">0%</strong><span>📉 পেনাল্টি</span></div>
         </div>
     </section>
 
-    <!-- COMPLETED TASKS -->
     <section class="section">
         <div class="section-title">
             <h2>✅ সম্পন্ন কাজ</h2>
@@ -1610,7 +1678,6 @@ textarea:focus-visible,select:focus-visible{
         <div id="detailDoneList"></div>
     </section>
 
-    <!-- PENDING TASKS -->
     <section class="section">
         <div class="section-title">
             <h2>⏳ বাকি কাজ</h2>
@@ -1619,20 +1686,13 @@ textarea:focus-visible,select:focus-visible{
         <div id="detailPendingList"></div>
     </section>
 
-    <!-- AVOID VIOLATIONS -->
     <section class="section">
-        <div class="section-title">
-            <h2>🚫 না করার কাজের লঙ্ঘন</h2>
-        </div>
+        <div class="section-title"><h2>🚫 না করার কাজের লঙ্ঘন</h2></div>
         <div id="detailAvoidList"></div>
     </section>
-
 </main>
 
-<!-- =====================================================
-     PLANNING
-===================================================== -->
-
+<!-- PLANNING -->
 <main id="planningPage" class="page">
 
     <div class="page-title">
@@ -1641,23 +1701,15 @@ textarea:focus-visible,select:focus-visible{
     </div>
 
     <div class="tab-switch">
-        <button id="tabTasks" class="active"
-                onclick="switchTab('tasks')">
-            ✅ করার কাজ
-        </button>
-        <button id="tabAvoids"
-                onclick="switchTab('avoids')">
-            🚫 না করার কাজ
-        </button>
+        <button id="tabTasks" class="active" onclick="switchTab('tasks')">✅ করার কাজ</button>
+        <button id="tabAvoids" onclick="switchTab('avoids')">🚫 না করার কাজ</button>
     </div>
 
     <section class="calendar-card">
         <div class="calendar-header">
-            <button aria-label="আগের মাস"
-                    onclick="changeMonth(-1)">‹</button>
+            <button aria-label="আগের মাস" onclick="changeMonth(-1)">‹</button>
             <div class="calendar-title" id="calendarTitle"></div>
-            <button aria-label="পরের মাস"
-                    onclick="changeMonth(1)">›</button>
+            <button aria-label="পরের মাস" onclick="changeMonth(1)">›</button>
         </div>
         <div class="calendar-week">
             <div>রবি</div><div>সোম</div><div>মঙ্গল</div>
@@ -1667,16 +1719,11 @@ textarea:focus-visible,select:focus-visible{
     </section>
 
     <div class="date-filter">
-        <button class="filter-btn active"
-                onclick="setDateFilter('today',this)">আজ</button>
-        <button class="filter-btn"
-                onclick="setDateFilter('tomorrow',this)">আগামীকাল</button>
-        <button class="filter-btn"
-                onclick="setDateFilter('week',this)">সপ্তাহ</button>
-        <button class="filter-btn"
-                onclick="setDateFilter('month',this)">মাস</button>
-        <button class="filter-btn"
-                onclick="setDateFilter('all',this)">সব</button>
+        <button class="filter-btn active" onclick="setDateFilter('today',this)">আজ</button>
+        <button class="filter-btn" onclick="setDateFilter('tomorrow',this)">আগামীকাল</button>
+        <button class="filter-btn" onclick="setDateFilter('week',this)">সপ্তাহ</button>
+        <button class="filter-btn" onclick="setDateFilter('month',this)">মাস</button>
+        <button class="filter-btn" onclick="setDateFilter('all',this)">সব</button>
     </div>
 
     <div class="adv-filter">
@@ -1690,7 +1737,6 @@ textarea:focus-visible,select:focus-visible{
             <option value="ব্যবসা">🏪 ব্যবসা</option>
             <option value="অন্যান্য">📌 অন্যান্য</option>
         </select>
-
         <select id="filterPriority" onchange="renderTasks()">
             <option value="">সব Priority</option>
             <option value="high">🔴 High</option>
@@ -1701,19 +1747,13 @@ textarea:focus-visible,select:focus-visible{
 
     <div class="search-box">
         <span>🔍</span>
-        <input id="searchInput" type="text"
-               placeholder="কাজ খুঁজুন..."
-               oninput="renderTasks()">
+        <input id="searchInput" type="text" placeholder="কাজ খুঁজুন..." oninput="renderTasks()">
     </div>
 
     <div id="planningTasks"></div>
-
 </main>
 
-<!-- =====================================================
-     ADD TASK
-===================================================== -->
-
+<!-- ADD TASK -->
 <main id="addPage" class="page">
 
     <div class="page-title">
@@ -1721,8 +1761,7 @@ textarea:focus-visible,select:focus-visible{
         <p id="addPageSubtitle">আপনার পরিকল্পনা তৈরি করুন</p>
     </div>
 
-    <label style="font-size:13px;font-weight:bold;
-                  display:block;margin-bottom:6px">
+    <label style="font-size:13px;font-weight:bold;display:block;margin-bottom:6px">
         ⚡ দ্রুত টেমপ্লেট
     </label>
     <div class="template-row" id="templateRow"></div>
@@ -1733,51 +1772,31 @@ textarea:focus-visible,select:focus-visible{
         <input type="hidden" id="taskKind" value="task">
 
         <label>কাজের নাম *</label>
-        <input id="taskTitle" type="text"
-               placeholder="যেমন: বই পড়া" required>
+        <input id="taskTitle" type="text" placeholder="যেমন: বই পড়া" required>
 
         <label>বিস্তারিত</label>
-        <textarea id="taskDescription"
-                  placeholder="কাজটি সম্পর্কে কিছু লিখুন..."></textarea>
+        <textarea id="taskDescription" placeholder="কাজটি সম্পর্কে কিছু লিখুন..."></textarea>
 
         <label>তারিখ নির্বাচন *</label>
 
         <div class="tab-switch" style="margin-top:0">
-            <button type="button" id="dateModeSingle"
-                    class="active"
-                    onclick="setDateMode('single')">
-                📅 একটি তারিখ
-            </button>
-            <button type="button" id="dateModeMulti"
-                    onclick="setDateMode('multi')">
-                📆 একাধিক তারিখ
-            </button>
+            <button type="button" id="dateModeSingle" class="active" onclick="setDateMode('single')">📅 একটি তারিখ</button>
+            <button type="button" id="dateModeMulti" onclick="setDateMode('multi')">📆 একাধিক তারিখ</button>
         </div>
 
-        <div id="singleDateWrap">
-            <input id="taskDate" type="date" required>
-        </div>
+        <div id="singleDateWrap"><input id="taskDate" type="date" required></div>
 
         <div id="multiDateWrap" class="multi-date-wrap hidden">
             <div class="multi-date-header">
                 <span>তারিখগুলোতে ট্যাপ করুন</span>
                 <div>
-                    <button type="button"
-                            onclick="selectAllDatesInMonth()">
-                        সব সিলেক্ট
-                    </button>
-                    <button type="button" class="clear"
-                            onclick="clearSelectedDates()">
-                        ক্লিয়ার
-                    </button>
+                    <button type="button" onclick="selectAllDatesInMonth()">সব সিলেক্ট</button>
+                    <button type="button" class="clear" onclick="clearSelectedDates()">ক্লিয়ার</button>
                 </div>
             </div>
-            <input id="multiMonthPicker" type="month"
-                   onchange="renderMultiDateGrid()"
-                   style="margin-bottom:8px">
+            <input id="multiMonthPicker" type="month" onchange="renderMultiDateGrid()" style="margin-bottom:8px">
             <div class="multi-date-grid" id="multiDateGrid"></div>
-            <div class="selected-dates-list"
-                 id="selectedDatesList"></div>
+            <div class="selected-dates-list" id="selectedDatesList"></div>
         </div>
 
         <div class="form-row">
@@ -1827,47 +1846,31 @@ textarea:focus-visible,select:focus-visible{
 
         <div id="avoidFields" class="hidden">
             <label>কতবার করলে পেনাল্টি?</label>
-            <input id="avoidLimit" type="number"
-                   min="1" value="1">
+            <input id="avoidLimit" type="number" min="1" value="1">
 
             <label>পেনাল্টি (% অগ্রগতি কমবে)</label>
-            <input id="avoidPenalty" type="number"
-                   min="1" max="100" value="10">
+            <input id="avoidPenalty" type="number" min="1" max="100" value="10">
 
             <label>প্রতিটি ধাপ (Step by Step)</label>
             <div class="step-adder">
-                <input id="stepInput" type="text"
-                       placeholder="যেমন: ফাস্ট ফুড খাওয়া">
-                <button type="button"
-                        onclick="addStep()">+</button>
+                <input id="stepInput" type="text" placeholder="যেমন: ফাস্ট ফুড খাওয়া">
+                <button type="button" onclick="addStep()">+</button>
             </div>
-
             <div class="step-list" id="stepList"></div>
         </div>
 
         <label>নোট</label>
-        <textarea id="taskNote"
-                  placeholder="প্রয়োজন হলে নোট লিখুন..."></textarea>
+        <textarea id="taskNote" placeholder="প্রয়োজন হলে নোট লিখুন..."></textarea>
 
         <button class="primary-btn" type="submit">
             <span id="saveBtnText">💾 কাজ সংরক্ষণ করুন</span>
         </button>
 
-        <button class="secondary-btn hidden"
-                id="cancelEditBtn"
-                type="button"
-                onclick="cancelEdit()">
-            বাতিল
-        </button>
-
+        <button class="secondary-btn hidden" id="cancelEditBtn" type="button" onclick="cancelEdit()">বাতিল</button>
     </form>
-
 </main>
 
-<!-- =====================================================
-     REPORT
-===================================================== -->
-
+<!-- REPORT -->
 <main id="reportPage" class="page">
 
     <div class="page-title">
@@ -1876,109 +1879,56 @@ textarea:focus-visible,select:focus-visible{
     </div>
 
     <section class="report-summary">
-        <div class="report-card">
-            <span>মোট কাজ</span>
-            <strong id="reportTotal">0</strong>
-        </div>
-        <div class="report-card success">
-            <span>সম্পন্ন</span>
-            <strong id="reportCompleted">0</strong>
-        </div>
-        <div class="report-card">
-            <span>বাকি</span>
-            <strong id="reportPending">0</strong>
-        </div>
-        <div class="report-card danger">
-            <span>🚫 লঙ্ঘন</span>
-            <strong id="reportViolations">0</strong>
-        </div>
-        <div class="report-card">
-            <span>সাফল্য</span>
-            <strong id="reportRate">0%</strong>
-        </div>
-        <div class="report-card">
-            <span>গড় স্কোর</span>
-            <strong id="reportScore">0%</strong>
-        </div>
+        <div class="report-card"><span>মোট কাজ</span><strong id="reportTotal">0</strong></div>
+        <div class="report-card success"><span>সম্পন্ন</span><strong id="reportCompleted">0</strong></div>
+        <div class="report-card"><span>বাকি</span><strong id="reportPending">0</strong></div>
+        <div class="report-card danger"><span>🚫 লঙ্ঘন</span><strong id="reportViolations">0</strong></div>
+        <div class="report-card"><span>সাফল্য</span><strong id="reportRate">0%</strong></div>
+        <div class="report-card"><span>গড় স্কোর</span><strong id="reportScore">0%</strong></div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📅 গত ৭ দিন</h2>
-        </div>
+        <div class="section-title"><h2>📅 গত ৭ দিন</h2></div>
         <div id="weeklyReport"></div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>🚫 Avoid Task বিশ্লেষণ</h2>
-        </div>
+        <div class="section-title"><h2>🚫 Avoid Task বিশ্লেষণ</h2></div>
         <div class="analytics-list" id="avoidAnalytics"></div>
     </section>
 
-    <!-- VIOLATION HISTORY -->
     <section class="section">
-        <div class="section-title">
-            <h2>📜 লঙ্ঘনের ইতিহাস</h2>
-        </div>
+        <div class="section-title"><h2>📜 লঙ্ঘনের ইতিহাস</h2></div>
         <div id="violationHistory"></div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📖 সাপ্তাহিক রিভিউ</h2>
-        </div>
+        <div class="section-title"><h2>📖 সাপ্তাহিক রিভিউ</h2></div>
         <div class="reflection-grid">
             <label>এই সপ্তাহে কী ভালো হয়েছে?</label>
-            <textarea id="reflectGood"
-                      placeholder="ইতিবাচক দিকগুলো লিখুন..."></textarea>
-
+            <textarea id="reflectGood" placeholder="ইতিবাচক দিকগুলো লিখুন..."></textarea>
             <label>কী উন্নতি করা যায়?</label>
-            <textarea id="reflectImprove"
-                      placeholder="উন্নতির সুযোগ..."></textarea>
-
+            <textarea id="reflectImprove" placeholder="উন্নতির সুযোগ..."></textarea>
             <label>পরের সপ্তাহের লক্ষ্য</label>
-            <textarea id="reflectGoal"
-                      placeholder="পরবর্তী লক্ষ্য..."></textarea>
-
-            <button class="primary-btn"
-                    onclick="saveWeeklyReflection()">
-                💾 রিভিউ সংরক্ষণ
-            </button>
+            <textarea id="reflectGoal" placeholder="পরবর্তী লক্ষ্য..."></textarea>
+            <button class="primary-btn" onclick="saveWeeklyReflection()">💾 রিভিউ সংরক্ষণ</button>
         </div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📝 আজকের নোট</h2>
-        </div>
-        <textarea class="journal" id="dailyNote"
-                  placeholder="আজকের দিন সম্পর্কে কিছু লিখুন..."></textarea>
-        <button class="primary-btn" onclick="saveDailyNote()">
-            💾 নোট সংরক্ষণ
-        </button>
+        <div class="section-title"><h2>📝 আজকের নোট</h2></div>
+        <textarea class="journal" id="dailyNote" placeholder="আজকের দিন সম্পর্কে কিছু লিখুন..."></textarea>
+        <button class="primary-btn" onclick="saveDailyNote()">💾 নোট সংরক্ষণ</button>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📤 রিপোর্ট শেয়ার</h2>
-        </div>
-        <button class="secondary-btn"
-                onclick="shareReport()">
-            📋 টেক্সট কপি করুন
-        </button>
-        <button class="secondary-btn"
-                onclick="downloadReportText()">
-            📥 .txt হিসেবে ডাউনলোড
-        </button>
+        <div class="section-title"><h2>📤 রিপোর্ট শেয়ার</h2></div>
+        <button class="secondary-btn" onclick="shareReport()">📋 টেক্সট কপি করুন</button>
+        <button class="secondary-btn" onclick="downloadReportText()">📥 .txt হিসেবে ডাউনলোড</button>
     </section>
-
 </main>
 
-<!-- =====================================================
-     FOCUS PAGE
-===================================================== -->
-
+<!-- FOCUS -->
 <main id="focusPage" class="page">
 
     <div class="page-title">
@@ -1987,111 +1937,65 @@ textarea:focus-visible,select:focus-visible{
     </div>
 
     <section class="pomodoro-card">
-
         <div class="pomodoro-mode">
-            <button class="active" data-mode="focus"
-                    onclick="setPomodoroMode('focus',this)">
+            <button class="active" data-mode="focus" onclick="setPomodoroMode('focus',this)">
                 🎯 ফোকাস <span id="modeFocusLabel">25মি</span>
             </button>
-            <button data-mode="short"
-                    onclick="setPomodoroMode('short',this)">
+            <button data-mode="short" onclick="setPomodoroMode('short',this)">
                 ☕ ছোট বিরতি <span id="modeShortLabel">5মি</span>
             </button>
-            <button data-mode="long"
-                    onclick="setPomodoroMode('long',this)">
+            <button data-mode="long" onclick="setPomodoroMode('long',this)">
                 🌿 বড় বিরতি <span id="modeLongLabel">15মি</span>
             </button>
         </div>
 
-        <div class="pomodoro-label" id="pomodoroLabel">
-            ফোকাস সেশনে মনোযোগ দিন
-        </div>
-
-        <div class="pomodoro-time" id="pomodoroTime">
-            25:00
-        </div>
+        <div class="pomodoro-label" id="pomodoroLabel">ফোকাস সেশনে মনোযোগ দিন</div>
+        <div class="pomodoro-time" id="pomodoroTime">25:00</div>
 
         <div class="pomodoro-actions">
-            <button id="pomodoroStartBtn"
-                    onclick="startPomodoro()">
-                ▶️ শুরু
-            </button>
-            <button class="secondary"
-                    onclick="resetPomodoro()">
-                🔄 রিসেট
-            </button>
+            <button id="pomodoroStartBtn" onclick="startPomodoro()">▶️ শুরু</button>
+            <button class="secondary" onclick="resetPomodoro()">🔄 রিসেট</button>
         </div>
-
     </section>
 
     <section class="pomodoro-settings">
         <h3>⚙️ টাইমার কাস্টমাইজ করুন</h3>
-
         <div class="pomo-row">
             <label>🎯 ফোকাস সময়</label>
-            <input id="focusMinutes" class="pomo-input"
-                   type="number" min="1" max="180" value="25"
-                   onchange="savePomodoroSettings()">
+            <input id="focusMinutes" class="pomo-input" type="number" min="1" max="180" value="25" onchange="savePomodoroSettings()">
             <span class="unit">মিনিট</span>
         </div>
-
         <div class="pomo-row">
             <label>☕ ছোট বিরতি</label>
-            <input id="shortMinutes" class="pomo-input"
-                   type="number" min="1" max="60" value="5"
-                   onchange="savePomodoroSettings()">
+            <input id="shortMinutes" class="pomo-input" type="number" min="1" max="60" value="5" onchange="savePomodoroSettings()">
             <span class="unit">মিনিট</span>
         </div>
-
         <div class="pomo-row">
             <label>🌿 বড় বিরতি</label>
-            <input id="longMinutes" class="pomo-input"
-                   type="number" min="1" max="60" value="15"
-                   onchange="savePomodoroSettings()">
+            <input id="longMinutes" class="pomo-input" type="number" min="1" max="60" value="15" onchange="savePomodoroSettings()">
             <span class="unit">মিনিট</span>
         </div>
-
         <div class="pomo-row">
             <label>🔔 অ্যালার্ম ভলিউম</label>
-            <input id="alarmVolume" class="pomo-input"
-                   type="number" min="0" max="100" value="80"
-                   onchange="savePomodoroSettings()">
+            <input id="alarmVolume" class="pomo-input" type="number" min="0" max="100" value="80" onchange="savePomodoroSettings()">
             <span class="unit">%</span>
         </div>
-
         <div class="pomo-row">
             <label>🔊 অ্যালার্ম টেস্ট</label>
-            <button class="test-alarm-btn"
-                    type="button"
-                    onclick="testAlarm()">
-                ▶️ বাজান
-            </button>
+            <button class="test-alarm-btn" type="button" onclick="testAlarm()">▶️ বাজান</button>
         </div>
-
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📊 আজকের ফোকাস সেশন</h2>
-        </div>
+        <div class="section-title"><h2>📊 আজকের ফোকাস সেশন</h2></div>
         <div class="report-summary">
-            <div class="report-card">
-                <span>সম্পন্ন সেশন</span>
-                <strong id="pomodoroCount">0</strong>
-            </div>
-            <div class="report-card">
-                <span>মোট মিনিট</span>
-                <strong id="pomodoroMinutes">0</strong>
-            </div>
+            <div class="report-card"><span>সম্পন্ন সেশন</span><strong id="pomodoroCount">0</strong></div>
+            <div class="report-card"><span>মোট মিনিট</span><strong id="pomodoroMinutes">0</strong></div>
         </div>
     </section>
-
 </main>
 
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
-
+<!-- SETTINGS -->
 <main id="settingsPage" class="page">
 
     <div class="page-title">
@@ -2101,9 +2005,7 @@ textarea:focus-visible,select:focus-visible{
 
     <section class="settings-card">
         <label>আপনার নাম</label>
-        <input id="userName" type="text"
-               placeholder="আপনার নাম"
-               onchange="saveUserName()">
+        <input id="userName" type="text" placeholder="আপনার নাম" onchange="saveUserName()">
 
         <div class="setting-row">
             <div>
@@ -2111,9 +2013,7 @@ textarea:focus-visible,select:focus-visible{
                 <p>Reminder চালু/বন্ধ</p>
             </div>
             <label class="switch">
-                <input id="notificationToggle"
-                       type="checkbox"
-                       onchange="toggleNotifications()">
+                <input id="notificationToggle" type="checkbox" onchange="toggleNotifications()">
                 <span class="slider"></span>
             </label>
         </div>
@@ -2124,8 +2024,7 @@ textarea:focus-visible,select:focus-visible{
                 <p>ডার্ক থিম</p>
             </div>
             <label class="switch">
-                <input id="darkToggle" type="checkbox"
-                       onchange="toggleTheme()">
+                <input id="darkToggle" type="checkbox" onchange="toggleTheme()">
                 <span class="slider"></span>
             </label>
         </div>
@@ -2136,10 +2035,80 @@ textarea:focus-visible,select:focus-visible{
                 <p>৭ দিন পরপর রিমাইন্ড</p>
             </div>
             <label class="switch">
-                <input id="autoBackupToggle" type="checkbox"
-                       onchange="toggleAutoBackup()">
+                <input id="autoBackupToggle" type="checkbox" onchange="toggleAutoBackup()">
                 <span class="slider"></span>
             </label>
+        </div>
+
+        <div class="setting-row">
+            <div>
+                <strong>🔒 Wake Lock (Background Alarm)</strong>
+                <p>স্ক্রিন অন রাখার চেষ্টা করবে</p>
+            </div>
+            <label class="switch">
+                <input id="wakeLockToggle" type="checkbox" onchange="toggleWakeLock()">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </section>
+
+    <!-- CUSTOM MUSIC -->
+    <section class="settings-card">
+        <h3>🎵 Custom Alarm Music</h3>
+        <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
+            ফোনের যেকোনো গান/সাউন্ড ফাইল অ্যালার্ম হিসেবে ব্যবহার করুন
+            (MP3, M4A, WAV, OGG)
+        </p>
+
+        <label class="secondary-btn file-label" style="margin-top:0">
+            📂 মিউজিক ফাইল বেছে নিন
+            <input id="customMusicInput" type="file"
+                   accept="audio/*"
+                   onchange="handleCustomMusicUpload(event)"
+                   hidden>
+        </label>
+
+        <div class="music-info" id="musicInfo">
+            এখনো কোনো কাস্টম মিউজিক সেট করা হয়নি
+        </div>
+
+        <div class="music-actions">
+            <button type="button" onclick="testCustomMusic()">
+                ▶️ টেস্ট
+            </button>
+            <button type="button" class="danger" onclick="removeCustomMusic()">
+                🗑️ মুছুন
+            </button>
+        </div>
+    </section>
+
+    <!-- REMINDER ALARM -->
+    <section class="settings-card">
+        <h3>🔔 Reminder Alarm</h3>
+        <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
+            টাস্কের সময়মতো অ্যালার্ম বাজবে
+        </p>
+
+        <div class="pomo-row">
+            <label>🔊 Reminder Volume</label>
+            <input id="reminderVolume" class="pomo-input" type="number"
+                   min="0" max="100" value="80"
+                   onchange="saveReminderSettings()">
+            <span class="unit">%</span>
+        </div>
+
+        <div class="pomo-row">
+            <label>🎵 Default Sound টেস্ট</label>
+            <button class="test-alarm-btn" type="button" onclick="testReminderAlarm()">
+                ▶️ বাজান
+            </button>
+        </div>
+
+        <div class="pomo-row">
+            <label>📱 Browser Notification</label>
+            <button class="test-alarm-btn" type="button" onclick="testNotification()">
+                🔔 দেখান
+            </button>
         </div>
     </section>
 
@@ -2150,55 +2119,37 @@ textarea:focus-visible,select:focus-visible{
 
     <section class="settings-card">
         <h3>💾 Data</h3>
-        <button class="secondary-btn" onclick="backupData()">
-            📥 Backup Data
-        </button>
+        <button class="secondary-btn" onclick="backupData()">📥 Backup Data</button>
         <label class="secondary-btn file-label">
             📤 Restore Data
-            <input id="restoreFile" type="file"
-                   accept=".json"
-                   onchange="restoreData(event)"
-                   hidden>
+            <input id="restoreFile" type="file" accept=".json" onchange="restoreData(event)" hidden>
         </label>
-        <button class="danger-btn" onclick="deleteAllData()">
-            🗑️ সব ডেটা মুছে ফেলুন
-        </button>
+        <button class="danger-btn" onclick="deleteAllData()">🗑️ সব ডেটা মুছে ফেলুন</button>
     </section>
 
     <section class="about-card">
         <h3>দৈনিক রুটিন</h3>
         <p>Personal Routine App</p>
-        <small>Version 3.2.0</small>
+        <small>Version 4.0.0</small>
     </section>
-
 </main>
 
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
-
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-    <button class="nav-item active" data-page="home"
-            onclick="showPage('home')">
+    <button class="nav-item active" data-page="home" onclick="showPage('home')">
         <span>🏠</span><small>হোম</small>
     </button>
-    <button class="nav-item" data-page="planning"
-            onclick="showPage('planning')">
+    <button class="nav-item" data-page="planning" onclick="showPage('planning')">
         <span>📅</span><small>পরিকল্পনা</small>
     </button>
-    <button class="add-nav-btn"
-            aria-label="নতুন কাজ"
-            onclick="openAddTask('task')">+</button>
-    <button class="nav-item" data-page="focus"
-            onclick="showPage('focus')">
+    <button class="add-nav-btn" aria-label="নতুন কাজ" onclick="openAddTask('task')">+</button>
+    <button class="nav-item" data-page="focus" onclick="showPage('focus')">
         <span>⏱️</span><small>ফোকাস</small>
     </button>
-    <button class="nav-item" data-page="report"
-            onclick="showPage('report')">
+    <button class="nav-item" data-page="report" onclick="showPage('report')">
         <span>📊</span><small>রিপোর্ট</small>
     </button>
-    <button class="nav-item" data-page="settings"
-            onclick="showPage('settings')">
+    <button class="nav-item" data-page="settings" onclick="showPage('settings')">
         <span>⚙️</span><small>সেটিংস</small>
     </button>
 </nav>
@@ -2210,19 +2161,37 @@ textarea:focus-visible,select:focus-visible{
     <div class="modal-content">
         <div class="modal-header">
             <h3 id="modalTitle">কাজ</h3>
-            <button class="close-btn" aria-label="বন্ধ"
-                    onclick="closeModal()">×</button>
+            <button class="close-btn" aria-label="বন্ধ" onclick="closeModal()">×</button>
         </div>
         <div id="modalBody"></div>
     </div>
 </div>
+
+<!-- ALARM MODAL -->
+<div id="alarmModal" class="alarm-modal hidden">
+    <div class="alarm-box">
+        <div class="alarm-icon">🔔</div>
+        <h2>রিমাইন্ডার!</h2>
+        <div class="alarm-title" id="alarmTaskTitle">টাস্ক</div>
+        <div class="alarm-time" id="alarmTaskTime">সময়</div>
+
+        <div class="alarm-actions">
+            <button class="stop-alarm" onclick="stopAlarm()">🛑 থামান</button>
+            <button class="snooze-alarm" onclick="snoozeAlarm()">⏰ ৫ মিনিট পরে</button>
+            <button class="done-alarm" onclick="completeAlarmTask()">✅ সম্পন্ন করুন</button>
+        </div>
+    </div>
+</div>
+
+<audio id="customAudioPlayer" style="display:none"></audio>
 
 <div id="toast" class="toast"></div>
 
 <script>
 
 /* =====================================================
-   DAILY ROUTINE — v3.2
+   DAILY ROUTINE — v4.0
+   Custom Music + Background Alarm
 ===================================================== */
 
 "use strict";
@@ -2238,15 +2207,17 @@ const REASON_KEY      = "dailyRoutine_violationReasons";
 const REFLECTION_KEY  = "dailyRoutine_reflections";
 const POMODORO_KEY    = "dailyRoutine_pomodoro";
 const POMO_CONFIG_KEY = "dailyRoutine_pomoConfig";
+const REMINDER_CFG_KEY= "dailyRoutine_reminderConfig";
 const BADGE_KEY       = "dailyRoutine_badges";
 const LAST_BACKUP_KEY = "dailyRoutine_lastBackup";
 const TEMPLATES_KEY   = "dailyRoutine_templates";
+const CUSTOM_MUSIC_KEY= "dailyRoutine_customMusic"; /* IndexedDB key name */
 
 let tasks       = [];
 let avoidTasks  = [];
-let avoidLog    = {};   /* { date: { avoidId: count } } */
-let violations  = {};   /* { date: totalPenalty } */
-let violationReasons = {}; /* { date: { avoidId: [ {reason, at} ] } } */
+let avoidLog    = {};
+let violations  = {};
+let violationReasons = {};
 let badgesEarned = {};
 
 let settings = {
@@ -2254,15 +2225,12 @@ let settings = {
     darkMode:false,
     notifications:true,
     autoBackup:true,
-    accent:"#4f46e5"
+    accent:"#4f46e5",
+    wakeLock:false
 };
 
-let pomoConfig = {
-    focus: 25,
-    short: 5,
-    long: 15,
-    volume: 80
-};
+let pomoConfig = { focus: 25, short: 5, long: 15, volume: 80 };
+let reminderConfig = { volume: 80, useCustomMusic: false, customMusicName: "" };
 
 let currentDateFilter = "today";
 let calendarDate      = new Date();
@@ -2271,28 +2239,82 @@ let dateMode          = "single";
 let selectedDates     = [];
 let draftSteps        = [];
 let toastTimer        = null;
-let currentDayDetail  = null; /* currently viewed date in detail page */
+let currentDayDetail  = null;
+
+let scheduledTimers = {};
+let alarmIntervalId = null;
+let activeAlarmTaskId = null;
+
+let customMusicBlobUrl = null;
+let customMusicAudioEl = null;
+
+let wakeLockSentinel = null;
 
 const defaultTemplates = [
-    { name:"📚 পড়াশোনা", title:"১ ঘণ্টা পড়াশোনা",
-      category:"পড়াশোনা", time:"20:00" },
-    { name:"💪 ব্যায়াম", title:"৩০ মিনিট ব্যায়াম",
-      category:"স্বাস্থ্য", time:"06:30" },
-    { name:"💧 পানি", title:"৮ গ্লাস পানি পান",
-      category:"স্বাস্থ্য", time:"08:00" },
-    { name:"🧘 মেডিটেশন", title:"১৫ মিনিট মেডিটেশন",
-      category:"স্বাস্থ্য", time:"06:00" },
-    { name:"📖 বই পড়া", title:"৩০ মিনিট বই পড়া",
-      category:"পড়াশোনা", time:"21:30" },
-    { name:"📝 ডায়েরি", title:"আজকের ডায়েরি লেখা",
-      category:"ব্যক্তিগত", time:"22:00" }
+    { name:"📚 পড়াশোনা", title:"১ ঘণ্টা পড়াশোনা", category:"পড়াশোনা", time:"20:00" },
+    { name:"💪 ব্যায়াম", title:"৩০ মিনিট ব্যায়াম", category:"স্বাস্থ্য", time:"06:30" },
+    { name:"💧 পানি", title:"৮ গ্লাস পানি পান", category:"স্বাস্থ্য", time:"08:00" },
+    { name:"🧘 মেডিটেশন", title:"১৫ মিনিট মেডিটেশন", category:"স্বাস্থ্য", time:"06:00" },
+    { name:"📖 বই পড়া", title:"৩০ মিনিট বই পড়া", category:"পড়াশোনা", time:"21:30" },
+    { name:"📝 ডায়েরি", title:"আজকের ডায়েরি লেখা", category:"ব্যক্তিগত", time:"22:00" }
 ];
+
+/* =====================================================
+   INDEXEDDB — for large custom music files
+===================================================== */
+
+const IDB_NAME = "dailyRoutineDB";
+const IDB_STORE = "files";
+
+function openIDB(){
+    return new Promise((resolve, reject) => {
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = function(e){
+            const db = e.target.result;
+            if(!db.objectStoreNames.contains(IDB_STORE)){
+                db.createObjectStore(IDB_STORE);
+            }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+    });
+}
+
+async function idbSave(key, blob){
+    const db = await openIDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readwrite");
+        tx.objectStore(IDB_STORE).put(blob, key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+    });
+}
+
+async function idbGet(key){
+    const db = await openIDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readonly");
+        const req = tx.objectStore(IDB_STORE).get(key);
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => reject(req.error);
+    });
+}
+
+async function idbDelete(key){
+    const db = await openIDB();
+    return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readwrite");
+        tx.objectStore(IDB_STORE).delete(key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+    });
+}
 
 /* =====================================================
    INIT
 ===================================================== */
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", async function(){
 
     loadData();
     setDefaultDate();
@@ -2301,6 +2323,7 @@ document.addEventListener("DOMContentLoaded", function(){
     renderAll();
     loadSettingsUI();
     loadPomodoroSettingsUI();
+    loadReminderSettingsUI();
     showRandomQuote();
     requestNotificationPermission();
     renderTemplates();
@@ -2308,14 +2331,126 @@ document.addEventListener("DOMContentLoaded", function(){
     checkAutoBackupReminder();
     updatePomodoroLabels();
 
+    /* Load custom music if previously saved */
+    await loadSavedCustomMusic();
+
+    /* Register service worker (for background notifications) */
+    registerServiceWorker();
+
+    /* Request wake lock if enabled */
+    if(settings.wakeLock){
+        requestWakeLock();
+    }
+
+    /* Schedule reminders */
+    scheduleAllReminders();
+    setInterval(scheduleAllReminders, 60000);
+
     const picker = document.getElementById("multiMonthPicker");
     if(picker){
         const now = new Date();
-        picker.value =
-            `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
+        picker.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
     }
 
+    /* Re-schedule on tab focus */
+    document.addEventListener("visibilitychange", function(){
+        if(!document.hidden){
+            scheduleAllReminders();
+            if(settings.wakeLock) requestWakeLock();
+        }
+    });
+
 });
+
+/* =====================================================
+   SERVICE WORKER
+===================================================== */
+
+function registerServiceWorker(){
+    if(!("serviceWorker" in navigator)) return;
+
+    /* Inline service worker via Blob (no separate file needed) */
+    const swCode = `
+        self.addEventListener("install", e => self.skipWaiting());
+        self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
+
+        self.addEventListener("notificationclick", function(event){
+            event.notification.close();
+            event.waitUntil(
+                self.clients.matchAll({ type:"window" })
+                    .then(clients => {
+                        for(let c of clients){
+                            if(c.url.includes("index") || c.url.startsWith(self.location.origin)){
+                                c.focus();
+                                c.postMessage({ type:"alarm-open" });
+                                return;
+                            }
+                        }
+                        return self.clients.openWindow("/");
+                    })
+            );
+        });
+
+        /* Messages from main thread → show notification */
+        self.addEventListener("message", function(event){
+            const data = event.data || {};
+            if(data.type === "show-notification"){
+                self.registration.showNotification(data.title, {
+                    body: data.body,
+                    tag: data.tag,
+                    requireInteraction: true,
+                    vibrate: [300, 200, 300, 200, 300],
+                    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%94%3C/text%3E%3C/svg%3E"
+                });
+            }
+        });
+    `;
+
+    const blob = new Blob([swCode], { type:"application/javascript" });
+    const swUrl = URL.createObjectURL(blob);
+
+    navigator.serviceWorker.register(swUrl).catch(() => {
+        /* Silent fail — notifications still work via main thread */
+    });
+}
+
+/* =====================================================
+   WAKE LOCK
+===================================================== */
+
+async function requestWakeLock(){
+    if(!("wakeLock" in navigator)) return;
+    try{
+        wakeLockSentinel = await navigator.wakeLock.request("screen");
+        wakeLockSentinel.addEventListener("release", () => {
+            wakeLockSentinel = null;
+        });
+    }
+    catch(e){
+        console.log("Wake Lock unavailable:", e);
+    }
+}
+
+function releaseWakeLock(){
+    if(wakeLockSentinel){
+        wakeLockSentinel.release();
+        wakeLockSentinel = null;
+    }
+}
+
+function toggleWakeLock(){
+    settings.wakeLock = document.getElementById("wakeLockToggle").checked;
+    saveSettings();
+
+    if(settings.wakeLock){
+        requestWakeLock();
+        toast("🔒 Wake Lock চালু হয়েছে।");
+    }
+    else{
+        releaseWakeLock();
+        toast("🔓 Wake Lock বন্ধ হয়েছে।");
+    }
+}
 
 /* =====================================================
    LOAD / SAVE
@@ -2335,6 +2470,9 @@ function loadData(){
 
         const savedPomo = safeParse(localStorage.getItem(POMO_CONFIG_KEY), {});
         pomoConfig = { ...pomoConfig, ...savedPomo };
+
+        const savedReminder = safeParse(localStorage.getItem(REMINDER_CFG_KEY), {});
+        reminderConfig = { ...reminderConfig, ...savedReminder };
     }
     catch(error){
         console.error("Load error:", error);
@@ -2357,6 +2495,268 @@ function saveViolationReasons(){ localStorage.setItem(REASON_KEY, JSON.stringify
 function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
 function saveBadges(){ localStorage.setItem(BADGE_KEY, JSON.stringify(badgesEarned)); }
 function savePomoConfig(){ localStorage.setItem(POMO_CONFIG_KEY, JSON.stringify(pomoConfig)); }
+function saveReminderConfig(){ localStorage.setItem(REMINDER_CFG_KEY, JSON.stringify(reminderConfig)); }
+
+/* =====================================================
+   CUSTOM MUSIC
+===================================================== */
+
+async function handleCustomMusicUpload(event){
+
+    const file = event.target.files[0];
+    if(!file) return;
+
+    /* Size limit: 20 MB */
+    const maxSize = 20 * 1024 * 1024;
+    if(file.size > maxSize){
+        toast("ফাইল ২০ MB এর বেশি হতে পারবে না।");
+        event.target.value = "";
+        return;
+    }
+
+    try{
+        await idbSave(CUSTOM_MUSIC_KEY, file);
+
+        reminderConfig.useCustomMusic = true;
+        reminderConfig.customMusicName = file.name;
+        saveReminderConfig();
+
+        await loadSavedCustomMusic();
+        updateMusicInfoUI();
+
+        toast("🎵 কাস্টম মিউজিক সেট হয়েছে।");
+    }
+    catch(e){
+        console.error(e);
+        toast("ফাইল সেভ করতে সমস্যা হয়েছে।");
+    }
+
+    event.target.value = "";
+}
+
+async function loadSavedCustomMusic(){
+    try{
+        const blob = await idbGet(CUSTOM_MUSIC_KEY);
+        if(blob){
+            if(customMusicBlobUrl){
+                URL.revokeObjectURL(customMusicBlobUrl);
+            }
+            customMusicBlobUrl = URL.createObjectURL(blob);
+            customMusicAudioEl = document.getElementById("customAudioPlayer");
+            customMusicAudioEl.src = customMusicBlobUrl;
+            customMusicAudioEl.loop = true;
+            updateMusicInfoUI();
+        }
+        else{
+            updateMusicInfoUI();
+        }
+    }
+    catch(e){
+        console.log("No custom music:", e);
+        updateMusicInfoUI();
+    }
+}
+
+function updateMusicInfoUI(){
+    const el = document.getElementById("musicInfo");
+    if(!el) return;
+
+    if(reminderConfig.useCustomMusic && reminderConfig.customMusicName){
+        el.textContent = "🎵 " + reminderConfig.customMusicName;
+        el.classList.add("has-file");
+    }
+    else{
+        el.textContent = "এখনো কোনো কাস্টম মিউজিক সেট করা হয়নি";
+        el.classList.remove("has-file");
+    }
+}
+
+async function removeCustomMusic(){
+    if(!confirm("কাস্টম মিউজিক মুছে ফেলতে চান?")) return;
+
+    try{
+        await idbDelete(CUSTOM_MUSIC_KEY);
+    }
+    catch(e){}
+
+    if(customMusicBlobUrl){
+        URL.revokeObjectURL(customMusicBlobUrl);
+        customMusicBlobUrl = null;
+    }
+    if(customMusicAudioEl){
+        customMusicAudioEl.pause();
+        customMusicAudioEl.src = "";
+    }
+
+    reminderConfig.useCustomMusic = false;
+    reminderConfig.customMusicName = "";
+    saveReminderConfig();
+
+    updateMusicInfoUI();
+    toast("🗑️ কাস্টম মিউজিক মুছে ফেলা হয়েছে।");
+}
+
+function testCustomMusic(){
+    if(!customMusicBlobUrl){
+        toast("প্রথমে মিউজিক ফাইল সেট করুন।");
+        return;
+    }
+
+    if(customMusicAudioEl){
+        customMusicAudioEl.currentTime = 0;
+        customMusicAudioEl.volume = (reminderConfig.volume || 80) / 100;
+        customMusicAudioEl.play().then(() => {
+            toast("🎵 ৫ সেকেন্ডের জন্য বাজছে...");
+            setTimeout(() => {
+                if(customMusicAudioEl) customMusicAudioEl.pause();
+            }, 5000);
+        }).catch(() => {
+            toast("মিউজিক চালাতে সমস্যা হয়েছে।");
+        });
+    }
+}
+
+/* =====================================================
+   PLAY ALARM (uses custom music OR default beep)
+===================================================== */
+
+function playReminderAlarm(loops = 4){
+    /* If custom music is set, use it */
+    if(reminderConfig.useCustomMusic && customMusicAudioEl){
+        try{
+            customMusicAudioEl.currentTime = 0;
+            customMusicAudioEl.volume = (reminderConfig.volume || 80) / 100;
+            customMusicAudioEl.loop = true;
+            customMusicAudioEl.play().catch(() => {});
+            return;
+        }
+        catch(e){
+            /* Fall through to default */
+        }
+    }
+
+    /* Default Web Audio beep */
+    const ctx = getAudioContext();
+    if(!ctx) return;
+
+    const volume = Math.max(0, Math.min(1, (reminderConfig.volume || 80) / 100));
+
+    const pattern = [
+        { freq: 1200, start: 0.00, dur: 0.10 },
+        { freq: 1500, start: 0.13, dur: 0.10 },
+        { freq: 1800, start: 0.26, dur: 0.10 },
+        { freq: 1500, start: 0.39, dur: 0.10 }
+    ];
+
+    for(let loop = 0; loop < loops; loop++){
+        const base = loop * 0.75;
+        pattern.forEach(note => {
+            const osc  = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = "triangle";
+            osc.frequency.value = note.freq;
+
+            const startTime = ctx.currentTime + base + note.start;
+            const endTime   = startTime + note.dur;
+
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(volume, startTime + 0.01);
+            gain.gain.setValueAtTime(volume, endTime - 0.02);
+            gain.gain.linearRampToValueAtTime(0, endTime);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start(startTime);
+            osc.stop(endTime + 0.02);
+        });
+    }
+}
+
+/* =====================================================
+   AUDIO CONTEXT
+===================================================== */
+
+let audioCtx = null;
+
+function getAudioContext(){
+    if(!audioCtx){
+        try{
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        catch(e){ return null; }
+    }
+    if(audioCtx.state === "suspended") audioCtx.resume();
+    return audioCtx;
+}
+
+function playPomodoroAlarm(){
+    const ctx = getAudioContext();
+    if(!ctx) return;
+    const volume = Math.max(0, Math.min(1, (pomoConfig.volume || 80) / 100));
+    const notes = [
+        { freq: 880,  start: 0.00, dur: 0.18 },
+        { freq: 1108, start: 0.22, dur: 0.18 },
+        { freq: 1318, start: 0.44, dur: 0.28 }
+    ];
+    for(let round = 0; round < 3; round++){
+        const base = round * 1.6;
+        notes.forEach(note => {
+            const osc  = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.value = note.freq;
+            const startTime = ctx.currentTime + base + note.start;
+            const endTime   = startTime + note.dur;
+            gain.gain.setValueAtTime(0, startTime);
+            gain.gain.linearRampToValueAtTime(volume, startTime + 0.02);
+            gain.gain.setValueAtTime(volume, endTime - 0.05);
+            gain.gain.linearRampToValueAtTime(0, endTime);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(startTime);
+            osc.stop(endTime + 0.02);
+        });
+    }
+}
+
+function testAlarm(){
+    const vol = parseInt(document.getElementById("alarmVolume").value, 10);
+    if(vol >= 0 && vol <= 100) pomoConfig.volume = vol;
+    savePomoConfig();
+    getAudioContext();
+    playPomodoroAlarm();
+    toast("🔊 অ্যালার্ম বাজছে...");
+}
+
+/* =====================================================
+   ALARM LOOP
+===================================================== */
+
+function startAlarmLoop(){
+    stopAlarmLoop();
+    playReminderAlarm(4);
+
+    /* If custom music, no need to loop with interval — audio loop handles it */
+    if(reminderConfig.useCustomMusic && customMusicAudioEl){
+        return;
+    }
+
+    alarmIntervalId = setInterval(() => {
+        playReminderAlarm(4);
+    }, 3000);
+}
+
+function stopAlarmLoop(){
+    if(alarmIntervalId){
+        clearInterval(alarmIntervalId);
+        alarmIntervalId = null;
+    }
+    if(customMusicAudioEl){
+        try{ customMusicAudioEl.pause(); } catch(e){}
+    }
+}
 
 /* =====================================================
    DATE HELPERS
@@ -2377,16 +2777,12 @@ function addDays(date, amount){
 
 function formatDate(dateString){
     const date = new Date(dateString + "T00:00:00");
-    return date.toLocaleDateString("bn-BD", {
-        day:"numeric", month:"long", year:"numeric"
-    });
+    return date.toLocaleDateString("bn-BD", { day:"numeric", month:"long", year:"numeric" });
 }
 
 function formatShortDate(dateString){
     const date = new Date(dateString + "T00:00:00");
-    return date.toLocaleDateString("bn-BD", {
-        day:"numeric", month:"short"
-    });
+    return date.toLocaleDateString("bn-BD", { day:"numeric", month:"short" });
 }
 
 function formatTime(time){
@@ -2402,8 +2798,7 @@ function formatTime(time){
 function formatDateTime(isoString){
     const date = new Date(isoString);
     return date.toLocaleString("bn-BD", {
-        day:"numeric", month:"short",
-        hour:"numeric", minute:"numeric"
+        day:"numeric", month:"short", hour:"numeric", minute:"numeric"
     });
 }
 
@@ -2412,19 +2807,11 @@ function formatDateTime(isoString){
 ===================================================== */
 
 function updateHeader(){
-
     const now = new Date();
-
     document.getElementById("headerDate").textContent =
-        now.toLocaleDateString("bn-BD", {
-            weekday:"long", day:"numeric", month:"long"
-        });
-
+        now.toLocaleDateString("bn-BD", { weekday:"long", day:"numeric", month:"long" });
     document.getElementById("todayFullDate").textContent =
-        now.toLocaleDateString("bn-BD", {
-            weekday:"long", year:"numeric",
-            month:"long", day:"numeric"
-        });
+        now.toLocaleDateString("bn-BD", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
 
     const hour = now.getHours();
     let greeting = "শুভ সকাল 🌅";
@@ -2446,16 +2833,11 @@ function setDefaultDate(){
 ===================================================== */
 
 function showPage(pageName){
-
-    document.querySelectorAll(".page").forEach(p =>
-        p.classList.remove("active"));
-
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
     const page = document.getElementById(pageName + "Page");
     if(page) page.classList.add("active");
 
-    document.querySelectorAll(".nav-item").forEach(item =>
-        item.classList.remove("active"));
-
+    document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
     const nav = document.querySelector(`[data-page="${pageName}"]`);
     if(nav) nav.classList.add("active");
 
@@ -2469,28 +2851,23 @@ function showPage(pageName){
 }
 
 /* =====================================================
-   DAY DETAIL PAGE
+   DAY DETAIL
 ===================================================== */
 
 function openDayDetail(when){
-
     let dateString;
-
     if(when === "today")      dateString = getDateString();
     else if(when === "yesterday") dateString = getDateString(addDays(new Date(), -1));
     else if(typeof when === "string" && /^\d{4}-\d{2}-\d{2}$/.test(when))
         dateString = when;
-    else
-        dateString = getDateString();
+    else dateString = getDateString();
 
     currentDayDetail = dateString;
-
     renderDayDetail(dateString);
     showPage("dayDetail");
 }
 
 function renderDayDetail(dateString){
-
     const today = getDateString();
     const yesterday = getDateString(addDays(new Date(), -1));
 
@@ -2502,10 +2879,7 @@ function renderDayDetail(dateString){
     document.getElementById("dayDetailDate").textContent = formatDate(dateString);
 
     const data = calculateScore(dateString);
-
-    document.getElementById("detailScoreText").textContent =
-        `স্কোর: ${data.finalScore}%`;
-
+    document.getElementById("detailScoreText").textContent = `স্কোর: ${data.finalScore}%`;
     document.getElementById("detailSubText").textContent =
         `${data.done} / ${data.total} কাজ সম্পন্ন` +
         (data.penalty ? ` · পেনাল্টি −${data.penalty}%` : "");
@@ -2514,27 +2888,16 @@ function renderDayDetail(dateString){
     document.getElementById("detailPending").textContent = data.total - data.done;
     document.getElementById("detailPenalty").textContent = data.penalty + "%";
 
-    document.getElementById("doneCountBadge").textContent =
-        data.done + " / " + data.total;
-    document.getElementById("pendingCountBadge").textContent =
-        (data.total - data.done);
+    document.getElementById("doneCountBadge").textContent = data.done + " / " + data.total;
+    document.getElementById("pendingCountBadge").textContent = (data.total - data.done);
 
-    /* Task lists */
     const dayTasks = getTasksForDate(dateString);
-
-    const doneTasks = dayTasks.filter(t => t.completed);
-    const pendingTasks = dayTasks.filter(t => !t.completed);
-
-    renderDetailTaskList("detailDoneList", doneTasks, true);
-    renderDetailTaskList("detailPendingList", pendingTasks, false);
-
-    /* Avoid violations */
+    renderDetailTaskList("detailDoneList", dayTasks.filter(t => t.completed), true);
+    renderDetailTaskList("detailPendingList", dayTasks.filter(t => !t.completed), false);
     renderDetailAvoidList(dateString);
-
 }
 
 function renderDetailTaskList(containerId, list, showUndo){
-
     const container = document.getElementById(containerId);
     if(!container) return;
 
@@ -2542,60 +2905,47 @@ function renderDetailTaskList(containerId, list, showUndo){
         container.innerHTML = `
             <div class="empty-state" style="padding:20px">
                 <div>${showUndo ? "🎯" : "✨"}</div>
-                <p>${showUndo
-                    ? "এখনো কোনো কাজ সম্পন্ন করা হয়নি।"
-                    : "সব কাজ সম্পন্ন! দুর্দান্ত 🎉"}</p>
+                <p>${showUndo ? "এখনো কোনো কাজ সম্পন্ন করা হয়নি।" : "সব কাজ সম্পন্ন! দুর্দান্ত 🎉"}</p>
             </div>`;
         return;
     }
 
-    container.innerHTML = list
-        .sort((a,b) => a.time.localeCompare(b.time))
-        .map(t => {
+    container.innerHTML = list.sort((a,b) => a.time.localeCompare(b.time)).map(t => {
 
-            const priorityText =
-                t.priority === "high"   ? "🔴 High"   :
-                t.priority === "medium" ? "🟡 Medium" : "🟢 Low";
+        const priorityText =
+            t.priority === "high"   ? "🔴 High"   :
+            t.priority === "medium" ? "🟡 Medium" : "🟢 Low";
 
-            const checkClass = t.completed ? "checked" : "";
+        const checkClass = t.completed ? "checked" : "";
 
-            return `
-                <div class="task-card ${t.completed ? "completed" : ""}">
-                    <button class="task-check ${checkClass}"
-                            onclick="toggleTaskFromDetail('${t.id}')">
-                        ${t.completed ? "✓" : ""}
-                    </button>
-                    <div class="task-info" onclick="openTaskDetails('${t.id}')">
-                        <div class="task-title">${escapeHTML(t.title)}</div>
-                        <div class="task-meta">
-                            <span>⏰ ${formatTime(t.time)}</span>
-                            <span class="badge">${escapeHTML(t.category)}</span>
-                            <span class="priority-${t.priority}">${priorityText}</span>
-                        </div>
+        return `
+            <div class="task-card ${t.completed ? "completed" : ""}">
+                <button class="task-check ${checkClass}" onclick="toggleTaskFromDetail('${t.id}')">
+                    ${t.completed ? "✓" : ""}
+                </button>
+                <div class="task-info" onclick="openTaskDetails('${t.id}')">
+                    <div class="task-title">${escapeHTML(t.title)}</div>
+                    <div class="task-meta">
+                        <span>⏰ ${formatTime(t.time)}</span>
+                        <span class="badge">${escapeHTML(t.category)}</span>
+                        <span class="priority-${t.priority}">${priorityText}</span>
                     </div>
-                    <div class="task-actions">
-                        ${
-                            showUndo
-                                ? `<button class="small-btn"
-                                          title="অসম্পন্ন করুন"
-                                          onclick="toggleTaskFromDetail('${t.id}')">↩️</button>`
-                                : `<button class="small-btn"
-                                          title="সম্পন্ন করুন"
-                                          onclick="toggleTaskFromDetail('${t.id}')">✓</button>`
-                        }
-                    </div>
-                </div>`;
-        })
-        .join("");
+                </div>
+                <div class="task-actions">
+                    ${showUndo
+                        ? `<button class="small-btn" title="অসম্পন্ন করুন" onclick="toggleTaskFromDetail('${t.id}')">↩️</button>`
+                        : `<button class="small-btn" title="সম্পন্ন করুন" onclick="toggleTaskFromDetail('${t.id}')">✓</button>`
+                    }
+                </div>
+            </div>`;
+    }).join("");
 }
 
 function renderDetailAvoidList(dateString){
-
     const container = document.getElementById("detailAvoidList");
     if(!container) return;
 
     const dayAvoids = getAvoidsForDate(dateString);
-
     if(!dayAvoids.length){
         container.innerHTML = `
             <div class="empty-state" style="padding:20px">
@@ -2606,7 +2956,6 @@ function renderDetailAvoidList(dateString){
     }
 
     container.innerHTML = dayAvoids.map(avoid => {
-
         const log = avoidLog[dateString] || {};
         const count = log[avoid.id] || 0;
         const limit = avoid.limit || 1;
@@ -2622,8 +2971,7 @@ function renderDetailAvoidList(dateString){
                         <div class="time">${formatDateTime(r.at)}</div>
                     </div>
                 `).join("")}
-               </div>`
-            : "";
+               </div>` : "";
 
         return `
             <div class="task-card avoid-card">
@@ -2643,36 +2991,22 @@ function renderDetailAvoidList(dateString){
                     ${reasonsHTML}
                 </div>
                 <div class="task-actions" style="flex-direction:column;gap:4px">
-                    <button class="small-btn"
-                            title="একবার লঙ্ঘন যোগ করুন"
+                    <button class="small-btn" title="লঙ্ঘন যোগ"
                             style="background:rgba(220,38,38,.12);border-radius:8px;padding:6px 8px"
-                            onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">
-                        ➕
-                    </button>
-                    ${
-                        count > 0
-                            ? `<button class="small-btn"
-                                      title="একটি লঙ্ঘন কমান"
-                                      style="background:rgba(22,163,74,.12);border-radius:8px;padding:6px 8px"
-                                      onclick="removeAvoidViolation('${avoid.id}','${dateString}')">
-                                   ➖
-                               </button>`
-                            : ""
-                    }
+                            onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">➕</button>
+                    ${count > 0
+                        ? `<button class="small-btn" title="লঙ্ঘন কমান"
+                                  style="background:rgba(22,163,74,.12);border-radius:8px;padding:6px 8px"
+                                  onclick="removeAvoidViolation('${avoid.id}','${dateString}')">➖</button>`
+                        : ""}
                 </div>
             </div>`;
     }).join("");
-
 }
 
 function toggleTaskFromDetail(id){
-
     toggleTask(id);
-
-    /* Refresh detail page */
-    if(currentDayDetail){
-        renderDayDetail(currentDayDetail);
-    }
+    if(currentDayDetail) renderDayDetail(currentDayDetail);
 }
 
 /* =====================================================
@@ -2681,10 +3015,8 @@ function toggleTaskFromDetail(id){
 
 function switchTab(tab){
     activeTab = tab;
-    document.getElementById("tabTasks").classList
-        .toggle("active", tab === "tasks");
-    document.getElementById("tabAvoids").classList
-        .toggle("active", tab === "avoids");
+    document.getElementById("tabTasks").classList.toggle("active", tab === "tasks");
+    document.getElementById("tabAvoids").classList.toggle("active", tab === "avoids");
     renderTasks();
 }
 
@@ -2693,33 +3025,25 @@ function switchTab(tab){
 ===================================================== */
 
 function openAddTask(kind = "task"){
-
     resetForm();
     document.getElementById("taskKind").value = kind;
 
     if(kind === "avoid"){
         document.getElementById("addPageTitle").textContent = "🚫 না করার কাজ";
-        document.getElementById("addPageSubtitle").textContent =
-            "যে কাজগুলো করা থেকে বিরত থাকতে চান";
+        document.getElementById("addPageSubtitle").textContent = "যে কাজগুলো করা থেকে বিরত থাকতে চান";
         document.getElementById("avoidFields").classList.remove("hidden");
         document.getElementById("taskCategory").value = "স্বাস্থ্য";
     }
     else{
         document.getElementById("addPageTitle").textContent = "➕ নতুন কাজ";
-        document.getElementById("addPageSubtitle").textContent =
-            "আপনার পরিকল্পনা তৈরি করুন";
+        document.getElementById("addPageSubtitle").textContent = "আপনার পরিকল্পনা তৈরি করুন";
         document.getElementById("avoidFields").classList.add("hidden");
     }
 
     showPage("add");
 }
 
-/* =====================================================
-   RESET FORM
-===================================================== */
-
 function resetForm(){
-
     const form = document.getElementById("taskForm");
     if(form) form.reset();
 
@@ -2748,7 +3072,6 @@ function resetForm(){
         const now = new Date();
         picker.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
     }
-
     renderMultiDateGrid();
 }
 
@@ -2757,17 +3080,11 @@ function resetForm(){
 ===================================================== */
 
 function setDateMode(mode){
-
     dateMode = mode;
-    document.getElementById("dateModeSingle").classList
-        .toggle("active", mode === "single");
-    document.getElementById("dateModeMulti").classList
-        .toggle("active", mode === "multi");
-
-    document.getElementById("singleDateWrap").classList
-        .toggle("hidden", mode !== "single");
-    document.getElementById("multiDateWrap").classList
-        .toggle("hidden", mode !== "multi");
+    document.getElementById("dateModeSingle").classList.toggle("active", mode === "single");
+    document.getElementById("dateModeMulti").classList.toggle("active", mode === "multi");
+    document.getElementById("singleDateWrap").classList.toggle("hidden", mode !== "single");
+    document.getElementById("multiDateWrap").classList.toggle("hidden", mode !== "multi");
 
     if(mode === "multi"){
         renderMultiDateGrid();
@@ -2776,7 +3093,6 @@ function setDateMode(mode){
 }
 
 function renderMultiDateGrid(){
-
     const grid = document.getElementById("multiDateGrid");
     if(!grid) return;
 
@@ -2785,7 +3101,6 @@ function renderMultiDateGrid(){
 
     const [year, month] = picker.value.split("-").map(Number);
     const daysInMonth = new Date(year, month, 0).getDate();
-
     grid.innerHTML = "";
 
     for(let day = 1; day <= daysInMonth; day++){
@@ -2796,43 +3111,33 @@ function renderMultiDateGrid(){
         chip.type = "button";
         chip.className = "day-chip";
         chip.textContent = day;
-
-        if(selectedDates.includes(dateString))
-            chip.classList.add("selected");
+        if(selectedDates.includes(dateString)) chip.classList.add("selected");
 
         chip.onclick = function(){
             const idx = selectedDates.indexOf(dateString);
             if(idx === -1) selectedDates.push(dateString);
             else selectedDates.splice(idx, 1);
-
             renderMultiDateGrid();
             renderSelectedDates();
         };
-
         grid.appendChild(chip);
     }
 }
 
 function renderSelectedDates(){
-
     const list = document.getElementById("selectedDatesList");
     if(!list) return;
 
     if(!selectedDates.length){
-        list.innerHTML = `
-            <span style="color:var(--muted);font-size:11px">
-                এখনো কোনো তারিখ সিলেক্ট করা হয়নি
-            </span>`;
+        list.innerHTML = `<span style="color:var(--muted);font-size:11px">এখনো কোনো তারিখ সিলেক্ট করা হয়নি</span>`;
         return;
     }
 
     selectedDates.sort();
-
     list.innerHTML = selectedDates.map(date => `
         <span class="date-tag">
             📅 ${formatShortDate(date)}
-            <button type="button"
-                    onclick="removeSelectedDate('${date}')">×</button>
+            <button type="button" onclick="removeSelectedDate('${date}')">×</button>
         </span>
     `).join("");
 }
@@ -2846,17 +3151,13 @@ function removeSelectedDate(date){
 function selectAllDatesInMonth(){
     const picker = document.getElementById("multiMonthPicker");
     if(!picker || !picker.value) return;
-
     const [year, month] = picker.value.split("-").map(Number);
     const daysInMonth = new Date(year, month, 0).getDate();
-
     selectedDates = [];
-
     for(let day = 1; day <= daysInMonth; day++){
         const date = new Date(year, month - 1, day);
         selectedDates.push(getDateString(date));
     }
-
     renderMultiDateGrid();
     renderSelectedDates();
 }
@@ -2874,9 +3175,7 @@ function clearSelectedDates(){
 function addStep(){
     const input = document.getElementById("stepInput");
     const value = input.value.trim();
-
     if(!value){ toast("ধাপটি লিখুন।"); return; }
-
     draftSteps.push(value);
     input.value = "";
     renderSteps();
@@ -2887,10 +3186,7 @@ function renderSteps(){
     if(!container) return;
 
     if(!draftSteps.length){
-        container.innerHTML = `
-            <div style="font-size:12px;color:var(--muted);padding:6px 0">
-                এখনো কোনো ধাপ যোগ করা হয়নি
-            </div>`;
+        container.innerHTML = `<div style="font-size:12px;color:var(--muted);padding:6px 0">এখনো কোনো ধাপ যোগ করা হয়নি</div>`;
         return;
     }
 
@@ -2974,19 +3270,20 @@ document.getElementById("taskForm").addEventListener("submit", function(e){
             avoidTasks.push(avoid);
             toast("না করার কাজ সংরক্ষণ হয়েছে।");
         }
-
         saveAvoidTasks();
     }
     else{
         if(editId){
             const idx = tasks.findIndex(t => t.id === editId);
             if(idx !== -1){
+                clearTaskTimer(editId);
                 tasks[idx] = {
                     ...tasks[idx],
                     title, description, time, category,
                     priority, reminder, repeat, note,
                     dates, date: dates[0]
                 };
+                scheduleReminder(tasks[idx]);
             }
             toast("কাজ আপডেট হয়েছে।");
         }
@@ -3003,12 +3300,10 @@ document.getElementById("taskForm").addEventListener("submit", function(e){
                 tasks.push(task);
                 scheduleReminder(task);
             });
-
             toast(dates.length > 1
                 ? `${dates.length}টি তারিখে কাজ যোগ হয়েছে।`
                 : "কাজ সংরক্ষণ হয়েছে।");
         }
-
         saveTasks();
     }
 
@@ -3033,8 +3328,7 @@ function getAvoidsForDate(dateString){
 }
 
 function getTodayTasks(){
-    return getTasksForDate(getDateString())
-        .sort((a,b) => a.time.localeCompare(b.time));
+    return getTasksForDate(getDateString()).sort((a,b) => a.time.localeCompare(b.time));
 }
 
 /* =====================================================
@@ -3042,15 +3336,12 @@ function getTodayTasks(){
 ===================================================== */
 
 function calculateScore(dateString){
-
     const dayTasks = getTasksForDate(dateString);
     const total    = dayTasks.length;
     const done     = dayTasks.filter(t => t.completed).length;
-
     const baseScore = total ? Math.round((done / total) * 100) : 0;
     const penalty   = violations[dateString] || 0;
     const finalScore = Math.max(0, baseScore - penalty);
-
     return { baseScore, penalty, finalScore, total, done };
 }
 
@@ -3078,9 +3369,7 @@ const BADGES = [
 ];
 
 function checkBadges(){
-
     let changed = false;
-
     BADGES.forEach(badge => {
         if(!badgesEarned[badge.id] && badge.check()){
             badgesEarned[badge.id] = new Date().toISOString();
@@ -3088,14 +3377,12 @@ function checkBadges(){
             setTimeout(() => toast(`🏅 ব্যাজ আনলক: ${badge.name}`), 500);
         }
     });
-
     if(changed) saveBadges();
 }
 
 function renderBadges(){
     const container = document.getElementById("badgeStrip");
     if(!container) return;
-
     container.innerHTML = BADGES.map(b => `
         <div class="badge-chip ${badgesEarned[b.id] ? "earned" : ""}">
             <span class="badge-icon">${b.icon}</span>
@@ -3109,7 +3396,6 @@ function renderBadges(){
 ===================================================== */
 
 function renderDashboard(){
-
     checkBadges();
     renderBadges();
 
@@ -3123,17 +3409,14 @@ function renderDashboard(){
     document.getElementById("tTotalCount").textContent     = tData.total;
     document.getElementById("tProgressBar").style.width    = tData.baseScore + "%";
     document.getElementById("tPercentText").textContent =
-        tData.baseScore + "% সম্পন্ন" +
-        (tData.penalty ? ` (−${tData.penalty}%)` : "");
+        tData.baseScore + "% সম্পন্ন" + (tData.penalty ? ` (−${tData.penalty}%)` : "");
 
     document.getElementById("yCompletedCount").textContent = yData.done;
     document.getElementById("yTotalCount").textContent     = yData.total;
     document.getElementById("yProgressBar").style.width    = yData.baseScore + "%";
-    document.getElementById("yPercentText").textContent =
-        yData.baseScore + "% সম্পন্ন";
+    document.getElementById("yPercentText").textContent    = yData.baseScore + "% সম্পন্ন";
 
     const finalScore = tData.finalScore;
-
     document.getElementById("completedCount").textContent = tData.done;
     document.getElementById("totalCount").textContent     = tData.total;
     document.getElementById("progressPercent").textContent = finalScore + "%";
@@ -3158,48 +3441,30 @@ function renderDashboard(){
             <div class="empty-state">
                 <div>📝</div>
                 <p>আজকের জন্য কোনো কাজ নেই।</p>
-                <button class="primary-btn"
-                        onclick="openAddTask('task')">
-                    ➕ আজকের কাজ যোগ করুন
-                </button>
+                <button class="primary-btn" onclick="openAddTask('task')">➕ আজকের কাজ যোগ করুন</button>
             </div>`;
         return;
     }
 
-    container.innerHTML = todayTasks
-        .slice(0,5)
-        .map(t => taskHTML(t))
-        .join("");
+    container.innerHTML = todayTasks.slice(0,5).map(t => taskHTML(t)).join("");
 }
 
-/* =====================================================
-   TREND CHART — CLICKABLE
-===================================================== */
-
 function renderTrend(){
-
     const container = document.getElementById("trendBars");
     if(!container) return;
-
     let html = "";
-
     for(let i = 6; i >= 0; i--){
-
         const date = addDays(new Date(), -i);
         const dateString = getDateString(date);
         const data = calculateScore(dateString);
-
         const dayName = date.toLocaleDateString("bn-BD", { weekday:"narrow" });
-
         html += `
-            <div class="trend-bar"
-                 title="${formatShortDate(dateString)} · ${data.finalScore}%"
+            <div class="trend-bar" title="${formatShortDate(dateString)} · ${data.finalScore}%"
                  onclick="openDayDetail('${dateString}')">
                 <div class="bar" style="height:${Math.max(4, data.finalScore)}%"></div>
                 <div class="label">${dayName}</div>
             </div>`;
     }
-
     container.innerHTML = html;
 }
 
@@ -3208,7 +3473,6 @@ function renderTrend(){
 ===================================================== */
 
 function taskHTML(task){
-
     const completed = task.completed ? "completed" : "";
     const checked   = task.completed ? "checked" : "";
 
@@ -3220,13 +3484,14 @@ function taskHTML(task){
         ? `<span class="badge">📆 ${task.dates.length} দিন</span>`
         : "";
 
+    const reminderBadge = task.reminder > 0
+        ? `<span class="badge">🔔 ${task.reminder}মি আগে</span>`
+        : `<span class="badge">🔔 সময়মতো</span>`;
+
     return `
         <div class="task-card ${completed}">
-            <button class="task-check ${checked}"
-                    aria-label="সম্পন্ন টগল"
-                    onclick="toggleTask('${task.id}')">
-                ${task.completed ? "✓" : ""}
-            </button>
+            <button class="task-check ${checked}" aria-label="সম্পন্ন টগল"
+                    onclick="toggleTask('${task.id}')">${task.completed ? "✓" : ""}</button>
             <div class="task-info" onclick="openTaskDetails('${task.id}')">
                 <div class="task-title">${escapeHTML(task.title)}</div>
                 <div class="task-meta">
@@ -3234,19 +3499,18 @@ function taskHTML(task){
                     <span class="badge">${escapeHTML(task.category)}</span>
                     <span class="priority-${task.priority}">${priorityText}</span>
                     ${dateCount}
+                    ${reminderBadge}
                 </div>
             </div>
             <div class="task-actions">
-                <button class="small-btn" aria-label="সম্পাদনা"
-                        onclick="editTask('${task.id}')">✏️</button>
-                <button class="small-btn" aria-label="মুছুন"
-                        onclick="deleteTask('${task.id}')">🗑️</button>
+                <button class="small-btn" title="অ্যালার্ম টেস্ট" onclick="testTaskAlarm('${task.id}')">🔊</button>
+                <button class="small-btn" aria-label="সম্পাদনা" onclick="editTask('${task.id}')">✏️</button>
+                <button class="small-btn" aria-label="মুছুন" onclick="deleteTask('${task.id}')">🗑️</button>
             </div>
         </div>`;
 }
 
 function avoidHTML(avoid, dateString){
-
     const log = avoidLog[dateString] || {};
     const count = log[avoid.id] || 0;
     const limit = avoid.limit || 1;
@@ -3255,14 +3519,12 @@ function avoidHTML(avoid, dateString){
     return `
         <div class="task-card avoid-card">
             <div style="
-                width:29px;height:29px;flex-shrink:0;
-                border-radius:50%;
+                width:29px;height:29px;flex-shrink:0;border-radius:50%;
                 background:${isViolated ? "var(--danger)" : "rgba(220,38,38,.15)"};
                 color:${isViolated ? "white" : "var(--danger)"};
                 display:flex;align-items:center;justify-content:center;
                 font-size:15px">🚫</div>
-            <div class="task-info"
-                 onclick="openAvoidDetails('${avoid.id}','${dateString}')">
+            <div class="task-info" onclick="openAvoidDetails('${avoid.id}','${dateString}')">
                 <div class="task-title">${escapeHTML(avoid.title)}</div>
                 <div class="task-meta">
                     <span>⏰ ${formatTime(avoid.time)}</span>
@@ -3271,18 +3533,13 @@ function avoidHTML(avoid, dateString){
                 </div>
             </div>
             <div class="task-actions">
-                <button class="small-btn" title="লঙ্ঘন যোগ করুন"
-                        onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">➕</button>
-                ${
-                    count > 0
-                        ? `<button class="small-btn" title="লঙ্ঘন কমান"
-                                  onclick="removeAvoidViolation('${avoid.id}','${dateString}')">➖</button>`
-                        : ""
+                <button class="small-btn" title="লঙ্ঘন যোগ" onclick="addAvoidViolationWithReason('${avoid.id}','${dateString}')">➕</button>
+                ${count > 0
+                    ? `<button class="small-btn" title="লঙ্ঘন কমান" onclick="removeAvoidViolation('${avoid.id}','${dateString}')">➖</button>`
+                    : ""
                 }
-                <button class="small-btn" aria-label="সম্পাদনা"
-                        onclick="editAvoid('${avoid.id}')">✏️</button>
-                <button class="small-btn" aria-label="মুছুন"
-                        onclick="deleteAvoid('${avoid.id}')">🗑️</button>
+                <button class="small-btn" aria-label="সম্পাদনা" onclick="editAvoid('${avoid.id}')">✏️</button>
+                <button class="small-btn" aria-label="মুছুন" onclick="deleteAvoid('${avoid.id}')">🗑️</button>
             </div>
         </div>`;
 }
@@ -3292,14 +3549,10 @@ function avoidHTML(avoid, dateString){
 ===================================================== */
 
 function renderTasks(){
-
     const container = document.getElementById("planningTasks");
     if(!container) return;
 
-    const search = (
-        document.getElementById("searchInput")?.value || ""
-    ).trim().toLowerCase();
-
+    const search = (document.getElementById("searchInput")?.value || "").trim().toLowerCase();
     const filterCat = document.getElementById("filterCategory")?.value || "";
     const filterPri = document.getElementById("filterPriority")?.value || "";
 
@@ -3311,11 +3564,8 @@ function renderTasks(){
     let source = isAvoid ? [...avoidTasks] : [...tasks];
 
     if(!isAvoid){
-
-        if(currentDateFilter === "today")
-            source = source.filter(t => t.date === today);
-        else if(currentDateFilter === "tomorrow")
-            source = source.filter(t => t.date === tomorrow);
+        if(currentDateFilter === "today") source = source.filter(t => t.date === today);
+        else if(currentDateFilter === "tomorrow") source = source.filter(t => t.date === tomorrow);
         else if(currentDateFilter === "week"){
             const start = new Date(now);
             start.setHours(0,0,0,0);
@@ -3330,8 +3580,7 @@ function renderTasks(){
             const month = now.getMonth();
             source = source.filter(t => {
                 const date = new Date(t.date + "T00:00:00");
-                return date.getFullYear() === year &&
-                       date.getMonth()    === month;
+                return date.getFullYear() === year && date.getMonth() === month;
             });
         }
 
@@ -3351,7 +3600,6 @@ function renderTasks(){
         });
     }
     else{
-
         if(filterCat) source = source.filter(a => a.category === filterCat);
         if(filterPri) source = source.filter(a => a.priority === filterPri);
 
@@ -3374,11 +3622,8 @@ function renderTasks(){
         container.innerHTML = `
             <div class="empty-state">
                 <div>${isAvoid ? "🚫" : "📅"}</div>
-                <p>${isAvoid
-                    ? "কোনো না করার কাজ নেই।"
-                    : "এই সময়ের জন্য কোনো কাজ পাওয়া যায়নি।"}</p>
-                <button class="primary-btn"
-                        onclick="openAddTask('${isAvoid ? "avoid" : "task"}')">
+                <p>${isAvoid ? "কোনো না করার কাজ নেই।" : "এই সময়ের জন্য কোনো কাজ পাওয়া যায়নি।"}</p>
+                <button class="primary-btn" onclick="openAddTask('${isAvoid ? "avoid" : "task"}')">
                     ➕ নতুন ${isAvoid ? "না করার" : ""} কাজ যোগ করুন
                 </button>
             </div>`;
@@ -3386,25 +3631,16 @@ function renderTasks(){
     }
 
     if(isAvoid){
-        container.innerHTML = source
-            .map(a => avoidHTML(a, today))
-            .join("");
+        container.innerHTML = source.map(a => avoidHTML(a, today)).join("");
     }
     else{
-        container.innerHTML = source
-            .map(t => taskHTML(t))
-            .join("");
+        container.innerHTML = source.map(t => taskHTML(t)).join("");
     }
 }
 
-/* =====================================================
-   FILTER
-===================================================== */
-
 function setDateFilter(filter, button){
     currentDateFilter = filter;
-    document.querySelectorAll(".filter-btn").forEach(btn =>
-        btn.classList.remove("active"));
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
     button.classList.add("active");
     renderTasks();
 }
@@ -3420,6 +3656,9 @@ function toggleTask(id){
     task.completed = !task.completed;
     task.completedAt = task.completed ? new Date().toISOString() : null;
 
+    if(task.completed) clearTaskTimer(task.id);
+    else scheduleReminder(task);
+
     saveTasks();
     renderAll();
 }
@@ -3429,7 +3668,6 @@ function editTask(id){
     if(!task) return;
 
     resetForm();
-
     document.getElementById("taskKind").value = "task";
     document.getElementById("editTaskId").value = task.id;
     document.getElementById("taskTitle").value = task.title;
@@ -3457,7 +3695,6 @@ function editTask(id){
     document.getElementById("addPageTitle").textContent = "✏️ কাজ সম্পাদনা";
     document.getElementById("saveBtnText").textContent = "💾 পরিবর্তন সংরক্ষণ করুন";
     document.getElementById("cancelEditBtn").classList.remove("hidden");
-
     showPage("add");
 }
 
@@ -3466,7 +3703,6 @@ function editAvoid(id){
     if(!avoid) return;
 
     resetForm();
-
     document.getElementById("taskKind").value = "avoid";
     document.getElementById("editTaskId").value = avoid.id;
     document.getElementById("taskTitle").value = avoid.title;
@@ -3495,14 +3731,12 @@ function editAvoid(id){
     else{
         dateMode = "single";
         setDateMode("single");
-        document.getElementById("taskDate").value =
-            (avoid.dates && avoid.dates[0]) || avoid.date;
+        document.getElementById("taskDate").value = (avoid.dates && avoid.dates[0]) || avoid.date;
     }
 
     document.getElementById("addPageTitle").textContent = "✏️ না করার কাজ সম্পাদনা";
     document.getElementById("saveBtnText").textContent = "💾 পরিবর্তন সংরক্ষণ করুন";
     document.getElementById("cancelEditBtn").classList.remove("hidden");
-
     showPage("add");
 }
 
@@ -3516,6 +3750,7 @@ function deleteTask(id){
     if(!task) return;
     if(!confirm(`"${task.title}" মুছে ফেলতে চান?`)) return;
 
+    clearTaskTimer(id);
     tasks = tasks.filter(t => t.id !== id);
     saveTasks();
     renderAll();
@@ -3534,161 +3769,109 @@ function deleteAvoid(id){
 }
 
 /* =====================================================
-   AVOID VIOLATION — ADD / REMOVE (WITH REASON)
+   AVOID VIOLATION
 ===================================================== */
 
 function addAvoidViolationWithReason(avoidId, dateString){
-
     const avoid = avoidTasks.find(a => a.id === avoidId);
     if(!avoid) return;
 
-    /* Show modal with reason input */
-    document.getElementById("modalTitle").textContent =
-        "🚫 " + avoid.title + " — লঙ্ঘন";
-
+    document.getElementById("modalTitle").textContent = "🚫 " + avoid.title + " — লঙ্ঘন";
     document.getElementById("modalBody").innerHTML = `
-        <p style="font-size:13px;color:var(--muted);margin:0 0 10px">
-            কেন এই কাজটি করলেন? (ঐচ্ছিক)
-        </p>
-
-        <textarea id="violationReasonInput"
-                  class="reason-input"
+        <p style="font-size:13px;color:var(--muted);margin:0 0 10px">কেন এই কাজটি করলেন? (ঐচ্ছিক)</p>
+        <textarea id="violationReasonInput" class="reason-input"
                   placeholder="যেমন: বন্ধুদের সাথে আড্ডায়..."></textarea>
-
         <div class="modal-actions">
-            <button class="secondary" onclick="closeModal()">
-                বাতিল
-            </button>
-            <button class="danger"
-                    onclick="confirmAddViolation('${avoidId}','${dateString}')">
+            <button class="secondary" onclick="closeModal()">বাতিল</button>
+            <button class="danger" onclick="confirmAddViolation('${avoidId}','${dateString}')">
                 ⚠️ লঙ্ঘন যোগ করুন
             </button>
         </div>`;
-
     document.getElementById("taskModal").classList.remove("hidden");
 }
 
 function confirmAddViolation(avoidId, dateString){
-
     const avoid = avoidTasks.find(a => a.id === avoidId);
     if(!avoid){ closeModal(); return; }
 
     const reasonInput = document.getElementById("violationReasonInput");
     const reason = reasonInput ? reasonInput.value.trim() : "";
 
-    /* Update log */
     if(!avoidLog[dateString]) avoidLog[dateString] = {};
     if(!avoidLog[dateString][avoidId]) avoidLog[dateString][avoidId] = 0;
-
     avoidLog[dateString][avoidId]++;
 
     const count = avoidLog[dateString][avoidId];
     const limit = avoid.limit || 1;
     const penalty = avoid.penalty || 10;
 
-    /* Store reason */
     if(reason){
         if(!violationReasons[dateString]) violationReasons[dateString] = {};
-        if(!violationReasons[dateString][avoidId])
-            violationReasons[dateString][avoidId] = [];
-
-        violationReasons[dateString][avoidId].push({
-            reason,
-            at: new Date().toISOString()
-        });
+        if(!violationReasons[dateString][avoidId]) violationReasons[dateString][avoidId] = [];
+        violationReasons[dateString][avoidId].push({ reason, at: new Date().toISOString() });
     }
 
-    /* Apply penalty on first hit */
     if(count >= limit){
         if(count === limit){
             if(!violations[dateString]) violations[dateString] = 0;
             violations[dateString] += penalty;
             toast(`⚠️ "${avoid.title}" লঙ্ঘন! −${penalty}% স্কোর কমেছে।`);
         }
-        else{
-            toast(`⚠️ আবার লঙ্ঘন! (${count} বার)`);
-        }
+        else toast(`⚠️ আবার লঙ্ঘন! (${count} বার)`);
     }
-    else{
-        toast(`⚠️ লঙ্ঘন রেকর্ড হয়েছে (${count}/${limit})`);
-    }
+    else toast(`⚠️ লঙ্ঘন রেকর্ড হয়েছে (${count}/${limit})`);
 
     saveAvoidLog();
     saveViolationReasons();
     saveViolations();
-
     closeModal();
     renderAll();
-
     if(currentDayDetail) renderDayDetail(currentDayDetail);
 }
 
 function removeAvoidViolation(avoidId, dateString){
-
     const avoid = avoidTasks.find(a => a.id === avoidId);
     if(!avoid) return;
 
     const log = avoidLog[dateString] || {};
     const currentCount = log[avoidId] || 0;
 
-    if(currentCount <= 0){
-        toast("লঙ্ঘন নেই, কমানো যাবে না।");
-        return;
-    }
-
+    if(currentCount <= 0){ toast("লঙ্ঘন নেই, কমানো যাবে না।"); return; }
     if(!confirm(`"${avoid.title}" এর একটি লঙ্ঘন মুছে ফেলতে চান?`)) return;
 
     avoidLog[dateString][avoidId] = currentCount - 1;
 
-    /* Remove last reason if exists */
     const reasonList = (violationReasons[dateString] || {})[avoidId];
-    if(reasonList && reasonList.length){
-        reasonList.pop();
-    }
+    if(reasonList && reasonList.length) reasonList.pop();
 
-    /* Refund penalty if new count is below limit */
     const limit = avoid.limit || 1;
     const penalty = avoid.penalty || 10;
-
     const newCount = avoidLog[dateString][avoidId];
 
-    /* Was at or above limit → now below → refund */
     if(currentCount >= limit && newCount < limit){
         if(violations[dateString]){
             violations[dateString] = Math.max(0, violations[dateString] - penalty);
-            if(violations[dateString] === 0){
-                delete violations[dateString];
-            }
+            if(violations[dateString] === 0) delete violations[dateString];
         }
     }
-    /* Both still above limit → no change to penalty (already applied) */
-    /* Both below limit → no change */
 
     saveAvoidLog();
     saveViolationReasons();
     saveViolations();
-
     toast("➖ লঙ্ঘন কমানো হয়েছে।");
     renderAll();
-
     if(currentDayDetail) renderDayDetail(currentDayDetail);
 }
-
-/* =====================================================
-   LEGACY LOG (kept for existing onclick in avoidHTML)
-   — actually redirects to reason modal
-===================================================== */
 
 function logAvoidViolation(avoidId, dateString){
     addAvoidViolationWithReason(avoidId, dateString);
 }
 
 /* =====================================================
-   MODALS — AVOID DETAILS
+   MODALS
 ===================================================== */
 
 function openAvoidDetails(id, dateString){
-
     const avoid = avoidTasks.find(a => a.id === id);
     if(!avoid) return;
 
@@ -3699,9 +3882,7 @@ function openAvoidDetails(id, dateString){
     const reasons = (violationReasons[dateString] || {})[id] || [];
 
     const stepsHTML = (avoid.steps && avoid.steps.length)
-        ? `<ol style="padding-left:18px">
-            ${avoid.steps.map(s => `<li>${escapeHTML(s)}</li>`).join("")}
-           </ol>`
+        ? `<ol style="padding-left:18px">${avoid.steps.map(s => `<li>${escapeHTML(s)}</li>`).join("")}</ol>`
         : `<p style="color:var(--muted)">কোনো ধাপ যোগ করা হয়নি</p>`;
 
     const reasonsHTML = reasons.length
@@ -3709,95 +3890,66 @@ function openAvoidDetails(id, dateString){
             <div class="reason">
                 💬 ${escapeHTML(r.reason || "(কারণ উল্লেখ করা হয়নি)")}
                 <div class="time">${formatDateTime(r.at)}</div>
-            </div>
-        `).join("")
-        : `<p style="color:var(--muted);font-size:12px">
-            এখনো কোনো কারণ লেখা হয়নি
-           </p>`;
+            </div>`).join("")
+        : `<p style="color:var(--muted);font-size:12px">এখনো কোনো কারণ লেখা হয়নি</p>`;
 
     document.getElementById("modalTitle").textContent = "🚫 " + avoid.title;
-
     document.getElementById("modalBody").innerHTML = `
         <p><strong>⏰ সময়:</strong> ${formatTime(avoid.time)}</p>
         <p><strong>📌 Category:</strong> ${escapeHTML(avoid.category)}</p>
-        <p><strong>📅 তারিখ:</strong>
-            ${(avoid.dates || []).map(d => formatShortDate(d)).join(", ")}
-        </p>
+        <p><strong>📅 তারিখ:</strong> ${(avoid.dates || []).map(d => formatShortDate(d)).join(", ")}</p>
         <p><strong>🚫 বার Limit:</strong> ${limit}</p>
         <p><strong>📉 পেনাল্টি:</strong> ${penalty}%</p>
         <p><strong>📊 আজকের লঙ্ঘন:</strong> ${count} বার</p>
-
         <h4 style="margin-top:14px">📋 স্টেপ বাই স্টেপ</h4>
         ${stepsHTML}
-
         <h4 style="margin-top:14px">💬 লঙ্ঘনের কারণ</h4>
         ${reasonsHTML}
-
         <div class="modal-actions">
-            <button class="secondary" onclick="closeModal()">
-                বন্ধ
-            </button>
-            ${
-                count > 0
-                    ? `<button class="success"
-                              onclick="removeAvoidViolation('${avoid.id}','${dateString}'); closeModal();">
-                        ➖ কমান
-                       </button>`
-                    : ""
+            <button class="secondary" onclick="closeModal()">বন্ধ</button>
+            ${count > 0
+                ? `<button class="success" onclick="removeAvoidViolation('${avoid.id}','${dateString}'); closeModal();">➖ কমান</button>`
+                : ""
             }
-            <button class="danger"
-                    onclick="closeModal(); addAvoidViolationWithReason('${avoid.id}','${dateString}');">
+            <button class="danger" onclick="closeModal(); addAvoidViolationWithReason('${avoid.id}','${dateString}');">
                 ⚠️ লঙ্ঘন
             </button>
         </div>`;
-
     document.getElementById("taskModal").classList.remove("hidden");
 }
 
 function openTaskDetails(id){
-
     const task = tasks.find(t => t.id === id);
     if(!task) return;
 
-    document.getElementById("modalTitle").textContent = task.title;
+    const reminderText = task.reminder > 0 ? `${task.reminder} মিনিট আগে` : "সময়মতো";
 
+    document.getElementById("modalTitle").textContent = task.title;
     document.getElementById("modalBody").innerHTML = `
         <p><strong>📅 তারিখ:</strong> ${formatDate(task.date)}</p>
         ${task.dates && task.dates.length > 1 ? `
-            <p><strong>📆 সব তারিখ:</strong>
-                ${task.dates.map(d => formatShortDate(d)).join(", ")}
-            </p>` : ""}
+            <p><strong>📆 সব তারিখ:</strong> ${task.dates.map(d => formatShortDate(d)).join(", ")}</p>
+        ` : ""}
         <p><strong>⏰ সময়:</strong> ${formatTime(task.time)}</p>
         <p><strong>📌 Category:</strong> ${escapeHTML(task.category)}</p>
-        <p><strong>🔔 Reminder:</strong> ${task.reminder} মিনিট আগে</p>
+        <p><strong>🔔 Reminder:</strong> ${reminderText}</p>
         <p><strong>🔁 Repeat:</strong> ${repeatText(task.repeat)}</p>
-        <p><strong>✅ স্ট্যাটাস:</strong>
-            ${task.completed ? "সম্পন্ন" : "বাকি"}
-        </p>
-        ${task.description ? `
-            <p><strong>📝 বিস্তারিত:</strong><br>
-               ${escapeHTML(task.description)}</p>` : ""}
-        ${task.note ? `
-            <p><strong>📒 নোট:</strong><br>
-               ${escapeHTML(task.note)}</p>` : ""}
-
+        <p><strong>✅ স্ট্যাটাস:</strong> ${task.completed ? "সম্পন্ন" : "বাকি"}</p>
+        ${task.description ? `<p><strong>📝 বিস্তারিত:</strong><br>${escapeHTML(task.description)}</p>` : ""}
+        ${task.note ? `<p><strong>📒 নোট:</strong><br>${escapeHTML(task.note)}</p>` : ""}
         <div class="modal-actions">
-            <button class="secondary" onclick="closeModal()">
-                বন্ধ
-            </button>
-            <button class="${task.completed ? "danger" : "success"}"
-                    onclick="toggleTaskFromModal('${task.id}')">
-                ${task.completed ? "↩️ অসম্পন্ন করুন" : "✅ সম্পন্ন করুন"}
+            <button class="secondary" onclick="closeModal()">বন্ধ</button>
+            <button class="primary" onclick="testTaskAlarm('${task.id}');">🔊 অ্যালার্ম</button>
+            <button class="${task.completed ? "danger" : "success"}" onclick="toggleTaskFromModal('${task.id}')">
+                ${task.completed ? "↩️ অসম্পন্ন" : "✅ সম্পন্ন"}
             </button>
         </div>`;
-
     document.getElementById("taskModal").classList.remove("hidden");
 }
 
 function toggleTaskFromModal(id){
     toggleTask(id);
     closeModal();
-
     if(currentDayDetail) renderDayDetail(currentDayDetail);
 }
 
@@ -3808,8 +3960,7 @@ function closeModal(){
 function repeatText(repeat){
     const map = {
         none:"একবার", daily:"প্রতিদিন",
-        weekly:"প্রতি সপ্তাহে", weekdays:"সোম–শুক্র",
-        monthly:"প্রতি মাসে"
+        weekly:"প্রতি সপ্তাহে", weekdays:"সোম–শুক্র", monthly:"প্রতি মাসে"
     };
     return map[repeat] || "একবার";
 }
@@ -3821,7 +3972,6 @@ function repeatText(repeat){
 function calculateStreak(){
     let streak = 0;
     let date = new Date();
-
     while(true){
         const dateString = getDateString(date);
         const dayTasks = getTasksForDate(dateString);
@@ -3830,7 +3980,6 @@ function calculateStreak(){
         streak++;
         date = addDays(date, -1);
     }
-
     return streak;
 }
 
@@ -3844,14 +3993,12 @@ function getGoalCount(){
 ===================================================== */
 
 function renderReports(){
-
     const today = getDateString();
     const todayTasks = getTasksForDate(today);
 
     const total     = todayTasks.length;
     const completed = todayTasks.filter(t => t.completed).length;
     const pending   = total - completed;
-
     const rate = total ? Math.round((completed / total) * 100) : 0;
     const penalty = violations[today] || 0;
     const score   = Math.max(0, rate - penalty);
@@ -3877,44 +4024,31 @@ function renderReports(){
 function renderWeeklyReport(){
     const container = document.getElementById("weeklyReport");
     let html = "";
-
     for(let i = 6; i >= 0; i--){
         const date = addDays(new Date(), -i);
         const dateString = getDateString(date);
         const data = calculateScore(dateString);
         const dayName = date.toLocaleDateString("bn-BD", { weekday:"short" });
-
         html += `
-            <div class="week-row"
-                 onclick="openDayDetail('${dateString}')"
-                 style="cursor:pointer">
+            <div class="week-row" onclick="openDayDetail('${dateString}')" style="cursor:pointer">
                 <div class="week-day">${dayName}</div>
-                <div class="week-progress">
-                    <div style="width:${data.finalScore}%"></div>
-                </div>
+                <div class="week-progress"><div style="width:${data.finalScore}%"></div></div>
                 <div class="week-percent">${data.finalScore}%</div>
             </div>`;
     }
-
     container.innerHTML = html;
 }
 
 function renderAvoidAnalytics(){
-
     const container = document.getElementById("avoidAnalytics");
     if(!container) return;
 
     if(!avoidTasks.length){
-        container.innerHTML = `
-            <div class="empty-state">
-                <div>🚫</div>
-                <p>কোনো না করার কাজ যোগ করা হয়নি।</p>
-            </div>`;
+        container.innerHTML = `<div class="empty-state"><div>🚫</div><p>কোনো না করার কাজ যোগ করা হয়নি।</p></div>`;
         return;
     }
 
     const totals = {};
-
     Object.values(avoidLog).forEach(dayLog => {
         Object.entries(dayLog).forEach(([avoidId, count]) => {
             totals[avoidId] = (totals[avoidId] || 0) + count;
@@ -3923,35 +4057,26 @@ function renderAvoidAnalytics(){
 
     const max = Math.max(1, ...Object.values(totals));
 
-    container.innerHTML = avoidTasks
-        .map(a => {
-            const count = totals[a.id] || 0;
-            const percent = Math.round((count / max) * 100);
-
-            return `
-                <div class="analytics-row">
-                    <div class="name">🚫 ${escapeHTML(a.title)}</div>
-                    <div class="bar-wrap">
-                        <div class="bar-fill" style="width:${percent}%"></div>
-                    </div>
-                    <div class="count">${count} বার লঙ্ঘন</div>
-                </div>`;
-        })
-        .join("");
+    container.innerHTML = avoidTasks.map(a => {
+        const count = totals[a.id] || 0;
+        const percent = Math.round((count / max) * 100);
+        return `
+            <div class="analytics-row">
+                <div class="name">🚫 ${escapeHTML(a.title)}</div>
+                <div class="bar-wrap"><div class="bar-fill" style="width:${percent}%"></div></div>
+                <div class="count">${count} বার লঙ্ঘন</div>
+            </div>`;
+    }).join("");
 }
 
 function renderViolationHistory(){
-
     const container = document.getElementById("violationHistory");
     if(!container) return;
 
-    /* Collect all violations with reasons (newest first) */
     const entries = [];
-
     Object.entries(violationReasons).forEach(([dateString, dayMap]) => {
         Object.entries(dayMap).forEach(([avoidId, reasons]) => {
             const avoid = avoidTasks.find(a => a.id === avoidId);
-
             reasons.forEach(r => {
                 entries.push({
                     dateString,
@@ -3966,32 +4091,21 @@ function renderViolationHistory(){
     entries.sort((a,b) => new Date(b.at) - new Date(a.at));
 
     if(!entries.length){
-        container.innerHTML = `
-            <div class="empty-state">
-                <div>📜</div>
-                <p>এখনো কোনো লঙ্ঘনের কারণ লেখা হয়নি।</p>
-            </div>`;
+        container.innerHTML = `<div class="empty-state"><div>📜</div><p>এখনো কোনো লঙ্ঘনের কারণ লেখা হয়নি।</p></div>`;
         return;
     }
 
-    /* Only show last 20 */
     const shown = entries.slice(0, 20);
-
     container.innerHTML = shown.map(e => `
         <div class="violation-item">
             <div class="head">
                 <span>🚫 ${escapeHTML(e.avoidTitle)}</span>
                 <span class="time">${formatDateTime(e.at)}</span>
             </div>
-            <div class="reason">
-                💬 ${escapeHTML(e.reason || "(কারণ উল্লেখ করা হয়নি)")}
-            </div>
-            <div class="time" style="margin-top:4px">
-                📅 ${formatDate(e.dateString)}
-            </div>
+            <div class="reason">💬 ${escapeHTML(e.reason || "(কারণ উল্লেখ করা হয়নি)")}</div>
+            <div class="time" style="margin-top:4px">📅 ${formatDate(e.dateString)}</div>
         </div>
     `).join("");
-
 }
 
 /* =====================================================
@@ -4009,7 +4123,6 @@ function saveDailyNote(){
 function loadDailyNote(){
     const element = document.getElementById("dailyNote");
     if(!element) return;
-
     const notes = safeParse(localStorage.getItem(NOTES_KEY), {});
     element.value = notes[getDateString()] || "";
 }
@@ -4032,22 +4145,18 @@ function saveWeeklyReflection(){
         goal:    document.getElementById("reflectGoal").value.trim(),
         savedAt: new Date().toISOString()
     };
-
     const reflections = safeParse(localStorage.getItem(REFLECTION_KEY), {});
     reflections[getWeekKey()] = data;
     localStorage.setItem(REFLECTION_KEY, JSON.stringify(reflections));
-
     toast("সাপ্তাহিক রিভিউ সংরক্ষণ হয়েছে।");
 }
 
 function loadWeeklyReflection(){
     const reflections = safeParse(localStorage.getItem(REFLECTION_KEY), {});
     const current = reflections[getWeekKey()] || {};
-
     const g = document.getElementById("reflectGood");
     const i = document.getElementById("reflectImprove");
     const g2 = document.getElementById("reflectGoal");
-
     if(g) g.value = current.good || "";
     if(i) i.value = current.improve || "";
     if(g2) g2.value = current.goal || "";
@@ -4060,7 +4169,6 @@ function loadWeeklyReflection(){
 function buildReportText(){
     const today = getDateString();
     const data = calculateScore(today);
-
     return [
         "📊 আমার দৈনিক রুটিন রিপোর্ট",
         "📅 " + formatDate(today),
@@ -4076,30 +4184,23 @@ function buildReportText(){
 
 function shareReport(){
     const text = buildReportText();
-
     if(navigator.share){
-        navigator.share({ title:"দৈনিক রুটিন রিপোর্ট", text })
-            .catch(() => {});
+        navigator.share({ title:"দৈনিক রুটিন রিপোর্ট", text }).catch(() => {});
         return;
     }
-
     navigator.clipboard.writeText(text).then(() => {
         toast("📋 রিপোর্ট কপি হয়েছে!");
-    }).catch(() => {
-        toast("রিপোর্ট কপি করা যায়নি।");
-    });
+    }).catch(() => toast("রিপোর্ট কপি করা যায়নি।"));
 }
 
 function downloadReportText(){
     const text = buildReportText();
     const blob = new Blob([text], { type:"text/plain" });
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
     a.download = "routine-report-" + getDateString() + ".txt";
     a.click();
-
     URL.revokeObjectURL(url);
     toast("রিপোর্ট ডাউনলোড হয়েছে।");
 }
@@ -4111,13 +4212,11 @@ function downloadReportText(){
 function renderTemplates(){
     const container = document.getElementById("templateRow");
     if(!container) return;
-
     const custom = safeParse(localStorage.getItem(TEMPLATES_KEY), []);
     const allTemplates = [...defaultTemplates, ...custom];
 
     container.innerHTML = allTemplates.map((t, idx) => `
-        <button type="button" class="template-chip"
-                onclick="applyTemplate(${idx})">
+        <button type="button" class="template-chip" onclick="applyTemplate(${idx})">
             ${t.name}
         </button>
     `).join("");
@@ -4128,7 +4227,6 @@ function renderTemplates(){
 function applyTemplate(index){
     const t = window._allTemplates[index];
     if(!t) return;
-
     document.getElementById("taskTitle").value = t.title || "";
     document.getElementById("taskTime").value = t.time || "09:00";
 
@@ -4138,12 +4236,11 @@ function applyTemplate(index){
             if(opt.value === t.category) catSel.value = t.category;
         });
     }
-
     toast(`⚡ "${t.name}" টেমপ্লেট লোড হয়েছে।`);
 }
 
 /* =====================================================
-   POMODORO — STATE
+   POMODORO
 ===================================================== */
 
 let pomodoroState = {
@@ -4168,7 +4265,6 @@ function loadPomodoroSettingsUI(){
 }
 
 function savePomodoroSettings(){
-
     const focus = parseInt(document.getElementById("focusMinutes").value, 10);
     const short = parseInt(document.getElementById("shortMinutes").value, 10);
     const long  = parseInt(document.getElementById("longMinutes").value, 10);
@@ -4182,10 +4278,7 @@ function savePomodoroSettings(){
     savePomoConfig();
     updatePomodoroLabels();
 
-    if(!pomodoroState.running){
-        resetPomodoroForCurrentMode();
-    }
-
+    if(!pomodoroState.running) resetPomodoroForCurrentMode();
     toast("⚙️ টাইমার সেটিংস সংরক্ষণ হয়েছে।");
 }
 
@@ -4193,75 +4286,46 @@ function updatePomodoroLabels(){
     const fl = document.getElementById("modeFocusLabel");
     const sl = document.getElementById("modeShortLabel");
     const ll = document.getElementById("modeLongLabel");
-
     if(fl) fl.textContent = pomoConfig.focus + "মি";
     if(sl) sl.textContent = pomoConfig.short + "মি";
     if(ll) ll.textContent = pomoConfig.long  + "মি";
 }
 
 function setPomodoroMode(mode, button){
-
-    document.querySelectorAll(".pomodoro-mode button")
-        .forEach(b => b.classList.remove("active"));
-
+    document.querySelectorAll(".pomodoro-mode button").forEach(b => b.classList.remove("active"));
     button.classList.add("active");
-
     pomodoroState.mode = mode;
-
     clearInterval(pomodoroState.interval);
     pomodoroState.running = false;
-
     resetPomodoroForCurrentMode();
     updatePomodoroStartButton();
 }
 
 function resetPomodoroForCurrentMode(){
-
     let seconds = pomoConfig.focus * 60;
     let label = "ফোকাস সেশনে মনোযোগ দিন";
-
-    if(pomodoroState.mode === "short"){
-        seconds = pomoConfig.short * 60;
-        label = "ছোট বিরতি নিন";
-    }
-    if(pomodoroState.mode === "long"){
-        seconds = pomoConfig.long * 60;
-        label = "বড় বিরতি নিন";
-    }
-
+    if(pomodoroState.mode === "short"){ seconds = pomoConfig.short * 60; label = "ছোট বিরতি নিন"; }
+    if(pomodoroState.mode === "long"){ seconds = pomoConfig.long * 60; label = "বড় বিরতি নিন"; }
     pomodoroState.totalSeconds = seconds;
     pomodoroState.remaining    = seconds;
-
     const labelEl = document.getElementById("pomodoroLabel");
     if(labelEl) labelEl.textContent = label;
-
     updatePomodoroStartButton();
     updatePomodoroUI();
 }
 
 function updatePomodoroStartButton(){
     const btn = document.getElementById("pomodoroStartBtn");
-    if(btn){
-        btn.textContent = pomodoroState.running
-            ? "⏸️ থামান"
-            : "▶️ শুরু";
-    }
+    if(btn) btn.textContent = pomodoroState.running ? "⏸️ থামান" : "▶️ শুরু";
 }
 
 function updatePomodoroUI(){
-
     const m = Math.floor(pomodoroState.remaining / 60);
     const s = pomodoroState.remaining % 60;
-
     const el = document.getElementById("pomodoroTime");
-    if(el){
-        el.textContent =
-            `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
-    }
+    if(el) el.textContent = `${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
 
-    const data = safeParse(localStorage.getItem(POMODORO_KEY),
-        { count:0, minutes:0 });
-
+    const data = safeParse(localStorage.getItem(POMODORO_KEY), { count:0, minutes:0 });
     const cEl = document.getElementById("pomodoroCount");
     const mEl = document.getElementById("pomodoroMinutes");
     if(cEl) cEl.textContent = data.count || 0;
@@ -4269,70 +4333,54 @@ function updatePomodoroUI(){
 }
 
 function startPomodoro(){
-
     if(pomodoroState.running){
         clearInterval(pomodoroState.interval);
         pomodoroState.running = false;
         updatePomodoroStartButton();
         return;
     }
-
+    getAudioContext();
     pomodoroState.running = true;
     updatePomodoroStartButton();
 
     pomodoroState.interval = setInterval(() => {
         pomodoroState.remaining--;
-
-        if(pomodoroState.remaining <= 0){
-            finishPomodoroSession();
-            return;
-        }
-
+        if(pomodoroState.remaining <= 0){ finishPomodoroSession(); return; }
         updatePomodoroUI();
     }, 1000);
 }
 
 function finishPomodoroSession(){
-
     clearInterval(pomodoroState.interval);
     pomodoroState.running = false;
     updatePomodoroStartButton();
 
     const mode = pomodoroState.mode;
-
     if(mode === "focus"){
-        const data = safeParse(localStorage.getItem(POMODORO_KEY),
-            { count:0, minutes:0 });
+        const data = safeParse(localStorage.getItem(POMODORO_KEY), { count:0, minutes:0 });
         data.count   = (data.count   || 0) + 1;
         data.minutes = (data.minutes || 0) + pomoConfig.focus;
         localStorage.setItem(POMODORO_KEY, JSON.stringify(data));
-
         toast("🎉 ফোকাস সেশন সম্পন্ন! বিরতি নিন।");
-
         if(settings.notifications && typeof Notification !== "undefined"
            && Notification.permission === "granted"){
-            new Notification("🎉 ফোকাস সেশন সম্পন্ন!",
-                { body: "এখন বিরতি নিন।" });
+            new Notification("🎉 ফোকাস সেশন সম্পন্ন!", { body: "এখন বিরতি নিন।" });
         }
     }
     else{
         toast("☕ বিরতি শেষ! আবার কাজ শুরু করুন।");
-
         if(settings.notifications && typeof Notification !== "undefined"
            && Notification.permission === "granted"){
-            new Notification("☕ বিরতি শেষ!",
-                { body: "আবার কাজ শুরু করুন।" });
+            new Notification("☕ বিরতি শেষ!", { body: "আবার কাজ শুরু করুন।" });
         }
     }
 
-    playAlarm();
-
+    playPomodoroAlarm();
     const timeEl = document.getElementById("pomodoroTime");
     if(timeEl){
         timeEl.classList.add("pulse");
         setTimeout(() => timeEl.classList.remove("pulse"), 3000);
     }
-
     pomodoroState.remaining = pomodoroState.totalSeconds;
     updatePomodoroUI();
 }
@@ -4346,74 +4394,286 @@ function resetPomodoro(){
 }
 
 /* =====================================================
-   ALARM SOUND
+   REMINDER SCHEDULING
 ===================================================== */
 
-let alarmAudioCtx = null;
-
-function getAudioContext(){
-    if(!alarmAudioCtx){
-        try{
-            alarmAudioCtx = new (window.AudioContext ||
-                                window.webkitAudioContext)();
-        }
-        catch{ alarmAudioCtx = null; }
+function clearTaskTimer(taskId){
+    if(scheduledTimers[taskId]){
+        clearTimeout(scheduledTimers[taskId]);
+        delete scheduledTimers[taskId];
     }
-    return alarmAudioCtx;
 }
 
-function playAlarm(){
+function clearAllTimers(){
+    Object.values(scheduledTimers).forEach(id => clearTimeout(id));
+    scheduledTimers = {};
+}
 
-    const ctx = getAudioContext();
-    if(!ctx) return;
+function scheduleReminder(task){
+    if(!settings.notifications) return;
+    if(task.completed) return;
 
-    if(ctx.state === "suspended"){
-        ctx.resume();
+    clearTaskTimer(task.id);
+
+    const taskDateTime = new Date(`${task.date}T${task.time}:00`);
+    const reminderOffset = (task.reminder || 0) * 60 * 1000;
+    const fireAt = taskDateTime.getTime() - reminderOffset;
+    const delay = fireAt - Date.now();
+
+    if(delay < -60000) return;
+    if(delay > 24 * 60 * 60 * 1000) return;
+
+    if(delay < 0){
+        setTimeout(() => triggerReminder(task.id), 1000);
+        return;
     }
 
-    const volume = Math.max(0, Math.min(1, (pomoConfig.volume || 80) / 100));
+    const cappedDelay = Math.min(delay, 24 * 60 * 60 * 1000);
+    scheduledTimers[task.id] = setTimeout(() => {
+        if(cappedDelay < delay){
+            scheduleReminder(task);
+            return;
+        }
+        triggerReminder(task.id);
+    }, cappedDelay);
+}
 
-    const notes = [
-        { freq: 880,  start: 0.00, dur: 0.18 },
-        { freq: 1108, start: 0.22, dur: 0.18 },
-        { freq: 1318, start: 0.44, dur: 0.28 }
-    ];
+function scheduleAllReminders(){
+    if(!settings.notifications) return;
 
-    for(let round = 0; round < 3; round++){
-        const base = round * 1.6;
+    Object.keys(scheduledTimers).forEach(taskId => {
+        if(taskId.startsWith("snooze_")) return;
+        const task = tasks.find(t => t.id === taskId);
+        if(!task || task.completed) clearTaskTimer(taskId);
+    });
 
-        notes.forEach(note => {
-            const osc  = ctx.createOscillator();
-            const gain = ctx.createGain();
+    tasks.forEach(task => {
+        if(task.completed) return;
+        if(scheduledTimers[task.id]) return;
+        scheduleReminder(task);
+    });
+}
 
-            osc.type = "sine";
-            osc.frequency.value = note.freq;
+function triggerReminder(taskId){
+    const task = tasks.find(t => t.id === taskId);
+    if(!task) return;
+    if(task.completed) return;
 
-            const startTime = ctx.currentTime + base + note.start;
-            const endTime   = startTime + note.dur;
+    activeAlarmTaskId = taskId;
 
-            gain.gain.setValueAtTime(0, startTime);
-            gain.gain.linearRampToValueAtTime(volume, startTime + 0.02);
-            gain.gain.setValueAtTime(volume, endTime - 0.05);
-            gain.gain.linearRampToValueAtTime(0, endTime);
+    /* Show modal */
+    document.getElementById("alarmTaskTitle").textContent = task.title;
+    document.getElementById("alarmTaskTime").textContent =
+        "⏰ " + formatTime(task.time) + " · " + formatDate(task.date);
+    document.getElementById("alarmModal").classList.remove("hidden");
 
-            osc.connect(gain);
-            gain.connect(ctx.destination);
+    /* Vibration */
+    if(navigator.vibrate){
+        navigator.vibrate([300, 200, 300, 200, 300]);
+    }
 
-            osc.start(startTime);
-            osc.stop(endTime + 0.02);
+    /* Play alarm */
+    startAlarmLoop();
+
+    /* Send to Service Worker for background notification too */
+    sendBackgroundNotification(
+        "🔔 রিমাইন্ডার: " + task.title,
+        `${formatTime(task.time)} · ট্যাপ করে দেখুন`,
+        "reminder-" + task.id
+    );
+
+    /* Also show direct notification */
+    if(typeof Notification !== "undefined" &&
+       Notification.permission === "granted"){
+        try{
+            const notif = new Notification("🔔 রিমাইন্ডার: " + task.title, {
+                body: `${formatTime(task.time)} · ট্যাপ করে দেখুন`,
+                tag: "reminder-" + task.id,
+                requireInteraction: true
+            });
+            notif.onclick = function(){
+                window.focus();
+                notif.close();
+            };
+        }
+        catch(e){}
+    }
+
+    delete scheduledTimers[taskId];
+
+    if(task.repeat && task.repeat !== "none"){
+        scheduleRepeatingTask(task);
+    }
+}
+
+function sendBackgroundNotification(title, body, tag){
+    if(!("serviceWorker" in navigator)) return;
+    navigator.serviceWorker.ready.then(reg => {
+        if(reg.active){
+            reg.active.postMessage({
+                type: "show-notification",
+                title, body, tag
+            });
+        }
+    }).catch(() => {});
+}
+
+function scheduleRepeatingTask(task){
+    let nextDate = null;
+    const current = new Date(task.date + "T00:00:00");
+
+    if(task.repeat === "daily") nextDate = addDays(current, 1);
+    else if(task.repeat === "weekly") nextDate = addDays(current, 7);
+    else if(task.repeat === "monthly"){
+        nextDate = new Date(current);
+        nextDate.setMonth(nextDate.getMonth() + 1);
+    }
+    else if(task.repeat === "weekdays"){
+        nextDate = addDays(current, 1);
+        while(nextDate.getDay() === 0 || nextDate.getDay() === 6){
+            nextDate = addDays(nextDate, 1);
+        }
+    }
+
+    if(!nextDate) return;
+
+    const nextDateString = getDateString(nextDate);
+    const exists = tasks.some(t => t.title === task.title && t.date === nextDateString);
+    if(exists) return;
+
+    const newTask = {
+        ...task,
+        id: Date.now().toString() + "_rpt",
+        date: nextDateString,
+        completed: false,
+        completedAt: null,
+        createdAt: new Date().toISOString()
+    };
+
+    tasks.push(newTask);
+    saveTasks();
+    scheduleReminder(newTask);
+}
+
+/* =====================================================
+   ALARM MODAL ACTIONS
+===================================================== */
+
+function stopAlarm(){
+    stopAlarmLoop();
+    document.getElementById("alarmModal").classList.add("hidden");
+    activeAlarmTaskId = null;
+}
+
+function snoozeAlarm(){
+    const taskId = activeAlarmTaskId;
+    if(!taskId){ stopAlarm(); return; }
+    const task = tasks.find(t => t.id === taskId);
+    if(!task){ stopAlarm(); return; }
+
+    stopAlarmLoop();
+    document.getElementById("alarmModal").classList.add("hidden");
+    toast("⏰ ৫ মিনিট পরে আবার রিমাইন্ড করবে।");
+
+    scheduledTimers["snooze_" + taskId] = setTimeout(() => {
+        delete scheduledTimers["snooze_" + taskId];
+        activeAlarmTaskId = taskId;
+
+        document.getElementById("alarmTaskTitle").textContent = task.title;
+        document.getElementById("alarmTaskTime").textContent = "⏰ (স্নুজ) " + formatTime(task.time);
+        document.getElementById("alarmModal").classList.remove("hidden");
+
+        startAlarmLoop();
+        if(navigator.vibrate) navigator.vibrate([300, 200, 300, 200, 300]);
+
+        sendBackgroundNotification(
+            "⏰ স্নুজ: " + task.title,
+            formatTime(task.time),
+            "snooze-" + task.id
+        );
+    }, 5 * 60 * 1000);
+
+    activeAlarmTaskId = null;
+}
+
+function completeAlarmTask(){
+    const taskId = activeAlarmTaskId;
+    stopAlarm();
+    if(!taskId) return;
+    const task = tasks.find(t => t.id === taskId);
+    if(!task) return;
+
+    if(!task.completed){
+        task.completed = true;
+        task.completedAt = new Date().toISOString();
+        clearTaskTimer(task.id);
+        saveTasks();
+        renderAll();
+        toast("✅ কাজ সম্পন্ন হিসেবে চিহ্নিত হয়েছে।");
+    }
+}
+
+/* =====================================================
+   TEST ACTIONS
+===================================================== */
+
+function testReminderAlarm(){
+    const vol = parseInt(document.getElementById("reminderVolume").value, 10);
+    if(vol >= 0 && vol <= 100) reminderConfig.volume = vol;
+    saveReminderConfig();
+    getAudioContext();
+    playReminderAlarm(2);
+    toast("🔊 Reminder alarm বাজছে...");
+}
+
+function testNotification(){
+    if(typeof Notification === "undefined"){
+        toast("এই ব্রাউজারে notification সাপোর্ট নেই।");
+        return;
+    }
+    if(Notification.permission !== "granted"){
+        requestNotificationPermission().then(() => {
+            toast("Notification permission নেই।");
+        });
+        return;
+    }
+
+    sendBackgroundNotification(
+        "🔔 দৈনিক রুটিন টেস্ট",
+        "এটি একটি টেস্ট নোটিফিকেশন।",
+        "test-notification"
+    );
+
+    try{
+        new Notification("🔔 দৈনিক রুটিন টেস্ট", {
+            body: "এটি একটি টেস্ট নোটিফিকেশন।",
+            tag: "test-notification"
         });
     }
+    catch(e){}
+
+    toast("🔔 টেস্ট নোটিফিকেশন পাঠানো হয়েছে।");
 }
 
-function testAlarm(){
-    const vol = parseInt(document.getElementById("alarmVolume").value, 10);
-    if(vol >= 0 && vol <= 100) pomoConfig.volume = vol;
-    savePomoConfig();
-
+function testTaskAlarm(taskId){
+    const task = tasks.find(t => t.id === taskId);
+    if(!task) return;
     getAudioContext();
-    playAlarm();
-    toast("🔊 অ্যালার্ম বাজছে...");
+    playReminderAlarm(2);
+    toast(`🔊 "${task.title}" এর অ্যালার্ম শুনছেন...`);
+}
+
+function loadReminderSettingsUI(){
+    const el = document.getElementById("reminderVolume");
+    if(el) el.value = reminderConfig.volume;
+    updateMusicInfoUI();
+}
+
+function saveReminderSettings(){
+    const vol = parseInt(document.getElementById("reminderVolume").value, 10);
+    if(vol >= 0 && vol <= 100) reminderConfig.volume = vol;
+    saveReminderConfig();
+    toast("🔔 Reminder সেটিংস সংরক্ষণ হয়েছে।");
 }
 
 /* =====================================================
@@ -4425,6 +4685,7 @@ function loadSettingsUI(){
     document.getElementById("notificationToggle").checked = settings.notifications;
     document.getElementById("darkToggle").checked = settings.darkMode;
     document.getElementById("autoBackupToggle").checked = settings.autoBackup;
+    document.getElementById("wakeLockToggle").checked = settings.wakeLock;
     updateColorPickerActive();
 }
 
@@ -4443,13 +4704,10 @@ function toggleTheme(){
 
 function applySettings(){
     document.body.classList.toggle("dark", settings.darkMode);
-
     const accent = settings.accent || "#4f46e5";
     document.documentElement.style.setProperty("--accent", accent);
-
     const btn = document.getElementById("themeBtn");
     if(btn) btn.textContent = settings.darkMode ? "☀️" : "🌙";
-
     const toggle = document.getElementById("darkToggle");
     if(toggle) toggle.checked = settings.darkMode;
 }
@@ -4467,14 +4725,10 @@ const COLORS = [
 function renderColorPicker(){
     const container = document.getElementById("colorRow");
     if(!container) return;
-
     container.innerHTML = COLORS.map(c => `
-        <div class="color-dot"
-             data-color="${c}"
-             style="background:${c}"
+        <div class="color-dot" data-color="${c}" style="background:${c}"
              onclick="setAccentColor('${c}')"></div>
     `).join("");
-
     updateColorPickerActive();
 }
 
@@ -4488,8 +4742,7 @@ function setAccentColor(color){
 
 function updateColorPickerActive(){
     document.querySelectorAll(".color-dot").forEach(dot => {
-        dot.classList.toggle("active",
-            dot.dataset.color === settings.accent);
+        dot.classList.toggle("active", dot.dataset.color === settings.accent);
     });
 }
 
@@ -4500,7 +4753,15 @@ function updateColorPickerActive(){
 function toggleNotifications(){
     settings.notifications = document.getElementById("notificationToggle").checked;
     saveSettings();
-    if(settings.notifications) requestNotificationPermission();
+
+    if(settings.notifications){
+        requestNotificationPermission().then(() => {
+            scheduleAllReminders();
+        });
+    }
+    else{
+        clearAllTimers();
+    }
 }
 
 async function requestNotificationPermission(){
@@ -4524,61 +4785,16 @@ function toggleAutoBackup(){
 
 function checkAutoBackupReminder(){
     if(!settings.autoBackup) return;
-
     const last = localStorage.getItem(LAST_BACKUP_KEY);
-
     if(!last){
         localStorage.setItem(LAST_BACKUP_KEY, getDateString());
         return;
     }
-
     const lastDate = new Date(last + "T00:00:00");
-    const diffDays = Math.floor(
-        (Date.now() - lastDate.getTime()) / (1000 * 60 * 60 * 24)
-    );
-
+    const diffDays = Math.floor((Date.now() - lastDate.getTime()) / (1000 * 60 * 60 * 24));
     if(diffDays >= 7){
-        setTimeout(() => {
-            toast("💾 ৭ দিন পেরিয়ে গেছে — Backup নিন!");
-        }, 2000);
+        setTimeout(() => toast("💾 ৭ দিন পেরিয়ে গেছে — Backup নিন!"), 2000);
     }
-}
-
-/* =====================================================
-   REMINDERS
-===================================================== */
-
-function scheduleReminder(task){
-    if(!settings.notifications) return;
-
-    const taskTime = new Date(`${task.date}T${task.time}`);
-    const reminderTime = taskTime.getTime() - (task.reminder * 60 * 1000);
-    const delay = reminderTime - Date.now();
-
-    if(delay <= 0 || delay > 2147483647) return;
-
-    setTimeout(() => showNotification(task), delay);
-}
-
-function showNotification(task){
-    if(!settings.notifications) return;
-
-    if(typeof Notification === "undefined"){
-        toast("🔔 " + task.title);
-        return;
-    }
-
-    if(Notification.permission === "granted"){
-        new Notification("দৈনিক রুটিন 🔔", {
-            body: task.title + " — " + formatTime(task.time)
-        });
-    }
-}
-
-function scheduleAllReminders(){
-    tasks.forEach(task => {
-        if(!task.completed) scheduleReminder(task);
-    });
 }
 
 /* =====================================================
@@ -4586,18 +4802,12 @@ function scheduleAllReminders(){
 ===================================================== */
 
 function backupData(){
-
     const backup = {
         app: "দৈনিক রুটিন",
-        version: "3.2.0",
+        version: "4.0.0",
         date: new Date().toISOString(),
-        tasks,
-        avoidTasks,
-        avoidLog,
-        violations,
-        violationReasons,
-        settings,
-        pomoConfig,
+        tasks, avoidTasks, avoidLog, violations, violationReasons,
+        settings, pomoConfig, reminderConfig,
         notes:       safeParse(localStorage.getItem(NOTES_KEY), {}),
         reflections: safeParse(localStorage.getItem(REFLECTION_KEY), {}),
         pomodoro:    safeParse(localStorage.getItem(POMODORO_KEY), {}),
@@ -4605,39 +4815,26 @@ function backupData(){
         templates:   safeParse(localStorage.getItem(TEMPLATES_KEY), [])
     };
 
-    const blob = new Blob(
-        [JSON.stringify(backup, null, 2)],
-        { type:"application/json" }
-    );
-
+    const blob = new Blob([JSON.stringify(backup, null, 2)], { type:"application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
     a.download = "daily-routine-backup-" + getDateString() + ".json";
     a.click();
     URL.revokeObjectURL(url);
-
     localStorage.setItem(LAST_BACKUP_KEY, getDateString());
-
     toast("Backup তৈরি হয়েছে।");
 }
 
 function restoreData(event){
-
     const file = event.target.files[0];
     if(!file) return;
 
     const reader = new FileReader();
-
     reader.onload = function(e){
         try{
             const data = JSON.parse(e.target.result);
-
-            if(!Array.isArray(data.tasks)){
-                toast("সঠিক Backup File নয়।");
-                return;
-            }
-
+            if(!Array.isArray(data.tasks)){ toast("সঠিক Backup File নয়।"); return; }
             if(!confirm("বর্তমান ডেটার পরিবর্তে Backup Restore করবেন?")) return;
 
             tasks       = data.tasks || [];
@@ -4647,8 +4844,9 @@ function restoreData(event){
             violationReasons = data.violationReasons || {};
             badgesEarned= data.badges || {};
 
-            settings   = { ...settings,   ...(data.settings   || {}) };
-            pomoConfig = { ...pomoConfig, ...(data.pomoConfig || {}) };
+            settings       = { ...settings,       ...(data.settings       || {}) };
+            pomoConfig     = { ...pomoConfig,     ...(data.pomoConfig     || {}) };
+            reminderConfig = { ...reminderConfig, ...(data.reminderConfig || {}) };
 
             localStorage.setItem(NOTES_KEY, JSON.stringify(data.notes || {}));
             localStorage.setItem(REFLECTION_KEY, JSON.stringify(data.reflections || {}));
@@ -4657,12 +4855,16 @@ function restoreData(event){
 
             saveTasks(); saveAvoidTasks(); saveAvoidLog();
             saveViolations(); saveViolationReasons();
-            saveSettings(); saveBadges(); savePomoConfig();
+            saveSettings(); saveBadges(); savePomoConfig(); saveReminderConfig();
 
             applySettings();
             renderAll();
             loadSettingsUI();
             loadPomodoroSettingsUI();
+            loadReminderSettingsUI();
+
+            clearAllTimers();
+            scheduleAllReminders();
 
             toast("Backup Restore হয়েছে।");
         }
@@ -4670,7 +4872,6 @@ function restoreData(event){
             toast("Backup File পড়তে সমস্যা হয়েছে।");
         }
     };
-
     reader.readAsText(file);
 }
 
@@ -4678,40 +4879,41 @@ function restoreData(event){
    DELETE ALL
 ===================================================== */
 
-function deleteAllData(){
-
-    if(!confirm(
-        "সব Task, Note, Avoid, Pomodoro এবং Settings মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
-    )) return;
+async function deleteAllData(){
+    if(!confirm("সব Task, Note, Avoid, Pomodoro, Custom Music এবং Settings মুছে যাবে।\n\nআপনি কি নিশ্চিত?")) return;
 
     [
         TASK_KEY, AVOID_TASK_KEY, AVOID_LOG_KEY, VIOLATION_KEY,
         REASON_KEY, SETTINGS_KEY, NOTES_KEY, GOALS_KEY, REFLECTION_KEY,
-        POMODORO_KEY, POMO_CONFIG_KEY, BADGE_KEY,
+        POMODORO_KEY, POMO_CONFIG_KEY, REMINDER_CFG_KEY, BADGE_KEY,
         TEMPLATES_KEY, LAST_BACKUP_KEY
     ].forEach(k => localStorage.removeItem(k));
 
-    tasks = [];
-    avoidTasks = [];
-    avoidLog = {};
-    violations = {};
-    violationReasons = {};
-    badgesEarned = {};
+    try{ await idbDelete(CUSTOM_MUSIC_KEY); }catch(e){}
 
-    settings = {
-        name:"", darkMode:false,
-        notifications:true, autoBackup:true,
-        accent:"#4f46e5"
-    };
+    if(customMusicBlobUrl){
+        URL.revokeObjectURL(customMusicBlobUrl);
+        customMusicBlobUrl = null;
+    }
+    if(customMusicAudioEl){
+        customMusicAudioEl.pause();
+        customMusicAudioEl.src = "";
+    }
 
-    pomoConfig = {
-        focus: 25, short: 5, long: 15, volume: 80
-    };
+    tasks = []; avoidTasks = []; avoidLog = {};
+    violations = {}; violationReasons = {}; badgesEarned = {};
 
+    settings = { name:"", darkMode:false, notifications:true, autoBackup:true, accent:"#4f46e5", wakeLock:false };
+    pomoConfig = { focus: 25, short: 5, long: 15, volume: 80 };
+    reminderConfig = { volume: 80, useCustomMusic: false, customMusicName: "" };
+
+    clearAllTimers();
+    releaseWakeLock();
     applySettings();
     renderAll();
     loadSettingsUI();
     loadPomodoroSettingsUI();
+    loadReminderSettingsUI();
 
     toast("সব ডেটা মুছে দেওয়া হয়েছে।");
 }
@@ -4743,14 +4945,11 @@ function showRandomQuote(){
 ===================================================== */
 
 function renderCalendar(){
-
     const year  = calendarDate.getFullYear();
     const month = calendarDate.getMonth();
 
     document.getElementById("calendarTitle").textContent =
-        calendarDate.toLocaleDateString("bn-BD", {
-            year:"numeric", month:"long"
-        });
+        calendarDate.toLocaleDateString("bn-BD", { year:"numeric", month:"long" });
 
     const grid = document.getElementById("calendarGrid");
     grid.innerHTML = "";
@@ -4766,26 +4965,18 @@ function renderCalendar(){
     const today = getDateString();
 
     for(let day = 1; day <= daysInMonth; day++){
-
         const date = new Date(year, month, day);
         const dateString = getDateString(date);
-
         const button = document.createElement("button");
         button.className = "calendar-day";
         button.textContent = day;
-
         if(dateString === today) button.classList.add("today");
 
         const hasTask = tasks.some(t => t.date === dateString) ||
-                        avoidTasks.some(a =>
-                            (a.dates || []).includes(dateString));
-
+                        avoidTasks.some(a => (a.dates || []).includes(dateString));
         if(hasTask) button.classList.add("has-task");
 
-        button.onclick = function(){
-            openDayDetail(dateString);
-        };
-
+        button.onclick = function(){ openDayDetail(dateString); };
         grid.appendChild(button);
     }
 }
@@ -4801,10 +4992,8 @@ function changeMonth(amount){
 
 function escapeHTML(value){
     return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
 
@@ -4828,8 +5017,19 @@ function renderAll(){
    START
 ===================================================== */
 
-setTimeout(() => scheduleAllReminders(), 1000);
 setInterval(() => updateHeader(), 30000);
+
+/* Handle postMessage from SW */
+if("serviceWorker" in navigator){
+    navigator.serviceWorker.addEventListener("message", function(event){
+        if(event.data && event.data.type === "alarm-open"){
+            /* Notification tapped → focus on alarm if any active */
+            if(activeAlarmTaskId){
+                document.getElementById("alarmModal").classList.remove("hidden");
+            }
+        }
+    });
+}
 
 </script>
 
