@@ -11,7 +11,7 @@
 <style>
 
 /* =====================================================
-   DAILY ROUTINE — v5.0
+   DAILY ROUTINE — v5.1
 ===================================================== */
 
 *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -65,9 +65,7 @@ textarea:focus-visible,select:focus-visible{
     padding-bottom:90px;
 }
 
-/* =====================================================
-   HEADER
-===================================================== */
+/* ===== HEADER ===== */
 
 .top-header{
     display:flex; justify-content:space-between; align-items:center;
@@ -101,13 +99,11 @@ textarea:focus-visible,select:focus-visible{
     background:linear-gradient(135deg,var(--accent),var(--primary2));
     color:white;
     display:flex; align-items:center; justify-content:center;
-    font-size:11px;
-    flex-shrink:0;
+    font-size:11px; flex-shrink:0;
 }
 
 .profile-btn .name{
-    overflow:hidden;
-    text-overflow:ellipsis;
+    overflow:hidden; text-overflow:ellipsis;
     white-space:nowrap;
 }
 
@@ -121,9 +117,7 @@ textarea:focus-visible,select:focus-visible{
 
 .icon-btn:active{ transform:scale(.92); }
 
-/* =====================================================
-   PAGES
-===================================================== */
+/* ===== PAGES ===== */
 
 .page{ display:none; padding:8px 16px 30px; animation:pageIn .25s ease; }
 .page.active{ display:block; }
@@ -133,9 +127,7 @@ textarea:focus-visible,select:focus-visible{
     to{ opacity:1; transform:translateY(0); }
 }
 
-/* =====================================================
-   WELCOME
-===================================================== */
+/* ===== WELCOME ===== */
 
 .welcome-card{
     padding:22px; border-radius:var(--radius-lg);
@@ -156,35 +148,26 @@ textarea:focus-visible,select:focus-visible{
 .welcome-card h2{ margin:5px 0; font-size:21px; }
 .welcome-card p{ margin:5px 0; color:rgba(255,255,255,.85); font-size:13px; }
 
-/* =====================================================
-   QUICK REPORT CTA
-===================================================== */
+/* ===== QUICK REPORT CTA ===== */
 
 .quick-report-cta{
     display:flex; align-items:center; gap:12px;
-    padding:16px 18px;
-    margin-bottom:14px;
+    padding:16px 18px; margin-bottom:14px;
     border-radius:var(--radius-md);
     background:linear-gradient(135deg,#fbbf24,#f59e0b);
-    color:white;
-    cursor:pointer;
+    color:white; cursor:pointer;
     transition:transform .15s;
     box-shadow:0 8px 20px rgba(245,158,11,.25);
 }
 
 .quick-report-cta:active{ transform:scale(.98); }
-
 .quick-report-cta .icon{ font-size:28px; }
-
 .quick-report-cta .text{ flex:1; }
 .quick-report-cta h3{ margin:0 0 3px; font-size:15px; }
 .quick-report-cta p{ margin:0; font-size:11px; opacity:.9; }
-
 .quick-report-cta .arrow{ font-size:20px; }
 
-/* =====================================================
-   BADGE STRIP
-===================================================== */
+/* ===== BADGE STRIP ===== */
 
 .badge-strip{
     display:flex; gap:8px; overflow-x:auto;
@@ -213,9 +196,7 @@ textarea:focus-visible,select:focus-visible{
 
 .badge-chip .badge-icon{ font-size:16px; }
 
-/* =====================================================
-   DUAL PROGRESS
-===================================================== */
+/* ===== DUAL PROGRESS ===== */
 
 .dual-progress{
     display:grid; grid-template-columns:1fr 1fr;
@@ -226,8 +207,7 @@ textarea:focus-visible,select:focus-visible{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius-md);
-    padding:15px;
-    cursor:pointer;
+    padding:15px; cursor:pointer;
     transition:transform .15s, box-shadow .2s;
 }
 
@@ -238,33 +218,27 @@ textarea:focus-visible,select:focus-visible{
 .progress-card h3{
     margin:0 0 6px; font-size:13px;
     color:var(--muted); font-weight:normal;
-    display:flex; justify-content:space-between;
-    align-items:center;
+    display:flex; justify-content:space-between; align-items:center;
 }
 
 .progress-card h3 .arrow{ font-size:14px; color:var(--accent); }
 .progress-card h2{ margin:4px 0; font-size:22px; }
 .progress-card .progress-bar{ margin-top:10px; }
-
 .progress-card .small-percent{
     font-size:12px; color:var(--muted); margin-top:4px;
 }
 
-/* =====================================================
-   MAIN PROGRESS
-===================================================== */
+/* ===== MAIN PROGRESS ===== */
 
 .progress-main{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius-md);
     padding:19px; margin-bottom:14px;
-    cursor:pointer;
-    transition:transform .15s;
+    cursor:pointer; transition:transform .15s;
 }
 
 .progress-main:active{ transform:scale(.99); }
-
 .progress-top{ display:flex; justify-content:space-between; align-items:center; }
 .progress-top h2{ margin:5px 0 0; font-size:28px; }
 .muted{ color:var(--muted); font-size:13px; }
@@ -301,9 +275,7 @@ textarea:focus-visible,select:focus-visible{
     background:linear-gradient(90deg,var(--warning),#f59e0b);
 }
 
-/* =====================================================
-   TREND
-===================================================== */
+/* ===== TREND ===== */
 
 .trend-card{
     background:var(--card);
@@ -319,31 +291,25 @@ textarea:focus-visible,select:focus-visible{
 
 .trend-bars{
     display:flex; gap:6px; align-items:flex-end;
-    height:80px;
-    padding:0 4px;
+    height:80px; padding:0 4px;
 }
 
 .trend-bar{
-    flex:1;
-    display:flex; flex-direction:column;
+    flex:1; display:flex; flex-direction:column;
     align-items:center; justify-content:flex-end;
-    gap:4px; height:100%;
-    cursor:pointer;
+    gap:4px; height:100%; cursor:pointer;
 }
 
 .trend-bar .bar{
     width:100%;
     background:linear-gradient(180deg,var(--accent),var(--primary2));
     border-radius:6px 6px 0 0;
-    min-height:4px;
-    transition:height .4s ease;
+    min-height:4px; transition:height .4s ease;
 }
 
 .trend-bar .label{ font-size:9px; color:var(--muted); }
 
-/* =====================================================
-   STATS
-===================================================== */
+/* ===== STATS ===== */
 
 .stats-grid{
     display:grid; grid-template-columns:repeat(4,1fr);
@@ -363,9 +329,7 @@ textarea:focus-visible,select:focus-visible{
 .stat-card strong{ display:block; font-size:18px; }
 .stat-card span{ color:var(--muted); font-size:10px; }
 
-/* =====================================================
-   SECTIONS
-===================================================== */
+/* ===== SECTIONS ===== */
 
 .section{ margin-top:20px; }
 
@@ -381,9 +345,7 @@ textarea:focus-visible,select:focus-visible{
     color:var(--accent); font-weight:bold; font-size:13px;
 }
 
-/* =====================================================
-   QUOTE
-===================================================== */
+/* ===== QUOTE ===== */
 
 .quote-card{
     display:flex; gap:12px; align-items:center;
@@ -395,17 +357,13 @@ textarea:focus-visible,select:focus-visible{
 .quote-icon{ font-size:27px; }
 .quote-card p{ margin:0; line-height:1.6; font-size:14px; }
 
-/* =====================================================
-   PAGE TITLE
-===================================================== */
+/* ===== PAGE TITLE ===== */
 
 .page-title{ margin:10px 0 20px; }
 .page-title h2{ margin:0; font-size:24px; }
 .page-title p{ margin:5px 0; color:var(--muted); font-size:13px; }
 
-/* =====================================================
-   BACK BUTTON
-===================================================== */
+/* ===== BACK BUTTON ===== */
 
 .back-btn{
     display:inline-flex; align-items:center; gap:6px;
@@ -414,15 +372,12 @@ textarea:focus-visible,select:focus-visible{
     background:var(--card); color:var(--text);
     border-radius:20px;
     font-size:13px; font-weight:bold;
-    margin-bottom:10px;
-    transition:.2s;
+    margin-bottom:10px; transition:.2s;
 }
 
 .back-btn:active{ transform:scale(.95); }
 
-/* =====================================================
-   TABS
-===================================================== */
+/* ===== TABS ===== */
 
 .tab-switch{
     display:flex; gap:6px;
@@ -442,17 +397,14 @@ textarea:focus-visible,select:focus-visible{
     border:none; background:transparent;
     color:var(--muted); border-radius:10px;
     font-size:12px; font-weight:bold;
-    transition:.2s;
-    white-space:nowrap;
+    transition:.2s; white-space:nowrap;
 }
 
 .tab-switch button.active{
     background:var(--accent); color:white;
 }
 
-/* =====================================================
-   FILTER
-===================================================== */
+/* ===== FILTER ===== */
 
 .date-filter{
     display:flex; gap:7px; overflow-x:auto;
@@ -481,13 +433,10 @@ textarea:focus-visible,select:focus-visible{
 }
 
 .adv-filter select{
-    padding:10px;
-    border-radius:12px;
+    padding:10px; border-radius:12px;
     border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    font-size:12px;
-    outline:none;
+    background:var(--card); color:var(--text);
+    font-size:12px; outline:none;
 }
 
 .search-box{
@@ -504,9 +453,7 @@ textarea:focus-visible,select:focus-visible{
     color:var(--text); background:transparent;
 }
 
-/* =====================================================
-   TEMPLATES
-===================================================== */
+/* ===== TEMPLATES ===== */
 
 .template-row{
     display:flex; gap:6px; overflow-x:auto;
@@ -517,13 +464,11 @@ textarea:focus-visible,select:focus-visible{
 .template-row::-webkit-scrollbar{ display:none; }
 
 .template-chip{
-    flex-shrink:0;
-    padding:7px 12px;
+    flex-shrink:0; padding:7px 12px;
     background:var(--card);
     border:1px dashed var(--border);
     border-radius:20px;
-    font-size:12px;
-    color:var(--muted);
+    font-size:12px; color:var(--muted);
     transition:.2s;
 }
 
@@ -532,9 +477,7 @@ textarea:focus-visible,select:focus-visible{
     color:var(--accent);
 }
 
-/* =====================================================
-   TASK CARD
-===================================================== */
+/* ===== TASK CARD ===== */
 
 .task-card{
     display:flex; gap:11px; align-items:flex-start;
@@ -616,22 +559,17 @@ textarea:focus-visible,select:focus-visible{
 
 .small-btn:active{ transform:scale(.85); }
 
-/* =====================================================
-   PROGRESS MINI BAR (in task)
-===================================================== */
+/* ===== MINI PROGRESS ===== */
 
 .mini-progress{
-    width:100%;
-    height:6px;
+    width:100%; height:6px;
     background:var(--border);
-    border-radius:6px;
-    overflow:hidden;
+    border-radius:6px; overflow:hidden;
     margin-top:6px;
 }
 
 .mini-progress div{
-    height:100%;
-    border-radius:6px;
+    height:100%; border-radius:6px;
     background:linear-gradient(90deg,var(--accent),var(--primary2));
     transition:width .3s;
 }
@@ -648,9 +586,7 @@ textarea:focus-visible,select:focus-visible{
     background:linear-gradient(90deg,var(--success),#22c55e);
 }
 
-/* =====================================================
-   DETAIL SUMMARY
-===================================================== */
+/* ===== DETAIL SUMMARY ===== */
 
 .detail-summary{
     background:var(--card);
@@ -679,9 +615,7 @@ textarea:focus-visible,select:focus-visible{
 .detail-chip.danger strong{ color:var(--danger); }
 .detail-chip.warning strong{ color:var(--warning); }
 
-/* =====================================================
-   MULTI-DATE
-===================================================== */
+/* ===== MULTI-DATE ===== */
 
 .multi-date-wrap{
     background:var(--bg);
@@ -740,9 +674,7 @@ textarea:focus-visible,select:focus-visible{
     padding:0; line-height:1;
 }
 
-/* =====================================================
-   STEPS BUILDER
-===================================================== */
+/* ===== STEPS BUILDER ===== */
 
 .step-list{ margin-top:8px; }
 
@@ -786,9 +718,7 @@ textarea:focus-visible,select:focus-visible{
     border-radius:10px; font-size:16px; font-weight:bold;
 }
 
-/* =====================================================
-   EMPTY
-===================================================== */
+/* ===== EMPTY ===== */
 
 .empty-state{
     padding:35px 15px; text-align:center;
@@ -797,9 +727,7 @@ textarea:focus-visible,select:focus-visible{
 
 .empty-state div{ font-size:40px; margin-bottom:8px; }
 
-/* =====================================================
-   FORM
-===================================================== */
+/* ===== FORM ===== */
 
 .form-card{
     padding:18px; border-radius:20px;
@@ -833,15 +761,12 @@ textarea:focus-visible,select:focus-visible{
 
 .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-/* =====================================================
-   TASK TYPE PICKER
-===================================================== */
+/* ===== TASK TYPE PICKER ===== */
 
 .type-picker{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:8px;
-    margin-bottom:10px;
+    gap:8px; margin-bottom:10px;
 }
 
 .type-option{
@@ -850,8 +775,7 @@ textarea:focus-visible,select:focus-visible{
     border-radius:14px;
     background:var(--bg);
     text-align:center;
-    cursor:pointer;
-    transition:.2s;
+    cursor:pointer; transition:.2s;
 }
 
 .type-option.active{
@@ -866,9 +790,7 @@ textarea:focus-visible,select:focus-visible{
     margin-top:2px;
 }
 
-/* =====================================================
-   BUTTONS
-===================================================== */
+/* ===== BUTTONS ===== */
 
 .primary-btn,
 .secondary-btn,
@@ -900,9 +822,7 @@ textarea:focus-visible,select:focus-visible{
 
 .hidden{ display:none!important; }
 
-/* =====================================================
-   QUICK REPORT PAGE
-===================================================== */
+/* ===== QUICK REPORT PAGE ===== */
 
 .report-date-nav{
     display:flex; align-items:center; justify-content:space-between;
@@ -921,8 +841,7 @@ textarea:focus-visible,select:focus-visible{
 }
 
 .report-date-nav .date-label{
-    font-weight:bold;
-    font-size:15px;
+    font-weight:bold; font-size:15px;
     text-align:center;
 }
 
@@ -930,51 +849,40 @@ textarea:focus-visible,select:focus-visible{
     background:var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius-md);
-    padding:14px;
-    margin-bottom:10px;
+    padding:14px; margin-bottom:10px;
 }
 
 .report-item .item-head{
     display:flex; justify-content:space-between; align-items:flex-start;
-    gap:10px;
-    margin-bottom:8px;
+    gap:10px; margin-bottom:8px;
 }
 
 .report-item .item-title{
-    font-size:15px;
-    font-weight:bold;
-    flex:1;
+    font-size:15px; font-weight:bold; flex:1;
 }
 
 .report-item .item-type{
-    font-size:10px;
-    padding:3px 8px;
+    font-size:10px; padding:3px 8px;
     border-radius:8px;
-    background:var(--bg);
-    color:var(--muted);
+    background:var(--bg); color:var(--muted);
     flex-shrink:0;
 }
 
 .report-item .item-desc{
-    font-size:12px;
-    color:var(--muted);
+    font-size:12px; color:var(--muted);
     margin-bottom:10px;
 }
 
 .report-btn-row{
-    display:flex; gap:6px;
-    margin-bottom:8px;
+    display:flex; gap:6px; margin-bottom:8px;
 }
 
 .report-btn{
-    flex:1;
-    padding:10px;
+    flex:1; padding:10px;
     border-radius:10px;
     border:2px solid var(--border);
-    background:var(--bg);
-    color:var(--text);
-    font-size:13px;
-    font-weight:bold;
+    background:var(--bg); color:var(--text);
+    font-size:13px; font-weight:bold;
     transition:.2s;
 }
 
@@ -988,9 +896,7 @@ textarea:focus-visible,select:focus-visible{
     border-color:var(--danger);
 }
 
-/* =====================================================
-   NUMBER INPUT STEPPER
-===================================================== */
+/* ===== NUMBER STEPPER ===== */
 
 .number-input{
     display:flex; align-items:center; gap:8px;
@@ -998,10 +904,8 @@ textarea:focus-visible,select:focus-visible{
 }
 
 .number-input label{
-    font-size:12px;
-    color:var(--muted);
-    margin:0;
-    flex-shrink:0;
+    font-size:12px; color:var(--muted);
+    margin:0; flex-shrink:0;
 }
 
 .number-input .stepper{
@@ -1009,64 +913,30 @@ textarea:focus-visible,select:focus-visible{
     border:1px solid var(--border);
     border-radius:10px;
     background:var(--bg);
-    overflow:hidden;
-    flex:1;
+    overflow:hidden; flex:1;
 }
 
 .number-input .stepper button{
     width:36px; height:36px;
-    border:none;
-    background:transparent;
-    color:var(--accent);
-    font-size:18px;
-    font-weight:bold;
+    border:none; background:transparent;
+    color:var(--accent); font-size:18px; font-weight:bold;
 }
 
 .number-input .stepper input{
-    flex:1;
-    border:none;
-    background:transparent;
-    text-align:center;
-    padding:8px;
-    font-size:14px;
-    font-weight:bold;
-    outline:none;
-    width:auto;
+    flex:1; border:none; background:transparent;
+    text-align:center; padding:8px;
+    font-size:14px; font-weight:bold;
+    outline:none; width:auto;
 }
 
 .number-input .unit{
-    font-size:11px;
-    color:var(--muted);
-    flex-shrink:0;
+    font-size:11px; color:var(--muted); flex-shrink:0;
 }
 
-/* =====================================================
-   REPORT MODAL
-===================================================== */
-
-.comment-input{
-    width:100%;
-    padding:12px;
-    border:1px solid var(--border);
-    border-radius:12px;
-    background:var(--bg);
-    color:var(--text);
-    font-family:inherit;
-    font-size:13px;
-    resize:vertical;
-    min-height:70px;
-    outline:none;
-    margin-top:6px;
-}
-
-/* =====================================================
-   PROFILES
-===================================================== */
+/* ===== PROFILES ===== */
 
 .profile-list{
-    display:grid;
-    gap:10px;
-    margin-top:10px;
+    display:grid; gap:10px; margin-top:10px;
 }
 
 .profile-row{
@@ -1097,17 +967,13 @@ textarea:focus-visible,select:focus-visible{
 .profile-row .info strong{ display:block; font-size:14px; }
 
 .profile-row .info small{
-    display:block;
-    font-size:11px;
-    color:var(--muted);
-    margin-top:2px;
+    display:block; font-size:11px;
+    color:var(--muted); margin-top:2px;
 }
 
 .profile-row .actions{ display:flex; gap:4px; }
 
-/* =====================================================
-   PARENT DASHBOARD
-===================================================== */
+/* ===== FAMILY ===== */
 
 .member-summary{
     padding:14px;
@@ -1133,19 +999,10 @@ textarea:focus-visible,select:focus-visible{
 }
 
 .member-summary .head strong{ flex:1; font-size:14px; }
-.member-summary .head span{
-    font-size:12px;
-    color:var(--muted);
-}
+.member-summary .head span{ font-size:12px; color:var(--muted); }
+.member-summary .progress-bar{ margin-top:6px; height:6px; }
 
-.member-summary .progress-bar{
-    margin-top:6px;
-    height:6px;
-}
-
-/* =====================================================
-   REPORT
-===================================================== */
+/* ===== REPORT ===== */
 
 .report-summary{
     display:grid; grid-template-columns:repeat(2,1fr);
@@ -1191,9 +1048,7 @@ textarea:focus-visible,select:focus-visible{
 
 .week-percent{ width:40px; text-align:right; font-size:12px; }
 
-/* =====================================================
-   ANALYTICS
-===================================================== */
+/* ===== ANALYTICS ===== */
 
 .analytics-list{
     display:flex; flex-direction:column; gap:8px;
@@ -1227,13 +1082,10 @@ textarea:focus-visible,select:focus-visible{
     margin-top:5px;
 }
 
-/* =====================================================
-   VIOLATION HISTORY
-===================================================== */
+/* ===== VIOLATION HISTORY ===== */
 
 .violation-item{
-    padding:12px;
-    margin-bottom:8px;
+    padding:12px; margin-bottom:8px;
     border-radius:14px;
     border:1px solid var(--border);
     background:var(--card);
@@ -1257,9 +1109,7 @@ textarea:focus-visible,select:focus-visible{
     font-size:11px; color:var(--muted);
 }
 
-/* =====================================================
-   JOURNAL / REFLECTION
-===================================================== */
+/* ===== JOURNAL ===== */
 
 .journal{
     width:100%; min-height:130px;
@@ -1272,25 +1122,7 @@ textarea:focus-visible,select:focus-visible{
     font-size:14px;
 }
 
-.reflection-grid{ display:grid; gap:10px; }
-
-.reflection-grid label{
-    font-size:12px; color:var(--muted);
-    margin:6px 0 4px; display:block;
-}
-
-.reflection-grid textarea{
-    width:100%; min-height:70px;
-    padding:12px; border-radius:12px;
-    border:1px solid var(--border);
-    background:var(--card); color:var(--text);
-    font-family:inherit; font-size:13px;
-    outline:none; resize:vertical;
-}
-
-/* =====================================================
-   POMODORO
-===================================================== */
+/* ===== POMODORO ===== */
 
 .pomodoro-card{
     background:var(--card);
@@ -1396,9 +1228,7 @@ textarea:focus-visible,select:focus-visible{
     transition:.2s;
 }
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* ===== SETTINGS ===== */
 
 .settings-card,
 .about-card{
@@ -1467,9 +1297,7 @@ textarea:focus-visible,select:focus-visible{
     transform:scale(1.1);
 }
 
-/* =====================================================
-   BOTTOM NAV
-===================================================== */
+/* ===== BOTTOM NAV ===== */
 
 .bottom-nav{
     position:fixed; left:50%; bottom:0;
@@ -1508,9 +1336,7 @@ textarea:focus-visible,select:focus-visible{
 
 .add-nav-btn:active{ transform:scale(.9); }
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* ===== MODAL ===== */
 
 .modal{
     position:fixed; inset:0; z-index:500;
@@ -1582,19 +1408,21 @@ textarea:focus-visible,select:focus-visible{
     border:1px solid var(--border);
 }
 
-.reason-input{
+.reason-input,
+.comment-input{
     width:100%; padding:12px;
     border:1px solid var(--border);
     border-radius:12px;
     background:var(--bg); color:var(--text);
     font-family:inherit; font-size:13px;
     resize:vertical; min-height:70px;
-    margin-top:10px; outline:none;
+    outline:none;
 }
 
-/* =====================================================
-   CALENDAR
-===================================================== */
+.reason-input{ margin-top:10px; }
+.comment-input{ margin-top:6px; }
+
+/* ===== CALENDAR ===== */
 
 .calendar-card{
     padding:15px; margin-bottom:15px;
@@ -1652,11 +1480,7 @@ textarea:focus-visible,select:focus-visible{
     background:#f59e0b;
 }
 
-.calendar-day.selected.has-task:after{ background:white; }
-
-/* =====================================================
-   TOAST
-===================================================== */
+/* ===== TOAST ===== */
 
 .toast{
     position:fixed; left:50%; bottom:90px;
@@ -1673,16 +1497,12 @@ textarea:focus-visible,select:focus-visible{
 
 .toast.show{ opacity:1; transform:translate(-50%,0); }
 
-/* =====================================================
-   ALARM MODAL
-===================================================== */
+/* ===== ALARM MODAL ===== */
 
 .alarm-modal{
     position:fixed; inset:0; z-index:2000;
     display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(135deg,
-        rgba(79,70,229,.95),
-        rgba(124,58,237,.95));
+    background:linear-gradient(135deg, rgba(79,70,229,.95), rgba(124,58,237,.95));
     backdrop-filter:blur(6px);
 }
 
@@ -1753,9 +1573,7 @@ textarea:focus-visible,select:focus-visible{
     color:white; background:var(--success);
 }
 
-/* =====================================================
-   CUSTOM MUSIC
-===================================================== */
+/* ===== MUSIC ===== */
 
 .music-info{
     padding:12px;
@@ -1807,9 +1625,7 @@ textarea:focus-visible,select:focus-visible{
     color:var(--accent);
 }
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* ===== RESPONSIVE ===== */
 
 @media(max-width:380px){
     .top-header h1{ font-size:20px; }
@@ -1861,7 +1677,6 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- QUICK REPORT CTA -->
     <div class="quick-report-cta" onclick="openQuickReport()">
         <div class="icon">🌙</div>
         <div class="text">
@@ -1877,7 +1692,6 @@ textarea:focus-visible,select:focus-visible{
 
     <section class="badge-strip" id="badgeStrip"></section>
 
-    <!-- DUAL PROGRESS -->
     <section class="dual-progress">
         <div class="progress-card yesterday" onclick="openDayDetail('yesterday')">
             <h3>গতকাল <span class="arrow">›</span></h3>
@@ -1898,7 +1712,6 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- MAIN PROGRESS -->
     <section class="progress-main" onclick="openDayDetail('today')">
         <div class="progress-top">
             <div>
@@ -1914,13 +1727,11 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- TREND -->
     <section class="trend-card">
         <h3>📈 গত ৭ দিনের স্কোর</h3>
         <div class="trend-bars" id="trendBars"></div>
     </section>
 
-    <!-- STATS -->
     <section class="stats-grid">
         <div class="stat-card">
             <div class="stat-icon">⏳</div>
@@ -1944,7 +1755,6 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- TODAY TASKS -->
     <section class="section">
         <div class="section-title">
             <h2>আজকের কাজ</h2>
@@ -1961,7 +1771,7 @@ textarea:focus-visible,select:focus-visible{
 </main>
 
 <!-- =====================================================
-     QUICK REPORT PAGE
+     QUICK REPORT
 ===================================================== -->
 <main id="quickReportPage" class="page">
 
@@ -1979,23 +1789,17 @@ textarea:focus-visible,select:focus-visible{
     </div>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📝 রিপোর্ট-ভিত্তিক কাজ</h2>
-        </div>
+        <div class="section-title"><h2>📝 রিপোর্ট-ভিত্তিক কাজ</h2></div>
         <div id="quickReportTasks"></div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>🚫 না করার কাজ (আজ)</h2>
-        </div>
+        <div class="section-title"><h2>🚫 না করার কাজ (আজ)</h2></div>
         <div id="quickReportAvoids"></div>
     </section>
 
     <section class="section">
-        <div class="section-title">
-            <h2>📅 সাপ্তাহিক ও মাসিক টার্গেট</h2>
-        </div>
+        <div class="section-title"><h2>📅 সাপ্তাহিক ও মাসিক টার্গেট</h2></div>
         <div id="quickReportTargets"></div>
     </section>
 
@@ -2098,7 +1902,7 @@ textarea:focus-visible,select:focus-visible{
 </main>
 
 <!-- =====================================================
-     ADD TASK
+     ADD ITEM
 ===================================================== -->
 <main id="addPage" class="page">
 
@@ -2119,24 +1923,20 @@ textarea:focus-visible,select:focus-visible{
     </label>
     <div class="template-row" id="templateRow"></div>
 
-    <form id="itemForm" class="form-card">
+    <form id="itemForm" class="form-card" novalidate>
 
         <input type="hidden" id="editItemId">
         <input type="hidden" id="itemKind" value="task">
 
         <label>নাম *</label>
-        <input id="itemTitle" type="text" placeholder="নাম লিখুন..." required>
+        <input id="itemTitle" type="text" placeholder="নাম লিখুন...">
 
         <label>বিস্তারিত</label>
         <textarea id="itemDescription" placeholder="বিস্তারিত..."></textarea>
 
-        <!-- =============================================
-             DYNAMIC FIELDS
-        ============================================== -->
-
-        <!-- TIME-BASED (task) -->
+        <!-- TIME-BASED -->
         <div id="timeFields">
-            <label>তারিখ নির্বাচন *</label>
+            <label>তারিখ নির্বাচন</label>
 
             <div class="tab-switch" style="margin-top:0">
                 <button type="button" id="dateModeSingle" class="active" onclick="setDateMode('single')">
@@ -2192,7 +1992,7 @@ textarea:focus-visible,select:focus-visible{
             </select>
         </div>
 
-        <!-- REPORT-BASED (report) -->
+        <!-- REPORT-BASED -->
         <div id="reportFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">
                 📝 এই কাজের নির্দিষ্ট সময় নেই। আপনি রাতে রিপোর্ট দিবেন।
@@ -2228,7 +2028,7 @@ textarea:focus-visible,select:focus-visible{
             </select>
         </div>
 
-        <!-- TARGET (target) -->
+        <!-- TARGET -->
         <div id="targetFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">
                 🎯 সাপ্তাহিক/মাসিক টার্গেট। যেকোনো সময় আপডেট করবেন।
@@ -2256,11 +2056,11 @@ textarea:focus-visible,select:focus-visible{
                 <option value="km">🏃 কিলোমিটার</option>
             </select>
 
-            <label>শুরুর তারিখ *</label>
-            <input id="targetStart" type="date" required>
+            <label>শুরুর তারিখ</label>
+            <input id="targetStart" type="date">
         </div>
 
-        <!-- AVOID (avoid) -->
+        <!-- AVOID -->
         <div id="avoidFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">
                 🚫 যে কাজ করা যাবে না। রাতে রিপোর্ট দিবেন।
@@ -2273,7 +2073,6 @@ textarea:focus-visible,select:focus-visible{
                 <option value="timeslot">⏰ নির্দিষ্ট সময়ের মধ্যে (যেমন রাত ১১টার পর)</option>
             </select>
 
-            <!-- Count-based -->
             <div id="avoidCountFields">
                 <label>সর্বোচ্চ কতবার করা যাবে?</label>
                 <input id="avoidCountLimit" type="number" min="0" value="0"
@@ -2283,7 +2082,6 @@ textarea:focus-visible,select:focus-visible{
                 <input id="avoidCountPenalty" type="number" min="1" max="100" value="10">
             </div>
 
-            <!-- Time-based -->
             <div id="avoidTimeFields" class="hidden">
                 <label>সর্বোচ্চ কত মিনিট করা যাবে?</label>
                 <input id="avoidTimeLimit" type="number" min="0" value="60"
@@ -2296,7 +2094,6 @@ textarea:focus-visible,select:focus-visible{
                 <input id="avoidTimeMaxPenalty" type="number" min="0" max="100" value="30">
             </div>
 
-            <!-- Time-slot -->
             <div id="avoidTimeslotFields" class="hidden">
                 <label>শুরুর সময়</label>
                 <input id="avoidSlotStart" type="time">
@@ -2316,9 +2113,7 @@ textarea:focus-visible,select:focus-visible{
             <div class="step-list" id="stepList"></div>
         </div>
 
-        <!-- =============================================
-             COMMON FIELDS
-        ============================================== -->
+        <!-- COMMON -->
         <label>Priority</label>
         <select id="itemPriority">
             <option value="low">🟢 Low</option>
@@ -2351,7 +2146,7 @@ textarea:focus-visible,select:focus-visible{
 </main>
 
 <!-- =====================================================
-     PROFILES PAGE
+     PROFILES
 ===================================================== -->
 <main id="profilesPage" class="page">
 
@@ -2371,7 +2166,7 @@ textarea:focus-visible,select:focus-visible{
 </main>
 
 <!-- =====================================================
-     PARENT DASHBOARD
+     FAMILY
 ===================================================== -->
 <main id="familyPage" class="page">
 
@@ -2385,7 +2180,7 @@ textarea:focus-visible,select:focus-visible{
 </main>
 
 <!-- =====================================================
-     REPORT PAGE
+     REPORT
 ===================================================== -->
 <main id="reportPage" class="page">
 
@@ -2503,7 +2298,6 @@ textarea:focus-visible,select:focus-visible{
         <p>সবকিছু কাস্টমাইজ করুন</p>
     </div>
 
-    <!-- PROFILES -->
     <section class="settings-card">
         <h3>👥 পরিবারের সদস্য</h3>
         <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
@@ -2514,7 +2308,6 @@ textarea:focus-visible,select:focus-visible{
         </button>
     </section>
 
-    <!-- BASIC -->
     <section class="settings-card">
         <label>নাম</label>
         <input id="userName" type="text" placeholder="আপনার নাম" onchange="saveUserName()">
@@ -2564,7 +2357,6 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- MUSIC -->
     <section class="settings-card">
         <h3>🎵 Custom Alarm Music</h3>
         <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
@@ -2585,7 +2377,6 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- REMINDER -->
     <section class="settings-card">
         <h3>🔔 Reminder Alarm</h3>
         <div class="pomo-row">
@@ -2603,13 +2394,11 @@ textarea:focus-visible,select:focus-visible{
         </div>
     </section>
 
-    <!-- COLOR -->
     <section class="settings-card">
         <h3>🎨 Accent Color</h3>
         <div class="color-row" id="colorRow"></div>
     </section>
 
-    <!-- DATA -->
     <section class="settings-card">
         <h3>💾 Data</h3>
         <button class="secondary-btn" onclick="backupData()">📥 Backup</button>
@@ -2623,7 +2412,7 @@ textarea:focus-visible,select:focus-visible{
     <section class="about-card">
         <h3>দৈনিক রুটিন</h3>
         <p>Personal Routine App</p>
-        <small>Version 5.0.0</small>
+        <small>Version 5.1.0</small>
     </section>
 </main>
 
@@ -2682,7 +2471,7 @@ textarea:focus-visible,select:focus-visible{
 <script>
 
 /* =====================================================
-   DAILY ROUTINE — v5.0
+   DAILY ROUTINE — v5.1
 ===================================================== */
 
 "use strict";
@@ -2694,25 +2483,23 @@ const SETTINGS_KEY = STORAGE_ROOT + "settings";
 const POMO_CONFIG_KEY = STORAGE_ROOT + "pomoConfig";
 const REMINDER_CFG_KEY = STORAGE_ROOT + "reminderConfig";
 const CUSTOM_MUSIC_KEY = "customMusic";
-const BADGE_KEY_PREFIX = "badges_";
 const LAST_BACKUP_KEY = STORAGE_ROOT + "lastBackup";
 
 /* =====================================================
    STATE
 ===================================================== */
 
-let profiles = [];         // [{ id, name, avatar, type:'self'|'child', age }]
+let profiles = [];
 let activeProfileId = null;
 
-/* Per-profile data (loaded lazily) */
 let tasks = [];
 let avoidTasks = [];
 let targetTasks = [];
-let reportTasks = [];      // { id, title, time, reminder, targetMinutes, ... }
-let avoidLog = {};         // { date: { avoidId: {count, minutes, comments:[], totalOver} } }
-let violations = {};       // { date: totalPenalty }
-let reportData = {};       // { date: { taskId: {done, value, comment, at} } }
-let targetProgress = {};   // { periodKey: { targetId: value } }
+let reportTasks = [];
+let avoidLog = {};
+let violations = {};
+let reportData = {};
+let targetProgress = {};
 let badgesEarned = {};
 let notes = {};
 
@@ -2753,8 +2540,6 @@ const DEFAULT_PROFILE = {
     type: "self",
     age: null
 };
-
-const AVATARS = ["আ","ব","স","ম","র","ক","প","ত","ন","দ","চ","জ","হ","শ","গ"];
 
 /* =====================================================
    INDEXEDDB — Custom Music
@@ -2808,7 +2593,7 @@ async function idbDelete(key){
 }
 
 /* =====================================================
-   PER-PROFILE STORAGE KEYS
+   PROFILE STORAGE
 ===================================================== */
 
 function profileKey(pid, key){ return STORAGE_ROOT + pid + "_" + key; }
@@ -2845,8 +2630,6 @@ function saveProfileData(pid){
     localStorage.setItem(profileKey(pid,"notes"), JSON.stringify(notes));
     localStorage.setItem(profileKey(pid,"badges"), JSON.stringify(badgesEarned));
 }
-
-function saveTasks(){ saveProfileData(activeProfileId); }
 
 /* =====================================================
    PROFILES
@@ -2899,7 +2682,7 @@ function applyProfileToUI(){
 
 function openProfileSwitcher(){
     let html = `<p style="font-size:13px;color:var(--muted);margin:0 0 12px">
-        প্রোফাইল বদলান (${profiles.length}/${4})
+        প্রোফাইল বদলান (${profiles.length}/৪)
     </p>`;
 
     html += profiles.map(p => `
@@ -2914,11 +2697,9 @@ function openProfileSwitcher(){
         </div>
     `).join("");
 
-    html += `
-        <button class="secondary-btn" onclick="closeModal(); showPage('profiles')"
-                style="margin-top:14px">
-            ⚙️ প্রোফাইল ম্যানেজ
-        </button>`;
+    html += `<button class="secondary-btn" onclick="closeModal(); showPage('profiles')" style="margin-top:14px">
+        ⚙️ প্রোফাইল ম্যানেজ
+    </button>`;
 
     document.getElementById("modalTitle").textContent = "👥 প্রোফাইল";
     document.getElementById("modalBody").innerHTML = html;
@@ -2946,9 +2727,7 @@ function showAddProfileModal(){
         <input id="newProfileAge" type="number" min="3" max="99" placeholder="যেমন: ১০" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none">
 
         <label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">Avatar অক্ষর</label>
-        <input id="newProfileAvatar" type="text" maxlength="2" value=""
-               placeholder="একটি বর্ণ (স্বয়ংক্রিয় হবে)"
-               style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none">
+        <input id="newProfileAvatar" type="text" maxlength="2" placeholder="একটি বর্ণ" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none">
 
         <div class="modal-actions">
             <button class="secondary" onclick="closeModal()">বাতিল</button>
@@ -2970,7 +2749,7 @@ function createProfile(){
     profiles.push({ id, name, avatar, type, age });
     saveProfiles();
 
-    /* Init empty data for this profile */
+    /* Initialize empty data */
     const oldActive = activeProfileId;
     activeProfileId = id;
     tasks=[]; avoidTasks=[]; targetTasks=[]; reportTasks=[];
@@ -3067,9 +2846,7 @@ function renderProfilesPage(){
     `).join("");
 
     const btn = document.getElementById("addProfileBtn");
-    if(btn){
-        btn.style.display = profiles.length >= 4 ? "none" : "block";
-    }
+    if(btn) btn.style.display = profiles.length >= 4 ? "none" : "block";
 }
 
 /* =====================================================
@@ -3081,7 +2858,6 @@ document.addEventListener("DOMContentLoaded", async function(){
     loadProfiles();
     loadProfileData(activeProfileId);
 
-    /* Global settings */
     try{
         settings = { ...settings, ...safeParse(localStorage.getItem(SETTINGS_KEY), {}) };
         pomoConfig = { ...pomoConfig, ...safeParse(localStorage.getItem(POMO_CONFIG_KEY), {}) };
@@ -3115,7 +2891,6 @@ document.addEventListener("DOMContentLoaded", async function(){
         picker.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}`;
     }
 
-    /* Today's date defaults */
     const today = getDateString();
     const itemDate = document.getElementById("itemDate");
     if(itemDate) itemDate.value = today;
@@ -3252,7 +3027,7 @@ function showPage(pageName){
 }
 
 /* =====================================================
-   ADD ITEM KIND SWITCHER
+   ADD ITEM KIND
 ===================================================== */
 
 function openAddItem(kind = "task"){
@@ -3283,6 +3058,8 @@ function setAddKind(kind){
         avoid: "🚫 নতুন নিয়ম"
     };
     document.getElementById("addPageTitle").textContent = titles[kind] || "➕ নতুন";
+
+    renderTemplates();
 }
 
 /* =====================================================
@@ -3400,7 +3177,7 @@ function renderSteps(){
 function removeStep(i){ draftSteps.splice(i,1); renderSteps(); }
 
 /* =====================================================
-   AVOID LIMIT TYPE TOGGLE
+   TOGGLE FIELD VIEWS
 ===================================================== */
 
 function toggleAvoidLimitFields(){
@@ -3423,12 +3200,23 @@ function resetForm(){
     const form = document.getElementById("itemForm");
     if(form) form.reset();
 
+    /* Clear all fields explicitly */
+    const fieldsToClear = ["itemTitle","itemDescription","itemNote","itemTime",
+                           "reportTime","reportTargetMinutes"];
+    fieldsToClear.forEach(id => {
+        const el = document.getElementById(id);
+        if(el) el.value = "";
+    });
+
+    const dateEl = document.getElementById("itemDate");
+    if(dateEl) dateEl.value = getDateString();
+
     document.getElementById("editItemId").value = "";
     document.getElementById("itemKind").value = "task";
-    document.getElementById("itemDate").value = getDateString();
     document.getElementById("itemRepeat").value = "none";
     document.getElementById("itemReminder").value = "0";
     document.getElementById("itemPriority").value = "medium";
+    document.getElementById("itemCategory").value = "ব্যক্তিগত";
     document.getElementById("saveBtnText").textContent = "💾 সংরক্ষণ করুন";
     document.getElementById("cancelEditBtn").classList.add("hidden");
 
@@ -3451,6 +3239,14 @@ function resetForm(){
     document.getElementById("avoidTimePenalty").value = 1;
     document.getElementById("avoidTimeMaxPenalty").value = 30;
     document.getElementById("avoidSlotPenalty").value = 10;
+    document.getElementById("reportRepeat").value = "daily";
+    document.getElementById("targetPeriod").value = "weekly";
+    document.getElementById("targetCount").value = 3;
+    document.getElementById("targetUnit").value = "টি";
+    document.getElementById("targetMetric").value = "count";
+
+    const tStart = document.getElementById("targetStart");
+    if(tStart) tStart.value = getDateString();
 
     const picker = document.getElementById("multiMonthPicker");
     if(picker){
@@ -3459,7 +3255,6 @@ function resetForm(){
     }
     renderMultiDateGrid();
 
-    /* Reset button visual */
     ["kindTask","kindReport","kindTarget","kindAvoid"].forEach(id => {
         document.getElementById(id).classList.remove("active");
     });
@@ -3472,63 +3267,101 @@ function cancelEdit(){
 }
 
 /* =====================================================
-   FORM SUBMIT
+   FORM SUBMIT — FIXED
 ===================================================== */
 
 document.getElementById("itemForm").addEventListener("submit", function(e){
     e.preventDefault();
 
-    const kind = document.getElementById("itemKind").value;
-    const editId = document.getElementById("editItemId").value;
-    const title = document.getElementById("itemTitle").value.trim();
-    const description = document.getElementById("itemDescription").value.trim();
-    const priority = document.getElementById("itemPriority").value;
-    const category = document.getElementById("itemCategory").value;
-    const note = document.getElementById("itemNote").value.trim();
+    try{
+        const kind = document.getElementById("itemKind").value;
+        const editId = document.getElementById("editItemId").value;
+        const title = document.getElementById("itemTitle").value.trim();
+        const description = document.getElementById("itemDescription").value.trim();
+        const priority = document.getElementById("itemPriority").value;
+        const category = document.getElementById("itemCategory").value;
+        const note = document.getElementById("itemNote").value.trim();
 
-    if(!title){ toast("নাম দিন।"); return; }
+        if(!title){
+            toast("⚠️ নাম লিখুন।");
+            document.getElementById("itemTitle").focus();
+            return;
+        }
 
-    if(kind === "task")      handleSaveTask(editId, {title, description, priority, category, note});
-    if(kind === "report")    handleSaveReport(editId, {title, description, priority, category, note});
-    if(kind === "target")    handleSaveTarget(editId, {title, description, priority, category, note});
-    if(kind === "avoid")     handleSaveAvoid(editId, {title, description, priority, category, note});
+        const base = {title, description, priority, category, note};
+        let success = false;
 
-    saveProfileData(activeProfileId);
-    renderAll();
-    resetForm();
-    showPage("planning");
+        if(kind === "task")          success = handleSaveTask(editId, base);
+        else if(kind === "report")   success = handleSaveReport(editId, base);
+        else if(kind === "target")   success = handleSaveTarget(editId, base);
+        else if(kind === "avoid")    success = handleSaveAvoid(editId, base);
+
+        if(success === false) return;
+
+        saveProfileData(activeProfileId);
+        renderAll();
+        resetForm();
+        showPage("planning");
+    }
+    catch(err){
+        console.error("Save error:", err);
+        toast("❌ সমস্যা: " + (err.message || "অজানা"));
+    }
 });
+
+/* =====================================================
+   SAVE HANDLERS (return true/false)
+===================================================== */
 
 function handleSaveTask(editId, base){
     const time = document.getElementById("itemTime").value;
-    if(!time){ toast("সময় দিন।"); return; }
+
+    if(!time){
+        toast("⚠️ সময় নির্বাচন করুন।");
+        document.getElementById("itemTime").focus();
+        return false;
+    }
 
     let dates = [];
     if(dateMode === "single"){
         const d = document.getElementById("itemDate").value;
-        if(!d){ toast("তারিখ দিন।"); return; }
+        if(!d){
+            toast("⚠️ তারিখ নির্বাচন করুন।");
+            document.getElementById("itemDate").focus();
+            return false;
+        }
         dates = [d];
     } else {
-        if(!selectedDates.length){ toast("তারিখ সিলেক্ট করুন।"); return; }
+        if(!selectedDates.length){
+            toast("⚠️ অন্তত একটি তারিখ সিলেক্ট করুন।");
+            return false;
+        }
         dates = [...selectedDates];
     }
 
-    const reminder = parseInt(document.getElementById("itemReminder").value, 10);
-    const repeat = document.getElementById("itemRepeat").value;
+    const reminder = parseInt(document.getElementById("itemReminder").value, 10) || 0;
+    const repeat = document.getElementById("itemRepeat").value || "none";
 
     if(editId){
         const idx = tasks.findIndex(t => t.id === editId);
-        if(idx !== -1){
-            clearTaskTimer(editId);
-            tasks[idx] = { ...tasks[idx], ...base, time, reminder, repeat, dates, date: dates[0] };
-            scheduleReminder(tasks[idx]);
+        if(idx === -1){
+            toast("⚠️ কাজ খুঁজে পাওয়া যায়নি।");
+            return false;
         }
-        toast("কাজ আপডেট হয়েছে।");
+        clearTaskTimer(editId);
+        tasks[idx] = {
+            ...tasks[idx],
+            ...base, time, reminder, repeat,
+            dates, date: dates[0]
+        };
+        scheduleReminder(tasks[idx]);
+        toast("✅ কাজ আপডেট হয়েছে।");
     } else {
         dates.forEach((d, i) => {
             const t = {
                 id: Date.now().toString() + "_" + i,
-                ...base, time, reminder, repeat, dates, date: d,
+                ...base, time, reminder, repeat,
+                dates, date: d,
                 completed: false,
                 createdAt: new Date().toISOString(),
                 kind: "task"
@@ -3536,25 +3369,42 @@ function handleSaveTask(editId, base){
             tasks.push(t);
             scheduleReminder(t);
         });
-        toast(`${dates.length}টি কাজ যোগ হয়েছে।`);
+        toast(`✅ ${dates.length}টি কাজ যোগ হয়েছে।`);
     }
+
+    return true;
 }
 
 function handleSaveReport(editId, base){
-    const timeMode = document.getElementById("reportTimeMode").value;
+    const timeModeEl = document.getElementById("reportTimeMode");
+    const timeMode = timeModeEl ? timeModeEl.value : "none";
     const time = timeMode === "fixed" ? document.getElementById("reportTime").value : "";
-    const reminder = timeMode === "fixed" ? parseInt(document.getElementById("reportReminder").value, 10) : 0;
+    const reminder = timeMode === "fixed"
+        ? (parseInt(document.getElementById("reportReminder").value, 10) || 0)
+        : 0;
     const targetMinutes = parseInt(document.getElementById("reportTargetMinutes").value, 10) || 0;
-    const repeat = document.getElementById("reportRepeat").value;
+    const repeat = document.getElementById("reportRepeat").value || "daily";
+
+    if(timeMode === "fixed" && !time){
+        toast("⚠️ Reminder সময় নির্বাচন করুন।");
+        document.getElementById("reportTime").focus();
+        return false;
+    }
 
     if(editId){
         const idx = reportTasks.findIndex(t => t.id === editId);
-        if(idx !== -1){
-            clearTaskTimer(editId);
-            reportTasks[idx] = { ...reportTasks[idx], ...base, time, reminder, targetMinutes, repeat, kind: "report" };
-            if(timeMode === "fixed") scheduleReminder(reportTasks[idx]);
+        if(idx === -1){
+            toast("⚠️ খুঁজে পাওয়া যায়নি।");
+            return false;
         }
-        toast("রিপোর্ট কাজ আপডেট হয়েছে।");
+        clearTaskTimer(editId);
+        reportTasks[idx] = {
+            ...reportTasks[idx],
+            ...base, time, reminder, targetMinutes, repeat,
+            kind: "report"
+        };
+        if(timeMode === "fixed") scheduleReminder(reportTasks[idx]);
+        toast("✅ রিপোর্ট কাজ আপডেট হয়েছে।");
     } else {
         const t = {
             id: Date.now().toString(),
@@ -3564,26 +3414,45 @@ function handleSaveReport(editId, base){
         };
         reportTasks.push(t);
         if(timeMode === "fixed") scheduleReminder(t);
-        toast("রিপোর্ট কাজ যোগ হয়েছে।");
+        toast("✅ রিপোর্ট কাজ যোগ হয়েছে।");
     }
+
+    return true;
 }
 
 function handleSaveTarget(editId, base){
-    const period = document.getElementById("targetPeriod").value;
-    const count = parseInt(document.getElementById("targetCount").value, 10);
-    const unit = document.getElementById("targetUnit").value.trim() || "টি";
-    const metric = document.getElementById("targetMetric").value;
-    const start = document.getElementById("targetStart").value;
+    const periodEl = document.getElementById("targetPeriod");
+    const countEl = document.getElementById("targetCount");
+    const unitEl = document.getElementById("targetUnit");
+    const metricEl = document.getElementById("targetMetric");
+    const startEl = document.getElementById("targetStart");
 
-    if(!count || count <= 0){ toast("লক্ষ্য সংখ্যা দিন।"); return; }
-    if(!start){ toast("শুরুর তারিখ দিন।"); return; }
+    const period = periodEl ? periodEl.value : "weekly";
+    const count = parseInt(countEl ? countEl.value : 0, 10);
+    const unit = (unitEl ? unitEl.value.trim() : "") || "টি";
+    const metric = metricEl ? metricEl.value : "count";
+
+    let start = startEl ? startEl.value : "";
+    if(!start) start = getDateString();
+
+    if(!count || count <= 0){
+        toast("⚠️ লক্ষ্য সংখ্যা দিন (১ বা তার বেশি)।");
+        if(countEl) countEl.focus();
+        return false;
+    }
 
     if(editId){
         const idx = targetTasks.findIndex(t => t.id === editId);
-        if(idx !== -1){
-            targetTasks[idx] = { ...targetTasks[idx], ...base, period, count, unit, metric, start, kind: "target" };
+        if(idx === -1){
+            toast("⚠️ খুঁজে পাওয়া যায়নি।");
+            return false;
         }
-        toast("টার্গেট আপডেট হয়েছে।");
+        targetTasks[idx] = {
+            ...targetTasks[idx],
+            ...base, period, count, unit, metric, start,
+            kind: "target"
+        };
+        toast("✅ টার্গেট আপডেট হয়েছে।");
     } else {
         const t = {
             id: Date.now().toString(),
@@ -3592,12 +3461,15 @@ function handleSaveTarget(editId, base){
             createdAt: new Date().toISOString()
         };
         targetTasks.push(t);
-        toast("টার্গেট যোগ হয়েছে।");
+        toast("✅ টার্গেট যোগ হয়েছে।");
     }
+
+    return true;
 }
 
 function handleSaveAvoid(editId, base){
-    const limitType = document.getElementById("avoidLimitType").value;
+    const limitTypeEl = document.getElementById("avoidLimitType");
+    const limitType = limitTypeEl ? limitTypeEl.value : "count";
 
     const data = {
         ...base,
@@ -3607,36 +3479,82 @@ function handleSaveAvoid(editId, base){
     };
 
     if(limitType === "count"){
-        data.limit = parseInt(document.getElementById("avoidCountLimit").value, 10) || 0;
-        data.penalty = parseInt(document.getElementById("avoidCountPenalty").value, 10) || 10;
+        const limit = parseInt(document.getElementById("avoidCountLimit").value, 10);
+        const penalty = parseInt(document.getElementById("avoidCountPenalty").value, 10);
+
+        if(isNaN(limit) || limit < 0){
+            toast("⚠️ সীমা সংখ্যা দিন (০ বা তার বেশি)।");
+            document.getElementById("avoidCountLimit").focus();
+            return false;
+        }
+        if(!penalty || penalty <= 0){
+            toast("⚠️ পেনাল্টি % দিন।");
+            document.getElementById("avoidCountPenalty").focus();
+            return false;
+        }
+
+        data.limit = limit;
+        data.penalty = penalty;
     }
     else if(limitType === "time"){
-        data.timeLimit = parseInt(document.getElementById("avoidTimeLimit").value, 10) || 0;
-        data.timePenalty = parseFloat(document.getElementById("avoidTimePenalty").value) || 1;
-        data.timeMaxPenalty = parseFloat(document.getElementById("avoidTimeMaxPenalty").value) || 30;
+        const timeLimit = parseInt(document.getElementById("avoidTimeLimit").value, 10);
+        const timePenalty = parseFloat(document.getElementById("avoidTimePenalty").value);
+        const timeMaxPenalty = parseFloat(document.getElementById("avoidTimeMaxPenalty").value);
+
+        if(isNaN(timeLimit) || timeLimit <= 0){
+            toast("⚠️ সময় সীমা দিন (মিনিটে)।");
+            document.getElementById("avoidTimeLimit").focus();
+            return false;
+        }
+        if(!timePenalty || timePenalty <= 0){
+            toast("⚠️ প্রতি মিনিটের পেনাল্টি দিন।");
+            document.getElementById("avoidTimePenalty").focus();
+            return false;
+        }
+
+        data.timeLimit = timeLimit;
+        data.timePenalty = timePenalty;
+        data.timeMaxPenalty = timeMaxPenalty || 30;
     }
     else if(limitType === "timeslot"){
-        data.slotStart = document.getElementById("avoidSlotStart").value;
-        data.slotEnd = document.getElementById("avoidSlotEnd").value;
-        data.penalty = parseInt(document.getElementById("avoidSlotPenalty").value, 10) || 10;
+        const start = document.getElementById("avoidSlotStart").value;
+        const end = document.getElementById("avoidSlotEnd").value;
+        const penalty = parseInt(document.getElementById("avoidSlotPenalty").value, 10);
+
+        if(!start || !end){
+            toast("⚠️ শুরুর ও শেষের সময় দিন।");
+            return false;
+        }
+        if(!penalty || penalty <= 0){
+            toast("⚠️ পেনাল্টি % দিন।");
+            return false;
+        }
+
+        data.slotStart = start;
+        data.slotEnd = end;
+        data.penalty = penalty;
     }
 
     if(editId){
         const idx = avoidTasks.findIndex(a => a.id === editId);
-        if(idx !== -1){
-            avoidTasks[idx] = { ...avoidTasks[idx], ...data };
+        if(idx === -1){
+            toast("⚠️ খুঁজে পাওয়া যায়নি।");
+            return false;
         }
-        toast("নিয়ম আপডেট হয়েছে।");
+        avoidTasks[idx] = { ...avoidTasks[idx], ...data };
+        toast("✅ নিয়ম আপডেট হয়েছে।");
     } else {
         data.id = Date.now().toString();
         data.createdAt = new Date().toISOString();
         avoidTasks.push(data);
-        toast("নিয়ম যোগ হয়েছে।");
+        toast("✅ নিয়ম যোগ হয়েছে।");
     }
+
+    return true;
 }
 
 /* =====================================================
-   RENDER DASHBOARD
+   DASHBOARD
 ===================================================== */
 
 function renderDashboard(){
@@ -3649,20 +3567,17 @@ function renderDashboard(){
     const tData = calculateScore(today);
     const yData = calculateScore(yesterday);
 
-    /* TODAY */
     document.getElementById("tCompletedCount").textContent = tData.done;
     document.getElementById("tTotalCount").textContent = tData.total;
     document.getElementById("tProgressBar").style.width = tData.baseScore + "%";
     document.getElementById("tPercentText").textContent =
         tData.baseScore + "% সম্পন্ন" + (tData.penalty ? ` (−${tData.penalty}%)` : "");
 
-    /* YESTERDAY */
     document.getElementById("yCompletedCount").textContent = yData.done;
     document.getElementById("yTotalCount").textContent = yData.total;
     document.getElementById("yProgressBar").style.width = yData.baseScore + "%";
     document.getElementById("yPercentText").textContent = yData.baseScore + "% সম্পন্ন";
 
-    /* MAIN */
     const fs = tData.finalScore;
     document.getElementById("completedCount").textContent = tData.done;
     document.getElementById("totalCount").textContent = tData.total;
@@ -3729,7 +3644,7 @@ function renderTrend(){
 }
 
 /* =====================================================
-   TASK HTML
+   TASK HTML RENDERERS
 ===================================================== */
 
 function taskHTML(task){
@@ -3813,10 +3728,6 @@ function targetHTML(task){
         </div>`;
 }
 
-/* =====================================================
-   AVOID / RULE HTML
-===================================================== */
-
 function avoidHTML(avoid, dateString){
     const log = avoidLog[dateString] || {};
     const entry = log[avoid.id] || { count:0, minutes:0 };
@@ -3876,20 +3787,17 @@ function avoidHTML(avoid, dateString){
 }
 
 /* =====================================================
-   SCORE CALCULATION
+   SCORE
 ===================================================== */
 
 function calculateScore(dateString){
-    /* Scheduled tasks */
     const dayTasks = tasks.filter(t => t.date === dateString);
     const doneScheduled = dayTasks.filter(t => t.completed).length;
 
-    /* Report tasks */
-    const dayReports = reportTasks;
     const dayReportData = reportData[dateString] || {};
-    const doneReports = dayReports.filter(t => dayReportData[t.id] && dayReportData[t.id].done).length;
+    const doneReports = reportTasks.filter(t => dayReportData[t.id] && dayReportData[t.id].done).length;
 
-    const totalItems = dayTasks.length + dayReports.length;
+    const totalItems = dayTasks.length + reportTasks.length;
     const doneItems = doneScheduled + doneReports;
 
     const baseScore = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;
@@ -3921,7 +3829,7 @@ const BADGES = [
     { id:"fifty", icon:"📚", name:"৫০টি",
       check: () => tasks.filter(t => t.completed).length >= 50 },
     { id:"focus5", icon:"⏱️", name:"৫ ফোকাস",
-      check: () => (safeParse(localStorage.getItem(POMODORO_KEY), {}).count || 0) >= 5 }
+      check: () => (safeParse(localStorage.getItem(POMO_CONFIG_KEY), {}).count || 0) >= 5 }
 ];
 
 function checkBadges(){
@@ -4065,15 +3973,9 @@ function renderPlanning(){
         else if(currentDateFilter === "tomorrow") source = source.filter(t => t.date === tomorrow);
         source.sort((a,b) => (a.date + a.time).localeCompare(b.date + b.time));
     }
-    else if(kind === "reports"){
-        source = [...reportTasks];
-    }
-    else if(kind === "targets"){
-        source = [...targetTasks];
-    }
-    else if(kind === "avoids"){
-        source = [...avoidTasks];
-    }
+    else if(kind === "reports") source = [...reportTasks];
+    else if(kind === "targets") source = [...targetTasks];
+    else if(kind === "avoids") source = [...avoidTasks];
 
     if(search){
         source = source.filter(t => (t.title + " " + (t.description||"")).toLowerCase().includes(search));
@@ -4084,7 +3986,7 @@ function renderPlanning(){
             <div class="empty-state">
                 <div>📭</div>
                 <p>কিছু নেই।</p>
-                <button class="primary-btn" onclick="openAddItem('${kind === "tasks" ? "task" : kind.slice(0,-1)}')">
+                <button class="primary-btn" onclick="openAddItem('${kind === "tasks" ? "task" : (kind === "reports" ? "report" : kind === "targets" ? "target" : "avoid")}')">
                     ➕ যোগ করুন
                 </button>
             </div>`;
@@ -4138,7 +4040,7 @@ function changeMonth(amount){
 }
 
 /* =====================================================
-   ITEM ACTION HELPERS
+   EDIT / DELETE
 ===================================================== */
 
 function editItem(id, kind){
@@ -4268,7 +4170,7 @@ function toggleTask(id){
 }
 
 /* =====================================================
-   TASK DETAILS MODAL
+   MODAL: TASK DETAILS
 ===================================================== */
 
 function openTaskDetails(id, kind){
@@ -4403,7 +4305,7 @@ function saveTargetUpdate(id, key){
 }
 
 /* =====================================================
-   AVOID REPORT (রাতে রিপোর্ট)
+   AVOID REPORT
 ===================================================== */
 
 function openAvoidReport(id){
@@ -4519,14 +4421,12 @@ function saveAvoidReport(avoidId){
     const prevPenalty = prev.penalty || 0;
 
     avoidLog[today][avoidId] = {
-        count,
-        minutes,
+        count, minutes,
         comments: comment ? [...(prev.comments || []), comment] : (prev.comments || []),
         penalty: extraPenalty,
         at: new Date().toISOString()
     };
 
-    /* Update day's total penalty */
     const diff = extraPenalty - prevPenalty;
     if(!violations[today]) violations[today] = 0;
     violations[today] = Math.max(0, violations[today] + diff);
@@ -4536,11 +4436,8 @@ function saveAvoidReport(avoidId){
     closeModal();
     renderAll();
 
-    if(extraPenalty > 0){
-        toast(`⚠️ −${extraPenalty}% পেনাল্টি`);
-    } else {
-        toast("✅ নিয়ম মেনেছেন!");
-    }
+    if(extraPenalty > 0) toast(`⚠️ −${extraPenalty}% পেনাল্টি`);
+    else toast("✅ নিয়ম মেনেছেন!");
 }
 
 /* =====================================================
@@ -4589,7 +4486,7 @@ function openAvoidDetails(id, dateString){
 }
 
 /* =====================================================
-   QUICK REPORT PAGE
+   QUICK REPORT
 ===================================================== */
 
 function openQuickReport(){
@@ -4630,7 +4527,7 @@ function renderQuickReport(){
         reportContainer.innerHTML = reportTasks.map(t => renderReportItem(t, currentReportDate)).join("");
     }
 
-    /* Avoid tasks */
+    /* Avoids */
     const avoidContainer = document.getElementById("quickReportAvoids");
     if(!avoidTasks.length){
         avoidContainer.innerHTML = `<div class="empty-state"><div>🚫</div><p>কোনো নিয়ম নেই।</p></div>`;
@@ -4638,7 +4535,7 @@ function renderQuickReport(){
         avoidContainer.innerHTML = avoidTasks.map(a => renderAvoidReportItem(a, currentReportDate)).join("");
     }
 
-    /* Target tasks */
+    /* Targets */
     const targetContainer = document.getElementById("quickReportTargets");
     if(!targetTasks.length){
         targetContainer.innerHTML = `<div class="empty-state"><div>🎯</div><p>কোনো টার্গেট নেই।</p></div>`;
@@ -4807,7 +4704,6 @@ function renderDayDetail(ds){
     document.getElementById("detailPending").textContent = data.total - data.done;
     document.getElementById("detailPenalty").textContent = data.penalty + "%";
 
-    /* Done tasks */
     const doneScheduled = tasks.filter(t => t.date === ds && t.completed);
     const doneReportIds = Object.entries(reportData[ds] || {})
         .filter(([id, d]) => d.done).map(([id]) => id);
@@ -4822,7 +4718,6 @@ function renderDayDetail(ds){
             doneReports.map(t => reportTaskHTML(t)).join("");
     }
 
-    /* Pending */
     const pendingScheduled = tasks.filter(t => t.date === ds && !t.completed);
     const pendingReports = reportTasks.filter(t => !doneReportIds.includes(t.id));
 
@@ -4835,7 +4730,6 @@ function renderDayDetail(ds){
             pendingReports.map(t => reportTaskHTML(t)).join("");
     }
 
-    /* Avoid */
     const avoidContainer = document.getElementById("detailAvoidList");
     if(!avoidTasks.length){
         avoidContainer.innerHTML = `<div class="empty-state" style="padding:20px"><div>🚫</div><p>নিয়ম নেই।</p></div>`;
@@ -4972,12 +4866,12 @@ function renderFamilyPage(){
     const today = getDateString();
 
     container.innerHTML = profiles.map(p => {
-        /* Load temp data for this profile */
         const tTasks = safeParse(localStorage.getItem(profileKey(p.id,"tasks")), []);
         const tReports = safeParse(localStorage.getItem(profileKey(p.id,"reportTasks")), []);
         const tReportData = safeParse(localStorage.getItem(profileKey(p.id,"reportData")), {});
         const tViolations = safeParse(localStorage.getItem(profileKey(p.id,"violations")), {});
         const tAvoids = safeParse(localStorage.getItem(profileKey(p.id,"avoidTasks")), []);
+        const tAvoidLog = safeParse(localStorage.getItem(profileKey(p.id,"avoidLog")), {});
 
         const dayTasks = tTasks.filter(t => t.date === today);
         const doneScheduled = dayTasks.filter(t => t.completed).length;
@@ -4991,8 +4885,7 @@ function renderFamilyPage(){
         const score = Math.max(0, base - pen);
 
         const avoidViol = tAvoids.reduce((sum, a) => {
-            const dayLog = safeParse(localStorage.getItem(profileKey(p.id,"avoidLog")), {});
-            const e = (dayLog[today] || {})[a.id] || {};
+            const e = (tAvoidLog[today] || {})[a.id] || {};
             return sum + (e.count || 0);
         }, 0);
 
@@ -5594,7 +5487,7 @@ function backupData(){
     });
 
     const backup = {
-        app:"দৈনিক রুটিন", version:"5.0.0",
+        app:"দৈনিক রুটিন", version:"5.1.0",
         date: new Date().toISOString(),
         profiles, activeProfileId,
         settings, pomoConfig, reminderConfig,
