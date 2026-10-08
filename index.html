@@ -6,11 +6,6 @@
 <meta name="theme-color" content="#4f46e5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>দৈনিক রুটিন</title>
-
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{--primary:#4f46e5;--primary2:#7c3aed;--accent:#4f46e5;--bg:#f4f6fb;--card:#fff;--text:#111827;--muted:#6b7280;--border:#e5e7eb;--success:#16a34a;--danger:#dc2626;--warning:#d97706;--info:#0891b2;--gold:#f59e0b;--nav-height:72px;--radius-lg:22px;--radius-md:18px;--radius-sm:12px}
@@ -20,18 +15,6 @@ button,input,textarea,select{font-family:inherit;color:inherit}
 button{cursor:pointer}
 #app{width:100%;max-width:700px;min-height:100vh;margin:auto;padding-bottom:90px}
 
-/* LOGIN */
-.login-overlay{position:fixed;inset:0;z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--primary2));color:#fff;padding:30px 20px;text-align:center}
-.login-overlay.hidden{display:none}
-.login-overlay .logo{font-size:80px;margin-bottom:20px}
-.login-overlay h1{margin:0 0 8px;font-size:28px}
-.login-overlay p{margin:0 0 30px;opacity:.9;font-size:14px;line-height:1.6}
-.google-btn{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 24px;background:#fff;color:#333;border:none;border-radius:14px;font-size:15px;font-weight:bold;box-shadow:0 8px 24px rgba(0,0,0,.2);transition:transform .15s;min-width:260px}
-.google-btn:active{transform:scale(.97)}
-.google-btn svg{width:22px;height:22px}
-.skip-btn{margin-top:20px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);padding:10px 20px;border-radius:12px;font-size:13px;font-weight:bold}
-
-/* PIN */
 .pin-lock{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--primary2));color:#fff;padding:20px}
 .pin-lock.hidden{display:none}
 .pin-lock h2{margin:20px 0 8px;font-size:22px}
@@ -43,6 +26,20 @@ button{cursor:pointer}
 .pin-btn{width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:24px;font-weight:bold;backdrop-filter:blur(10px)}
 .pin-btn:active{transform:scale(.9)}
 .pin-btn.clear{font-size:14px}
+
+/* QUOTE POPUP */
+.quote-popup{position:fixed;inset:0;z-index:2500;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);padding:20px;animation:fadeIn .3s}
+.quote-popup.hidden{display:none}
+.quote-popup-box{width:100%;max-width:400px;padding:36px 28px;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--primary2));color:#fff;text-align:center;box-shadow:0 25px 60px rgba(79,70,229,.5);animation:quotePop .5s cubic-bezier(.68,-0.55,.27,1.55);position:relative}
+@keyframes quotePop{0%{transform:scale(.7) rotate(-5deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.quote-popup-box .icon{font-size:56px;margin-bottom:14px;display:block}
+.quote-popup-box .label{font-size:12px;opacity:.85;letter-spacing:1px;margin-bottom:14px;text-transform:uppercase}
+.quote-popup-box .text{font-size:18px;line-height:1.7;font-weight:bold;margin-bottom:8px}
+.quote-popup-box .author{font-size:13px;opacity:.85;margin-bottom:20px;font-style:italic}
+.quote-popup-box .actions{display:flex;gap:8px;margin-top:20px}
+.quote-popup-box .actions button{flex:1;padding:12px;border:none;border-radius:12px;font-size:13px;font-weight:bold;background:rgba(255,255,255,.2);color:#fff;backdrop-filter:blur(10px)}
+.quote-popup-box .actions button.primary{background:#fff;color:var(--accent)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 .install-banner{display:flex;align-items:center;gap:10px;padding:12px 14px;margin-bottom:14px;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-radius:14px;cursor:pointer}
 .install-banner.hidden{display:none}
@@ -58,14 +55,6 @@ button{cursor:pointer}
 .profile-btn .avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--primary2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
 .profile-btn .name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .icon-btn{width:42px;height:42px;border:none;border-radius:50%;background:var(--card);color:var(--text);font-size:19px;box-shadow:0 4px 15px rgba(0,0,0,.08);flex-shrink:0}
-
-.sync-status{display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:10px;font-size:10px;font-weight:bold;margin-bottom:6px}
-.sync-status.online{background:rgba(22,163,74,.15);color:var(--success)}
-.sync-status.syncing{background:rgba(79,70,229,.15);color:var(--accent)}
-.sync-status.offline{background:rgba(107,114,128,.15);color:var(--muted)}
-.sync-status.error{background:rgba(220,38,38,.15);color:var(--danger)}
-.sync-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:pulse-dot 2s infinite}
-@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
 
 .page{display:none;padding:8px 16px 30px;animation:pageIn .25s}
 .page.active{display:block}
@@ -184,6 +173,7 @@ button{cursor:pointer}
 .task-card.report-card{border-left:4px solid var(--info)}
 .task-card.target-card{border-left:4px solid var(--warning)}
 .task-card.habit-card{border-left:4px solid #ec4899}
+.task-card.note-card{border-left:4px solid var(--accent)}
 .task-check{width:29px;height:29px;flex-shrink:0;border-radius:50%;border:2px solid var(--border);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
 .task-check.checked{background:var(--success);border-color:var(--success)}
 .task-info{flex:1;min-width:0;cursor:pointer}
@@ -304,12 +294,6 @@ button{cursor:pointer}
 .profile-row .info strong{display:block;font-size:14px}
 .profile-row .info small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
 .profile-row .actions{display:flex;gap:4px}
-
-.user-card{display:flex;align-items:center;gap:14px;padding:16px;background:var(--bg);border-radius:14px;margin-top:10px}
-.user-card img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
-.user-card .info{flex:1;min-width:0}
-.user-card .info strong{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.user-card .info small{display:block;font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
 
 .member-summary{padding:14px;background:var(--card);border:1px solid var(--border);border-radius:14px;margin-bottom:10px}
 .member-summary .head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -454,6 +438,28 @@ button{cursor:pointer}
 .reward-item button{padding:6px 12px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:11px;font-weight:bold}
 .reward-item button:disabled{background:var(--border);color:var(--muted);cursor:not-allowed}
 
+/* NOTEBOOK STYLES */
+.notes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.note-tile{padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--card);cursor:pointer;position:relative;min-height:110px;display:flex;flex-direction:column}
+.note-tile.pinned{border-color:var(--gold);background:linear-gradient(135deg,rgba(245,158,11,.08),rgba(251,191,36,.05))}
+.note-tile .note-tile-title{font-size:14px;font-weight:bold;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3}
+.note-tile .note-tile-preview{font-size:11px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;line-height:1.4}
+.note-tile .note-tile-date{font-size:10px;color:var(--muted);margin-top:8px}
+.note-tile .note-tile-pin{position:absolute;top:8px;right:8px;font-size:14px}
+.note-editor{padding:18px;border-radius:20px;border:1px solid var(--border);background:var(--card)}
+.note-editor textarea{width:100%;min-height:400px;padding:14px;border-radius:14px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;outline:none}
+.note-color-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.note-color-dot{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer}
+.note-color-dot.active{border-color:var(--text);transform:scale(1.15)}
+
+.quote-list{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.quote-item{padding:12px 14px;border-radius:12px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.quote-item .quote-text{flex:1;font-size:13px;line-height:1.5}
+.quote-item .quote-delete{border:none;background:transparent;color:var(--danger);font-size:18px;padding:4px}
+.quote-add-row{display:flex;gap:6px;margin-top:10px}
+.quote-add-row input{flex:1;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none}
+.quote-add-row button{padding:0 18px;border:none;background:var(--accent);color:#fff;border-radius:12px;font-size:16px;font-weight:bold}
+
 @media(max-width:380px){
 .top-header h1{font-size:20px}
 .stat-card{padding:10px 3px}
@@ -462,23 +468,11 @@ button{cursor:pointer}
 .dual-progress{grid-template-columns:1fr}
 .pomodoro-time{font-size:44px}
 .rewards-grid{grid-template-columns:1fr}
+.notes-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-
-<!-- LOGIN OVERLAY -->
-<div class="login-overlay hidden" id="loginOverlay">
-    <div class="logo">📅</div>
-    <h1>দৈনিক রুটিন</h1>
-    <p>আপনার কাজ, হ্যাবিট ও লক্ষ্য<br>সব ডিভাইসে সিঙ্ক করুন</p>
-    <button class="google-btn" onclick="signInWithGoogle()">
-        <svg viewBox="0 0 48 48"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-        Google দিয়ে লগইন করুন
-    </button>
-    <button class="skip-btn" onclick="skipLogin()">এড়িয়ে যান (অফলাইন)</button>
-    <p style="margin-top:24px;font-size:11px;opacity:.7">লগইন করলে ডেটা ক্লাউডে সেভ হবে</p>
-</div>
 
 <!-- PIN LOCK -->
 <div class="pin-lock hidden" id="pinLock">
@@ -502,6 +496,20 @@ button{cursor:pointer}
     </div>
 </div>
 
+<!-- QUOTE POPUP -->
+<div class="quote-popup hidden" id="quotePopup">
+    <div class="quote-popup-box">
+        <span class="icon">✨</span>
+        <div class="label">আজকের অনুপ্রেরণা</div>
+        <div class="text" id="popupQuoteText">ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।</div>
+        <div class="author" id="popupQuoteAuthor">— দৈনিক রুটিন</div>
+        <div class="actions">
+            <button onclick="closeQuotePopup()">বন্ধ</button>
+            <button class="primary" onclick="nextQuotePopup()">পরের বাণী ›</button>
+        </div>
+    </div>
+</div>
+
 <!-- LEVEL UP -->
 <div class="levelup-overlay hidden" id="levelupModal">
     <div class="levelup-box">
@@ -517,7 +525,6 @@ button{cursor:pointer}
 <div id="app">
 <header class="top-header">
     <div class="header-left">
-        <div class="sync-status offline" id="syncStatusBadge"><span class="sync-dot"></span>অফলাইন</div>
         <div class="small-date" id="headerDate"></div>
         <h1>দৈনিক রুটিন</h1>
     </div>
@@ -599,6 +606,34 @@ button{cursor:pointer}
         <div id="todayTasks"></div>
     </section>
     <section class="quote-card"><div class="quote-icon">💡</div><p id="dailyQuote">ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।</p></section>
+</main>
+
+<main id="notebookPage" class="page">
+    <div class="page-title"><h2>📓 নোটবুক</h2><p>আপনার ভাবনা, দিনলিপি ও পরিকল্পনা</p></div>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+        <button class="primary-btn" style="margin-top:0;flex:1" onclick="createNewNote()">➕ নতুন নোট</button>
+    </div>
+    <div class="search-box"><span>🔍</span><input id="noteSearchInput" type="text" placeholder="নোট খুঁজুন..." oninput="renderNotebook()"></div>
+    <div class="notes-grid" id="notesGrid"></div>
+</main>
+
+<main id="noteEditorPage" class="page">
+    <button class="back-btn" onclick="showPage('notebook');renderNotebook()">← নোটবুকে</button>
+    <div class="page-title"><h2 id="noteEditorTitle">📝 নতুন নোট</h2><p id="noteEditorDate">আজকের তারিখ</p></div>
+    <div class="note-editor">
+        <label style="display:block;margin:0 0 7px;font-size:13px;font-weight:bold">শিরোনাম</label>
+        <input id="noteTitle" type="text" placeholder="নোটের শিরোনাম..." style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:15px;font-weight:bold;outline:none">
+        <label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">বিষয়বস্তু</label>
+        <textarea id="noteBody" placeholder="এখানে লিখুন..."></textarea>
+        <label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">রঙ</label>
+        <div class="note-color-row" id="noteColorRow"></div>
+        <div class="setting-row" style="margin-top:14px">
+            <div><strong>📌 পিন করুন</strong><p>উপরে থাকবে</p></div>
+            <label class="switch"><input id="notePinnedToggle" type="checkbox"><span class="slider"></span></label>
+        </div>
+        <button class="primary-btn" onclick="saveNote()">💾 সংরক্ষণ</button>
+        <button class="danger-btn" id="noteDeleteBtn" onclick="deleteCurrentNote()" style="display:none">🗑️ মুছুন</button>
+    </div>
 </main>
 
 <main id="analyticsPage" class="page">
@@ -700,7 +735,6 @@ button{cursor:pointer}
         <button type="button" class="voice-btn" onclick="startVoiceInput('itemTitle')">🎤 ভয়েসে বলুন</button>
         <label>বিস্তারিত</label>
         <textarea id="itemDescription" placeholder="বিস্তারিত..."></textarea>
-
         <div id="timeFields">
             <label>তারিখ</label>
             <div class="tab-switch" style="margin-top:0">
@@ -734,7 +768,6 @@ button{cursor:pointer}
                 <option value="monthly">প্রতি মাসে</option>
             </select>
         </div>
-
         <div id="habitFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">🔥 দৈনিক অভ্যাস। Streak বাড়ান।</div>
             <label>হ্যাবিটের ধরন</label>
@@ -756,7 +789,6 @@ button{cursor:pointer}
                 <option value="365">👑 ৩৬৫ দিন</option>
             </select>
         </div>
-
         <div id="reportFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">📝 নির্দিষ্ট সময় নেই — রাতে রিপোর্ট দিবেন।</div>
             <label>সময়-ভিত্তিক?</label>
@@ -781,7 +813,6 @@ button{cursor:pointer}
                 <option value="none">একবার</option>
             </select>
         </div>
-
         <div id="targetFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">🎯 সাপ্তাহিক/মাসিক টার্গেট।</div>
             <label>ধরন *</label>
@@ -799,7 +830,6 @@ button{cursor:pointer}
             </select>
             <label>শুরুর তারিখ</label><input id="targetStart" type="date">
         </div>
-
         <div id="avoidFields" class="hidden">
             <div class="bg-banner info" style="margin-bottom:0">🚫 করা যাবে না।</div>
             <label>ধরন *</label>
@@ -826,7 +856,6 @@ button{cursor:pointer}
             <div class="step-adder"><input id="stepInput" type="text" placeholder="ধাপ"><button type="button" onclick="addStep()">+</button></div>
             <div class="step-list" id="stepList"></div>
         </div>
-
         <label>Priority</label>
         <select id="itemPriority">
             <option value="low">🟢 Low</option><option value="medium" selected>🟡 Medium</option>
@@ -914,15 +943,11 @@ button{cursor:pointer}
     <div class="page-title"><h2>⚙️ সেটিংস</h2><p>কাস্টমাইজ</p></div>
 
     <section class="settings-card">
-        <h3>👤 আপনার অ্যাকাউন্ট</h3>
-        <div id="userCardContainer"></div>
-    </section>
-
-    <section class="settings-card">
         <h3>📊 দ্রুত অ্যাক্সেস</h3>
         <button class="secondary-btn" onclick="showPage('profiles')" style="margin-top:0">👥 প্রোফাইল</button>
         <button class="secondary-btn" onclick="showPage('analytics')">📊 বিস্তারিত বিশ্লেষণ</button>
         <button class="secondary-btn" onclick="showPage('rewards')">🎁 পুরস্কার</button>
+        <button class="secondary-btn" onclick="showPage('notebook')">📓 নোটবুক</button>
     </section>
 
     <section class="settings-card">
@@ -933,11 +958,24 @@ button{cursor:pointer}
         <div class="setting-row"><div><strong>💾 Auto Backup</strong><p>৭ দিন পরপর</p></div><label class="switch"><input id="autoBackupToggle" type="checkbox" onchange="toggleAutoBackup()"><span class="slider"></span></label></div>
         <div class="setting-row"><div><strong>🔒 Wake Lock</strong><p>স্ক্রিন অন</p></div><label class="switch"><input id="wakeLockToggle" type="checkbox" onchange="toggleWakeLock()"><span class="slider"></span></label></div>
         <div class="setting-row"><div><strong>🎮 Gamification</strong><p>XP, Level</p></div><label class="switch"><input id="gamificationToggle" type="checkbox" checked onchange="toggleGamification()"><span class="slider"></span></label></div>
+        <div class="setting-row"><div><strong>✨ Quote Popup</strong><p>অ্যাপ খুললে বাণী</p></div><label class="switch"><input id="quotePopupToggle" type="checkbox" checked onchange="toggleQuotePopup()"><span class="slider"></span></label></div>
+    </section>
+
+    <section class="settings-card">
+        <h3>✨ মোটিভেশনাল বাণী</h3>
+        <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
+            আপনার পছন্দের বাণী যোগ করুন। অ্যাপ খুললে পর্যায়ক্রমে সামনে আসবে।
+        </p>
+        <div class="quote-add-row">
+            <input id="newQuoteInput" type="text" placeholder="নতুন বাণী লিখুন...">
+            <button onclick="addCustomQuote()">+</button>
+        </div>
+        <h4 style="margin:16px 0 6px;font-size:13px">আপনার বাণীগুলো (<span id="customQuoteCount">0</span>)</h4>
+        <div class="quote-list" id="customQuoteList"></div>
     </section>
 
     <section class="settings-card">
         <h3>🔒 PIN Lock (অপশনাল)</h3>
-        <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">চাইলে চালু করুন</p>
         <div class="setting-row" style="padding-top:0;margin-top:0;border-top:none">
             <div><strong id="pinStatus">PIN সেট করা হয়নি</strong></div>
             <button class="test-alarm-btn" onclick="setupPIN()" id="pinBtn">🔐 সেট</button>
@@ -965,26 +1003,30 @@ button{cursor:pointer}
 
     <section class="settings-card">
         <h3>🔔 Reminder Alarm</h3>
-        <div class="pomo-row"><label>🔊 ভলিউম</label><input id="reminderVolume" class="pomo-input" type="number" min="0" max="100" value="80" onchange="saveReminderSettings()"><span class="unit">%</span></div>
+        <div class="pomo-row"><label>🔊 ভলিউম</label><input id="reminderVolume" class="pomo-input" type="number" min="0" max="100" value="80" onchange="saveReminderSettings()"><span class="unit">%</span></label></div>
         <div class="pomo-row"><label>🎵 টেস্ট</label><button class="test-alarm-btn" onclick="testReminderAlarm()">▶️</button></div>
         <div class="pomo-row"><label>📱 Notification</label><button class="test-alarm-btn" onclick="testNotification()">🔔</button></div>
     </section>
 
     <section class="settings-card">
-        <h3>💾 Data</h3>
-        <button class="secondary-btn" onclick="backupData()">📥 Backup</button>
-        <label class="secondary-btn file-label">📤 Restore<input id="restoreFile" type="file" accept=".json" onchange="restoreData(event)" hidden></label>
-        <button class="danger-btn" onclick="deleteAllData()">🗑️ সব মুছুন</button>
+        <h3>💾 Data Backup ও Restore</h3>
+        <p style="font-size:12px;color:var(--muted);margin:4px 0 10px">
+            আপনার সব ডেটা JSON ফাইলে ডাউনলোড করুন। পরে এই ফাইল দিয়ে রিকভারি করতে পারবেন।
+        </p>
+        <button class="primary-btn" onclick="backupData()" style="margin-top:0">📥 Backup ডাউনলোড</button>
+        <label class="secondary-btn file-label">📤 Restore (ফাইল থেকে)<input id="restoreFile" type="file" accept=".json" onchange="restoreData(event)" hidden></label>
+        <button class="secondary-btn" onclick="showBackupInfo()">ℹ️ Backup সম্পর্কে জানুন</button>
+        <button class="danger-btn" onclick="deleteAllData()">🗑️ সব ডেটা মুছুন</button>
     </section>
 
-    <section class="about-card"><h3>দৈনিক রুটিন</h3><p>Personal Routine App</p><small>Version 7.0.0</small></section>
+    <section class="about-card"><h3>দৈনিক রুটিন</h3><p>Personal Routine App</p><small>Version 8.0.0 — Offline</small></section>
 </main>
 
 <nav class="bottom-nav">
     <button class="nav-item active" data-page="home" onclick="showPage('home')"><span>🏠</span><small>হোম</small></button>
     <button class="nav-item" data-page="planning" onclick="showPage('planning')"><span>📅</span><small>পরিকল্পনা</small></button>
     <button class="add-nav-btn" onclick="openAddItem('task')">+</button>
-    <button class="nav-item" data-page="habits" onclick="showPage('habits')"><span>🔥</span><small>হ্যাবিট</small></button>
+    <button class="nav-item" data-page="notebook" onclick="showPage('notebook')"><span>📓</span><small>নোটবুক</small></button>
     <button class="nav-item" data-page="report" onclick="showPage('report')"><span>📊</span><small>রিপোর্ট</small></button>
     <button class="nav-item" data-page="settings" onclick="showPage('settings')"><span>⚙️</span><small>সেটিংস</small></button>
 </nav>
@@ -1011,34 +1053,24 @@ button{cursor:pointer}
 
 <script>
 "use strict";
-/* ===== FIREBASE CONFIG ===== */
-const firebaseConfig = {
-    apiKey: "AIzaSyCwbAjbGAl3CajK5FLyHyUmvwToAjuHR4Y",
-    authDomain: "my-daily-routine-78edf.firebaseapp.com",
-    projectId: "my-daily-routine-78edf",
-    storageBucket: "my-daily-routine-78edf.firebasestorage.app",
-    messagingSenderId: "334295060262",
-    appId: "1:334295060262:web:9825bb2a186f190b75fbe7",
-    measurementId: "G-HTP1C0PJF8"
-};
-
-let fbApp=null,fbAuth=null,fbDb=null,currentUser=null,cloudSyncEnabled=true;
-let syncStatusValue="offline",pushDebounceTimer=null,unsubscribeCloudListener=null;
-
-const STORAGE_ROOT="dailyRoutine_v6_";
+const STORAGE_ROOT="dailyRoutine_v8_";
 const PROFILE_KEY=STORAGE_ROOT+"profiles";
 const ACTIVE_PROFILE_KEY=STORAGE_ROOT+"activeProfile";
 const SETTINGS_KEY=STORAGE_ROOT+"settings";
 const POMO_CONFIG_KEY=STORAGE_ROOT+"pomoConfig";
 const REMINDER_CFG_KEY=STORAGE_ROOT+"reminderConfig";
 const PIN_KEY=STORAGE_ROOT+"pin";
+const QUOTES_KEY=STORAGE_ROOT+"customQuotes";
+const QUOTE_INDEX_KEY=STORAGE_ROOT+"quoteIndex";
 const CUSTOM_MUSIC_KEY="customMusic";
 
 let profiles=[],activeProfileId=null;
 let tasks=[],habits=[],avoidTasks=[],targetTasks=[],reportTasks=[];
 let avoidLog={},violations={},reportData={},targetProgress={},habitLog={};
 let badgesEarned={},notes={},gameState={xp:0,coins:0,level:1,challenges:{}};
-let settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true};
+let notebook=[],currentNoteId=null,currentNoteColor="#4f46e5";
+let customQuotes=[],currentQuoteIndex=0;
+let settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true,quotePopup:true};
 let pomoConfig={focus:25,short:5,long:15,volume:80};
 let reminderConfig={volume:80,useCustomMusic:false,customMusicName:""};
 let pinConfig={enabled:false,pin:""};
@@ -1050,14 +1082,42 @@ let customMusicBlobUrl=null,customMusicAudioEl=null,wakeLockSentinel=null;
 let pinBuffer="",pinPurpose="",pinFirstEntry="";
 const DEFAULT_PROFILE={id:"self",name:"আমি",avatar:"আ",type:"self",age:null};
 
+/* 25 motivational quotes */
+const MOTIVATIONAL_QUOTES=[
+    "ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।",
+    "আজকের কাজ কালকের স্বপ্নকে বাস্তবে পরিণত করে।",
+    "সময়কে পরিকল্পনা করতে পারলে জীবন সহজ হয়।",
+    "প্রতিদিন একটু একটু করে এগিয়ে যাও।",
+    "শুরুটা ছোট হলেও সমস্যা নেই, ধারাবাহিকতাই আসল।",
+    "যে কাজটি আজ করতে পারো, কালকের জন্য রেখো না।",
+    "নিজের সময়ের দায়িত্ব নিজেকেই নিতে হবে।",
+    "না করা কাজের হিসাব রাখাও অগ্রগতির অংশ।",
+    "ছোট বিরতিতে মন সতেজ হয়, ফোকাস বাড়ে।",
+    "তোমার প্রতিদিনের ছোট ছোট সিদ্ধান্তই তোমার ভবিষ্যৎ গড়ে।",
+    "সময় চলে যায়, কিন্তু সময়ের কাজ থেকে যায়।",
+    "শৃঙ্খলা হলো স্বাধীনতার প্রথম সিঁড়ি।",
+    "যে নিজেকে নিয়ন্ত্রণ করতে পারে, সে পৃথিবী জয় করতে পারে।",
+    "আজকের পরিশ্রম কালকের সাফল্য।",
+    "হেরে যাওয়া মানে থেমে যাওয়া নয়, শেখা।",
+    "প্রত্যেকটি বড় সাফল্য ছোট ছোট ধাপের সমষ্টি।",
+    "আজ যেটা করছ, কাল সেটাই তোমার পরিচয় হবে।",
+    "অলসতা হলো সবচেয়ে বড় শত্রু।",
+    "যে মানুষ তার সময়ের মূল্য জানে, সে তার জীবনকে ভালোবাসে।",
+    "নিজের সাথে প্রতিযোগিতা করো, অন্যের সাথে নয়।",
+    "একটি কাজ সম্পন্ন করার আনন্দ, একশো কাজ শুরু করার চেয়ে বড়।",
+    "আজ যা কঠিন মনে হচ্ছে, কাল তা সহজ মনে হবে।",
+    "স্বপ্ন দেখো, পরিকল্পনা করো, কাজ করো।",
+    "তোমার সময়, তোমার জীবন, তোমার সিদ্ধান্ত।",
+    "প্রতিদিন ঘুম থেকে উঠে একটি লক্ষ্য নিয়ে উঠো।"
+];
+
 /* IDB */
-const IDB_NAME="dailyRoutineDB_v6",IDB_STORE="files";
+const IDB_NAME="dailyRoutineDB_v8",IDB_STORE="files";
 function openIDB(){return new Promise((res,rej)=>{const r=indexedDB.open(IDB_NAME,1);r.onupgradeneeded=e=>{const db=e.target.result;if(!db.objectStoreNames.contains(IDB_STORE))db.createObjectStore(IDB_STORE)};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
 async function idbSave(k,b){const db=await openIDB();return new Promise((res,rej)=>{const t=db.transaction(IDB_STORE,"readwrite");t.objectStore(IDB_STORE).put(b,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}
 async function idbGet(k){const db=await openIDB();return new Promise((res,rej)=>{const t=db.transaction(IDB_STORE,"readonly");const r=t.objectStore(IDB_STORE).get(k);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)})}
 async function idbDelete(k){const db=await openIDB();return new Promise((res,rej)=>{const t=db.transaction(IDB_STORE,"readwrite");t.objectStore(IDB_STORE).delete(k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}
 
-/* PROFILE STORAGE */
 function profileKey(pid,key){return STORAGE_ROOT+pid+"_"+key}
 function loadProfileData(pid){
     try{
@@ -1073,8 +1133,9 @@ function loadProfileData(pid){
         habitLog=safeParse(localStorage.getItem(profileKey(pid,"habitLog")),{});
         notes=safeParse(localStorage.getItem(profileKey(pid,"notes")),{});
         badgesEarned=safeParse(localStorage.getItem(profileKey(pid,"badges")),{});
+        notebook=safeParse(localStorage.getItem(profileKey(pid,"notebook")),[]);
         gameState={...{xp:0,coins:0,level:1,challenges:{}},...safeParse(localStorage.getItem(profileKey(pid,"game")),{})};
-    }catch(e){console.error(e);tasks=[];habits=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};habitLog={};notes={};badgesEarned={};gameState={xp:0,coins:0,level:1,challenges:{}}}
+    }catch(e){console.error(e);tasks=[];habits=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};habitLog={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}}}
 }
 function saveProfileData(pid){
     localStorage.setItem(profileKey(pid,"tasks"),JSON.stringify(tasks));
@@ -1089,12 +1150,10 @@ function saveProfileData(pid){
     localStorage.setItem(profileKey(pid,"habitLog"),JSON.stringify(habitLog));
     localStorage.setItem(profileKey(pid,"notes"),JSON.stringify(notes));
     localStorage.setItem(profileKey(pid,"badges"),JSON.stringify(badgesEarned));
+    localStorage.setItem(profileKey(pid,"notebook"),JSON.stringify(notebook));
     localStorage.setItem(profileKey(pid,"game"),JSON.stringify(gameState));
-    localStorage.setItem("dailyRoutine_v6_lastLocalSave",Date.now().toString());
-    if(currentUser&&cloudSyncEnabled)pushToCloud();
 }
 
-/* UTILS */
 function safeParse(str,fb){if(!str)return fb;try{return JSON.parse(str)}catch{return fb}}
 function escapeHTML(v){return String(v||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;")}
 function getDateString(d=new Date()){const y=d.getFullYear();const m=String(d.getMonth()+1).padStart(2,"0");const dd=String(d.getDate()).padStart(2,"0");return `${y}-${m}-${dd}`}
@@ -1113,16 +1172,16 @@ function loadProfiles(){
     activeProfileId=localStorage.getItem(ACTIVE_PROFILE_KEY)||profiles[0].id;
     if(!profiles.find(p=>p.id===activeProfileId))activeProfileId=profiles[0].id;
 }
-function saveProfiles(){localStorage.setItem(PROFILE_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId);if(currentUser&&cloudSyncEnabled)pushToCloud()}
+function saveProfiles(){localStorage.setItem(PROFILE_KEY,JSON.stringify(profiles));localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId)}
 function getActiveProfile(){return profiles.find(p=>p.id===activeProfileId)||profiles[0]}
 function switchProfile(pid){if(!profiles.find(p=>p.id===pid))return;activeProfileId=pid;saveProfiles();loadProfileData(pid);applyProfileToUI();renderAll();scheduleAllReminders();toast("👤 "+getActiveProfile().name);closeModal()}
 function applyProfileToUI(){const p=getActiveProfile();const a=document.getElementById("profileAvatar");if(a)a.textContent=p.avatar||"?";const n=document.getElementById("profileName");if(n)n.textContent=p.name;const u=document.getElementById("userName");if(u)u.value=p.name}
 function openProfileSwitcher(){let h=`<p style="font-size:13px;color:var(--muted);margin:0 0 12px">প্রোফাইল (${profiles.length}/৪)</p>`;h+=profiles.map(p=>`<div class="profile-row ${p.id===activeProfileId?"active":""}" onclick="switchProfile('${p.id}')"><div class="avatar-lg">${escapeHTML(p.avatar)}</div><div class="info"><strong>${escapeHTML(p.name)}</strong><small>${p.type==="self"?"👤 আপনি":"👶 সন্তান"}</small></div>${p.id===activeProfileId?`<span style="color:var(--success);font-size:18px">✓</span>`:""}</div>`).join("");h+=`<button class="secondary-btn" onclick="closeModal();showPage('profiles')" style="margin-top:14px">⚙️ ম্যানেজ</button>`;document.getElementById("modalTitle").textContent="👥 প্রোফাইল";document.getElementById("modalBody").innerHTML=h;document.getElementById("taskModal").classList.remove("hidden")}
 function showAddProfileModal(){if(profiles.length>=4){toast("সর্বোচ্চ ৪ জন");return}document.getElementById("modalTitle").textContent="➕ নতুন প্রোফাইল";document.getElementById("modalBody").innerHTML=`<label style="display:block;margin:8px 0 7px;font-size:13px;font-weight:bold">নাম *</label><input id="newProfileName" type="text" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">ধরন</label><select id="newProfileType" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><option value="child">👶 সন্তান</option><option value="self">👤 নিজে</option></select><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">বয়স</label><input id="newProfileAge" type="number" min="3" max="99" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">Avatar</label><input id="newProfileAvatar" type="text" maxlength="2" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><div class="modal-actions"><button class="secondary" onclick="closeModal()">বাতিল</button><button class="primary" onclick="createProfile()">➕ তৈরি</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
-function createProfile(){const name=document.getElementById("newProfileName").value.trim();if(!name){toast("নাম দিন");return}const type=document.getElementById("newProfileType").value;const age=parseInt(document.getElementById("newProfileAge").value,10)||null;const avatar=document.getElementById("newProfileAvatar").value.trim()||name[0]||"?";const id="p"+Date.now();profiles.push({id,name,avatar,type,age});saveProfiles();const old=activeProfileId;activeProfileId=id;tasks=[];habits=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};habitLog={};notes={};badgesEarned={};gameState={xp:0,coins:0,level:1,challenges:{}};saveProfileData(id);activeProfileId=old;saveProfiles();closeModal();renderProfilesPage();toast("✅ তৈরি হয়েছে")}
+function createProfile(){const name=document.getElementById("newProfileName").value.trim();if(!name){toast("নাম দিন");return}const type=document.getElementById("newProfileType").value;const age=parseInt(document.getElementById("newProfileAge").value,10)||null;const avatar=document.getElementById("newProfileAvatar").value.trim()||name[0]||"?";const id="p"+Date.now();profiles.push({id,name,avatar,type,age});saveProfiles();const old=activeProfileId;activeProfileId=id;tasks=[];habits=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};habitLog={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}};saveProfileData(id);activeProfileId=old;saveProfiles();closeModal();renderProfilesPage();toast("✅ তৈরি হয়েছে")}
 function editProfile(pid){const p=profiles.find(x=>x.id===pid);if(!p)return;document.getElementById("modalTitle").textContent="✏️ "+p.name;document.getElementById("modalBody").innerHTML=`<label style="display:block;margin:8px 0 7px;font-size:13px;font-weight:bold">নাম</label><input id="epName" type="text" value="${escapeHTML(p.name)}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">বয়স</label><input id="epAge" type="number" value="${p.age||""}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">Avatar</label><input id="epAvatar" type="text" maxlength="2" value="${escapeHTML(p.avatar)}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><div class="modal-actions">${p.id!=="self"&&profiles.length>1?`<button class="danger" onclick="deleteProfile('${p.id}')">🗑️</button>`:""}<button class="secondary" onclick="closeModal()">বাতিল</button><button class="primary" onclick="saveProfileEdit('${p.id}')">💾</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 function saveProfileEdit(pid){const p=profiles.find(x=>x.id===pid);if(!p)return;p.name=document.getElementById("epName").value.trim()||p.name;p.age=parseInt(document.getElementById("epAge").value,10)||null;p.avatar=document.getElementById("epAvatar").value.trim()||p.avatar;saveProfiles();applyProfileToUI();renderProfilesPage();closeModal();toast("✅ আপডেট")}
-function deleteProfile(pid){if(profiles.length<=1){toast("শেষ প্রোফাইল");return}if(!confirm("মুছে ফেলবেন?"))return;["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","game"].forEach(k=>localStorage.removeItem(profileKey(pid,k)));profiles=profiles.filter(p=>p.id!==pid);if(activeProfileId===pid)activeProfileId=profiles[0].id;saveProfiles();loadProfileData(activeProfileId);applyProfileToUI();renderAll();renderProfilesPage();closeModal();toast("🗑️ মুছে")}
+function deleteProfile(pid){if(profiles.length<=1){toast("শেষ প্রোফাইল");return}if(!confirm("মুছে ফেলবেন?"))return;["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(pid,k)));profiles=profiles.filter(p=>p.id!==pid);if(activeProfileId===pid)activeProfileId=profiles[0].id;saveProfiles();loadProfileData(activeProfileId);applyProfileToUI();renderAll();renderProfilesPage();closeModal();toast("🗑️ মুছে")}
 function renderProfilesPage(){const c=document.getElementById("profileList");if(!c)return;c.innerHTML=profiles.map(p=>`<div class="profile-row ${p.id===activeProfileId?"active":""}"><div class="avatar-lg">${escapeHTML(p.avatar)}</div><div class="info"><strong>${escapeHTML(p.name)}</strong><small>${p.type==="self"?"👤 আপনি":"👶 সন্তান"}${p.age?" · "+p.age+" বছর":""}</small></div><div class="actions">${p.id!==activeProfileId?`<button class="small-btn" onclick="switchProfile('${p.id}');renderProfilesPage();">🔄</button>`:`<span style="color:var(--success);font-size:20px;padding:6px">✓</span>`}<button class="small-btn" onclick="editProfile('${p.id}')">✏️</button></div></div>`).join("");const b=document.getElementById("addProfileBtn");if(b)b.style.display=profiles.length>=4?"none":"block"}
 
 /* PIN */
@@ -1136,27 +1195,29 @@ function pinInput(n){if(pinBuffer.length>=4)return;pinBuffer+=n;updatePinDots();
 function pinClear(){pinBuffer="";updatePinDots()}
 function pinBack(){pinBuffer=pinBuffer.slice(0,-1);updatePinDots()}
 function updatePinDots(){document.querySelectorAll("#pinDots .pin-dot").forEach((d,i)=>d.classList.toggle("filled",i<pinBuffer.length))}
-function handlePinComplete(){if(pinPurpose==="setup"){if(!pinFirstEntry){pinFirstEntry=pinBuffer;pinBuffer="";document.getElementById("pinSubtitle").textContent="আবার দিন";updatePinDots();return}if(pinFirstEntry===pinBuffer){pinConfig.pin=pinBuffer;pinConfig.enabled=true;savePinConfig();document.getElementById("pinLock").classList.add("hidden");updatePinUI();toast("✅ PIN সেট")}else{toast("❌ মিলছে না");pinBuffer="";pinFirstEntry="";document.getElementById("pinSubtitle").textContent="নতুন PIN দিন";updatePinDots()}}else if(pinPurpose==="verify"){if(pinBuffer===pinConfig.pin){document.getElementById("pinLock").classList.add("hidden");pinBuffer=""}else{toast("❌ ভুল PIN");pinBuffer="";updatePinDots()}}}
+function handlePinComplete(){if(pinPurpose==="setup"){if(!pinFirstEntry){pinFirstEntry=pinBuffer;pinBuffer="";document.getElementById("pinSubtitle").textContent="আবার দিন";updatePinDots();return}if(pinFirstEntry===pinBuffer){pinConfig.pin=pinBuffer;pinConfig.enabled=true;savePinConfig();document.getElementById("pinLock").classList.add("hidden");updatePinUI();toast("✅ PIN সেট")}else{toast("❌ মিলছে না");pinBuffer="";pinFirstEntry="";document.getElementById("pinSubtitle").textContent="নতুন PIN দিন";updatePinDots()}}else if(pinPurpose==="verify"){if(pinBuffer===pinConfig.pin){document.getElementById("pinLock").classList.add("hidden");pinBuffer="";setTimeout(showQuotePopup,300)}else{toast("❌ ভুল PIN");pinBuffer="";updatePinDots()}}}
 
-/* FIREBASE */
-function initFirebase(){if(typeof firebase==="undefined"){console.warn("Firebase not loaded");return}try{fbApp=firebase.initializeApp(firebaseConfig);fbAuth=firebase.auth();fbDb=firebase.firestore();fbAuth.onAuthStateChanged(user=>{if(user){currentUser=user;onUserLoggedIn(user)}else{currentUser=null;onUserLoggedOut()}})}catch(e){console.error("Firebase init:",e)}}
-async function signInWithGoogle(){if(!fbAuth){toast("Firebase লোড হয়নি");return}const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});try{await fbAuth.signInWithPopup(provider)}catch(e){if(e.code==="auth/popup-blocked"||e.code==="auth/popup-closed-by-user"||e.code==="auth/cancelled-popup-request"){try{await fbAuth.signInWithRedirect(provider)}catch(err){toast("লগইন ব্যর্থ")}}else toast("লগইন ব্যর্থ: "+e.message)}}
-async function signOutUser(){if(!fbAuth)return;if(!confirm("লগআউট করবেন?"))return;try{await fbAuth.signOut();toast("✅ লগআউট")}catch(e){toast("লগআউট ব্যর্থ")}}
-function skipLogin(){sessionStorage.setItem("skipLogin","1");document.getElementById("loginOverlay").classList.add("hidden");cloudSyncEnabled=false;updateSyncStatus("offline")}
-async function onUserLoggedIn(user){document.getElementById("loginOverlay").classList.add("hidden");cloudSyncEnabled=true;updateSyncStatus("syncing");const pulled=await pullFromCloud(user.uid);if(!pulled){await pushToCloud(true);toast("☁️ ক্লাউডে সেভ হয়েছে")}else toast("✅ ক্লাউড থেকে লোড");setupCloudListener(user.uid);renderAll();updateHeader();scheduleAllReminders();renderUserCard();updateSyncStatus("online")}
-function onUserLoggedOut(){cloudSyncEnabled=false;if(unsubscribeCloudListener){unsubscribeCloudListener();unsubscribeCloudListener=null}document.getElementById("loginOverlay").classList.remove("hidden");renderUserCard();updateSyncStatus("offline")}
+/* QUOTES */
+function loadQuotesData(){try{customQuotes=safeParse(localStorage.getItem(QUOTES_KEY),[]);currentQuoteIndex=parseInt(localStorage.getItem(QUOTE_INDEX_KEY)||"0",10)||0}catch{customQuotes=[];currentQuoteIndex=0}}
+function saveQuotesData(){localStorage.setItem(QUOTES_KEY,JSON.stringify(customQuotes));localStorage.setItem(QUOTE_INDEX_KEY,currentQuoteIndex.toString())}
+function getAllQuotes(){return customQuotes.length>0?[...MOTIVATIONAL_QUOTES,...customQuotes]:MOTIVATIONAL_QUOTES}
+function showQuotePopup(){if(!settings.quotePopup)return;const all=getAllQuotes();if(!all.length)return;if(currentQuoteIndex>=all.length)currentQuoteIndex=0;const q=all[currentQuoteIndex];document.getElementById("popupQuoteText").textContent=q;document.getElementById("quotePopup").classList.remove("hidden")}
+function closeQuotePopup(){const all=getAllQuotes();currentQuoteIndex=(currentQuoteIndex+1)%all.length;saveQuotesData();document.getElementById("quotePopup").classList.add("hidden")}
+function nextQuotePopup(){const all=getAllQuotes();currentQuoteIndex=(currentQuoteIndex+1)%all.length;saveQuotesData();document.getElementById("popupQuoteText").textContent=all[currentQuoteIndex]}
+function toggleQuotePopup(){settings.quotePopup=document.getElementById("quotePopupToggle").checked;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings))}
+function addCustomQuote(){const input=document.getElementById("newQuoteInput");const text=input.value.trim();if(!text){toast("বাণী লিখুন");return}customQuotes.push(text);saveQuotesData();input.value="";renderCustomQuotes();toast("✅ বাণী যোগ হয়েছে")}
+function removeCustomQuote(index){if(!confirm("মুছে ফেলবেন?"))return;customQuotes.splice(index,1);saveQuotesData();renderCustomQuotes();toast("🗑️ মুছে")}
+function renderCustomQuotes(){const c=document.getElementById("customQuoteList");const count=document.getElementById("customQuoteCount");if(!c)return;if(count)count.textContent=customQuotes.length;if(!customQuotes.length){c.innerHTML=`<p style="color:var(--muted);font-size:12px;text-align:center;padding:10px">এখনো কোনো নিজের বাণী যোগ করা হয়নি</p>`;return}c.innerHTML=customQuotes.map((q,i)=>`<div class="quote-item"><div class="quote-text">✨ ${escapeHTML(q)}</div><button class="quote-delete" onclick="removeCustomQuote(${i})">🗑️</button></div>`).join("")}
 
-async function pushToCloud(immediate=false){if(!currentUser||!cloudSyncEnabled||!fbDb)return;if(pushDebounceTimer)clearTimeout(pushDebounceTimer);const doSave=async()=>{updateSyncStatus("syncing");try{const allData={};profiles.forEach(p=>{allData[p.id]={tasks:safeParse(localStorage.getItem(profileKey(p.id,"tasks")),[]),habits:safeParse(localStorage.getItem(profileKey(p.id,"habits")),[]),avoidTasks:safeParse(localStorage.getItem(profileKey(p.id,"avoidTasks")),[]),targetTasks:safeParse(localStorage.getItem(profileKey(p.id,"targetTasks")),[]),reportTasks:safeParse(localStorage.getItem(profileKey(p.id,"reportTasks")),[]),avoidLog:safeParse(localStorage.getItem(profileKey(p.id,"avoidLog")),{}),violations:safeParse(localStorage.getItem(profileKey(p.id,"violations")),{}),reportData:safeParse(localStorage.getItem(profileKey(p.id,"reportData")),{}),targetProgress:safeParse(localStorage.getItem(profileKey(p.id,"targetProgress")),{}),habitLog:safeParse(localStorage.getItem(profileKey(p.id,"habitLog")),{}),notes:safeParse(localStorage.getItem(profileKey(p.id,"notes")),{}),badges:safeParse(localStorage.getItem(profileKey(p.id,"badges")),{}),game:safeParse(localStorage.getItem(profileKey(p.id,"game")),{})}});await fbDb.collection("users").doc(currentUser.uid).set({profiles,activeProfileId,settings,pomoConfig,reminderConfig,pinConfig,profileData:allData,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),userEmail:currentUser.email,userName:currentUser.displayName||"",userPhoto:currentUser.photoURL||""},{merge:true});updateSyncStatus("online")}catch(e){console.error(e);updateSyncStatus("error")}};if(immediate)doSave();else pushDebounceTimer=setTimeout(doSave,1500)}
-
-async function pullFromCloud(uid){if(!fbDb)return false;try{const doc=await fbDb.collection("users").doc(uid).get();if(!doc.exists)return false;const d=doc.data();if(d.profiles&&Array.isArray(d.profiles)&&d.profiles.length){profiles=d.profiles;saveProfiles()}if(d.activeProfileId){activeProfileId=d.activeProfileId;localStorage.setItem(ACTIVE_PROFILE_KEY,activeProfileId)}if(d.settings){settings={...settings,...d.settings};localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings))}if(d.pomoConfig){pomoConfig={...pomoConfig,...d.pomoConfig};localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig))}if(d.reminderConfig){reminderConfig={...reminderConfig,...d.reminderConfig};localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig))}if(d.pinConfig){pinConfig={...pinConfig,...d.pinConfig};savePinConfig()}if(d.profileData){Object.entries(d.profileData).forEach(([pid,dd])=>{["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","game"].forEach(k=>{if(dd[k]!==undefined)localStorage.setItem(profileKey(pid,k),JSON.stringify(dd[k]))})})}loadProfileData(activeProfileId);loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();applySettings();applyProfileToUI();return true}catch(e){console.error("Pull:",e);return false}}
-
-function setupCloudListener(uid){if(unsubscribeCloudListener)unsubscribeCloudListener();unsubscribeCloudListener=fbDb.collection("users").doc(uid).onSnapshot(doc=>{if(!doc.exists)return;if(pushDebounceTimer)return;const d=doc.data();if(!d.updatedAt)return;const remoteTime=d.updatedAt.toMillis?d.updatedAt.toMillis():0;const localTime=parseInt(localStorage.getItem("dailyRoutine_v6_lastLocalSave")||"0",10);if(remoteTime>localTime+2000){pullFromCloud(uid).then(()=>{renderAll();updateHeader();toast("🔄 অন্যান্য ডিভাইস থেকে সিঙ্ক")})}},err=>console.warn(err))}
-
-function updateSyncStatus(status){syncStatusValue=status;const el=document.getElementById("syncStatusBadge");if(!el)return;const labels={online:"☁️ সিঙ্ক",syncing:"🔄 সিঙ্ক হচ্ছে",offline:"📴 অফলাইন",error:"⚠️ সমস্যা"};el.className="sync-status "+status;el.innerHTML=`<span class="sync-dot"></span>${labels[status]||"অফলাইন"}`}
-
-function renderUserCard(){const c=document.getElementById("userCardContainer");if(!c)return;if(!currentUser){c.innerHTML=`<p style="font-size:12px;color:var(--muted);margin:0 0 10px">Google দিয়ে লগইন করে ডেটা সিঙ্ক করুন</p><button class="google-btn" onclick="signInWithGoogle()" style="width:100%;padding:12px"><svg viewBox="0 0 48 48" style="width:20px;height:20px"><path fill="#4285F4" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#34A853" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#EA4335" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Google দিয়ে লগইন</button>`;return}c.innerHTML=`<div class="user-card"><img src="${currentUser.photoURL||'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%234f46e5%22/%3E%3C/svg%3E'}" alt="profile"><div class="info"><strong>${escapeHTML(currentUser.displayName||"ব্যবহারকারী")}</strong><small>${escapeHTML(currentUser.email||"")}</small></div></div><button class="secondary-btn" onclick="forceCloudSync()">🔄 এখনই সিঙ্ক</button><button class="danger-btn" onclick="signOutUser()">🚪 লগআউট</button>`}
-
-async function forceCloudSync(){if(!currentUser){toast("প্রথমে লগইন");return}toast("🔄 সিঙ্ক হচ্ছে...");await pushToCloud(true);await pullFromCloud(currentUser.uid);renderAll();updateHeader();toast("✅ সিঙ্ক সম্পন্ন")}
+/* NOTEBOOK */
+const NOTE_COLORS=["#4f46e5","#7c3aed","#dc2626","#16a34a","#d97706","#0891b2","#db2777","#0f766e"];
+function renderNotebook(){const c=document.getElementById("notesGrid");if(!c)return;const search=(document.getElementById("noteSearchInput")?.value||"").toLowerCase();let src=[...notebook];if(search)src=src.filter(n=>(n.title+" "+n.body).toLowerCase().includes(search));src.sort((a,b)=>{if(a.pinned&&!b.pinned)return-1;if(!a.pinned&&b.pinned)return 1;return new Date(b.updatedAt||b.createdAt)-new Date(a.updatedAt||a.createdAt)});if(!src.length){c.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><div>📓</div><p>${search?"নোট পাওয়া যায়নি":"এখনো নোট নেই। নতুন নোট তৈরি করুন।"}</p></div>`;return}c.innerHTML=src.map(n=>{const color=n.color||"#4f46e5";const preview=(n.body||"").substring(0,100);return`<div class="note-tile ${n.pinned?"pinned":""}" onclick="openNoteEditor('${n.id}')" style="border-left:4px solid ${color}">${n.pinned?`<div class="note-tile-pin">📌</div>`:""}<div class="note-tile-title">${escapeHTML(n.title||"শিরোনামহীন")}</div><div class="note-tile-preview">${escapeHTML(preview)}</div><div class="note-tile-date">${formatDateTime(n.updatedAt||n.createdAt)}</div></div>`}).join("")}
+function createNewNote(){currentNoteId=null;currentNoteColor="#4f46e5";document.getElementById("noteTitle").value="";document.getElementById("noteBody").value="";document.getElementById("notePinnedToggle").checked=false;document.getElementById("noteEditorTitle").textContent="📝 নতুন নোট";document.getElementById("noteEditorDate").textContent=formatDate(getDateString());document.getElementById("noteDeleteBtn").style.display="none";renderNoteColors();showPage("noteEditor")}
+function openNoteEditor(id){const n=notebook.find(x=>x.id===id);if(!n)return;currentNoteId=id;currentNoteColor=n.color||"#4f46e5";document.getElementById("noteTitle").value=n.title||"";document.getElementById("noteBody").value=n.body||"";document.getElementById("notePinnedToggle").checked=n.pinned||false;document.getElementById("noteEditorTitle").textContent="📝 নোট";document.getElementById("noteEditorDate").textContent=formatDateTime(n.updatedAt||n.createdAt);document.getElementById("noteDeleteBtn").style.display="block";renderNoteColors();showPage("noteEditor")}
+function renderNoteColors(){const c=document.getElementById("noteColorRow");if(!c)return;c.innerHTML=NOTE_COLORS.map(col=>`<div class="note-color-dot ${col===currentNoteColor?"active":""}" style="background:${col}" onclick="setNoteColor('${col}')"></div>`).join("")}
+function setNoteColor(col){currentNoteColor=col;renderNoteColors()}
+function saveNote(){const title=document.getElementById("noteTitle").value.trim();const body=document.getElementById("noteBody").value.trim();if(!title&&!body){toast("কিছু লিখুন");return}const pinned=document.getElementById("notePinnedToggle").checked;if(currentNoteId){const i=notebook.findIndex(x=>x.id===currentNoteId);if(i!==-1){notebook[i]={...notebook[i],title,body,color:currentNoteColor,pinned,updatedAt:new Date().toISOString()}}}else{notebook.push({id:"n"+Date.now(),title,body,color:currentNoteColor,pinned,createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()})}saveProfileData(activeProfileId);addXP(3);toast("✅ সংরক্ষিত");setTimeout(()=>{showPage("notebook");renderNotebook()},300)}
+function deleteCurrentNote(){if(!currentNoteId)return;if(!confirm("নোটটি মুছে ফেলবেন?"))return;notebook=notebook.filter(n=>n.id!==currentNoteId);saveProfileData(activeProfileId);toast("🗑️ মুছে");setTimeout(()=>{showPage("notebook");renderNotebook()},300)}
 
 /* GAMIFICATION */
 function addXP(amount){if(!settings.gamification)return;gameState.xp+=amount;gameState.coins+=Math.floor(amount/2);let leveledUp=false;while(gameState.xp>=gameState.level*100){gameState.xp-=gameState.level*100;gameState.level++;gameState.coins+=50;leveledUp=true}saveProfileData(activeProfileId);if(leveledUp)showLevelUp();updateGameUI()}
@@ -1173,13 +1234,13 @@ function applyTemplate(kind,i){const t=(DEFAULT_TEMPLATES[kind]||[])[i];if(!t)re
 /* COLOR PICKER */
 const COLORS=["#4f46e5","#7c3aed","#dc2626","#16a34a","#d97706","#0891b2","#db2777","#0f766e"];
 function renderColorPicker(){const c=document.getElementById("colorRow");if(!c)return;c.innerHTML=COLORS.map(col=>`<div class="color-dot" data-color="${col}" style="background:${col}" onclick="setAccentColor('${col}')"></div>`).join("");updateColorPickerActive()}
-function setAccentColor(col){settings.accent=col;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));applySettings();updateColorPickerActive();if(currentUser&&cloudSyncEnabled)pushToCloud()}
+function setAccentColor(col){settings.accent=col;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));applySettings();updateColorPickerActive()}
 function updateColorPickerActive(){document.querySelectorAll(".color-dot").forEach(d=>d.classList.toggle("active",d.dataset.color===settings.accent))}
 
 /* SETTINGS */
-function loadSettingsUI(){const p=getActiveProfile();document.getElementById("userName").value=p.name||"";document.getElementById("notificationToggle").checked=settings.notifications;document.getElementById("darkToggle").checked=settings.darkMode;document.getElementById("autoBackupToggle").checked=settings.autoBackup;document.getElementById("wakeLockToggle").checked=settings.wakeLock;document.getElementById("gamificationToggle").checked=settings.gamification;updateColorPickerActive();updatePinUI();renderUserCard()}
+function loadSettingsUI(){const p=getActiveProfile();document.getElementById("userName").value=p.name||"";document.getElementById("notificationToggle").checked=settings.notifications;document.getElementById("darkToggle").checked=settings.darkMode;document.getElementById("autoBackupToggle").checked=settings.autoBackup;document.getElementById("wakeLockToggle").checked=settings.wakeLock;document.getElementById("gamificationToggle").checked=settings.gamification;document.getElementById("quotePopupToggle").checked=settings.quotePopup;updateColorPickerActive();updatePinUI();renderCustomQuotes()}
 function saveUserName(){const name=document.getElementById("userName").value.trim();if(!name)return;const p=getActiveProfile();p.name=name;p.avatar=p.avatar||name[0];saveProfiles();applyProfileToUI();updateHeader();toast("✅ সংরক্ষিত")}
-function toggleTheme(){settings.darkMode=!settings.darkMode;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));applySettings();if(currentUser&&cloudSyncEnabled)pushToCloud()}
+function toggleTheme(){settings.darkMode=!settings.darkMode;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));applySettings()}
 function applySettings(){document.body.classList.toggle("dark",settings.darkMode);document.documentElement.style.setProperty("--accent",settings.accent||"#4f46e5");const btn=document.getElementById("themeBtn");if(btn)btn.textContent=settings.darkMode?"☀️":"🌙";const t=document.getElementById("darkToggle");if(t)t.checked=settings.darkMode}
 function toggleNotifications(){settings.notifications=document.getElementById("notificationToggle").checked;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));if(settings.notifications)requestNotificationPermission().then(()=>scheduleAllReminders());else clearAllTimers()}
 function toggleAutoBackup(){settings.autoBackup=document.getElementById("autoBackupToggle").checked;localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings))}
@@ -1200,8 +1261,8 @@ function testAlarm(){const v=parseInt(document.getElementById("alarmVolume").val
 function testReminderAlarm(){const v=parseInt(document.getElementById("reminderVolume").value,10);if(v>=0&&v<=100)reminderConfig.volume=v;localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));getAudioContext();playReminderAlarm(2);toast("🔊 বাজছে")}
 function testNotification(){if(typeof Notification==="undefined"){toast("সাপোর্ট নেই");return}if(Notification.permission!=="granted"){requestNotificationPermission();return}try{new Notification("🔔 টেস্ট",{body:"দৈনিক রুটিন"})}catch{}toast("🔔 পাঠানো")}
 function testTaskAlarm(taskId){const t=tasks.find(x=>x.id===taskId)||reportTasks.find(x=>x.id===taskId);if(!t)return;getAudioContext();playReminderAlarm(2);toast(`🔊 "${t.title}"`)}
-function savePomodoroSettings(){const f=parseInt(document.getElementById("focusMinutes").value,10),s=parseInt(document.getElementById("shortMinutes").value,10),l=parseInt(document.getElementById("longMinutes").value,10),v=parseInt(document.getElementById("alarmVolume").value,10);if(f>0)pomoConfig.focus=f;if(s>0)pomoConfig.short=s;if(l>0)pomoConfig.long=l;if(v>=0)pomoConfig.volume=v;localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));updatePomodoroLabels();if(!pomodoroState.running)resetPomodoroForCurrentMode();if(currentUser&&cloudSyncEnabled)pushToCloud();toast("✅ সেভ")}
-function saveReminderSettings(){const v=parseInt(document.getElementById("reminderVolume").value,10);if(v>=0&&v<=100)reminderConfig.volume=v;localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));if(currentUser&&cloudSyncEnabled)pushToCloud();toast("✅ সেভ")}
+function savePomodoroSettings(){const f=parseInt(document.getElementById("focusMinutes").value,10),s=parseInt(document.getElementById("shortMinutes").value,10),l=parseInt(document.getElementById("longMinutes").value,10),v=parseInt(document.getElementById("alarmVolume").value,10);if(f>0)pomoConfig.focus=f;if(s>0)pomoConfig.short=s;if(l>0)pomoConfig.long=l;if(v>=0)pomoConfig.volume=v;localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));updatePomodoroLabels();if(!pomodoroState.running)resetPomodoroForCurrentMode();toast("✅ সেভ")}
+function saveReminderSettings(){const v=parseInt(document.getElementById("reminderVolume").value,10);if(v>=0&&v<=100)reminderConfig.volume=v;localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));toast("✅ সেভ")}
 function loadReminderSettingsUI(){const el=document.getElementById("reminderVolume");if(el)el.value=reminderConfig.volume;updateMusicInfoUI()}
 
 /* MUSIC */
@@ -1244,7 +1305,7 @@ function getTargetProgress(t){const key=getTargetPeriodKey(t);const store=target
 function calculateStreak(){let streak=0,date=new Date();while(true){const ds=getDateString(date);const d=calculateScore(ds);if(d.total===0||d.done!==d.total)break;streak++;date=addDays(date,-1)}return streak}
 
 /* BADGES */
-const BADGES=[{id:"first",icon:"⭐",name:"প্রথম",check:()=>tasks.some(t=>t.completed)||Object.keys(reportData).length>0},{id:"streak3",icon:"🔥",name:"৩ দিন",check:()=>calculateStreak()>=3},{id:"streak7",icon:"🏆",name:"৭ দিন",check:()=>calculateStreak()>=7},{id:"perfect",icon:"💯",name:"পারফেক্ট",check:()=>{const t=getDateString();const d=calculateScore(t);return d.total>0&&d.done===d.total}},{id:"score90",icon:"🎯",name:"৯০%",check:()=>calculateScore(getDateString()).finalScore>=90},{id:"fifty",icon:"📚",name:"৫০টি",check:()=>tasks.filter(t=>t.completed).length>=50},{id:"habit5",icon:"✨",name:"৫ হ্যাবিট",check:()=>habits.length>=5},{id:"level5",icon:"👑",name:"লেভেল ৫",check:()=>gameState.level>=5}];
+const BADGES=[{id:"first",icon:"⭐",name:"প্রথম",check:()=>tasks.some(t=>t.completed)||Object.keys(reportData).length>0},{id:"streak3",icon:"🔥",name:"৩ দিন",check:()=>calculateStreak()>=3},{id:"streak7",icon:"🏆",name:"৭ দিন",check:()=>calculateStreak()>=7},{id:"perfect",icon:"💯",name:"পারফেক্ট",check:()=>{const t=getDateString();const d=calculateScore(t);return d.total>0&&d.done===d.total}},{id:"score90",icon:"🎯",name:"৯০%",check:()=>calculateScore(getDateString()).finalScore>=90},{id:"fifty",icon:"📚",name:"৫০টি",check:()=>tasks.filter(t=>t.completed).length>=50},{id:"habit5",icon:"✨",name:"৫ হ্যাবিট",check:()=>habits.length>=5},{id:"level5",icon:"👑",name:"লেভেল ৫",check:()=>gameState.level>=5},{id:"notebook",icon:"📓",name:"নোটবুক",check:()=>notebook.length>=5}];
 function checkBadges(){let changed=false;BADGES.forEach(b=>{if(!badgesEarned[b.id]&&b.check()){badgesEarned[b.id]=new Date().toISOString();changed=true;setTimeout(()=>toast(`🏅 ${b.name}`),500);addXP(15)}});if(changed)saveProfileData(activeProfileId)}
 function renderBadges(){const c=document.getElementById("badgeStrip");if(!c)return;c.innerHTML=BADGES.map(b=>`<div class="badge-chip ${badgesEarned[b.id]?"earned":""}"><span class="badge-icon">${b.icon}</span><span>${b.name}</span></div>`).join("")}
 
@@ -1255,7 +1316,6 @@ function renderTodayTasks(){const c=document.getElementById("todayTasks");const 
 
 function renderTrend(){const c=document.getElementById("trendBars");if(!c)return;let h="";for(let i=6;i>=0;i--){const date=addDays(new Date(),-i);const ds=getDateString(date);const d=calculateScore(ds);const dn=date.toLocaleDateString("bn-BD",{weekday:"narrow"});h+=`<div class="trend-bar" onclick="openDayDetail('${ds}')"><div class="bar" style="height:${Math.max(4,d.finalScore)}%"></div><div class="label">${dn}</div></div>`}c.innerHTML=h}
 
-/* HTML RENDERERS */
 function taskHTML(t){const c=t.completed?"completed":"";const ck=t.completed?"checked":"";const pt=t.priority==="high"?"🔴 High":t.priority==="medium"?"🟡 Medium":"🟢 Low";const rb=t.reminder>0?`<span class="badge">🔔 ${t.reminder}মি</span>`:`<span class="badge">🔔 সময়মতো</span>`;return`<div class="task-card ${c}"><button class="task-check ${ck}" onclick="toggleTask('${t.id}')">${t.completed?"✓":""}</button><div class="task-info" onclick="openTaskDetails('${t.id}','task')"><div class="task-title">${escapeHTML(t.title)}</div><div class="task-meta"><span>⏰ ${formatTime(t.time)}</span><span class="badge">${escapeHTML(t.category)}</span><span class="priority-${t.priority}">${pt}</span>${rb}</div></div><div class="task-actions"><button class="small-btn" onclick="testTaskAlarm('${t.id}')">🔊</button><button class="small-btn" onclick="editItem('${t.id}','task')">✏️</button><button class="small-btn" onclick="deleteItem('${t.id}','task')">🗑️</button></div></div>`}
 
 function habitHTML(h){const today=getDateString();const log=habitLog[today]||{};const entry=log[h.id]||{done:false,value:0};const streak=getHabitStreak(h.id);const weekGrid=getHabitWeekGrid(h.id);let meta=`<span>🔥 ${streak} দিন</span>`;if(h.type==="count")meta+=`<span>${entry.value||0} / ${h.goal} ${h.unit}</span>`;if(h.type==="duration")meta+=`<span>${entry.value||0} / ${h.goal} মিনিট</span>`;return`<div class="task-card habit-card ${entry.done?"completed":""}"><div style="width:29px;height:29px;flex-shrink:0;border-radius:50%;background:${entry.done?"#ec4899":"rgba(236,72,153,.15)"};color:${entry.done?"white":"#ec4899"};display:flex;align-items:center;justify-content:center;font-size:14px">🔥</div><div class="task-info" onclick="openHabitReport('${h.id}')"><div class="task-title">${escapeHTML(h.title)}</div><div class="task-meta">${meta}</div><div class="habit-week-grid">${weekGrid}</div></div>${streak>0?`<div class="habit-streak">🔥 ${streak}</div>`:""}</div>`}
@@ -1325,10 +1385,6 @@ function deleteItem(id,kind){if(!confirm("মুছে ফেলবেন?"))ret
 function closeModal(){document.getElementById("taskModal").classList.add("hidden")}
 function saveDailyNote(){const el=document.getElementById("dailyNote");if(!el)return;notes[getDateString()]=el.value;saveProfileData(activeProfileId);toast("✅ নোট সেভ")}
 
-/* QUOTES */
-const QUOTES=["ছোট ছোট কাজই একদিন বড় পরিবর্তন তৈরি করে।","আজকের কাজ কালকের স্বপ্নকে বাস্তবে পরিণত করে।","সময়কে পরিকল্পনা করতে পারলে জীবন সহজ হয়।","প্রতিদিন একটু একটু করে এগিয়ে যাও।","শুরুটা ছোট হলেও সমস্যা নেই, ধারাবাহিকতাই আসল।","যে কাজটি আজ করতে পারো, কালকের জন্য রেখো না।","নিজের সময়ের দায়িত্ব নিজেকেই নিতে হবে।","না করা কাজের হিসাব রাখাও অগ্রগতির অংশ।","ছোট বিরতিতে মন সতেজ হয়, ফোকাস বাড়ে।"];
-function showRandomQuote(){const el=document.getElementById("dailyQuote");if(el)el.textContent=QUOTES[Math.floor(Math.random()*QUOTES.length)]}
-
 /* ADD ITEM */
 function openAddItem(kind="task"){resetForm();setAddKind(kind);showPage("add")}
 function setAddKind(kind){document.getElementById("itemKind").value=kind;["kindTask","kindHabit","kindReport","kindTarget","kindAvoid"].forEach(id=>document.getElementById(id).classList.remove("active"));const map={task:"kindTask",habit:"kindHabit",report:"kindReport",target:"kindTarget",avoid:"kindAvoid"};if(map[kind])document.getElementById(map[kind]).classList.add("active");document.getElementById("timeFields").classList.toggle("hidden",kind!=="task");document.getElementById("habitFields").classList.toggle("hidden",kind!=="habit");document.getElementById("reportFields").classList.toggle("hidden",kind!=="report");document.getElementById("targetFields").classList.toggle("hidden",kind!=="target");document.getElementById("avoidFields").classList.toggle("hidden",kind!=="avoid");const titles={task:"⏰ কাজ",habit:"🔥 হ্যাবিট",report:"📝 রিপোর্ট",target:"🎯 টার্গেট",avoid:"🚫 নিয়ম"};document.getElementById("addPageTitle").textContent="➕ "+(titles[kind]||"নতুন");renderTemplates()}
@@ -1348,7 +1404,6 @@ function toggleHabitFields(){const t=document.getElementById("habitType").value;
 function resetForm(){const f=document.getElementById("itemForm");if(f)f.reset();["itemTitle","itemDescription","itemNote","itemTime","reportTime","reportTargetMinutes"].forEach(id=>{const el=document.getElementById(id);if(el)el.value=""});const dEl=document.getElementById("itemDate");if(dEl)dEl.value=getDateString();document.getElementById("editItemId").value="";document.getElementById("itemKind").value="task";document.getElementById("itemRepeat").value="none";document.getElementById("itemReminder").value="0";document.getElementById("itemPriority").value="medium";document.getElementById("itemCategory").value="ব্যক্তিগত";document.getElementById("saveBtnText").textContent="💾 সংরক্ষণ";document.getElementById("cancelEditBtn").classList.add("hidden");dateMode="single";selectedDates=[];setDateMode("single");renderSelectedDates();draftSteps=[];renderSteps();document.getElementById("avoidLimitType").value="count";toggleAvoidLimitFields();document.getElementById("reportTimeMode").value="none";toggleReportTimeMode();document.getElementById("habitType").value="boolean";toggleHabitFields();document.getElementById("avoidCountLimit").value=0;document.getElementById("avoidCountPenalty").value=10;document.getElementById("avoidTimeLimit").value=60;document.getElementById("avoidTimePenalty").value=1;document.getElementById("avoidTimeMaxPenalty").value=30;document.getElementById("avoidSlotPenalty").value=10;document.getElementById("reportRepeat").value="daily";document.getElementById("targetPeriod").value="weekly";document.getElementById("targetCount").value=3;document.getElementById("targetUnit").value="টি";document.getElementById("targetMetric").value="count";document.getElementById("habitGoal").value=1;document.getElementById("habitUnit").value="বার";const tS=document.getElementById("targetStart");if(tS)tS.value=getDateString();const p=document.getElementById("multiMonthPicker");if(p){const n=new Date();p.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}`}renderMultiDateGrid();["kindTask","kindHabit","kindReport","kindTarget","kindAvoid"].forEach(id=>document.getElementById(id).classList.remove("active"));document.getElementById("kindTask").classList.add("active")}
 function cancelEdit(){resetForm();showPage("planning")}
 
-/* FORM SUBMIT */
 document.getElementById("itemForm").addEventListener("submit",function(e){e.preventDefault();try{const kind=document.getElementById("itemKind").value;const editId=document.getElementById("editItemId").value;const title=document.getElementById("itemTitle").value.trim();const description=document.getElementById("itemDescription").value.trim();const priority=document.getElementById("itemPriority").value;const category=document.getElementById("itemCategory").value;const note=document.getElementById("itemNote").value.trim();if(!title){toast("⚠️ নাম লিখুন");document.getElementById("itemTitle").focus();return}const base={title,description,priority,category,note};let ok=false;if(kind==="task")ok=handleSaveTask(editId,base);else if(kind==="habit")ok=handleSaveHabit(editId,base);else if(kind==="report")ok=handleSaveReport(editId,base);else if(kind==="target")ok=handleSaveTarget(editId,base);else if(kind==="avoid")ok=handleSaveAvoid(editId,base);if(ok===false)return;saveProfileData(activeProfileId);renderAll();resetForm();showPage("planning")}catch(err){console.error(err);toast("❌ "+(err.message||"সমস্যা"))}});
 
 function handleSaveTask(editId,base){const time=document.getElementById("itemTime").value;if(!time){toast("⚠️ সময় দিন");return false}let dates=[];if(dateMode==="single"){const d=document.getElementById("itemDate").value;if(!d){toast("⚠️ তারিখ দিন");return false}dates=[d]}else{if(!selectedDates.length){toast("⚠️ তারিখ সিলেক্ট");return false}dates=[...selectedDates]}const reminder=parseInt(document.getElementById("itemReminder").value,10)||0;const repeat=document.getElementById("itemRepeat").value||"none";if(editId){const i=tasks.findIndex(t=>t.id===editId);if(i===-1){toast("পাওয়া যায়নি");return false}clearTaskTimer(editId);tasks[i]={...tasks[i],...base,time,reminder,repeat,dates,date:dates[0]};scheduleReminder(tasks[i]);toast("✅ আপডেট")}else{dates.forEach((d,i)=>{const t={id:Date.now().toString()+"_"+i,...base,time,reminder,repeat,dates,date:d,completed:false,createdAt:new Date().toISOString(),kind:"task"};tasks.push(t);scheduleReminder(t)});addXP(5);toast(`✅ ${dates.length}টি যোগ`)}return true}
@@ -1357,7 +1412,6 @@ function handleSaveReport(editId,base){const tm=document.getElementById("reportT
 function handleSaveTarget(editId,base){const period=document.getElementById("targetPeriod").value;const count=parseInt(document.getElementById("targetCount").value,10);const unit=document.getElementById("targetUnit").value.trim()||"টি";const metric=document.getElementById("targetMetric").value;let start=document.getElementById("targetStart").value||getDateString();if(!count||count<=0){toast("⚠️ লক্ষ্য সংখ্যা দিন");return false}if(editId){const i=targetTasks.findIndex(t=>t.id===editId);if(i===-1)return false;targetTasks[i]={...targetTasks[i],...base,period,count,unit,metric,start,kind:"target"};toast("✅ আপডেট")}else{const t={id:Date.now().toString(),...base,period,count,unit,metric,start,kind:"target",createdAt:new Date().toISOString()};targetTasks.push(t);addXP(5);toast("✅ যোগ")}return true}
 function handleSaveAvoid(editId,base){const lt=document.getElementById("avoidLimitType").value;const data={...base,kind:"avoid",limitType:lt,steps:[...draftSteps]};if(lt==="count"){const limit=parseInt(document.getElementById("avoidCountLimit").value,10);const penalty=parseInt(document.getElementById("avoidCountPenalty").value,10);if(isNaN(limit)||limit<0){toast("⚠️ সীমা");return false}if(!penalty||penalty<=0){toast("⚠️ পেনাল্টি");return false}data.limit=limit;data.penalty=penalty}else if(lt==="time"){const tl=parseInt(document.getElementById("avoidTimeLimit").value,10);const tp=parseFloat(document.getElementById("avoidTimePenalty").value);const tmp=parseFloat(document.getElementById("avoidTimeMaxPenalty").value);if(isNaN(tl)||tl<=0){toast("⚠️ সময় সীমা");return false}data.timeLimit=tl;data.timePenalty=tp||1;data.timeMaxPenalty=tmp||30}else if(lt==="timeslot"){const s=document.getElementById("avoidSlotStart").value;const e=document.getElementById("avoidSlotEnd").value;const p=parseInt(document.getElementById("avoidSlotPenalty").value,10);if(!s||!e){toast("⚠️ সময় দিন");return false}data.slotStart=s;data.slotEnd=e;data.penalty=p||10}if(editId){const i=avoidTasks.findIndex(a=>a.id===editId);if(i===-1)return false;avoidTasks[i]={...avoidTasks[i],...data};toast("✅ আপডেট")}else{data.id=Date.now().toString();data.createdAt=new Date().toISOString();avoidTasks.push(data);addXP(5);toast("✅ যোগ")}return true}
 
-/* DETAILS */
 function openTaskDetails(id,kind){if(kind==="task")return openScheduledTaskDetails(id);if(kind==="report")return openReportTaskDetails(id);if(kind==="target")return openTargetProgress(id)}
 function openScheduledTaskDetails(id){const t=tasks.find(x=>x.id===id);if(!t)return;document.getElementById("modalTitle").textContent=t.title;document.getElementById("modalBody").innerHTML=`<p><strong>📅</strong> ${formatDate(t.date)}</p><p><strong>⏰</strong> ${formatTime(t.time)}</p><p><strong>📌</strong> ${escapeHTML(t.category)}</p><p><strong>🔔</strong> ${t.reminder>0?t.reminder+" মিনিট আগে":"সময়মতো"}</p><p><strong>🔁</strong> ${repeatText(t.repeat)}</p><p><strong>✅</strong> ${t.completed?"সম্পন্ন":"বাকি"}</p>${t.description?`<p>${escapeHTML(t.description)}</p>`:""}${t.note?`<p><strong>📒</strong> ${escapeHTML(t.note)}</p>`:""}<div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="testTaskAlarm('${t.id}')">🔊</button><button class="${t.completed?"danger":"success"}" onclick="toggleTask('${t.id}');closeModal();">${t.completed?"↩️":"✅"}</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 function openReportTaskDetails(id){const t=reportTasks.find(x=>x.id===id);if(!t)return;document.getElementById("modalTitle").textContent="📝 "+t.title;document.getElementById("modalBody").innerHTML=`<p><strong>📌</strong> ${escapeHTML(t.category)}</p>${t.targetMinutes?`<p><strong>🎯</strong> ${t.targetMinutes} মিনিট</p>`:""}<p><strong>⏰</strong> ${t.time?formatTime(t.time):"নির্দিষ্ট সময় নেই"}</p><div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="closeModal();openQuickReport()">📝 রিপোর্ট</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
@@ -1371,17 +1425,61 @@ function saveAvoidReport(id){const a=avoidTasks.find(x=>x.id===id);if(!a)return;
 function openAvoidDetails(id,ds){const a=avoidTasks.find(x=>x.id===id);if(!a)return;const e=(avoidLog[ds]||{})[a.id]||{count:0,minutes:0,comments:[]};const steps=(a.steps&&a.steps.length)?`<ol style="padding-left:18px">${a.steps.map(s=>`<li>${escapeHTML(s)}</li>`).join("")}</ol>`:`<p style="color:var(--muted)">ধাপ নেই</p>`;const cmts=(e.comments&&e.comments.length)?e.comments.map(c=>`<div class="reason">💬 ${escapeHTML(c)}</div>`).join(""):`<p style="color:var(--muted);font-size:12px">মন্তব্য নেই</p>`;document.getElementById("modalTitle").textContent="🚫 "+a.title;document.getElementById("modalBody").innerHTML=`<p>🔢 করেছি: ${e.count||0} বার${a.limitType==="time"?" / ⏱️ "+(e.minutes||0)+" মিনিট":""}</p><p>📉 পেনাল্টি: ${e.penalty||0}%</p><h4>📋 স্টেপ</h4>${steps}<h4>💬 মন্তব্য</h4>${cmts}<div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="closeModal();openAvoidReport('${a.id}')">📝 রিপোর্ট</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 function openHabitReport(hid){currentReportDate=getDateString();renderQuickReport();showPage("quickReport")}
 
-/* BACKUP */
-function backupData(){const all={};profiles.forEach(p=>{all[p.id]={tasks:safeParse(localStorage.getItem(profileKey(p.id,"tasks")),[]),habits:safeParse(localStorage.getItem(profileKey(p.id,"habits")),[]),avoidTasks:safeParse(localStorage.getItem(profileKey(p.id,"avoidTasks")),[]),targetTasks:safeParse(localStorage.getItem(profileKey(p.id,"targetTasks")),[]),reportTasks:safeParse(localStorage.getItem(profileKey(p.id,"reportTasks")),[]),avoidLog:safeParse(localStorage.getItem(profileKey(p.id,"avoidLog")),{}),violations:safeParse(localStorage.getItem(profileKey(p.id,"violations")),{}),reportData:safeParse(localStorage.getItem(profileKey(p.id,"reportData")),{}),targetProgress:safeParse(localStorage.getItem(profileKey(p.id,"targetProgress")),{}),habitLog:safeParse(localStorage.getItem(profileKey(p.id,"habitLog")),{}),notes:safeParse(localStorage.getItem(profileKey(p.id,"notes")),{}),badges:safeParse(localStorage.getItem(profileKey(p.id,"badges")),{}),game:safeParse(localStorage.getItem(profileKey(p.id,"game")),{})}});const backup={app:"দৈনিক রুটিন",version:"7.0.0",date:new Date().toISOString(),profiles,activeProfileId,settings,pomoConfig,reminderConfig,pinConfig,profileData:all};const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="daily-routine-backup-"+getDateString()+".json";a.click();URL.revokeObjectURL(url);toast("📥 Backup তৈরি")}
-function restoreData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(!data.profiles||!data.profileData){toast("সঠিক ফাইল নয়");return}if(!confirm("রিস্টোর করবেন?"))return;profiles=data.profiles;activeProfileId=data.activeProfileId||profiles[0].id;settings={...settings,...(data.settings||{})};pomoConfig={...pomoConfig,...(data.pomoConfig||{})};reminderConfig={...reminderConfig,...(data.reminderConfig||{})};pinConfig={...pinConfig,...(data.pinConfig||{})};Object.entries(data.profileData).forEach(([pid,d])=>{["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","game"].forEach(k=>{localStorage.setItem(profileKey(pid,k),JSON.stringify(d[k]||(k==="game"?{xp:0,coins:0,level:1,challenges:{}}:{})))})});saveProfiles();localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));savePinConfig();loadProfileData(activeProfileId);applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();clearAllTimers();scheduleAllReminders();if(currentUser&&cloudSyncEnabled)pushToCloud(true);toast("📤 Restore সম্পন্ন")}catch(err){console.error(err);toast("রিস্টোর ব্যর্থ")}};reader.readAsText(file)}
-async function deleteAllData(){if(!confirm("সব মুছে যাবে। নিশ্চিত?"))return;profiles.forEach(p=>{["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","game"].forEach(k=>localStorage.removeItem(profileKey(p.id,k)))});[PROFILE_KEY,ACTIVE_PROFILE_KEY,SETTINGS_KEY,POMO_CONFIG_KEY,REMINDER_CFG_KEY,PIN_KEY].forEach(k=>localStorage.removeItem(k));try{await idbDelete(CUSTOM_MUSIC_KEY)}catch{}if(customMusicBlobUrl){URL.revokeObjectURL(customMusicBlobUrl);customMusicBlobUrl=null}profiles=[DEFAULT_PROFILE];activeProfileId="self";settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true};pomoConfig={focus:25,short:5,long:15,volume:80};reminderConfig={volume:80,useCustomMusic:false,customMusicName:""};pinConfig={enabled:false,pin:""};saveProfiles();loadProfileData(activeProfileId);clearAllTimers();releaseWakeLock();applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();toast("🗑️ সব মুছে")}
+/* BACKUP SYSTEM */
+function backupData(){
+    try{
+        const all={};
+        profiles.forEach(p=>{
+            all[p.id]={
+                tasks:safeParse(localStorage.getItem(profileKey(p.id,"tasks")),[]),
+                habits:safeParse(localStorage.getItem(profileKey(p.id,"habits")),[]),
+                avoidTasks:safeParse(localStorage.getItem(profileKey(p.id,"avoidTasks")),[]),
+                targetTasks:safeParse(localStorage.getItem(profileKey(p.id,"targetTasks")),[]),
+                reportTasks:safeParse(localStorage.getItem(profileKey(p.id,"reportTasks")),[]),
+                avoidLog:safeParse(localStorage.getItem(profileKey(p.id,"avoidLog")),{}),
+                violations:safeParse(localStorage.getItem(profileKey(p.id,"violations")),{}),
+                reportData:safeParse(localStorage.getItem(profileKey(p.id,"reportData")),{}),
+                targetProgress:safeParse(localStorage.getItem(profileKey(p.id,"targetProgress")),{}),
+                habitLog:safeParse(localStorage.getItem(profileKey(p.id,"habitLog")),{}),
+                notes:safeParse(localStorage.getItem(profileKey(p.id,"notes")),{}),
+                badges:safeParse(localStorage.getItem(profileKey(p.id,"badges")),{}),
+                notebook:safeParse(localStorage.getItem(profileKey(p.id,"notebook")),[]),
+                game:safeParse(localStorage.getItem(profileKey(p.id,"game")),{})
+            };
+        });
+        const backup={
+            app:"দৈনিক রুটিন",
+            version:"8.0.0",
+            backupDate:new Date().toISOString(),
+            profiles,activeProfileId,settings,pomoConfig,reminderConfig,pinConfig,
+            customQuotes,customQuoteIndex:currentQuoteIndex,
+            profileData:all
+        };
+        const json=JSON.stringify(backup,null,2);
+        const blob=new Blob([json],{type:"application/json"});
+        const url=URL.createObjectURL(blob);
+        const a=document.createElement("a");
+        const filename="daily-routine-backup-"+getDateString()+"-"+Date.now()+".json";
+        a.href=url;
+        a.download=filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+        toast("📥 Backup ডাউনলোড হয়েছে");
+    }catch(e){console.error(e);toast("❌ Backup তৈরি করা যায়নি")}
+}
+function restoreData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(!data.profiles||!data.profileData){toast("❌ সঠিক Backup ফাইল নয়");return}if(!confirm("সব ডেটা এই Backup দিয়ে প্রতিস্থাপিত হবে। চালিয়ে যাবেন?"))return;profiles=data.profiles;activeProfileId=data.activeProfileId||profiles[0].id;settings={...settings,...(data.settings||{})};pomoConfig={...pomoConfig,...(data.pomoConfig||{})};reminderConfig={...reminderConfig,...(data.reminderConfig||{})};pinConfig={...pinConfig,...(data.pinConfig||{})};customQuotes=data.customQuotes||[];currentQuoteIndex=data.customQuoteIndex||0;Object.entries(data.profileData).forEach(([pid,d])=>{["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","notebook"].forEach(k=>{localStorage.setItem(profileKey(pid,k),JSON.stringify(d[k]||[]))});localStorage.setItem(profileKey(pid,"game"),JSON.stringify(d.game||{xp:0,coins:0,level:1,challenges:{}}))});saveProfiles();localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));savePinConfig();saveQuotesData();loadProfileData(activeProfileId);applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();clearAllTimers();scheduleAllReminders();toast("📤 Restore সম্পন্ন")}catch(err){console.error(err);toast("❌ রিস্টোর ব্যর্থ")}};reader.readAsText(file);event.target.value=""}
+function showBackupInfo(){document.getElementById("modalTitle").textContent="ℹ️ Backup সম্পর্কে";document.getElementById("modalBody").innerHTML=`<div style="font-size:13px;line-height:1.8"><p>📥 <strong>Backup ডাউনলোড:</strong> আপনার সব ডেটা একটি <code>.json</code> ফাইলে সেভ হবে। এই ফাইল ফোনের Downloads ফোল্ডারে সেভ হবে।</p><p>💾 <strong>ফাইল স্টোরিং:</strong> এই JSON ফাইলটি Google Drive, WhatsApp, বা অন্য যেকোনো জায়গায় শেয়ার করে রেখে দিতে পারেন।</p><p>📤 <strong>Restore:</strong> ভবিষ্যতে নতুন ফোনে বা অন্য ডিভাইসে এই ফাইল সিলেক্ট করলে সব ডেটা ফিরে আসবে।</p><p>⚠️ <strong>পরামর্শ:</strong> প্রতি সপ্তাহে Backup নিন এবং নিরাপদ জায়গায় রাখুন।</p></div><div class="modal-actions"><button class="primary" onclick="closeModal()">বুঝেছি</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
+async function deleteAllData(){if(!confirm("সব ডেটা মুছে যাবে। আপনি কি নিশ্চিত?"))return;if(!confirm("এটি অপরিবর্তনীয়! আবার নিশ্চিত করুন।"))return;profiles.forEach(p=>{["tasks","habits","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","habitLog","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(p.id,k)))});[PROFILE_KEY,ACTIVE_PROFILE_KEY,SETTINGS_KEY,POMO_CONFIG_KEY,REMINDER_CFG_KEY,PIN_KEY,QUOTES_KEY,QUOTE_INDEX_KEY].forEach(k=>localStorage.removeItem(k));try{await idbDelete(CUSTOM_MUSIC_KEY)}catch{}if(customMusicBlobUrl){URL.revokeObjectURL(customMusicBlobUrl);customMusicBlobUrl=null}profiles=[DEFAULT_PROFILE];activeProfileId="self";settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true,quotePopup:true};pomoConfig={focus:25,short:5,long:15,volume:80};reminderConfig={volume:80,useCustomMusic:false,customMusicName:""};pinConfig={enabled:false,pin:""};customQuotes=[];currentQuoteIndex=0;saveProfiles();loadProfileData(activeProfileId);clearAllTimers();releaseWakeLock();applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();toast("🗑️ সব মুছে")}
 
-function renderAll(){renderDashboard();renderPlanning();renderReports();renderCalendar();updatePomodoroUI();renderProfilesPage();renderUserCard();if(document.getElementById("habitsPage").classList.contains("active"))renderHabitsPage();if(document.getElementById("analyticsPage").classList.contains("active"))renderAnalyticsPage();if(document.getElementById("familyPage").classList.contains("active"))renderFamilyPage();if(document.getElementById("rewardsPage").classList.contains("active"))renderRewardsPage()}
+function renderAll(){renderDashboard();renderPlanning();renderReports();renderCalendar();updatePomodoroUI();renderProfilesPage();if(document.getElementById("habitsPage").classList.contains("active"))renderHabitsPage();if(document.getElementById("analyticsPage").classList.contains("active"))renderAnalyticsPage();if(document.getElementById("familyPage").classList.contains("active"))renderFamilyPage();if(document.getElementById("rewardsPage").classList.contains("active"))renderRewardsPage();if(document.getElementById("notebookPage").classList.contains("active"))renderNotebook()}
 
 /* INIT */
 document.addEventListener("DOMContentLoaded",async function(){
     loadProfiles();
     loadProfileData(activeProfileId);
+    loadQuotesData();
     try{settings={...settings,...safeParse(localStorage.getItem(SETTINGS_KEY),{})};pomoConfig={...pomoConfig,...safeParse(localStorage.getItem(POMO_CONFIG_KEY),{})};reminderConfig={...reminderConfig,...safeParse(localStorage.getItem(REMINDER_CFG_KEY),{})}}catch(e){console.error(e)}
     loadPinConfig();
     applySettings();
@@ -1397,6 +1495,7 @@ document.addEventListener("DOMContentLoaded",async function(){
     renderTemplates();
     renderColorPicker();
     renderProfilesPage();
+    renderNotebook();
     await loadSavedCustomMusic();
     if(settings.wakeLock)requestWakeLock();
     scheduleAllReminders();
@@ -1409,18 +1508,14 @@ document.addEventListener("DOMContentLoaded",async function(){
     window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();window._deferredPrompt=e;document.getElementById("installBanner").classList.remove("hidden")});
     if("serviceWorker" in navigator)registerServiceWorker();
 
-    /* Firebase init */
+    /* Show quote popup on open (after PIN if enabled) */
     setTimeout(()=>{
-        initFirebase();
-        setTimeout(()=>{
-            if(!currentUser&&!sessionStorage.getItem("skipLogin")&&!pinConfig.enabled){
-                document.getElementById("loginOverlay").classList.remove("hidden");
-            } else if(pinConfig.enabled && pinConfig.pin){
-                requestPIN();
-            }
-        },2500);
-        if(fbAuth)fbAuth.getRedirectResult().catch(()=>{});
-    },500);
+        if(pinConfig.enabled && pinConfig.pin){
+            requestPIN();
+        } else {
+            setTimeout(showQuotePopup,800);
+        }
+    },600);
 });
 
 function registerServiceWorker(){const swCode=`
@@ -1434,10 +1529,12 @@ function installPWA(){if(window._deferredPrompt){window._deferredPrompt.prompt()
 
 function updateHeader(){const now=new Date();const hd=document.getElementById("headerDate");if(hd)hd.textContent=now.toLocaleDateString("bn-BD",{weekday:"long",day:"numeric",month:"long"});const fd=document.getElementById("todayFullDate");if(fd)fd.textContent=now.toLocaleDateString("bn-BD",{weekday:"long",year:"numeric",month:"long",day:"numeric"});const h=now.getHours();let g="শুভ সকাল 🌅";if(h>=12&&h<17)g="শুভ দুপুর ☀️";else if(h>=17&&h<21)g="শুভ সন্ধ্যা 🌆";else if(h>=21||h<5)g="শুভ রাত্রি 🌙";const p=getActiveProfile();const wt=document.getElementById("welcomeText");if(wt)wt.textContent=g+(p.name?", "+p.name:"")}
 
-function showPage(pageName){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));const page=document.getElementById(pageName+"Page");if(page)page.classList.add("active");document.querySelectorAll(".nav-item").forEach(item=>item.classList.remove("active"));const nav=document.querySelector(`[data-page="${pageName}"]`);if(nav)nav.classList.add("active");if(pageName==="home")renderDashboard();if(pageName==="planning"){renderCalendar();renderPlanning()}if(pageName==="report")renderReports();if(pageName==="settings"){loadSettingsUI();updatePinUI()}if(pageName==="focus")updatePomodoroUI();if(pageName==="profiles")renderProfilesPage();if(pageName==="family")renderFamilyPage();if(pageName==="habits")renderHabitsPage();if(pageName==="analytics")renderAnalyticsPage();if(pageName==="rewards")renderRewardsPage();if(pageName==="quickReport")renderQuickReport();window.scrollTo({top:0,behavior:"smooth"})}
+function showPage(pageName){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));const page=document.getElementById(pageName+"Page");if(page)page.classList.add("active");document.querySelectorAll(".nav-item").forEach(item=>item.classList.remove("active"));const nav=document.querySelector(`[data-page="${pageName}"]`);if(nav)nav.classList.add("active");if(pageName==="home")renderDashboard();if(pageName==="planning"){renderCalendar();renderPlanning()}if(pageName==="report")renderReports();if(pageName==="settings"){loadSettingsUI();updatePinUI();renderCustomQuotes()}if(pageName==="focus")updatePomodoroUI();if(pageName==="profiles")renderProfilesPage();if(pageName==="family")renderFamilyPage();if(pageName==="habits")renderHabitsPage();if(pageName==="analytics")renderAnalyticsPage();if(pageName==="rewards")renderRewardsPage();if(pageName==="notebook")renderNotebook();if(pageName==="quickReport")renderQuickReport();window.scrollTo({top:0,behavior:"smooth"})}
+
+function showRandomQuote(){const el=document.getElementById("dailyQuote");if(!el)return;const all=getAllQuotes();el.textContent=all[Math.floor(Math.random()*all.length)]}
 
 setInterval(updateHeader,30000);
-console.log("✅ Daily Routine v7.0 loaded");
+console.log("✅ Daily Routine v8.0 loaded (offline)");
 </script>
 
 </body>
