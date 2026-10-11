@@ -181,6 +181,56 @@ button{cursor:pointer}
 .mini-progress div.danger{background:linear-gradient(90deg,var(--danger),#ef4444)}
 .mini-progress div.success{background:linear-gradient(90deg,var(--success),#22c55e)}
 
+/* ===== CHECKLIST STYLES ===== */
+.checklist-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;margin-bottom:14px}
+.checklist-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.checklist-header h3{margin:0;font-size:16px;font-weight:bold}
+.checklist-counter{font-size:14px;font-weight:bold;color:var(--muted)}
+.checklist-progress{width:100%;height:10px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.checklist-progress-fill{height:100%;background:linear-gradient(90deg,var(--success),#22c55e);border-radius:10px;transition:width .4s ease}
+.checklist-item{display:flex;align-items:flex-start;gap:12px;padding:12px 4px;border-bottom:1px solid var(--border);cursor:pointer;transition:.15s}
+.checklist-item:last-child{border-bottom:none}
+.checklist-item:active{background:rgba(79,70,229,.04)}
+.checklist-item.done .checklist-text{text-decoration:line-through;color:var(--muted);opacity:.7}
+.checklist-check{width:24px;height:24px;flex-shrink:0;border-radius:50%;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;transition:.2s}
+.checklist-item.done .checklist-check{background:var(--success);border-color:var(--success);animation:checkPop .3s}
+@keyframes checkPop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+.checklist-text{flex:1;font-size:14px;line-height:1.5;padding-top:2px;word-break:break-word}
+.checklist-priority{font-size:11px;padding:2px 6px;border-radius:6px;margin-left:4px}
+.checklist-priority.high{background:rgba(220,38,38,.12);color:var(--danger)}
+.checklist-priority.medium{background:rgba(217,119,6,.12);color:var(--warning)}
+.checklist-priority.low{background:rgba(22,163,74,.12);color:var(--success)}
+.checklist-subs{margin-left:36px;margin-top:6px;padding-left:12px;border-left:2px solid var(--border)}
+.checklist-sub-item{display:flex;align-items:flex-start;gap:10px;padding:8px 4px;cursor:pointer}
+.checklist-sub-item.done .checklist-text{text-decoration:line-through;color:var(--muted);opacity:.7}
+.checklist-sub-check{width:18px;height:18px;flex-shrink:0;border-radius:50%;border:2px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px}
+.checklist-sub-item.done .checklist-sub-check{background:var(--success);border-color:var(--success)}
+.checklist-sub-item .checklist-text{font-size:12px}
+.checklist-copy-btn{width:100%;padding:12px;margin-top:14px;border-radius:12px;border:2px solid var(--accent);background:transparent;color:var(--accent);font-weight:bold;font-size:13px;transition:.2s}
+.checklist-copy-btn:active{background:var(--accent);color:#fff}
+.checklist-empty{padding:20px;text-align:center;color:var(--muted);font-size:13px}
+
+/* Checklist builder in form */
+.checklist-builder{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:8px}
+.checklist-builder-item{display:flex;gap:8px;align-items:flex-start;padding:8px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin-bottom:8px}
+.checklist-builder-item .num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.checklist-builder-item .body{flex:1;min-width:0}
+.checklist-builder-item .body .text{font-size:13px;font-weight:bold;word-break:break-word}
+.checklist-builder-item .body .meta{font-size:11px;color:var(--muted);margin-top:4px}
+.checklist-builder-item .body .subs{margin-top:6px;padding-left:12px;border-left:2px solid var(--border)}
+.checklist-builder-item .body .subs .sub{font-size:11px;color:var(--muted);padding:2px 0}
+.checklist-builder-item .actions{display:flex;flex-direction:column;gap:2px}
+.checklist-builder-item .actions button{border:none;background:transparent;color:var(--danger);font-size:14px;padding:2px}
+.checklist-add-row{display:flex;gap:6px;margin-top:8px}
+.checklist-add-row input{flex:1;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font-size:13px;outline:none}
+.checklist-add-row select{padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);font-size:12px;outline:none}
+.checklist-add-row button{padding:0 14px;border:none;background:var(--accent);color:#fff;border-radius:10px;font-size:15px;font-weight:bold}
+.checklist-sub-add{display:flex;gap:6px;margin-top:6px;margin-left:30px}
+.checklist-sub-add input{flex:1;padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--text);font-size:12px;outline:none}
+.checklist-sub-add button{padding:0 10px;border:none;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:bold}
+
+/* ===== END CHECKLIST ===== */
+
 .detail-summary{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;margin-bottom:14px}
 .detail-summary h2{margin:0 0 6px;font-size:18px}
 .detail-summary p{margin:4px 0;font-size:13px;color:var(--muted)}
@@ -739,11 +789,12 @@ button{cursor:pointer}
             </select>
         </div>
         <div id="targetFields" class="hidden">
-            <div class="bg-banner info" style="margin-bottom:0">🎯 সাপ্তাহিক, মাসিক বা নির্দিষ্ট তারিখ</div>
+            <div class="bg-banner info" style="margin-bottom:0">🎯 Target + Checklist</div>
 
             <label>টার্গেটের ধরন *</label>
             <select id="targetPeriod" onchange="toggleTargetPeriodFields()">
-                <option value="weekly">📅 সাপ্তাহিক</option>
+                <option value="daily">☀️ দৈনিক</option>
+                <option value="weekly" selected>📅 সাপ্তাহিক</option>
                 <option value="monthly">📆 মাসিক</option>
                 <option value="custom">🗓️ নির্দিষ্ট তারিখ</option>
             </select>
@@ -778,7 +829,26 @@ button{cursor:pointer}
                 </div>
             </div>
 
-            <label>লক্ষ্য সংখ্যা *</label>
+            <div class="setting-row" style="margin-top:14px;padding-top:14px">
+                <div><strong>📋 চেকলিস্ট ব্যবহার করুন</strong><p>Step-by-Step আইটেম যোগ করুন</p></div>
+                <label class="switch"><input id="useChecklistToggle" type="checkbox" onchange="toggleChecklistBuilder()"><span class="slider"></span></label>
+            </div>
+
+            <div id="checklistBuilderWrap" class="hidden">
+                <label>চেকলিস্ট আইটেমগুলো</label>
+                <div class="checklist-builder" id="checklistBuilder"></div>
+                <div class="checklist-add-row">
+                    <input id="checklistItemInput" type="text" placeholder="নতুন আইটেম...">
+                    <select id="checklistItemPriority">
+                        <option value="low">🟢</option>
+                        <option value="medium" selected>🟡</option>
+                        <option value="high">🔴</option>
+                    </select>
+                    <button type="button" onclick="addChecklistItem()">+</button>
+                </div>
+            </div>
+
+            <label>লক্ষ্য সংখ্যা (চেকলিস্ট না থাকলে) *</label>
             <input id="targetCount" type="number" min="1" value="3">
             <label>একক</label><input id="targetUnit" type="text" value="টি">
             <label>মাপকাঠি</label>
@@ -975,7 +1045,7 @@ button{cursor:pointer}
         <button class="danger-btn" onclick="deleteAllData()">🗑️ সব ডেটা মুছুন</button>
     </section>
 
-    <section class="about-card"><h3>দৈনিক রুটিন</h3><p>Personal Routine App</p><small>Version 8.2.0 — Offline</small></section>
+    <section class="about-card"><h3>দৈনিক রুটিন</h3><p>Personal Routine App</p><small>Version 8.3.0 — Checklist</small></section>
 </main>
 
 <nav class="bottom-nav">
@@ -1022,7 +1092,7 @@ const CUSTOM_MUSIC_KEY="customMusic";
 
 let profiles=[],activeProfileId=null;
 let tasks=[],avoidTasks=[],targetTasks=[],reportTasks=[];
-let avoidLog={},violations={},reportData={},targetProgress={};
+let avoidLog={},violations={},reportData={},targetProgress={},targetChecklistState={};
 let badgesEarned={},notes={},gameState={xp:0,coins:0,level:1,challenges:{}};
 let notebook=[],currentNoteId=null,currentNoteColor="#4f46e5";
 let customQuotes=[],currentQuoteIndex=0;
@@ -1034,6 +1104,7 @@ let currentDateFilter="today",calendarDate=new Date(),activeTab="tasks";
 let dateMode="single",selectedDates=[],draftSteps=[];
 let targetCustomMode="range";
 let targetSelectedDates=[];
+let draftChecklist=[]; // for form
 let toastTimer=null,currentDayDetail=null,currentReportDate=null;
 let scheduledTimers={},alarmIntervalId=null,activeAlarmTaskId=null;
 let customMusicBlobUrl=null,customMusicAudioEl=null,wakeLockSentinel=null;
@@ -1085,11 +1156,12 @@ function loadProfileData(pid){
         violations=safeParse(localStorage.getItem(profileKey(pid,"violations")),{});
         reportData=safeParse(localStorage.getItem(profileKey(pid,"reportData")),{});
         targetProgress=safeParse(localStorage.getItem(profileKey(pid,"targetProgress")),{});
+        targetChecklistState=safeParse(localStorage.getItem(profileKey(pid,"targetChecklistState")),{});
         notes=safeParse(localStorage.getItem(profileKey(pid,"notes")),{});
         badgesEarned=safeParse(localStorage.getItem(profileKey(pid,"badges")),{});
         notebook=safeParse(localStorage.getItem(profileKey(pid,"notebook")),[]);
         gameState={...{xp:0,coins:0,level:1,challenges:{}},...safeParse(localStorage.getItem(profileKey(pid,"game")),{})};
-    }catch(e){console.error(e);tasks=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}}}
+    }catch(e){console.error(e);tasks=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};targetChecklistState={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}}}
 }
 function saveProfileData(pid){
     localStorage.setItem(profileKey(pid,"tasks"),JSON.stringify(tasks));
@@ -1100,6 +1172,7 @@ function saveProfileData(pid){
     localStorage.setItem(profileKey(pid,"violations"),JSON.stringify(violations));
     localStorage.setItem(profileKey(pid,"reportData"),JSON.stringify(reportData));
     localStorage.setItem(profileKey(pid,"targetProgress"),JSON.stringify(targetProgress));
+    localStorage.setItem(profileKey(pid,"targetChecklistState"),JSON.stringify(targetChecklistState));
     localStorage.setItem(profileKey(pid,"notes"),JSON.stringify(notes));
     localStorage.setItem(profileKey(pid,"badges"),JSON.stringify(badgesEarned));
     localStorage.setItem(profileKey(pid,"notebook"),JSON.stringify(notebook));
@@ -1117,6 +1190,7 @@ function formatDateTime(iso){const d=new Date(iso);return d.toLocaleString("bn-B
 function getWeekKey(d=new Date()){const day=d.getDay();const start=addDays(d,-day);return getDateString(start)}
 function getMonthKey(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`}
 function toast(msg){const el=document.getElementById("toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2500)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).substring(2,7)}
 
 function loadProfiles(){
     try{const raw=localStorage.getItem(PROFILE_KEY);profiles=raw?JSON.parse(raw):[];if(!Array.isArray(profiles)||!profiles.length)profiles=[DEFAULT_PROFILE]}catch{profiles=[DEFAULT_PROFILE]}
@@ -1129,10 +1203,10 @@ function switchProfile(pid){if(!profiles.find(p=>p.id===pid))return;activeProfil
 function applyProfileToUI(){const p=getActiveProfile();const a=document.getElementById("profileAvatar");if(a)a.textContent=p.avatar||"?";const n=document.getElementById("profileName");if(n)n.textContent=p.name;const u=document.getElementById("userName");if(u)u.value=p.name}
 function openProfileSwitcher(){let h=`<p style="font-size:13px;color:var(--muted);margin:0 0 12px">প্রোফাইল (${profiles.length}/৪)</p>`;h+=profiles.map(p=>`<div class="profile-row ${p.id===activeProfileId?"active":""}" onclick="switchProfile('${p.id}')"><div class="avatar-lg">${escapeHTML(p.avatar)}</div><div class="info"><strong>${escapeHTML(p.name)}</strong><small>${p.type==="self"?"👤 আপনি":"👶 সন্তান"}</small></div>${p.id===activeProfileId?`<span style="color:var(--success);font-size:18px">✓</span>`:""}</div>`).join("");h+=`<button class="secondary-btn" onclick="closeModal();showPage('profiles')" style="margin-top:14px">⚙️ ম্যানেজ</button>`;document.getElementById("modalTitle").textContent="👥 প্রোফাইল";document.getElementById("modalBody").innerHTML=h;document.getElementById("taskModal").classList.remove("hidden")}
 function showAddProfileModal(){if(profiles.length>=4){toast("সর্বোচ্চ ৪ জন");return}document.getElementById("modalTitle").textContent="➕ নতুন প্রোফাইল";document.getElementById("modalBody").innerHTML=`<label style="display:block;margin:8px 0 7px;font-size:13px;font-weight:bold">নাম *</label><input id="newProfileName" type="text" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">ধরন</label><select id="newProfileType" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><option value="child">👶 সন্তান</option><option value="self">👤 নিজে</option></select><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">বয়স</label><input id="newProfileAge" type="number" min="3" max="99" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">Avatar</label><input id="newProfileAvatar" type="text" maxlength="2" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><div class="modal-actions"><button class="secondary" onclick="closeModal()">বাতিল</button><button class="primary" onclick="createProfile()">➕ তৈরি</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
-function createProfile(){const name=document.getElementById("newProfileName").value.trim();if(!name){toast("নাম দিন");return}const type=document.getElementById("newProfileType").value;const age=parseInt(document.getElementById("newProfileAge").value,10)||null;const avatar=document.getElementById("newProfileAvatar").value.trim()||name[0]||"?";const id="p"+Date.now();profiles.push({id,name,avatar,type,age});saveProfiles();const old=activeProfileId;activeProfileId=id;tasks=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}};saveProfileData(id);activeProfileId=old;saveProfiles();closeModal();renderProfilesPage();toast("✅ তৈরি হয়েছে")}
+function createProfile(){const name=document.getElementById("newProfileName").value.trim();if(!name){toast("নাম দিন");return}const type=document.getElementById("newProfileType").value;const age=parseInt(document.getElementById("newProfileAge").value,10)||null;const avatar=document.getElementById("newProfileAvatar").value.trim()||name[0]||"?";const id="p"+Date.now();profiles.push({id,name,avatar,type,age});saveProfiles();const old=activeProfileId;activeProfileId=id;tasks=[];avoidTasks=[];targetTasks=[];reportTasks=[];avoidLog={};violations={};reportData={};targetProgress={};targetChecklistState={};notes={};badgesEarned={};notebook=[];gameState={xp:0,coins:0,level:1,challenges:{}};saveProfileData(id);activeProfileId=old;saveProfiles();closeModal();renderProfilesPage();toast("✅ তৈরি হয়েছে")}
 function editProfile(pid){const p=profiles.find(x=>x.id===pid);if(!p)return;document.getElementById("modalTitle").textContent="✏️ "+p.name;document.getElementById("modalBody").innerHTML=`<label style="display:block;margin:8px 0 7px;font-size:13px;font-weight:bold">নাম</label><input id="epName" type="text" value="${escapeHTML(p.name)}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">বয়স</label><input id="epAge" type="number" value="${p.age||""}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">Avatar</label><input id="epAvatar" type="text" maxlength="2" value="${escapeHTML(p.avatar)}" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:14px;outline:none"><div class="modal-actions">${p.id!=="self"&&profiles.length>1?`<button class="danger" onclick="deleteProfile('${p.id}')">🗑️</button>`:""}<button class="secondary" onclick="closeModal()">বাতিল</button><button class="primary" onclick="saveProfileEdit('${p.id}')">💾</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 function saveProfileEdit(pid){const p=profiles.find(x=>x.id===pid);if(!p)return;p.name=document.getElementById("epName").value.trim()||p.name;p.age=parseInt(document.getElementById("epAge").value,10)||null;p.avatar=document.getElementById("epAvatar").value.trim()||p.avatar;saveProfiles();applyProfileToUI();renderProfilesPage();closeModal();toast("✅ আপডেট")}
-function deleteProfile(pid){if(profiles.length<=1){toast("শেষ প্রোফাইল");return}if(!confirm("মুছে ফেলবেন?"))return;["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(pid,k)));profiles=profiles.filter(p=>p.id!==pid);if(activeProfileId===pid)activeProfileId=profiles[0].id;saveProfiles();loadProfileData(activeProfileId);applyProfileToUI();renderAll();renderProfilesPage();closeModal();toast("🗑️ মুছে")}
+function deleteProfile(pid){if(profiles.length<=1){toast("শেষ প্রোফাইল");return}if(!confirm("মুছে ফেলবেন?"))return;["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","targetChecklistState","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(pid,k)));profiles=profiles.filter(p=>p.id!==pid);if(activeProfileId===pid)activeProfileId=profiles[0].id;saveProfiles();loadProfileData(activeProfileId);applyProfileToUI();renderAll();renderProfilesPage();closeModal();toast("🗑️ মুছে")}
 function renderProfilesPage(){const c=document.getElementById("profileList");if(!c)return;c.innerHTML=profiles.map(p=>`<div class="profile-row ${p.id===activeProfileId?"active":""}"><div class="avatar-lg">${escapeHTML(p.avatar)}</div><div class="info"><strong>${escapeHTML(p.name)}</strong><small>${p.type==="self"?"👤 আপনি":"👶 সন্তান"}${p.age?" · "+p.age+" বছর":""}</small></div><div class="actions">${p.id!==activeProfileId?`<button class="small-btn" onclick="switchProfile('${p.id}');renderProfilesPage();">🔄</button>`:`<span style="color:var(--success);font-size:20px;padding:6px">✓</span>`}<button class="small-btn" onclick="editProfile('${p.id}')">✏️</button></div></div>`).join("");const b=document.getElementById("addProfileBtn");if(b)b.style.display=profiles.length>=4?"none":"block"}
 
 function loadPinConfig(){try{pinConfig={...{enabled:false,pin:""},...safeParse(localStorage.getItem(PIN_KEY),{})}}catch{pinConfig={enabled:false,pin:""}}}
@@ -1178,9 +1252,9 @@ function closeLevelup(){document.getElementById("levelupModal").classList.add("h
 function updateGameUI(){const xpEl=document.getElementById("xpCount");if(!xpEl)return;xpEl.textContent=gameState.xp;document.getElementById("coinCount").textContent=gameState.coins;document.getElementById("levelCount").textContent=gameState.level;document.getElementById("currentLevel").textContent=gameState.level;const needed=gameState.level*100;const pct=Math.round((gameState.xp/needed)*100);document.getElementById("xpProgress").textContent=`${gameState.xp} / ${needed} XP`;document.getElementById("levelProgress").style.width=pct+"%";updateChallengeUI()}
 function updateChallengeUI(){const today=getDateString();if(!gameState.challenges[today])gameState.challenges[today]={id:"daily-"+today,type:"tasks",goal:5,progress:0,claimed:false};const c=gameState.challenges[today];const done=calculateScore(today).done;c.progress=Math.min(done,c.goal);document.getElementById("challengeText").textContent=c.claimed?"✅ সম্পন্ন":"🎮 ডেইলি চ্যালেঞ্জ";document.getElementById("challengeDesc").textContent=`${c.progress} / ${c.goal} কাজ সম্পন্ন`;document.getElementById("challengeReward").textContent=c.claimed?"✓":"+৫০ XP"}
 
-const DEFAULT_TEMPLATES={task:[{name:"📚 পড়াশোনা",title:"১ ঘণ্টা পড়া",category:"পড়াশোনা",time:"20:00"},{name:"💪 ব্যায়াম",title:"৩০ মিনিট ব্যায়াম",category:"স্বাস্থ্য",time:"06:30"},{name:"💧 পানি",title:"৮ গ্লাস পানি",category:"স্বাস্থ্য",time:"08:00"}],report:[{name:"🇬🇧 ইংরেজি",title:"৩০ মিনিট ইংরেজি",category:"পড়াশোনা",targetMinutes:30},{name:"📖 বই",title:"২০ মিনিট বই",category:"পড়াশোনা",targetMinutes:20}],target:[{name:"✍️ গল্প",title:"সপ্তাহে ৩টি গল্প",period:"weekly",count:3,unit:"টি",metric:"count"},{name:"📚 বই",title:"মাসে ২টি বই",period:"monthly",count:2,unit:"টি",metric:"count"}],avoid:[{name:"📱 সোশ্যাল",title:"সোশ্যাল মিডিয়া",limitType:"time",timeLimit:60,timePenalty:1,timeMaxPenalty:30},{name:"🍔 ফাস্ট ফুড",title:"ফাস্ট ফুড",limitType:"count",limit:0,penalty:15}]};
+const DEFAULT_TEMPLATES={task:[{name:"📚 পড়াশোনা",title:"১ ঘণ্টা পড়া",category:"পড়াশোনা",time:"20:00"},{name:"💪 ব্যায়াম",title:"৩০ মিনিট ব্যায়াম",category:"স্বাস্থ্য",time:"06:30"},{name:"💧 পানি",title:"৮ গ্লাস পানি",category:"স্বাস্থ্য",time:"08:00"}],report:[{name:"🇬🇧 ইংরেজি",title:"৩০ মিনিট ইংরেজি",category:"পড়াশোনা",targetMinutes:30},{name:"📖 বই",title:"২০ মিনিট বই",category:"পড়াশোনা",targetMinutes:20}],target:[{name:"✍️ গল্প",title:"সপ্তাহে ৩টি গল্প",period:"weekly",count:3,unit:"টি",metric:"count"},{name:"📚 বই",title:"মাসে ২টি বই",period:"monthly",count:2,unit:"টি",metric:"count"},{name:"🇬🇧 ইংরেজি",title:"ইংরেজি প্র্যাকটিস",period:"weekly",count:5,unit:"টি",metric:"count",checklist:[{id:"c1",text:"এই সপ্তাহের ভিডিওগুলো দেখেছি",priority:"medium",subs:[]},{id:"c2",text:"অন্তত ৫টি বাক্য মুখে বলেছি",priority:"high",subs:[]},{id:"c3",text:"প্রতিদিন ইংরেজি বলার অনুশীলন করেছি",priority:"high",subs:[]},{id:"c4",text:"নিজের কণ্ঠ রেকর্ড করেছি",priority:"low",subs:[]},{id:"c5",text:"সপ্তাহের শেষে পরীক্ষাটি দিয়েছি",priority:"high",subs:[]}]}],avoid:[{name:"📱 সোশ্যাল",title:"সোশ্যাল মিডিয়া",limitType:"time",timeLimit:60,timePenalty:1,timeMaxPenalty:30},{name:"🍔 ফাস্ট ফুড",title:"ফাস্ট ফুড",limitType:"count",limit:0,penalty:15}]};
 function renderTemplates(){const c=document.getElementById("templateRow");if(!c)return;const kind=document.getElementById("itemKind").value||"task";const tpl=DEFAULT_TEMPLATES[kind]||[];c.innerHTML=tpl.map((t,i)=>`<button type="button" class="template-chip" onclick="applyTemplate('${kind}',${i})">${t.name}</button>`).join("")}
-function applyTemplate(kind,i){const t=(DEFAULT_TEMPLATES[kind]||[])[i];if(!t)return;document.getElementById("itemTitle").value=t.title||"";document.getElementById("itemCategory").value=t.category||"ব্যক্তিগত";if(kind==="task")document.getElementById("itemTime").value=t.time||"09:00";if(kind==="report")document.getElementById("reportTargetMinutes").value=t.targetMinutes||"";if(kind==="target"){document.getElementById("targetPeriod").value=t.period||"weekly";toggleTargetPeriodFields();document.getElementById("targetCount").value=t.count||3;document.getElementById("targetUnit").value=t.unit||"টি";document.getElementById("targetMetric").value=t.metric||"count"}if(kind==="avoid"){document.getElementById("avoidLimitType").value=t.limitType||"count";toggleAvoidLimitFields();if(t.limitType==="count"){document.getElementById("avoidCountLimit").value=t.limit||0;document.getElementById("avoidCountPenalty").value=t.penalty||10}else if(t.limitType==="time"){document.getElementById("avoidTimeLimit").value=t.timeLimit||60;document.getElementById("avoidTimePenalty").value=t.timePenalty||1;document.getElementById("avoidTimeMaxPenalty").value=t.timeMaxPenalty||30}}toast(`⚡ "${t.name}" লোড`)}
+function applyTemplate(kind,i){const t=(DEFAULT_TEMPLATES[kind]||[])[i];if(!t)return;document.getElementById("itemTitle").value=t.title||"";document.getElementById("itemCategory").value=t.category||"ব্যক্তিগত";if(kind==="task")document.getElementById("itemTime").value=t.time||"09:00";if(kind==="report")document.getElementById("reportTargetMinutes").value=t.targetMinutes||"";if(kind==="target"){document.getElementById("targetPeriod").value=t.period||"weekly";toggleTargetPeriodFields();document.getElementById("targetCount").value=t.count||3;document.getElementById("targetUnit").value=t.unit||"টি";document.getElementById("targetMetric").value=t.metric||"count";if(t.checklist&&t.checklist.length){document.getElementById("useChecklistToggle").checked=true;draftChecklist=t.checklist.map(c=>({...c,id:c.id||uid(),subs:c.subs||[]}));renderChecklistBuilder();document.getElementById("checklistBuilderWrap").classList.remove("hidden")}else{document.getElementById("useChecklistToggle").checked=false;draftChecklist=[];renderChecklistBuilder();document.getElementById("checklistBuilderWrap").classList.add("hidden")}}if(kind==="avoid"){document.getElementById("avoidLimitType").value=t.limitType||"count";toggleAvoidLimitFields();if(t.limitType==="count"){document.getElementById("avoidCountLimit").value=t.limit||0;document.getElementById("avoidCountPenalty").value=t.penalty||10}else if(t.limitType==="time"){document.getElementById("avoidTimeLimit").value=t.timeLimit||60;document.getElementById("avoidTimePenalty").value=t.timePenalty||1;document.getElementById("avoidTimeMaxPenalty").value=t.timeMaxPenalty||30}}toast(`⚡ "${t.name}" লোড`)}
 
 const COLORS=["#4f46e5","#7c3aed","#dc2626","#16a34a","#d97706","#0891b2","#db2777","#0f766e"];
 function renderColorPicker(){const c=document.getElementById("colorRow");if(!c)return;c.innerHTML=COLORS.map(col=>`<div class="color-dot" data-color="${col}" style="background:${col}" onclick="setAccentColor('${col}')"></div>`).join("");updateColorPickerActive()}
@@ -1241,6 +1315,46 @@ function completeAlarmTask(){const id=activeAlarmTaskId;stopAlarm();if(!id)retur
 
 function getTasksForDate(ds){return tasks.filter(t=>t.date===ds)}
 function getTodayTasks(){return getTasksForDate(getDateString()).sort((a,b)=>a.time.localeCompare(b.time))}
+
+function getTargetPeriodKey(t){
+    if(t.period==="daily")return "daily_"+getDateString();
+    if(t.period==="weekly")return getWeekKey();
+    if(t.period==="monthly")return getMonthKey();
+    if(t.period==="custom")return "custom_"+t.id;
+    return"all";
+}
+
+function getChecklistProgress(t){
+    // Returns {done, total, percent} based on checklist state
+    if(!t.checklist||!t.checklist.length)return null;
+    const key=getTargetPeriodKey(t);
+    const state=(targetChecklistState[key]||{})[t.id]||{};
+    let total=0,done=0;
+    t.checklist.forEach(item=>{
+        total++;
+        const itemState=state[item.id]||{};
+        if(itemState.done)done++;
+        if(item.subs&&item.subs.length){
+            item.subs.forEach(s=>{
+                total++;
+                if(itemState.subs&&itemState.subs[s.id])done++;
+            });
+        }
+    });
+    const percent=total?Math.round((done/total)*100):0;
+    return {done,total,percent,key,state};
+}
+
+function getTargetProgress(t){
+    const key=getTargetPeriodKey(t);
+    if(t.checklist&&t.checklist.length){
+        const cp=getChecklistProgress(t);
+        return {value:cp?cp.done:0,key,checklist:cp};
+    }
+    const store=targetProgress[key]||{};
+    return {value:store[t.id]||0,key};
+}
+
 function calculateScore(ds){
     const dayTasks=tasks.filter(t=>t.date===ds);
     const doneS=dayTasks.filter(t=>t.completed).length;
@@ -1253,13 +1367,6 @@ function calculateScore(ds){
     const final=Math.max(0,Math.round(base-penalty));
     return{baseScore:base,penalty,finalScore:final,total,done};
 }
-function getTargetPeriodKey(t){
-    if(t.period==="weekly")return getWeekKey();
-    if(t.period==="monthly")return getMonthKey();
-    if(t.period==="custom")return "custom_"+t.id;
-    return"all";
-}
-function getTargetProgress(t){const key=getTargetPeriodKey(t);const store=targetProgress[key]||{};return{value:store[t.id]||0,key}}
 function calculateStreak(){let streak=0,date=new Date();while(true){const ds=getDateString(date);const d=calculateScore(ds);if(d.total===0||d.done!==d.total)break;streak++;date=addDays(date,-1)}return streak}
 
 const BADGES=[{id:"first",icon:"⭐",name:"প্রথম",check:()=>tasks.some(t=>t.completed)||Object.keys(reportData).length>0},{id:"streak3",icon:"🔥",name:"৩ দিন",check:()=>calculateStreak()>=3},{id:"streak7",icon:"🏆",name:"৭ দিন",check:()=>calculateStreak()>=7},{id:"perfect",icon:"💯",name:"পারফেক্ট",check:()=>{const t=getDateString();const d=calculateScore(t);return d.total>0&&d.done===d.total}},{id:"score90",icon:"🎯",name:"৯০%",check:()=>calculateScore(getDateString()).finalScore>=90},{id:"fifty",icon:"📚",name:"৫০টি",check:()=>tasks.filter(t=>t.completed).length>=50},{id:"level5",icon:"👑",name:"লেভেল ৫",check:()=>gameState.level>=5},{id:"notebook",icon:"📓",name:"নোটবুক",check:()=>notebook.length>=5}];
@@ -1278,15 +1385,24 @@ function reportTaskHTML(t){const today=getDateString();const d=(reportData[today
 
 function targetHTML(t){
     const p=getTargetProgress(t);
-    const pct=Math.min(100,Math.round((p.value/t.count)*100));
+    let pct=0,progressText="";
+    if(t.checklist&&t.checklist.length&&p.checklist){
+        pct=p.checklist.percent;
+        progressText=`${p.checklist.done} / ${p.checklist.total}`;
+    } else {
+        pct=Math.min(100,Math.round((p.value/t.count)*100));
+        progressText=`${p.value} / ${t.count} ${escapeHTML(t.unit)}`;
+    }
     let periodText="";
-    if(t.period==="weekly")periodText="📅 সাপ্তাহিক";
+    if(t.period==="daily")periodText="☀️ দৈনিক";
+    else if(t.period==="weekly")periodText="📅 সাপ্তাহিক";
     else if(t.period==="monthly")periodText="📆 মাসিক";
     else if(t.period==="custom"){
         if(t.customMode==="range")periodText=`📆 ${formatShortDate(t.rangeStart)} → ${formatShortDate(t.rangeEnd)}`;
         else periodText=`🗓️ ${(t.dates||[]).length}টি তারিখ`;
     }
-    return`<div class="task-card target-card"><div style="width:29px;height:29px;flex-shrink:0;border-radius:50%;background:rgba(217,119,6,.15);color:var(--warning);display:flex;align-items:center;justify-content:center;font-size:14px">🎯</div><div class="task-info" onclick="openTargetProgress('${t.id}')"><div class="task-title">${escapeHTML(t.title)}</div><div class="task-meta"><span>${periodText}</span><span>${p.value} / ${t.count} ${escapeHTML(t.unit)}</span></div><div class="mini-progress"><div style="width:${pct}%" class="${pct>=100?"success":""}"></div></div></div></div>`;
+    const hasChecklist=t.checklist&&t.checklist.length?"📋 ":"";
+    return`<div class="task-card target-card"><div style="width:29px;height:29px;flex-shrink:0;border-radius:50%;background:rgba(217,119,6,.15);color:var(--warning);display:flex;align-items:center;justify-content:center;font-size:14px">🎯</div><div class="task-info" onclick="openTargetProgress('${t.id}')"><div class="task-title">${hasChecklist}${escapeHTML(t.title)}</div><div class="task-meta"><span>${periodText}</span><span>${progressText}</span></div><div class="mini-progress"><div style="width:${pct}%" class="${pct>=100?"success":""}"></div></div></div></div>`;
 }
 
 function avoidHTML(a,ds){const log=avoidLog[ds]||{};const e=log[a.id]||{count:0,minutes:0};const count=e.count||0,minutes=e.minutes||0;let st="",sc="",mp=0;if(a.limitType==="count"){st=`${count} / ${a.limit} বার`;mp=a.limit>0?Math.min(100,(count/a.limit)*100):(count>0?100:0);sc=count>a.limit?"danger":(count===a.limit?"warning":"success")}else if(a.limitType==="time"){st=`${minutes} / ${a.timeLimit} মিনিট`;mp=a.timeLimit>0?Math.min(100,(minutes/a.timeLimit)*100):0;sc=minutes>a.timeLimit?"danger":(minutes===a.timeLimit?"warning":"success")}else if(a.limitType==="timeslot"){st=`স্লট: ${formatTime(a.slotStart)} - ${formatTime(a.slotEnd)}`;sc="info"}const violated=(a.limitType==="count"&&count>a.limit)||(a.limitType==="time"&&minutes>a.timeLimit);return`<div class="task-card avoid-card"><div style="width:29px;height:29px;flex-shrink:0;border-radius:50%;background:${violated?"var(--danger)":"rgba(220,38,38,.15)"};color:${violated?"white":"var(--danger)"};display:flex;align-items:center;justify-content:center;font-size:14px">🚫</div><div class="task-info" onclick="openAvoidDetails('${a.id}','${ds}')"><div class="task-title">${escapeHTML(a.title)}</div><div class="task-meta"><span>${st}</span><span class="badge badge-danger">${escapeHTML(a.category)}</span></div>${a.limitType!=="timeslot"?`<div class="mini-progress"><div style="width:${mp}%" class="${sc}"></div></div>`:""}</div><div class="task-actions" style="flex-direction:column;gap:4px"><button class="small-btn" onclick="openAvoidReport('${a.id}')">📝</button><button class="small-btn" onclick="editItem('${a.id}','avoid')">✏️</button><button class="small-btn" onclick="deleteItem('${a.id}','avoid')">🗑️</button></div></div>`}
@@ -1312,7 +1428,7 @@ function redeemReward(id,cost){if(gameState.coins<cost){toast("পর্যা�
 
 function renderFamilyPage(){const c=document.getElementById("familyList");if(!c)return;const today=getDateString();c.innerHTML=profiles.map(p=>{const tTasks=safeParse(localStorage.getItem(profileKey(p.id,"tasks")),[]);const tReports=safeParse(localStorage.getItem(profileKey(p.id,"reportTasks")),[]);const tReportData=safeParse(localStorage.getItem(profileKey(p.id,"reportData")),{});const tViol=safeParse(localStorage.getItem(profileKey(p.id,"violations")),{});const dayTasks=tTasks.filter(t=>t.date===today);const doneS=dayTasks.filter(t=>t.completed).length;const dayRep=tReportData[today]||{};const doneR=tReports.filter(t=>dayRep[t.id]&&dayRep[t.id].done).length;const total=dayTasks.length+tReports.length;const done=doneS+doneR;const base=total?Math.round((done/total)*100):0;const pen=tViol[today]||0;const score=Math.max(0,base-pen);return`<div class="member-summary"><div class="head"><div class="avatar">${escapeHTML(p.avatar)}</div><strong>${escapeHTML(p.name)}</strong><span>${score}%</span></div><div style="display:flex;gap:10px;font-size:11px;color:var(--muted)"><span>✅ ${done}/${total}</span><span>📉 −${pen}%</span></div><div class="progress-bar"><div class="progress-fill" style="width:${score}%"></div></div></div>`}).join("")}
 
-function renderReports(){const today=getDateString();const d=calculateScore(today);const avoidV=avoidTasks.reduce((s,a)=>s+((avoidLog[today]||{})[a.id]?.count||0),0);document.getElementById("reportTotal").textContent=d.total;document.getElementById("reportCompleted").textContent=d.done;document.getElementById("reportPending").textContent=d.total-d.done;document.getElementById("reportViolations").textContent=avoidV;document.getElementById("reportRate").textContent=d.baseScore+"%";document.getElementById("reportScore").textContent=d.finalScore+"%";let wh="";for(let i=6;i>=0;i--){const date=addDays(new Date(),-i);const ds=getDateString(date);const dd=calculateScore(ds);const dn=date.toLocaleDateString("bn-BD",{weekday:"short"});wh+=`<div class="week-row" onclick="openDayDetail('${ds}')" style="cursor:pointer"><div class="week-day">${dn}</div><div class="week-progress"><div style="width:${dd.finalScore}%"></div></div><div class="week-percent">${dd.finalScore}%</div></div>`}document.getElementById("weeklyReport").innerHTML=wh;const totals={};Object.values(avoidLog).forEach(dl=>Object.entries(dl).forEach(([id,e])=>{totals[id]=(totals[id]||0)+(e.count||0)+(e.minutes||0)}));const max=Math.max(1,...Object.values(totals));const ac=document.getElementById("avoidAnalytics");if(!avoidTasks.length)ac.innerHTML=`<div class="empty-state"><div>🚫</div><p>নিয়ম নেই</p></div>`;else ac.innerHTML=avoidTasks.map(a=>{const cnt=totals[a.id]||0;const p=Math.round((cnt/max)*100);return`<div class="analytics-row"><div class="name">🚫 ${escapeHTML(a.title)}</div><div class="bar-wrap"><div class="bar-fill" style="width:${p}%"></div></div><div class="count">${cnt} মোট</div></div>`}).join("");const hist=[];Object.entries(avoidLog).forEach(([ds,dl])=>Object.entries(dl).forEach(([aid,e])=>{const a=avoidTasks.find(x=>x.id===aid);if(e.penalty>0)hist.push({ds,title:a?a.title:"(মুছে)",penalty:e.penalty,comments:e.comments||[],at:e.at})}));hist.sort((x,y)=>new Date(y.at||0)-new Date(x.at||0));const hc=document.getElementById("violationHistory");if(!hist.length)hc.innerHTML=`<div class="empty-state"><div>📜</div><p>লঙ্ঘন নেই</p></div>`;else hc.innerHTML=hist.slice(0,20).map(h=>`<div class="violation-item"><div class="head"><span>🚫 ${escapeHTML(h.title)}</span><span class="time">−${h.penalty}%</span></div><div class="time">📅 ${formatDate(h.ds)}</div>${h.comments.length?h.comments.map(c=>`<div class="reason">💬 ${escapeHTML(c)}</div>`).join(""):""}</div>`).join("");const tc=document.getElementById("targetProgressList");if(!targetTasks.length)tc.innerHTML=`<div class="empty-state"><div>🎯</div><p>টার্গেট নেই</p></div>`;else tc.innerHTML=targetTasks.map(t=>{const p=getTargetProgress(t);const pct=Math.min(100,Math.round((p.value/t.count)*100));let periodText="";if(t.period==="weekly")periodText="📅 সাপ্তাহিক";else if(t.period==="monthly")periodText="📆 মাসিক";else if(t.period==="custom"){if(t.customMode==="range")periodText=`📆 ${formatShortDate(t.rangeStart)} → ${formatShortDate(t.rangeEnd)}`;else periodText=`🗓️ ${(t.dates||[]).length}টি তারিখ`;}return`<div class="analytics-row" onclick="openTargetProgress('${t.id}')" style="cursor:pointer"><div class="name">🎯 ${escapeHTML(t.title)}</div><div style="font-size:11px;color:var(--muted);margin-bottom:6px">${periodText}</div><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:linear-gradient(90deg,var(--success),#22c55e)"></div></div><div class="count">${p.value}/${t.count} ${escapeHTML(t.unit)}</div></div>`}).join("");const noteEl=document.getElementById("dailyNote");if(noteEl)noteEl.value=notes[today]||""}
+function renderReports(){const today=getDateString();const d=calculateScore(today);const avoidV=avoidTasks.reduce((s,a)=>s+((avoidLog[today]||{})[a.id]?.count||0),0);document.getElementById("reportTotal").textContent=d.total;document.getElementById("reportCompleted").textContent=d.done;document.getElementById("reportPending").textContent=d.total-d.done;document.getElementById("reportViolations").textContent=avoidV;document.getElementById("reportRate").textContent=d.baseScore+"%";document.getElementById("reportScore").textContent=d.finalScore+"%";let wh="";for(let i=6;i>=0;i--){const date=addDays(new Date(),-i);const ds=getDateString(date);const dd=calculateScore(ds);const dn=date.toLocaleDateString("bn-BD",{weekday:"short"});wh+=`<div class="week-row" onclick="openDayDetail('${ds}')" style="cursor:pointer"><div class="week-day">${dn}</div><div class="week-progress"><div style="width:${dd.finalScore}%"></div></div><div class="week-percent">${dd.finalScore}%</div></div>`}document.getElementById("weeklyReport").innerHTML=wh;const totals={};Object.values(avoidLog).forEach(dl=>Object.entries(dl).forEach(([id,e])=>{totals[id]=(totals[id]||0)+(e.count||0)+(e.minutes||0)}));const max=Math.max(1,...Object.values(totals));const ac=document.getElementById("avoidAnalytics");if(!avoidTasks.length)ac.innerHTML=`<div class="empty-state"><div>🚫</div><p>নিয়ম নেই</p></div>`;else ac.innerHTML=avoidTasks.map(a=>{const cnt=totals[a.id]||0;const p=Math.round((cnt/max)*100);return`<div class="analytics-row"><div class="name">🚫 ${escapeHTML(a.title)}</div><div class="bar-wrap"><div class="bar-fill" style="width:${p}%"></div></div><div class="count">${cnt} মোট</div></div>`}).join("");const hist=[];Object.entries(avoidLog).forEach(([ds,dl])=>Object.entries(dl).forEach(([aid,e])=>{const a=avoidTasks.find(x=>x.id===aid);if(e.penalty>0)hist.push({ds,title:a?a.title:"(মুছে)",penalty:e.penalty,comments:e.comments||[],at:e.at})}));hist.sort((x,y)=>new Date(y.at||0)-new Date(x.at||0));const hc=document.getElementById("violationHistory");if(!hist.length)hc.innerHTML=`<div class="empty-state"><div>📜</div><p>লঙ্ঘন নেই</p></div>`;else hc.innerHTML=hist.slice(0,20).map(h=>`<div class="violation-item"><div class="head"><span>🚫 ${escapeHTML(h.title)}</span><span class="time">−${h.penalty}%</span></div><div class="time">📅 ${formatDate(h.ds)}</div>${h.comments.length?h.comments.map(c=>`<div class="reason">💬 ${escapeHTML(c)}</div>`).join(""):""}</div>`).join("");const tc=document.getElementById("targetProgressList");if(!targetTasks.length)tc.innerHTML=`<div class="empty-state"><div>🎯</div><p>টার্গেট নেই</p></div>`;else tc.innerHTML=targetTasks.map(t=>{const p=getTargetProgress(t);let pct=0;let progText="";if(t.checklist&&t.checklist.length&&p.checklist){pct=p.checklist.percent;progText=`${p.checklist.done}/${p.checklist.total} আইটেম`}else{pct=Math.min(100,Math.round((p.value/t.count)*100));progText=`${p.value}/${t.count} ${escapeHTML(t.unit)}`}let periodText="";if(t.period==="daily")periodText="☀️ দৈনিক";else if(t.period==="weekly")periodText="📅 সাপ্তাহিক";else if(t.period==="monthly")periodText="📆 মাসিক";else if(t.period==="custom"){if(t.customMode==="range")periodText=`📆 ${formatShortDate(t.rangeStart)} → ${formatShortDate(t.rangeEnd)}`;else periodText=`🗓️ ${(t.dates||[]).length}টি তারিখ`;}return`<div class="analytics-row" onclick="openTargetProgress('${t.id}')" style="cursor:pointer"><div class="name">🎯 ${escapeHTML(t.title)}</div><div style="font-size:11px;color:var(--muted);margin-bottom:6px">${periodText}</div><div class="bar-wrap"><div class="bar-fill" style="width:${pct}%;background:linear-gradient(90deg,var(--success),#22c55e)"></div></div><div class="count">${progText}</div></div>`}).join("");const noteEl=document.getElementById("dailyNote");if(noteEl)noteEl.value=notes[today]||""}
 
 function openQuickReport(){currentReportDate=getDateString();renderQuickReport();showPage("quickReport")}
 function changeReportDate(d){if(!currentReportDate)currentReportDate=getDateString();const dt=new Date(currentReportDate+"T00:00:00");dt.setDate(dt.getDate()+d);currentReportDate=getDateString(dt);renderQuickReport()}
@@ -1348,7 +1464,7 @@ function removeStep(i){draftSteps.splice(i,1);renderSteps()}
 function toggleAvoidLimitFields(){const t=document.getElementById("avoidLimitType").value;document.getElementById("avoidCountFields").classList.toggle("hidden",t!=="count");document.getElementById("avoidTimeFields").classList.toggle("hidden",t!=="time");document.getElementById("avoidTimeslotFields").classList.toggle("hidden",t!=="timeslot")}
 function toggleReportTimeMode(){const m=document.getElementById("reportTimeMode").value;document.getElementById("reportTimeFields").classList.toggle("hidden",m!=="fixed")}
 
-/* TARGET CUSTOM */
+/* ===== TARGET CUSTOM + CHECKLIST BUILDER ===== */
 function toggleTargetPeriodFields(){
     const period=document.getElementById("targetPeriod").value;
     document.getElementById("targetCustomFields").classList.toggle("hidden",period!=="custom");
@@ -1406,6 +1522,71 @@ function removeTargetDate(d){targetSelectedDates=targetSelectedDates.filter(x=>x
 function selectAllTargetDates(){const p=document.getElementById("targetMonthPicker");if(!p||!p.value)return;const[y,m]=p.value.split("-").map(Number);const dim=new Date(y,m,0).getDate();targetSelectedDates=[];for(let day=1;day<=dim;day++)targetSelectedDates.push(getDateString(new Date(y,m-1,day)));renderTargetDateGrid();renderTargetSelectedDates();}
 function clearTargetDates(){targetSelectedDates=[];renderTargetDateGrid();renderTargetSelectedDates();}
 
+/* Checklist Builder */
+function toggleChecklistBuilder(){
+    const on=document.getElementById("useChecklistToggle").checked;
+    document.getElementById("checklistBuilderWrap").classList.toggle("hidden",!on);
+}
+function addChecklistItem(){
+    const input=document.getElementById("checklistItemInput");
+    const text=input.value.trim();
+    if(!text){toast("আইটেম লিখুন");return}
+    const priority=document.getElementById("checklistItemPriority").value;
+    draftChecklist.push({id:uid(),text,priority,subs:[]});
+    input.value="";
+    renderChecklistBuilder();
+}
+function removeChecklistItem(idx){draftChecklist.splice(idx,1);renderChecklistBuilder()}
+function moveChecklistItem(idx,dir){
+    const newIdx=idx+dir;
+    if(newIdx<0||newIdx>=draftChecklist.length)return;
+    const tmp=draftChecklist[idx];
+    draftChecklist[idx]=draftChecklist[newIdx];
+    draftChecklist[newIdx]=tmp;
+    renderChecklistBuilder();
+}
+function addChecklistSubItem(idx){
+    const input=document.getElementById("sub-input-"+idx);
+    if(!input)return;
+    const text=input.value.trim();
+    if(!text){toast("সাব-আইটেম লিখুন");return}
+    if(!draftChecklist[idx].subs)draftChecklist[idx].subs=[];
+    draftChecklist[idx].subs.push({id:uid(),text});
+    input.value="";
+    renderChecklistBuilder();
+}
+function removeChecklistSubItem(idx,sIdx){draftChecklist[idx].subs.splice(sIdx,1);renderChecklistBuilder()}
+function toggleSubAddForm(idx){
+    const el=document.getElementById("sub-add-"+idx);
+    if(!el)return;
+    el.classList.toggle("hidden");
+}
+function renderChecklistBuilder(){
+    const c=document.getElementById("checklistBuilder");if(!c)return;
+    if(!draftChecklist.length){c.innerHTML=`<div style="font-size:12px;color:var(--muted);text-align:center;padding:10px">এখনো কোনো আইটেম নেই। নিচে লিখে + ক্লিক করুন।</div>`;return}
+    const priIcon={high:"🔴",medium:"🟡",low:"🟢"};
+    c.innerHTML=draftChecklist.map((item,i)=>`
+        <div class="checklist-builder-item">
+            <div class="num">${i+1}</div>
+            <div class="body">
+                <div class="text">${escapeHTML(item.text)}</div>
+                <div class="meta">${priIcon[item.priority]||"🟡"} ${item.priority}${item.subs&&item.subs.length?` · ${item.subs.length}টি সাব-আইটেম`:""}</div>
+                ${item.subs&&item.subs.length?`<div class="subs">${item.subs.map((s,si)=>`<div class="sub">• ${escapeHTML(s.text)} <button type="button" onclick="removeChecklistSubItem(${i},${si})" style="border:none;background:transparent;color:var(--danger);font-size:12px;padding:0 4px">×</button></div>`).join("")}</div>`:""}
+                <button type="button" onclick="toggleSubAddForm(${i})" style="margin-top:6px;padding:4px 10px;border:1px dashed var(--border);background:transparent;color:var(--muted);border-radius:6px;font-size:11px">+ সাব-আইটেম</button>
+                <div id="sub-add-${i}" class="checklist-sub-add hidden">
+                    <input id="sub-input-${i}" type="text" placeholder="সাব-আইটেম লিখুন...">
+                    <button type="button" onclick="addChecklistSubItem(${i})">+</button>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="button" onclick="moveChecklistItem(${i},-1)" title="উপরে" style="color:var(--accent)">▲</button>
+                <button type="button" onclick="moveChecklistItem(${i},1)" title="নিচে" style="color:var(--accent)">▼</button>
+                <button type="button" onclick="removeChecklistItem(${i})" title="মুছুন">🗑️</button>
+            </div>
+        </div>
+    `).join("");
+}
+
 function resetForm(){
     const f=document.getElementById("itemForm");if(f)f.reset();
     ["itemTitle","itemDescription","itemNote","itemTime","reportTime","reportTargetMinutes"].forEach(id=>{const el=document.getElementById(id);if(el)el.value=""});
@@ -1442,6 +1623,11 @@ function resetForm(){
     const tmP=document.getElementById("targetMonthPicker");
     if(tmP){const n=new Date();tmP.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}`}
     renderTargetDateGrid();renderTargetSelectedDates();
+    document.getElementById("useChecklistToggle").checked=false;
+    document.getElementById("checklistBuilderWrap").classList.add("hidden");
+    draftChecklist=[];
+    renderChecklistBuilder();
+    document.getElementById("checklistItemInput").value="";
     const p=document.getElementById("multiMonthPicker");
     if(p){const n=new Date();p.value=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,"0")}`}
     renderMultiDateGrid();
@@ -1457,11 +1643,16 @@ function handleSaveReport(editId,base){const tm=document.getElementById("reportT
 
 function handleSaveTarget(editId,base){
     const period=document.getElementById("targetPeriod").value;
-    const count=parseInt(document.getElementById("targetCount").value,10);
+    const count=parseInt(document.getElementById("targetCount").value,10)||1;
     const unit=document.getElementById("targetUnit").value.trim()||"টি";
     const metric=document.getElementById("targetMetric").value;
-    if(!count||count<=0){toast("⚠️ লক্ষ্য সংখ্যা দিন");return false;}
+    const useChecklist=document.getElementById("useChecklistToggle").checked;
+    if(useChecklist && !draftChecklist.length){
+        toast("⚠️ অন্তত একটি চেকলিস্ট আইটেম যোগ করুন");
+        return false;
+    }
     const data={...base,period,count,unit,metric,kind:"target"};
+    data.checklist=useChecklist?draftChecklist.map(c=>({id:c.id||uid(),text:c.text,priority:c.priority||"medium",subs:(c.subs||[]).map(s=>({id:s.id||uid(),text:s.text}))})):[];
     if(period==="custom"){
         if(targetCustomMode==="range"){
             const s=document.getElementById("targetRangeStart").value;
@@ -1504,29 +1695,149 @@ function openScheduledTaskDetails(id){const t=tasks.find(x=>x.id===id);if(!t)ret
 function openReportTaskDetails(id){const t=reportTasks.find(x=>x.id===id);if(!t)return;document.getElementById("modalTitle").textContent="📝 "+t.title;document.getElementById("modalBody").innerHTML=`<p><strong>📌</strong> ${escapeHTML(t.category)}</p>${t.targetMinutes?`<p><strong>🎯</strong> ${t.targetMinutes} মিনিট</p>`:""}<p><strong>⏰</strong> ${t.time?formatTime(t.time):"নির্দিষ্ট সময় নেই"}</p><div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="closeModal();openQuickReport()">📝 রিপোর্ট</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 function repeatText(r){const m={none:"একবার",daily:"প্রতিদিন",weekly:"সপ্তাহে",weekdays:"সোম–শুক্র",monthly:"মাসে"};return m[r]||"একবার"}
 
+/* TARGET PROGRESS — with Checklist UI */
 function openTargetProgress(id){
     const t=targetTasks.find(x=>x.id===id);if(!t)return;
     const p=getTargetProgress(t);
-    const pct=Math.min(100,Math.round((p.value/t.count)*100));
     let periodInfo="";
-    if(t.period==="weekly")periodInfo="📅 সাপ্তাহিক";
+    if(t.period==="daily")periodInfo="☀️ দৈনিক";
+    else if(t.period==="weekly")periodInfo="📅 সাপ্তাহিক";
     else if(t.period==="monthly")periodInfo="📆 মাসিক";
     else if(t.period==="custom"){
         if(t.customMode==="range")periodInfo=`📆 ${formatDate(t.rangeStart)} → ${formatDate(t.rangeEnd)}`;
         else periodInfo=`🗓️ ${(t.dates||[]).length}টি নির্বাচিত তারিখ`;
     }
-    let datesListHTML="";
-    if(t.period==="custom"&&t.customMode==="dates"&&t.dates&&t.dates.length){
-        datesListHTML=`<div style="margin-top:10px;padding:10px;background:var(--bg);border-radius:10px;font-size:11px;line-height:1.7"><strong style="display:block;margin-bottom:6px">📅 তারিখগুলো:</strong>${t.dates.slice(0,30).map(d=>formatShortDate(d)).join(", ")}${t.dates.length>30?" ...":""}</div>`;
+
+    // If checklist exists, show checklist UI
+    if(t.checklist&&t.checklist.length){
+        const cp=getChecklistProgress(t);
+        const key=cp?cp.key:"";
+        const state=cp?cp.state:{};
+        document.getElementById("modalTitle").textContent="🎯 "+t.title;
+        let html=`<div style="font-size:12px;color:var(--muted);margin-bottom:14px">${periodInfo}</div>`;
+        html+=`<div class="checklist-card" style="padding:14px;background:var(--bg);margin-bottom:0">`;
+        html+=`<div class="checklist-header"><h3>📋 চেকলিস্ট</h3><div class="checklist-counter">${cp.done}/${cp.total}</div></div>`;
+        html+=`<div class="checklist-progress"><div class="checklist-progress-fill" style="width:${cp.percent}%"></div></div>`;
+        t.checklist.forEach(item=>{
+            const itemState=state[item.id]||{};
+            const isDone=itemState.done===true;
+            const priText={high:"🔴 জরুরি",medium:"🟡 মাঝারি",low:"🟢 কম"}[item.priority||"medium"];
+            html+=`<div class="checklist-item ${isDone?"done":""}" onclick="toggleChecklistItem('${t.id}','${item.id}',null)">`;
+            html+=`<div class="checklist-check">${isDone?"✓":""}</div>`;
+            html+=`<div class="checklist-text">${escapeHTML(item.text)}<span class="checklist-priority ${item.priority||"medium"}">${priText}</span></div>`;
+            html+=`</div>`;
+            if(item.subs&&item.subs.length){
+                html+=`<div class="checklist-subs">`;
+                item.subs.forEach(sub=>{
+                    const subDone=itemState.subs&&itemState.subs[sub.id]===true;
+                    html+=`<div class="checklist-sub-item ${subDone?"done":""}" onclick="event.stopPropagation();toggleChecklistItem('${t.id}','${item.id}','${sub.id}')">`;
+                    html+=`<div class="checklist-sub-check">${subDone?"✓":""}</div>`;
+                    html+=`<div class="checklist-text">${escapeHTML(sub.text)}</div>`;
+                    html+=`</div>`;
+                });
+                html+=`</div>`;
+            }
+        });
+        html+=`<button class="checklist-copy-btn" onclick="copyChecklist('${t.id}')">📋 চেকলিস্ট কপি করো</button>`;
+        html+=`</div>`;
+        html+=`<div class="modal-actions" style="margin-top:16px"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="resetChecklistConfirm('${t.id}')">🔄 রিসেট</button></div>`;
+        document.getElementById("modalBody").innerHTML=html;
+        document.getElementById("taskModal").classList.remove("hidden");
+        return;
     }
+
+    // Non-checklist: show value-based progress
+    const pct=Math.min(100,Math.round((p.value/t.count)*100));
     document.getElementById("modalTitle").textContent="🎯 "+t.title;
-    document.getElementById("modalBody").innerHTML=`<p><strong>ধরন:</strong> ${periodInfo}</p><p><strong>লক্ষ্য:</strong> ${t.count} ${escapeHTML(t.unit)}</p><p><strong>বর্তমান:</strong> ${p.value} ${escapeHTML(t.unit)}</p><div class="mini-progress" style="height:10px;margin:12px 0"><div style="width:${pct}%" class="${pct>=100?"success":""}"></div></div><p style="text-align:center;font-size:20px;font-weight:bold">${pct}%</p>${datesListHTML}<label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">আপডেট</label><div class="number-input"><button type="button" onclick="adjustTarget(-1)">−</button><input id="targetInputVal" type="number" value="${p.value}" min="0" style="flex:1;text-align:center;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text)"><button type="button" onclick="adjustTarget(1)">+</button><span class="unit">${escapeHTML(t.unit)}</span></div><textarea id="targetComment" class="comment-input" placeholder="মন্তব্য..."></textarea><div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="saveTargetUpdate('${t.id}','${p.key}')">💾</button></div>`;
+    document.getElementById("modalBody").innerHTML=`<p><strong>ধরন:</strong> ${periodInfo}</p><p><strong>লক্ষ্য:</strong> ${t.count} ${escapeHTML(t.unit)}</p><p><strong>বর্তমান:</strong> ${p.value} ${escapeHTML(t.unit)}</p><div class="mini-progress" style="height:10px;margin:12px 0"><div style="width:${pct}%" class="${pct>=100?"success":""}"></div></div><p style="text-align:center;font-size:20px;font-weight:bold">${pct}%</p><label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">আপডেট</label><div class="number-input"><button type="button" onclick="adjustTarget(-1)">−</button><input id="targetInputVal" type="number" value="${p.value}" min="0" style="flex:1;text-align:center;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text)"><button type="button" onclick="adjustTarget(1)">+</button><span class="unit">${escapeHTML(t.unit)}</span></div><textarea id="targetComment" class="comment-input" placeholder="মন্তব্য..."></textarea><div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="saveTargetUpdate('${t.id}','${p.key}')">💾</button></div>`;
     document.getElementById("taskModal").classList.remove("hidden");
 }
-function adjustTarget(d){const el=document.getElementById("targetInputVal");el.value=Math.max(0,(parseInt(el.value,10)||0)+d)}
-function saveTargetUpdate(id,key){const v=Math.max(0,parseInt(document.getElementById("targetInputVal").value,10)||0);if(!targetProgress[key])targetProgress[key]={};targetProgress[key][id]=v;saveProfileData(activeProfileId);addXP(3);closeModal();renderAll();toast("✅ আপডেট")}
+
+function toggleChecklistItem(targetId,itemId,subId){
+    const t=targetTasks.find(x=>x.id===targetId);if(!t)return;
+    const key=getTargetPeriodKey(t);
+    if(!targetChecklistState[key])targetChecklistState[key]={};
+    if(!targetChecklistState[key][targetId])targetChecklistState[key][targetId]={};
+    const tState=targetChecklistState[key][targetId];
+    if(!tState[itemId])tState[itemId]={done:false,subs:{}};
+    if(!tState[itemId].subs)tState[itemId].subs={};
+
+    if(subId){
+        tState[itemId].subs[subId]=!tState[itemId].subs[subId];
+        // Auto-check parent if all subs done
+        const item=t.checklist.find(c=>c.id===itemId);
+        if(item&&item.subs&&item.subs.length){
+            const allSubsDone=item.subs.every(s=>tState[itemId].subs[s.id]);
+            tState[itemId].done=allSubsDone;
+        }
+    } else {
+        const newVal=!tState[itemId].done;
+        tState[itemId].done=newVal;
+        // If checking parent, check all subs too
+        const item=t.checklist.find(c=>c.id===itemId);
+        if(item&&item.subs&&item.subs.length){
+            item.subs.forEach(s=>{tState[itemId].subs[s.id]=newVal});
+        }
+    }
+
+    if(newVal!==undefined)addXP(2);
+    saveProfileData(activeProfileId);
+    // Re-render modal
+    openTargetProgress(targetId);
+    // Update outside cards
+    renderDashboard();renderPlanning();renderReports();
+}
+
+function resetChecklistConfirm(targetId){
+    if(!confirm("এই চেকলিস্ট রিসেট করবেন? সব টিক মুছে যাবে।"))return;
+    const t=targetTasks.find(x=>x.id===targetId);if(!t)return;
+    const key=getTargetPeriodKey(t);
+    if(targetChecklistState[key])delete targetChecklistState[key][targetId];
+    saveProfileData(activeProfileId);
+    openTargetProgress(targetId);
+    renderAll();
+    toast("🔄 রিসেট হয়েছে");
+}
+
+function copyChecklist(targetId){
+    const t=targetTasks.find(x=>x.id===targetId);if(!t||!t.checklist)return;
+    const cp=getChecklistProgress(t);
+    const state=cp?cp.state:{};
+    let text="📋 "+t.title+"\n";
+    if(t.period==="daily")text+="☀️ দৈনিক চেকলিস্ট\n";
+    else if(t.period==="weekly")text+="📅 সাপ্তাহিক চেকলিস্ট\n";
+    else if(t.period==="monthly")text+="📆 মাসিক চেকলিস্ট\n";
+    text+=`প্রগ্রেস: ${cp.done}/${cp.total} (${cp.percent}%)\n\n`;
+    t.checklist.forEach(item=>{
+        const itemState=state[item.id]||{};
+        const mark=itemState.done?"✅":"☐";
+        text+=`${mark} ${item.text}\n`;
+        if(item.subs&&item.subs.length){
+            item.subs.forEach(sub=>{
+                const subDone=itemState.subs&&itemState.subs[sub.id];
+                text+=`   ${subDone?"✅":"☐"} ${sub.text}\n`;
+            });
+        }
+    });
+    text+="\n— দৈনিক রুটিন অ্যাপ";
+    if(navigator.clipboard){
+        navigator.clipboard.writeText(text).then(()=>toast("📋 কপি হয়েছে")).catch(()=>fallbackCopy(text));
+    } else {
+        fallbackCopy(text);
+    }
+}
+function fallbackCopy(text){
+    const ta=document.createElement("textarea");
+    ta.value=text;document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");toast("📋 কপি হয়েছে")}catch{toast("কপি করতে পারিনি")}
+    document.body.removeChild(ta);
+}
+
+function adjustTarget(d){const el=document.getElementById("targetInputVal");if(!el)return;el.value=Math.max(0,(parseInt(el.value,10)||0)+d)}
+function saveTargetUpdate(id,key){const el=document.getElementById("targetInputVal");if(!el)return;const v=Math.max(0,parseInt(el.value,10)||0);if(!targetProgress[key])targetProgress[key]={};targetProgress[key][id]=v;saveProfileData(activeProfileId);addXP(3);closeModal();renderAll();toast("✅ আপডেট")}
+
 function openAvoidReport(id){const a=avoidTasks.find(x=>x.id===id);if(!a)return;const today=getDateString();const e=(avoidLog[today]||{})[a.id]||{count:0,minutes:0,comments:[]};let fields="";if(a.limitType==="count"||a.limitType==="timeslot"){fields=`<div class="number-input"><label>কতবার:</label><div class="stepper"><button type="button" onclick="adjustNum('avoidCountVal',-1)">−</button><input id="avoidCountVal" type="number" value="${e.count||0}" min="0"><button type="button" onclick="adjustNum('avoidCountVal',1)">+</button></div><span class="unit">বার</span></div>`}else if(a.limitType==="time"){fields=`<div class="number-input"><label>কত মিনিট:</label><div class="stepper"><button type="button" onclick="adjustNum('avoidTimeVal',-5)">−</button><input id="avoidTimeVal" type="number" value="${e.minutes||0}" min="0" step="5"><button type="button" onclick="adjustNum('avoidTimeVal',5)">+</button></div><span class="unit">মিনিট</span></div>`}document.getElementById("modalTitle").textContent="🚫 "+a.title;document.getElementById("modalBody").innerHTML=`${fields}<label style="display:block;margin:14px 0 7px;font-size:13px;font-weight:bold">মন্তব্য (ঐচ্ছিক)</label><textarea id="avoidComment" class="comment-input" placeholder="কেন?">${escapeHTML((e.comments&&e.comments[e.comments.length-1])||"")}</textarea><div class="modal-actions"><button class="secondary" onclick="closeModal()">বাতিল</button><button class="primary" onclick="saveAvoidReport('${a.id}')">💾</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
-function adjustNum(id,d){const el=document.getElementById(id);el.value=Math.max(0,(parseInt(el.value,10)||0)+d)}
+function adjustNum(id,d){const el=document.getElementById(id);if(!el)return;el.value=Math.max(0,(parseInt(el.value,10)||0)+d)}
 function saveAvoidReport(id){const a=avoidTasks.find(x=>x.id===id);if(!a)return;const today=getDateString();const comment=(document.getElementById("avoidComment")?.value||"").trim();let count=0,minutes=0,extra=0;if(a.limitType==="count"){count=parseInt(document.getElementById("avoidCountVal").value,10)||0;if(count>a.limit)extra=(count-a.limit)*a.penalty}else if(a.limitType==="time"){minutes=parseInt(document.getElementById("avoidTimeVal").value,10)||0;if(minutes>a.timeLimit){const over=minutes-a.timeLimit;extra=Math.min(a.timeMaxPenalty,over*a.timePenalty)}}else if(a.limitType==="timeslot"){count=parseInt(document.getElementById("avoidCountVal").value,10)||0;if(count>0)extra=count*a.penalty}if(!avoidLog[today])avoidLog[today]={};const prev=avoidLog[today][id]||{count:0,minutes:0,comments:[],penalty:0};const prevP=prev.penalty||0;avoidLog[today][id]={count,minutes,comments:comment?[...(prev.comments||[]),comment]:(prev.comments||[]),penalty:extra,at:new Date().toISOString()};const diff=extra-prevP;if(!violations[today])violations[today]=0;violations[today]=Math.max(0,violations[today]+diff);if(violations[today]===0)delete violations[today];saveProfileData(activeProfileId);closeModal();renderAll();if(extra>0)toast(`⚠️ −${extra}%`);else toast("✅ নিয়ম মেনেছেন")}
 function openAvoidDetails(id,ds){const a=avoidTasks.find(x=>x.id===id);if(!a)return;const e=(avoidLog[ds]||{})[a.id]||{count:0,minutes:0,comments:[]};const steps=(a.steps&&a.steps.length)?`<ol style="padding-left:18px">${a.steps.map(s=>`<li>${escapeHTML(s)}</li>`).join("")}</ol>`:`<p style="color:var(--muted)">ধাপ নেই</p>`;const cmts=(e.comments&&e.comments.length)?e.comments.map(c=>`<div class="reason">💬 ${escapeHTML(c)}</div>`).join(""):`<p style="color:var(--muted);font-size:12px">মন্তব্য নেই</p>`;document.getElementById("modalTitle").textContent="🚫 "+a.title;document.getElementById("modalBody").innerHTML=`<p>🔢 করেছি: ${e.count||0} বার${a.limitType==="time"?" / ⏱️ "+(e.minutes||0)+" মিনিট":""}</p><p>📉 পেনাল্টি: ${e.penalty||0}%</p><h4>📋 স্টেপ</h4>${steps}<h4>💬 মন্তব্য</h4>${cmts}<div class="modal-actions"><button class="secondary" onclick="closeModal()">বন্ধ</button><button class="primary" onclick="closeModal();openAvoidReport('${a.id}')">📝 রিপোর্ট</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
 
@@ -1543,13 +1854,14 @@ function backupData(){
                 violations:safeParse(localStorage.getItem(profileKey(p.id,"violations")),{}),
                 reportData:safeParse(localStorage.getItem(profileKey(p.id,"reportData")),{}),
                 targetProgress:safeParse(localStorage.getItem(profileKey(p.id,"targetProgress")),{}),
+                targetChecklistState:safeParse(localStorage.getItem(profileKey(p.id,"targetChecklistState")),{}),
                 notes:safeParse(localStorage.getItem(profileKey(p.id,"notes")),{}),
                 badges:safeParse(localStorage.getItem(profileKey(p.id,"badges")),{}),
                 notebook:safeParse(localStorage.getItem(profileKey(p.id,"notebook")),[]),
                 game:safeParse(localStorage.getItem(profileKey(p.id,"game")),{})
             };
         });
-        const backup={app:"দৈনিক রুটিন",version:"8.2.0",backupDate:new Date().toISOString(),profiles,activeProfileId,settings,pomoConfig,reminderConfig,pinConfig,customQuotes,customQuoteIndex:currentQuoteIndex,profileData:all};
+        const backup={app:"দৈনিক রুটিন",version:"8.3.0",backupDate:new Date().toISOString(),profiles,activeProfileId,settings,pomoConfig,reminderConfig,pinConfig,customQuotes,customQuoteIndex:currentQuoteIndex,profileData:all};
         const json=JSON.stringify(backup,null,2);
         const blob=new Blob([json],{type:"application/json"});
         const url=URL.createObjectURL(blob);
@@ -1563,9 +1875,9 @@ function backupData(){
         toast("📥 Backup ডাউনলোড হয়েছে");
     }catch(e){console.error(e);toast("❌ Backup তৈরি করা যায়নি")}
 }
-function restoreData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(!data.profiles||!data.profileData){toast("❌ সঠিক Backup ফাইল নয়");return}if(!confirm("সব ডেটা এই Backup দিয়ে প্রতিস্থাপিত হবে। চালিয়ে যাবেন?"))return;profiles=data.profiles;activeProfileId=data.activeProfileId||profiles[0].id;settings={...settings,...(data.settings||{})};pomoConfig={...pomoConfig,...(data.pomoConfig||{})};reminderConfig={...reminderConfig,...(data.reminderConfig||{})};pinConfig={...pinConfig,...(data.pinConfig||{})};customQuotes=data.customQuotes||[];currentQuoteIndex=data.customQuoteIndex||0;Object.entries(data.profileData).forEach(([pid,d])=>{["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","notes","badges","notebook"].forEach(k=>{localStorage.setItem(profileKey(pid,k),JSON.stringify(d[k]||[]))});localStorage.setItem(profileKey(pid,"game"),JSON.stringify(d.game||{xp:0,coins:0,level:1,challenges:{}}))});saveProfiles();localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));savePinConfig();saveQuotesData();loadProfileData(activeProfileId);applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();clearAllTimers();scheduleAllReminders();toast("📤 Restore সম্পন্ন")}catch(err){console.error(err);toast("❌ রিস্টোর ব্যর্থ")}};reader.readAsText(file);event.target.value=""}
+function restoreData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);if(!data.profiles||!data.profileData){toast("❌ সঠিক Backup ফাইল নয়");return}if(!confirm("সব ডেটা এই Backup দিয়ে প্রতিস্থাপিত হবে। চালিয়ে যাবেন?"))return;profiles=data.profiles;activeProfileId=data.activeProfileId||profiles[0].id;settings={...settings,...(data.settings||{})};pomoConfig={...pomoConfig,...(data.pomoConfig||{})};reminderConfig={...reminderConfig,...(data.reminderConfig||{})};pinConfig={...pinConfig,...(data.pinConfig||{})};customQuotes=data.customQuotes||[];currentQuoteIndex=data.customQuoteIndex||0;Object.entries(data.profileData).forEach(([pid,d])=>{["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","targetChecklistState","notes","badges","notebook"].forEach(k=>{localStorage.setItem(profileKey(pid,k),JSON.stringify(d[k]||[]))});localStorage.setItem(profileKey(pid,"game"),JSON.stringify(d.game||{xp:0,coins:0,level:1,challenges:{}}))});saveProfiles();localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));localStorage.setItem(POMO_CONFIG_KEY,JSON.stringify(pomoConfig));localStorage.setItem(REMINDER_CFG_KEY,JSON.stringify(reminderConfig));savePinConfig();saveQuotesData();loadProfileData(activeProfileId);applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();clearAllTimers();scheduleAllReminders();toast("📤 Restore সম্পন্ন")}catch(err){console.error(err);toast("❌ রিস্টোর ব্যর্থ")}};reader.readAsText(file);event.target.value=""}
 function showBackupInfo(){document.getElementById("modalTitle").textContent="ℹ️ Backup সম্পর্কে";document.getElementById("modalBody").innerHTML=`<div style="font-size:13px;line-height:1.8"><p>📥 <strong>Backup ডাউনলোড:</strong> আপনার সব ডেটা একটি <code>.json</code> ফাইলে সেভ হবে।</p><p>💾 <strong>ফাইল স্টোরিং:</strong> JSON ফাইলটি Google Drive, WhatsApp, বা অন্য যেকোনো জায়গায় শেয়ার করে রাখুন।</p><p>📤 <strong>Restore:</strong> নতুন ফোনে বা অন্য ডিভাইসে ফাইল সিলেক্ট করলে সব ডেটা ফিরে আসবে।</p><p>⚠️ <strong>পরামর্শ:</strong> প্রতি সপ্তাহে Backup নিন।</p></div><div class="modal-actions"><button class="primary" onclick="closeModal()">বুঝেছি</button></div>`;document.getElementById("taskModal").classList.remove("hidden")}
-async function deleteAllData(){if(!confirm("সব ডেটা মুছে যাবে। আপনি কি নিশ্চিত?"))return;if(!confirm("এটি অপরিবর্তনীয়!"))return;profiles.forEach(p=>{["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(p.id,k)))});[PROFILE_KEY,ACTIVE_PROFILE_KEY,SETTINGS_KEY,POMO_CONFIG_KEY,REMINDER_CFG_KEY,PIN_KEY,QUOTES_KEY,QUOTE_INDEX_KEY].forEach(k=>localStorage.removeItem(k));try{await idbDelete(CUSTOM_MUSIC_KEY)}catch{}if(customMusicBlobUrl){URL.revokeObjectURL(customMusicBlobUrl);customMusicBlobUrl=null}profiles=[DEFAULT_PROFILE];activeProfileId="self";settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true};pomoConfig={focus:25,short:5,long:15,volume:80};reminderConfig={volume:80,useCustomMusic:false,customMusicName:""};pinConfig={enabled:false,pin:""};customQuotes=[];currentQuoteIndex=0;saveProfiles();loadProfileData(activeProfileId);clearAllTimers();releaseWakeLock();applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();toast("🗑️ সব মুছে")}
+async function deleteAllData(){if(!confirm("সব ডেটা মুছে যাবে। আপনি কি নিশ্চিত?"))return;if(!confirm("এটি অপরিবর্তনীয়!"))return;profiles.forEach(p=>{["tasks","avoidTasks","targetTasks","reportTasks","avoidLog","violations","reportData","targetProgress","targetChecklistState","notes","badges","notebook","game"].forEach(k=>localStorage.removeItem(profileKey(p.id,k)))});[PROFILE_KEY,ACTIVE_PROFILE_KEY,SETTINGS_KEY,POMO_CONFIG_KEY,REMINDER_CFG_KEY,PIN_KEY,QUOTES_KEY,QUOTE_INDEX_KEY].forEach(k=>localStorage.removeItem(k));try{await idbDelete(CUSTOM_MUSIC_KEY)}catch{}if(customMusicBlobUrl){URL.revokeObjectURL(customMusicBlobUrl);customMusicBlobUrl=null}profiles=[DEFAULT_PROFILE];activeProfileId="self";settings={name:"",darkMode:false,notifications:true,autoBackup:true,accent:"#4f46e5",wakeLock:false,gamification:true};pomoConfig={focus:25,short:5,long:15,volume:80};reminderConfig={volume:80,useCustomMusic:false,customMusicName:""};pinConfig={enabled:false,pin:""};customQuotes=[];currentQuoteIndex=0;saveProfiles();loadProfileData(activeProfileId);clearAllTimers();releaseWakeLock();applySettings();applyProfileToUI();renderAll();loadSettingsUI();loadPomodoroSettingsUI();loadReminderSettingsUI();updatePinUI();toast("🗑️ সব মুছে")}
 
 function renderAll(){renderDashboard();renderPlanning();renderReports();renderCalendar();updatePomodoroUI();renderProfilesPage();if(document.getElementById("analyticsPage").classList.contains("active"))renderAnalyticsPage();if(document.getElementById("familyPage").classList.contains("active"))renderFamilyPage();if(document.getElementById("rewardsPage").classList.contains("active"))renderRewardsPage();if(document.getElementById("notebookPage").classList.contains("active"))renderNotebook()}
 
@@ -1589,6 +1901,7 @@ document.addEventListener("DOMContentLoaded",async function(){
     renderColorPicker();
     renderProfilesPage();
     renderNotebook();
+    renderChecklistBuilder();
     await loadSavedCustomMusic();
     if(settings.wakeLock)requestWakeLock();
     scheduleAllReminders();
@@ -1617,7 +1930,6 @@ function updateHeader(){const now=new Date();const hd=document.getElementById("h
 
 function showPage(pageName){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));const page=document.getElementById(pageName+"Page");if(page)page.classList.add("active");document.querySelectorAll(".nav-item").forEach(item=>item.classList.remove("active"));const nav=document.querySelector(`[data-page="${pageName}"]`);if(nav)nav.classList.add("active");if(pageName==="home")renderDashboard();if(pageName==="planning"){renderCalendar();renderPlanning()}if(pageName==="report")renderReports();if(pageName==="settings"){loadSettingsUI();updatePinUI();renderCustomQuotes()}if(pageName==="focus")updatePomodoroUI();if(pageName==="profiles")renderProfilesPage();if(pageName==="family")renderFamilyPage();if(pageName==="analytics")renderAnalyticsPage();if(pageName==="rewards")renderRewardsPage();if(pageName==="notebook")renderNotebook();if(pageName==="quickReport")renderQuickReport();window.scrollTo({top:0,behavior:"smooth"})}
 
-/* Listen for target range changes to update info */
 document.addEventListener("input",function(e){
     if(e.target && (e.target.id==="targetRangeStart" || e.target.id==="targetRangeEnd")){
         updateTargetRangeInfo();
@@ -1625,7 +1937,7 @@ document.addEventListener("input",function(e){
 });
 
 setInterval(updateHeader,30000);
-console.log("✅ Daily Routine v8.2 loaded (custom target)");
+console.log("✅ Daily Routine v8.3 loaded — Checklist system");
 </script>
 
 </body>
